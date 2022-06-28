@@ -1,4 +1,4 @@
-import { Global, css, connect, styled, Head } from "frontity";
+import { Global, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Header from "./header";
 import List from "./list";
@@ -6,6 +6,8 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
+
+import { globalStyles } from "./global-style";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -53,24 +55,11 @@ const Theme = ({ state }) => {
 
 export default connect(Theme);
 
-const globalStyles = css`
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  a,
-  a:visited {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
-
 const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1f38c5;
+  background-color: var(--blue-600);
 `;
 
 const Main = styled.div`

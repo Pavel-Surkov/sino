@@ -1,6 +1,6 @@
 import { styled, connect, Global, Head } from "frontity";
-import { CloseIcon, HamburgerIcon } from "./menu-icon";
-import MenuModal from "./menu-modal";
+import { CloseIcon, HamburgerIcon } from "./MenuIcon";
+import MenuModal from "./MenuModal";
 
 /**
  * The menu that should be displayed on mobile devices displaying links to
@@ -10,6 +10,7 @@ import MenuModal from "./menu-modal";
  * @param props - The state and actions injected by Frontity.
  * @returns A React component.
  */
+
 function MobileMenu({ state, actions }) {
   const { menu, isMobileMenuOpen } = state.theme;
   if (menu?.length === 0) return null;

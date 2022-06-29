@@ -1,13 +1,11 @@
 import { Global, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-import Header from "./header";
-import List from "./list";
-import Post from "./post";
-import Loading from "./loading";
-import Title from "./title";
-import PageError from "./page-error";
+import Header from "./Header";
+import Loading from "./Loading";
+import PageError from "./PageError";
+import Router from "./Router";
 
-import { globalStyles } from "./global-style";
+import { globalStyles } from "./GlobalStyle";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -24,9 +22,8 @@ const Theme = ({ state }) => {
   return (
     <>
       {/* Add some metatags to the <head> of the HTML. */}
-      <Title />
       <Head>
-        <meta name="description" content={state.frontity.description} />
+        {/* <meta name="description" content={state.frontity.description} /> */}
         <html lang="en" />
       </Head>
 
@@ -44,8 +41,8 @@ const Theme = ({ state }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
-          <List when={data.isArchive} />
-          <Post when={data.isPostType} />
+          <Router when={data.isArchive} />
+          {/* <Post when={data.isPostType} /> */}
           <PageError when={data.isError} />
         </Switch>
       </Main>

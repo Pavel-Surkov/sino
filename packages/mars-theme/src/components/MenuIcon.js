@@ -4,6 +4,7 @@
  * @param props - Props used to customize this element.
  * @returns A React component.
  */
+
 export const HamburgerIcon = ({ size, color, ...props }) => {
   return (
     <svg

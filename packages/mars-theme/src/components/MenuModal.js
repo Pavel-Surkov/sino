@@ -1,5 +1,5 @@
 import { styled, connect, useConnect } from "frontity";
-import Link from "./link";
+import Link from "./constant/Link";
 
 /**
  * The modal containing the mobile menu items.
@@ -7,6 +7,7 @@ import Link from "./link";
  * @param props - The props passed to the component from parent.
  * @returns A React component.
  */
+
 const MenuModal = ({ ...props }) => {
   const { state } = useConnect();
   const { menu } = state.theme;

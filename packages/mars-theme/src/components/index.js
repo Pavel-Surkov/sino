@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import PageError from "./PageError";
 import Router from "./Router";
 
-import { globalStyles } from "./GlobalStyle";
+import { globalStyles } from "./base/GlobalStyle";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -15,6 +15,7 @@ import { globalStyles } from "./GlobalStyle";
  *
  * @returns The top-level react component representing the theme.
  */
+
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
@@ -56,7 +57,6 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: var(--blue-600);
 `;
 
 const Main = styled.div`

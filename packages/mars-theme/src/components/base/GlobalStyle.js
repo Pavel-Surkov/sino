@@ -1,15 +1,15 @@
 import { css } from "frontity";
 
-import Ubuntu_Light_woff2 from "../assets/fonts/Ubuntu-Light.woff2";
-import Ubuntu_Light_woff from "../assets/fonts/Ubuntu-Light.woff";
-import Ubuntu_Regular_woff2 from "../assets/fonts/Ubuntu-Regular.woff2";
-import Ubuntu_Regular_woff from "../assets/fonts/Ubuntu-Regular.woff";
-import Ubuntu_Medium_woff2 from "../assets/fonts/Ubuntu-Medium.woff2";
-import Ubuntu_Medium_woff from "../assets/fonts/Ubuntu-Medium.woff";
-import Ubuntu_Bold_woff2 from "../assets/fonts/Ubuntu-Bold.woff2";
-import Ubuntu_Bold_woff from "../assets/fonts/Ubuntu-Bold.woff";
-import Barlow_woff2 from "../assets/fonts/Barlow-Medium.woff2";
-import Barlow_woff from "../assets/fonts/Barlow-Medium.woff";
+import Ubuntu_Light_woff2 from "../../assets/fonts/Ubuntu-Light.woff2";
+import Ubuntu_Light_woff from "../../assets/fonts/Ubuntu-Light.woff";
+import Ubuntu_Regular_woff2 from "../../assets/fonts/Ubuntu-Regular.woff2";
+import Ubuntu_Regular_woff from "../../assets/fonts/Ubuntu-Regular.woff";
+import Ubuntu_Medium_woff2 from "../../assets/fonts/Ubuntu-Medium.woff2";
+import Ubuntu_Medium_woff from "../../assets/fonts/Ubuntu-Medium.woff";
+import Ubuntu_Bold_woff2 from "../../assets/fonts/Ubuntu-Bold.woff2";
+import Ubuntu_Bold_woff from "../../assets/fonts/Ubuntu-Bold.woff";
+import Barlow_woff2 from "../../assets/fonts/Barlow-Medium.woff2";
+import Barlow_woff from "../../assets/fonts/Barlow-Medium.woff";
 
 export const globalStyles = css`
   :root {
@@ -76,6 +76,7 @@ export const globalStyles = css`
   }
 
   body {
+    font-size: 10px;
     margin: 0;
     font-family: var(--font);
   }

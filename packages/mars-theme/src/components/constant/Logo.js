@@ -46,7 +46,7 @@ const Logo = () => {
 };
 
 const LogoWrapper = styled(Link)`
-  ${flex(row, center)}
+  ${flex("row", "center")}
   & .icon {
     margin-right: 8px;
   }
@@ -56,6 +56,12 @@ const LogoWrapper = styled(Link)`
     font-weight: 500;
     ${font(24, 32)}
     letter-spacing: -.01em;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.5;
   }
 `;
 

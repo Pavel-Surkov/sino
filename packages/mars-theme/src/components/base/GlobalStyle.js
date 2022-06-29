@@ -75,8 +75,10 @@ export const globalStyles = css`
     font-display: swap;
   }
 
-  body {
+  html {
     font-size: 10px;
+  }
+  body {
     margin: 0;
     font-family: var(--font);
   }

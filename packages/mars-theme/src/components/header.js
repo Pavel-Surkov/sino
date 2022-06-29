@@ -8,6 +8,7 @@ const Header = ({ state }) => {
     <>
       <HeaderContainer>
         <Logo />
+
         <MobileMenu />
       </HeaderContainer>
     </>
@@ -17,16 +18,11 @@ const Header = ({ state }) => {
 // Connect the Header component to get access to the `state` in it's `props`
 export default connect(Header);
 
-const Title = styled.h2`
-  margin: 0;
-  margin-bottom: 16px;
-`;
-
 const HeaderContainer = styled(Container)`
   padding-top: 59px;
   padding-bottom: 32px;
+  display: grid;
+  grid-template-columns: calc((340 / 1372) * 100%) auto calc(
+      (116 / 1372) * 100%
+    );
 `;
-
-// const StyledLink = styled(Link)`
-//   text-decoration: none;
-// `;

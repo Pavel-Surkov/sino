@@ -44,7 +44,7 @@ interface MarsTheme extends Package {
       /**
        * Indicates if the mobile menu is opened or closed.
        */
-      isMobileMenuOpen: boolean;
+      isMobileMenuOpened: boolean;
 
       /**
        * The settings of the featured images.

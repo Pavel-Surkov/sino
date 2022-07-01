@@ -2,11 +2,11 @@ import React from "react";
 import { styled, useConnect, connect } from "frontity";
 import { flex, font } from "../base/functions";
 
-const RadioButton = ({ name, text, value, onChange }) => {
+const RadioButton = ({ name, text, value, onChange, className }) => {
   const { state } = useConnect();
 
   return (
-    <Label>
+    <Label className={className}>
       <Input
         type="radio"
         name={name}
@@ -40,7 +40,7 @@ const RadioButton = ({ name, text, value, onChange }) => {
           />
         </svg>
       </BtnWrapper>
-      <span>{text}</span>
+      <span className="text">{text}</span>
     </Label>
   );
 };

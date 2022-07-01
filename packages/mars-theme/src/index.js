@@ -19,10 +19,18 @@ const marsTheme = {
      */
     theme: {
       autoPrefetch: "in-view",
-      isMobileMenuOpen: false,
+      isMobileMenuOpened: false,
+      isMobile: false,
       searchValue: "",
       language: "EN",
-      isMobile: false,
+      languageDropdownOpened: false,
+      languages: [
+        ["English", "EN"],
+        ["Thai", "TH"],
+        ["Deutsch", "DE"],
+        ["Español", "ES"],
+        ["Português", "PT"],
+      ],
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -143,10 +151,7 @@ const marsTheme = {
         }
       },
       toggleMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
-      },
-      closeMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = false;
+        state.theme.isMobileMenuOpened = !state.theme.isMobileMenuOpened;
       },
       handleSearchChange:
         ({ state }) =>
@@ -161,6 +166,10 @@ const marsTheme = {
         (value) => {
           state.theme.language = value;
         },
+      toggleLanguageDropdown: ({ state }) => {
+        state.theme.languageDropdownOpened =
+          !state.theme.languageDropdownOpened;
+      },
     },
   },
   libraries: {

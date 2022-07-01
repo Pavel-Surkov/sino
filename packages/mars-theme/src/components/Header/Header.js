@@ -25,8 +25,8 @@ const Header = ({ state, actions }) => {
         <Navigation />
         <SearchBlock />
         <MenuIcon />
-        <MobileMenu />
       </HeaderContainer>
+      <MobileMenu />
     </>
   );
 };
@@ -35,6 +35,9 @@ const Header = ({ state, actions }) => {
 export default connect(Header);
 
 const HeaderContainer = styled(Container)`
+  z-index: 10;
+  background: var(--white);
+  position: relative;
   padding-top: 59px;
   padding-bottom: 32px;
   display: grid;
@@ -45,5 +48,10 @@ const HeaderContainer = styled(Container)`
   @media screen and (max-width: 991px) {
     grid-template-columns: 50% 50%;
     padding: 16px 0;
+  }
+
+  @media screen and (max-width: 576px) {
+    grid-template-columns: calc(100% - 50px) 50px;
+    padding: 16px 24px;
   }
 `;

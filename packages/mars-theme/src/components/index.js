@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import Loading from "./Loading";
 import PageError from "./PageError";
 import Router from "./Router";
+import { flex } from "./base/functions";
 
 import { globalStyles } from "./base/GlobalStyle";
 
@@ -54,9 +55,8 @@ const Theme = ({ state }) => {
 export default connect(Theme);
 
 const HeadContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  ${flex("column", "center")};
+  background: var(--white);
 `;
 
 const Main = styled.div`

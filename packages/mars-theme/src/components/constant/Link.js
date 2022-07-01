@@ -23,7 +23,7 @@ const SinoLink = ({ children, ...props }) => {
    * A handler that closes the mobile menu when a link is clicked.
    */
   const onClick = () => {
-    if (state.theme.isMobileMenuOpen) {
+    if (state.theme.isMobileMenuOpened) {
       actions.theme.closeMobileMenu();
     }
   };

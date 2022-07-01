@@ -76,6 +76,9 @@ export const globalStyles = css`
     font-display: swap;
   }
 
+  * {
+    box-sizing: border-box;
+  }
   html {
     font-size: 10px;
   }

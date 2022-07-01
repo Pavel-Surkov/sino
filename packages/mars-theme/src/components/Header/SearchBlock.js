@@ -5,17 +5,11 @@ import Button from "../constant/Button";
 import ModalInput from "../constant/ModalInput";
 import RadioButton from "../constant/RadioButton";
 
-const languages = [
-  ["English", "EN"],
-  ["Thai", "TH"],
-  ["Deutsch", "DE"],
-  ["Español", "ES"],
-  ["Português", "PT"],
-];
-
 const SearchBlock = ({ state, actions }) => {
   const [searchOpened, setSearchOpened] = useState(false);
   const [langOpened, setLangOpened] = useState(false);
+
+  const { languages } = state.theme;
 
   // For closing modals
   useEffect(() => {
@@ -133,7 +127,7 @@ const SearchBlock = ({ state, actions }) => {
               >
                 Change language
               </h3>
-              <LanguagesWrapper>
+              <div>
                 {languages.map(([lang, value]) => (
                   <RadioButton
                     key={value}
@@ -145,7 +139,7 @@ const SearchBlock = ({ state, actions }) => {
                     }
                   />
                 ))}
-              </LanguagesWrapper>
+              </div>
             </LangModalWrapper>
           </LangModal>
         )}
@@ -153,8 +147,6 @@ const SearchBlock = ({ state, actions }) => {
     </Wrapper>
   );
 };
-
-const LanguagesWrapper = styled.div``;
 
 const LangButton = styled(Button)`
   &.active path {

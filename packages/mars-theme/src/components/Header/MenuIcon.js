@@ -4,17 +4,20 @@ import close from "../../assets/images/svg/Close.svg";
 import { flex } from "../base/functions";
 
 const MenuIcon = ({ state, actions }) => {
-  const mobileMenuOpened = state.theme.isMobileMenuOpen;
+  const mobileMenuOpened = state.theme.isMobileMenuOpened;
 
   return mobileMenuOpened ? (
     <BtnWrapper>
-      <Button>
+      <CloseButton onClick={() => actions.theme.toggleMobileMenu()}>
         <img src={close} alt="close" />
-      </Button>
+      </CloseButton>
     </BtnWrapper>
   ) : (
     <BtnWrapper>
-      <Hamburger aria-label="Open menu">
+      <Hamburger
+        label="Open menu"
+        onClick={() => actions.theme.toggleMobileMenu()}
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -29,6 +32,14 @@ const BtnWrapper = styled.div`
   @media screen and (max-width: 991px) {
     ${flex("row", "center", "flex-end")};
   }
+`;
+
+const CloseButton = styled(Button)`
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
 `;
 
 const Hamburger = styled(Button)`

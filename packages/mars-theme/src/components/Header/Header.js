@@ -1,15 +1,27 @@
+import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Logo from "../constant/Logo";
 import MobileMenu from "../Menu";
 import Container from "../constant/Container";
 import SearchBlock from "./SearchBlock";
+import Navigation from "./Navigation";
 
-const Header = ({ state }) => {
+const Header = ({ state, actions }) => {
+  useEffect(() => {
+    actions.theme.checkIsMobile();
+
+    window.addEventListener("resize", () => actions.theme.checkIsMobile());
+
+    return () => {
+      window.removeEventListener("resize", () => actions.theme.checkIsMobile());
+    };
+  }, []);
+
   return (
     <>
       <HeaderContainer>
         <Logo />
-        <div></div>
+        <Navigation></Navigation>
         <SearchBlock />
         <MobileMenu />
       </HeaderContainer>

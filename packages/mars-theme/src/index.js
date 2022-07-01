@@ -22,6 +22,7 @@ const marsTheme = {
       isMobileMenuOpen: false,
       searchValue: "",
       language: "EN",
+      isMobile: false,
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -29,6 +30,7 @@ const marsTheme = {
       menu: [
         {
           isDropdown: true,
+          isDropdownOpened: false,
           title: "Company",
           text: "Company",
           dropdown: [
@@ -45,6 +47,7 @@ const marsTheme = {
             },
             {
               isDropdown: true,
+              isDropdownOpened: false,
               text: "Corporate Responsibility",
               dropdown: [
                 {
@@ -73,6 +76,7 @@ const marsTheme = {
         },
         {
           isDropdown: true,
+          isDropdownOpened: false,
           title: "Our Services",
           text: "Services",
           dropdown: [
@@ -109,6 +113,7 @@ const marsTheme = {
         { text: "Investor", route: "/investor" },
         {
           isDropdown: true,
+          isDropdownOpened: false,
           text: "Media",
           title: "Media",
           dropdown: [
@@ -128,6 +133,15 @@ const marsTheme = {
    */
   actions: {
     theme: {
+      checkIsMobile: ({ state }) => {
+        const windowWidth = window.innerWidth;
+
+        if (windowWidth > 991) {
+          state.theme.isMobile = false;
+        } else {
+          state.theme.isMobile = true;
+        }
+      },
       toggleMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
       },

@@ -21,6 +21,7 @@ const ButtonElement = styled.button`
   background: var(--white);
   padding: 0;
   cursor: pointer;
+  font-family: var(--font);
 `;
 
 export default Button;

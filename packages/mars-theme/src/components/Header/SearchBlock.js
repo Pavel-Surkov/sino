@@ -3,20 +3,34 @@ import { connect, styled, css } from "frontity";
 import { flex, font } from "../base/functions";
 import Button from "../constant/Button";
 import ModalInput from "../constant/ModalInput";
+import RadioButton from "../constant/RadioButton";
+
+const languages = [
+  ["English", "EN"],
+  ["Thai", "TH"],
+  ["Deutsch", "DE"],
+  ["Español", "ES"],
+  ["Português", "PT"],
+];
 
 const SearchBlock = ({ state, actions }) => {
   const [searchOpened, setSearchOpened] = useState(false);
   const [langOpened, setLangOpened] = useState(false);
 
+  // For closing modals
   useEffect(() => {
     document.addEventListener("click", (evt) => {
       handleSearchClose(evt, setSearchOpened);
+      handleLangClose(evt, setLangOpened);
+
       actions.theme.handleSearchClear();
     });
 
     return () => {
       document.removeEventListener("click", (evt) => {
         handleSearchClose(evt, setSearchOpened);
+        handleLangClose(evt, setLangOpened);
+
         actions.theme.handleSearchClear();
       });
     };
@@ -108,29 +122,30 @@ const SearchBlock = ({ state, actions }) => {
         {langOpened && (
           <LangModal data-modal="lang-modal">
             <LangModalWrapper>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              <h3
+                css={css`
+                  margin: 0;
+                  margin-bottom: 16px;
+                  font-weight: 400;
+                  ${font(13, 15)};
+                  letter-spacing: -0.02em;
+                `}
               >
-                <circle
-                  cx="7"
-                  cy="7"
-                  r="6.75"
-                  stroke="#4279B8"
-                  strokeWidth="0.5"
-                />
-                <circle
-                  cx="7"
-                  cy="7"
-                  r="2.75"
-                  stroke="#4279B8"
-                  strokeWidth="0.5"
-                  fill="#4279B8"
-                />
-              </svg>
+                Change language
+              </h3>
+              <LanguagesWrapper>
+                {languages.map(([lang, value]) => (
+                  <RadioButton
+                    key={value}
+                    name="language"
+                    text={`${lang} - ${value}`}
+                    value={value}
+                    onChange={(evt) =>
+                      actions.theme.handleLanguageChange(evt.target.value)
+                    }
+                  />
+                ))}
+              </LanguagesWrapper>
             </LangModalWrapper>
           </LangModal>
         )}
@@ -138,6 +153,8 @@ const SearchBlock = ({ state, actions }) => {
     </Wrapper>
   );
 };
+
+const LanguagesWrapper = styled.div``;
 
 const LangButton = styled(Button)`
   &.active path {
@@ -149,12 +166,16 @@ const LangModal = styled.div`
   position: absolute;
   top: calc(100% + 52px);
   right: -16px;
+  width: 100vw;
+  max-width: 209px;
 `;
 
 const LangModalWrapper = styled.div`
   position: relative;
   padding: 16px;
   padding-bottom: 24px;
+  background: var(--white);
+  border-radius: 8px;
   &::before {
     content: "";
     position: absolute;
@@ -181,6 +202,8 @@ const SearchModal = styled.div`
 
 const SearchModalWrapper = styled.div`
   position: relative;
+  background: var(--white);
+  border-radius: 8px;
   &::before {
     content: "";
     position: absolute;
@@ -212,4 +235,17 @@ function handleSearchClose(e, setSearchOpened) {
   }
 
   setSearchOpened(false);
+}
+
+function handleLangClose(e, setLangOpened) {
+  const target = e.target;
+
+  if (
+    target.closest('div[data-modal="lang-modal"]') ||
+    target.closest('div[data-btn="lang-btn"]')
+  ) {
+    return;
+  }
+
+  setLangOpened(false);
 }

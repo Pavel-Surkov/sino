@@ -82,6 +82,7 @@ export const globalStyles = css`
   body {
     margin: 0;
     font-family: var(--font);
+    background: var(--white);
   }
   a,
   a:visited {

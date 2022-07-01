@@ -21,6 +21,7 @@ const marsTheme = {
       autoPrefetch: "in-view",
       isMobileMenuOpen: false,
       searchValue: "",
+      language: "EN",
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -141,6 +142,11 @@ const marsTheme = {
       handleSearchClear: ({ state }) => {
         state.theme.searchValue = "";
       },
+      handleLanguageChange:
+        ({ state }) =>
+        (value) => {
+          state.theme.language = value;
+        },
     },
   },
   libraries: {

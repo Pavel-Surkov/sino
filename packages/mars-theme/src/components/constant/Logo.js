@@ -69,6 +69,9 @@ const LogoWrapper = styled(Link)`
   &:active {
     opacity: 0.5;
   }
+
+  @media screen and (max-width: 991px) {
+  }
 `;
 
 export default Logo;

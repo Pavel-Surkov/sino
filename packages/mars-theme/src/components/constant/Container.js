@@ -6,6 +6,7 @@ const Container = styled.div`
   box-sizing: border-box;
   padding: 0;
   color: var(--black);
+  margin: 0 auto;
 
   @media screen and (max-width: 1400px) {
     max-width: 950px;

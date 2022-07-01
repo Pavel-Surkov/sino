@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, styled, css } from "frontity";
+import { connect, styled } from "frontity";
 import { flex, font } from "../base/functions";
 import Button from "../constant/Button";
 import drop from "../../assets/images/svg/drop.svg";
@@ -9,12 +9,7 @@ const Navigation = ({ state }) => {
   const navLinks = state.theme.menu;
 
   return (
-    <nav
-      css={css`
-        height: 100%;
-        ${flex("row", "center")}
-      `}
-    >
+    <Nav>
       <List>
         {navLinks &&
           navLinks.map((link) => {
@@ -36,9 +31,18 @@ const Navigation = ({ state }) => {
             );
           })}
       </List>
-    </nav>
+    </Nav>
   );
 };
+
+const Nav = styled.nav`
+  height: 100%;
+  ${flex("row", "center")};
+
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+`;
 
 const NavLink = styled(Link)`
   ${font(18, 30)};

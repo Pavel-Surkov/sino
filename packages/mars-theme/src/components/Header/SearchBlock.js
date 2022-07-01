@@ -76,7 +76,7 @@ const SearchBlock = ({ state, actions }) => {
           <SearchModal data-modal="search-modal">
             <SearchModalWrapper>
               <ModalInput
-                minWidth={325}
+                minWidth="325px"
                 placeholder="Search Here"
                 name="search"
                 value={state.theme.searchValue}
@@ -217,7 +217,11 @@ const SearchModalWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${flex("row", "center", "flex-end")}
+  ${flex("row", "center", "flex-end")};
+
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 export default connect(SearchBlock);

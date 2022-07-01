@@ -19,9 +19,10 @@ export const globalStyles = css`
 
     /* Colors */
     --white: #fdfdfd;
-    -black: #1e1e1e;
+    --black: #1e1e1e;
 
     --gray-menu: #394c62;
+    --gray-900: #9f9f9f;
 
     --error: #eb5757;
     --success: #6fcf97;

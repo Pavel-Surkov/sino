@@ -1,14 +1,16 @@
 import { connect, styled } from "frontity";
-import Logo from "./constant/Logo";
-import MobileMenu from "./Menu";
-import Container from "./constant/Container";
+import Logo from "../constant/Logo";
+import MobileMenu from "../Menu";
+import Container from "../constant/Container";
+import SearchBlock from "./SearchBlock";
 
 const Header = ({ state }) => {
   return (
     <>
       <HeaderContainer>
         <Logo />
-
+        <div></div>
+        <SearchBlock />
         <MobileMenu />
       </HeaderContainer>
     </>

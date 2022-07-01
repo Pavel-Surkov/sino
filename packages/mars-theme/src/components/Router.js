@@ -3,9 +3,9 @@ import { connect } from "frontity";
 import Home from "./Home";
 
 const Router = ({ state }) => {
-  const currentPage = state.router.link;
+  const currentRoute = state.router.link;
 
-  return <>{currentPage === "/" && <Home />}</>;
+  return <>{currentRoute === "/" && <Home />}</>;
 };
 
 export default connect(Router);

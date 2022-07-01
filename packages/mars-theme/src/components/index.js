@@ -1,6 +1,6 @@
 import { Global, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
-import Header from "./Header";
+import Header from "./Header/Header";
 import Loading from "./Loading";
 import PageError from "./PageError";
 import Router from "./Router";

@@ -1,8 +1,26 @@
 import React from "react";
-import { connect } from "frontity";
+import { styled } from "frontity";
 
-const Button = () => {
-  return <div>Button</div>;
+const Button = ({ type, onClick, className, children }) => {
+  return (
+    <ButtonElement
+      className={className}
+      type={type ? type : "button"}
+      onClick={onClick}
+    >
+      {children}
+    </ButtonElement>
+  );
 };
 
-export default connect(Button);
+const ButtonElement = styled.button`
+  display: grid;
+  place-items: center;
+  border: none;
+  position: relative;
+  background: var(--white);
+  padding: 0;
+  cursor: pointer;
+`;
+
+export default Button;

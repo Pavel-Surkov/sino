@@ -20,6 +20,7 @@ const marsTheme = {
     theme: {
       autoPrefetch: "in-view",
       isMobileMenuOpen: false,
+      searchValue: "",
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -131,6 +132,14 @@ const marsTheme = {
       },
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
+      },
+      handleSearchChange:
+        ({ state }) =>
+        (value) => {
+          state.theme.searchValue = value;
+        },
+      handleSearchClear: ({ state }) => {
+        state.theme.searchValue = "";
       },
     },
   },

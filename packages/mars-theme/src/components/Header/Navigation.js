@@ -61,7 +61,18 @@ const ListItem = styled.li`
   &:last-child {
     margin-right: 0;
   }
-
+  &:hover {
+    & button,
+    & a {
+      color: var(--blue-600);
+    }
+  }
+  &:active {
+    & button,
+    & a {
+      color: var(--gray-menu);
+    }
+  }
   @media screen and (max-width: 1400px) {
     margin-right: 24px;
   }

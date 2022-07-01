@@ -7,29 +7,29 @@ const MenuIcon = ({ state, actions }) => {
   const mobileMenuOpened = state.theme.isMobileMenuOpen;
 
   return mobileMenuOpened ? (
-    <div
-      css={css`
-        ${flex("row", "center", "flex-end")}
-      `}
-    >
+    <BtnWrapper>
       <Button>
         <img src={close} alt="close" />
       </Button>
-    </div>
+    </BtnWrapper>
   ) : (
-    <div
-      css={css`
-        ${flex("row", "center", "flex-end")}
-      `}
-    >
+    <BtnWrapper>
       <Hamburger aria-label="Open menu">
         <span></span>
         <span></span>
         <span></span>
       </Hamburger>
-    </div>
+    </BtnWrapper>
   );
 };
+
+const BtnWrapper = styled.div`
+  display: none;
+
+  @media screen and (max-width: 991px) {
+    ${flex("row", "center", "flex-end")};
+  }
+`;
 
 const Hamburger = styled(Button)`
   position: relative;

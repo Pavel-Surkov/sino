@@ -8,9 +8,6 @@ import Navigation from "./Navigation";
 import MenuIcon from "./MenuIcon";
 
 const Header = ({ state, actions }) => {
-  const isMobile = state.theme.isMobile;
-  console.log(state.theme.isMobile);
-
   useEffect(() => {
     actions.theme.checkIsMobile();
 

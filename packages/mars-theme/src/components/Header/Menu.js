@@ -1,4 +1,4 @@
-import { styled, connect } from "frontity";
+import { styled, connect, css } from "frontity";
 import Container from "../constant/Container";
 import Input from "../constant/Input";
 import Navigation from "./Navigation";
@@ -22,7 +22,9 @@ const MobileMenu = ({ state, actions }) => {
 };
 
 const MenuNavigation = styled(Navigation)`
-  display: block;
+  @media screen and (max-width: 991px) {
+    display: block;
+  }
 `;
 
 const MenuContainer = styled(Container)`
@@ -38,6 +40,11 @@ const Menu = styled.div`
   background: var(--white);
   width: 100vw;
   height: calc(100vh - 72px);
+  display: none;
+
+  @media screen and (max-width: 991px) {
+    display: block;
+  }
 `;
 
 export default connect(MobileMenu);

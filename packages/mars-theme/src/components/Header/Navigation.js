@@ -9,7 +9,7 @@ const Navigation = ({ state }) => {
   const navLinks = state.theme.menu;
 
   return (
-    <Nav>
+    <Nav className="navigation">
       <List>
         {navLinks &&
           navLinks.map((link) => {

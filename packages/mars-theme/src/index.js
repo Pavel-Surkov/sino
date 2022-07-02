@@ -153,6 +153,9 @@ const marsTheme = {
       toggleMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpened = !state.theme.isMobileMenuOpened;
       },
+      closeMobileMenu: ({ state }) => {
+        state.theme.isMobileMenuOpened = false;
+      },
       handleSearchChange:
         ({ state }) =>
         (value) => {
@@ -170,6 +173,26 @@ const marsTheme = {
         state.theme.languageDropdownOpened =
           !state.theme.languageDropdownOpened;
       },
+      handleNavDropdown:
+        ({ state }) =>
+        (textValue) => {
+          const newMenu = state.theme.menu.concat();
+
+          // Function thet toggles menu dropdowns
+          function setDropdown(menuArr, textValue) {
+            menuArr.forEach((menuItem) => {
+              if (menuItem.text === textValue && menuItem.isDropdown) {
+                menuItem.isDropdownOpened = !menuItem.isDropdownOpened;
+              } else if (menuItem.isDropdown) {
+                setDropdown(menuItem.dropdown, textValue);
+              }
+            });
+          }
+
+          setDropdown(newMenu, textValue);
+
+          state.theme.menu = newMenu;
+        },
     },
   },
   libraries: {

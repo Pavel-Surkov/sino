@@ -3,7 +3,7 @@ import { styled } from "frontity";
 import { font } from "../base/functions";
 
 const Title = ({ size, color, children }) => {
-  return size === l ? (
+  return size === "l" ? (
     <H1 color={color}>{children}</H1>
   ) : (
     <H2 color={color}>{children}</H2>

@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { flex, font } from "../base/functions";
 import Title from "../constant/Title";
 import Container from "../constant/Container";
+import Link from "../constant/Link";
 
 import hero1 from "../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
 import hero1_2x from "../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
@@ -12,6 +13,35 @@ import hero3 from "../../assets/images/aerial-view-container-cargo-ship.jpg";
 import hero3_2x from "../../assets/images/aerial-view-container-cargo-ship@2x.jpg";
 import hero2 from "../../assets/images/hero-image-2.jpg";
 import hero2_2x from "../../assets/images/hero-image-2@2x.jpg";
+
+import youtube from "../../assets/images/svg/YouTube-white.svg";
+import linkedin from "../../assets/images/svg/LinkedIn-white.svg";
+import instagram from "../../assets/images/svg/Instagram-white.svg";
+import line from "../../assets/images/svg/Line-white.svg";
+import facebook from "../../assets/images/svg/Facebook-white.svg";
+
+const social = [
+  {
+    icon: youtube,
+    link: "https://www.youtube.com/channel/UC14VTzFVjwvinLmT6ESRdlg",
+  },
+  {
+    icon: linkedin,
+    link: "https://www.linkedin.com/company/sino-logistics-corporation-pcl/",
+  },
+  {
+    icon: instagram,
+    link: "https://www.instagram.com/sinologisticscorp/",
+  },
+  {
+    icon: line,
+    link: "https://page.line.me/?accountId=sinologistics",
+  },
+  {
+    icon: facebook,
+    link: "https://www.facebook.com/sinologisticscorporation",
+  },
+];
 
 const heroSlides = [
   {
@@ -80,9 +110,96 @@ const Hero = () => {
           );
         })}
       </Swiper>
+      <SocialBlock>
+        {social.map(({ icon, link }) => {
+          return (
+            <SocialLink
+              target="_blank"
+              rel="noopener noreferrer"
+              link={link}
+              key={link}
+            >
+              <img width="24" height="24" src={icon} alt="social icon" />
+            </SocialLink>
+          );
+        })}
+        <DecorativeLine heightInPercent={56.185567}>
+          <Circle color="white"></Circle>
+          <Line color="white"></Line>
+        </DecorativeLine>
+      </SocialBlock>
     </Wrapper>
   );
 };
+
+const Line = styled.div`
+  width: 2px;
+  height: calc(100% - 14px);
+  background: ${({ color }) =>
+    color === "white"
+      ? "var(--white)"
+      : color === "blue"
+      ? "var(--blue-600)"
+      : "var(--blue-600)"};
+`;
+
+const Circle = styled.div`
+  width: 16px;
+  height: 16px;
+  transform: translateY(2px);
+  border-radius: 50%;
+  border: 2px solid
+    ${({ color }) =>
+      color === "white"
+        ? "var(--white)"
+        : color === "blue"
+        ? "var(--blue-600)"
+        : "var(--blue-600)"};
+`;
+
+const DecorativeLine = styled.div`
+  ${flex("column", "center")};
+  height: ${({ heightInPercent }) => `${heightInPercent}%`};
+
+  @media screen and (max-width: 1400px) {
+    height: ${({ heightInPercent }) => `${heightInPercent / 1.35}%`};
+  }
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+`;
+
+const SocialLink = styled(Link)`
+  display: flex;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 24px;
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+`;
+
+const SocialBlock = styled.div`
+  position: absolute;
+  ${flex("column", "center", "flex-end")};
+  height: 100%;
+  right: calc((100vw - 1372px) / 2 + 6px);
+  z-index: 3;
+  bottom: 0;
+  @media screen and (max-width: 1400px) {
+    right: calc((100vw - 950px) / 2 + 6px);
+  }
+  @media screen and (max-width: 991px) {
+    right: calc((100vw - 730px) / 2 + 6px);
+    display: none;
+  }
+  /* @media screen and (max-width: 767px) {
+    right: calc((100vw - 528px) / 2 + 6px);
+  }
+  @media screen and (max-width: 576px + 6px) {
+    right: 24px;
+  } */
+`;
 
 const Subtitle = styled.div`
   margin-top: 32px;
@@ -96,6 +213,7 @@ const Subtitle = styled.div`
 
 const SlideContent = styled(Container)`
   position: absolute;
+  height: 100%;
   z-index: 2;
   top: 0;
   left: 50%;
@@ -117,6 +235,7 @@ const ImageWrapper = styled.div`
     width: 100%;
     height: 100%;
     max-height: 776px;
+    min-height: 629px;
     object-fit: cover;
   }
 `;
@@ -154,14 +273,24 @@ const Wrapper = styled.div`
       }
     }
   }
-  @media screen and(max-width: 1440px) {
-    & .swiper-pagination-bullet {
+  @media screen and (max-width: 1440px) {
+    & .swiper-pagination {
       left: calc((100vw - 950px) / 2);
     }
   }
-  @media screen and(max-width: 991px) {
-    & .swiper-pagination-bullet {
-      left: calc((100vw - 950px) / 2);
+  @media screen and (max-width: 991px) {
+    & .swiper-pagination {
+      left: calc((100vw - 730px) / 2);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    & .swiper-pagination {
+      left: calc((100vw - 528px) / 2);
+    }
+  }
+  @media screen and (max-width: 576px) {
+    & .swiper-pagination {
+      left: 24px;
     }
   }
 `;

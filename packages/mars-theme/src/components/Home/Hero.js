@@ -6,6 +6,8 @@ import { flex, font } from "../base/functions";
 import Title from "../constant/Title";
 import Container from "../constant/Container";
 import Link from "../constant/Link";
+import DecorativeLine from "../constant/DecorativeLine";
+import HeroDrop from "./HeroDrop";
 
 import hero1 from "../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
 import hero1_2x from "../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
@@ -96,6 +98,9 @@ const Hero = () => {
                 <div
                   css={css`
                     max-width: 674px;
+                    @media screen and (max-width: 991px) {
+                      max-width: 464px;
+                    }
                   `}
                 >
                   <Title color="white" size="l">
@@ -123,51 +128,16 @@ const Hero = () => {
             </SocialLink>
           );
         })}
-        <DecorativeLine heightInPercent={56.185567}>
-          <Circle color="white"></Circle>
-          <Line color="white"></Line>
-        </DecorativeLine>
+        <DecorativeLine
+          heightInPercent={56.185567}
+          color="white"
+          rotation="top"
+        />
       </SocialBlock>
+      <HeroDrop />
     </Wrapper>
   );
 };
-
-const Line = styled.div`
-  width: 2px;
-  height: calc(100% - 14px);
-  background: ${({ color }) =>
-    color === "white"
-      ? "var(--white)"
-      : color === "blue"
-      ? "var(--blue-600)"
-      : "var(--blue-600)"};
-`;
-
-const Circle = styled.div`
-  width: 16px;
-  height: 16px;
-  transform: translateY(2px);
-  border-radius: 50%;
-  border: 2px solid
-    ${({ color }) =>
-      color === "white"
-        ? "var(--white)"
-        : color === "blue"
-        ? "var(--blue-600)"
-        : "var(--blue-600)"};
-`;
-
-const DecorativeLine = styled.div`
-  ${flex("column", "center")};
-  height: ${({ heightInPercent }) => `${heightInPercent}%`};
-
-  @media screen and (max-width: 1400px) {
-    height: ${({ heightInPercent }) => `${heightInPercent / 1.35}%`};
-  }
-  @media screen and (max-width: 991px) {
-    display: none;
-  }
-`;
 
 const SocialLink = styled(Link)`
   display: flex;
@@ -193,12 +163,6 @@ const SocialBlock = styled.div`
     right: calc((100vw - 730px) / 2 + 6px);
     display: none;
   }
-  /* @media screen and (max-width: 767px) {
-    right: calc((100vw - 528px) / 2 + 6px);
-  }
-  @media screen and (max-width: 576px + 6px) {
-    right: 24px;
-  } */
 `;
 
 const Subtitle = styled.div`
@@ -208,6 +172,12 @@ const Subtitle = styled.div`
     ${font(24, 32)};
     color: var(--white);
     letter-spacing: 0.04em;
+    font-weight: 400;
+  }
+  @media screen and (max-width: 991px) {
+    & p {
+      ${font(24, 32)};
+    }
   }
 `;
 
@@ -219,9 +189,13 @@ const SlideContent = styled(Container)`
   left: 50%;
   transform: translateX(-50%);
   padding-top: 152px;
+  @media screen and (max-width: 991px) {
+    padding-top: 48px;
+  }
 `;
 
 const ImageWrapper = styled.div`
+  display: flex;
   & .dark {
     width: 100%;
     height: 100%;
@@ -238,6 +212,12 @@ const ImageWrapper = styled.div`
     min-height: 629px;
     object-fit: cover;
   }
+  /* TODO: Correct the image position in mobile (hero slider) */
+  /* @media screen and (max-width: 576px) {
+    & img {
+      object-position: 50% 30%;
+    }
+  } */
 `;
 
 const Wrapper = styled.div`
@@ -247,6 +227,7 @@ const Wrapper = styled.div`
     bottom: 70px;
     left: calc((100vw - 1372px) / 2);
     ${flex()};
+    width: auto;
     & .swiper-pagination-bullet {
       margin: 0;
       margin-right: 32px;
@@ -273,24 +254,16 @@ const Wrapper = styled.div`
       }
     }
   }
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1400px) {
     & .swiper-pagination {
       left: calc((100vw - 950px) / 2);
     }
   }
   @media screen and (max-width: 991px) {
     & .swiper-pagination {
-      left: calc((100vw - 730px) / 2);
-    }
-  }
-  @media screen and (max-width: 767px) {
-    & .swiper-pagination {
-      left: calc((100vw - 528px) / 2);
-    }
-  }
-  @media screen and (max-width: 576px) {
-    & .swiper-pagination {
-      left: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 58px;
     }
   }
 `;

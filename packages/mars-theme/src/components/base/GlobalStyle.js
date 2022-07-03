@@ -87,9 +87,7 @@ export const globalStyles = css`
     font-family: var(--font);
     background: var(--white);
   }
-  a,
-  a:visited {
-    color: inherit;
+  a {
     text-decoration: none;
   }
 `;

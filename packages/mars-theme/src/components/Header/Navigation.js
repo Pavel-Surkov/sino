@@ -5,8 +5,17 @@ import Button from "../constant/Button";
 import drop from "../../assets/images/svg/drop.svg";
 import Link from "../constant/Link";
 
-const Navigation = ({ state }) => {
+const Navigation = ({ state, actions }) => {
   const navLinks = state.theme.menu;
+  const { selectedMenuItem } = state.theme;
+
+  const handleDropdownClick = (menuItem) => {
+    if (!selectedMenuItem || selectedMenuItem.text !== menuItem.text) {
+      actions.theme.setMenuItem(menuItem);
+    } else {
+      actions.theme.setMenuItem(null);
+    }
+  };
 
   return (
     <Nav className="navigation">
@@ -16,7 +25,7 @@ const Navigation = ({ state }) => {
             if (link.isDropdown) {
               return (
                 <ListItem key={link.text}>
-                  <NavButton>
+                  <NavButton onClick={() => handleDropdownClick(link)}>
                     <span>{link.text}</span>
                     <img width="14" height="14" src={drop} alt="drop" />
                   </NavButton>

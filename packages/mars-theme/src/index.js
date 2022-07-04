@@ -35,6 +35,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      selectedMenuItem: null,
       menu: [
         {
           isDropdown: true,
@@ -192,6 +193,12 @@ const marsTheme = {
           setDropdown(newMenu, textValue);
 
           state.theme.menu = newMenu;
+        },
+      clearMenuItem: ({ state }) => (state.theme.selectedMenuItem = null),
+      setMenuItem:
+        ({ state }) =>
+        (menuItem) => {
+          state.theme.selectedMenuItem = Object.assign({}, menuItem);
         },
     },
   },

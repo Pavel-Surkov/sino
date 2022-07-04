@@ -48,7 +48,7 @@ const Menu = styled.div`
   transition: transform 0.3s;
   padding: 24px 0;
   padding-bottom: 40px;
-
+  z-index: 10;
   &.opened {
     transform: none;
   }

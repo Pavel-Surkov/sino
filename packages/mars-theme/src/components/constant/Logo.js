@@ -62,6 +62,7 @@ const LogoWrapper = styled(Link)`
     font-weight: 500;
     ${font(24, 32)}
     letter-spacing: -.01em;
+    color: var(--black);
   }
   &:hover {
     opacity: 0.8;

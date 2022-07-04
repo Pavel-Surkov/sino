@@ -29,6 +29,11 @@ export const globalStyles = css`
     --lightblue-250: #4fd1f9;
     --lightblue-300: #2db9e4;
     --blue-600: #4279b8;
+
+    --container-padding-xl: calc((100vw - 1372px) / 2);
+    --container-padding-lg: calc((100vw - 950px) / 2);
+    --container-padding-md: calc((100vw - 730px) / 2);
+    --container-padding-xs: calc((100vw - 528px) / 2);
   }
 
   @font-face {
@@ -89,5 +94,6 @@ export const globalStyles = css`
   }
   a {
     text-decoration: none;
+    color: var(--black);
   }
 `;

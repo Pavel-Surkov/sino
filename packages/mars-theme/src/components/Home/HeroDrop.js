@@ -26,15 +26,8 @@ const HeroDrop = ({ state, actions }) => {
         />
       </DecorativeLineWrapper>
       <DropWrapper>
-        <Title
-          css={css`
-            margin-bottom: 32px;
-          `}
-          size="s"
-          color="white"
-          marginBottom={32}
-        >
-          {selectedMenuItem.text}
+        <Title size="s" color="white" marginBottom={32}>
+          {selectedMenuItem.title}
         </Title>
         <List>
           {selectedMenuItem.dropdown.map((link) => {

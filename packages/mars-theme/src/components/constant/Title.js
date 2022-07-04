@@ -24,7 +24,7 @@ const H1 = styled.h1`
     marginBottom ? `${marginBottom}px` : "0"};
   font-weight: 500;
   color: ${({ color }) =>
-    color === "white" ? "var(--white)" : "var(--black)"};
+    color === "white" ? "var(--white)" : "var(--blue-600)"};
   ${font(64, 72)};
   @media screen and (max-width: 991px) {
     ${font(32, 32)};
@@ -36,7 +36,7 @@ const H2 = styled.h2`
   font-weight: 500;
   margin-bottom: ${({ marginBottom }) => `${marginBottom}px`};
   color: ${({ color }) =>
-    color === "white" ? "var(--white)" : "var(--black)"};
+    color === "white" ? "var(--white)" : "var(--blue-600)"};
   ${font(48, 56)};
 `;
 
@@ -45,7 +45,7 @@ const H3 = styled.h3`
   font-weight: 500;
   margin-bottom: ${({ marginBottom }) => `${marginBottom}px`};
   color: ${({ color }) =>
-    color === "white" ? "var(--white)" : "var(--black)"};
+    color === "white" ? "var(--white)" : "var(--blue-600)"};
   ${font(36, 41)};
 `;
 

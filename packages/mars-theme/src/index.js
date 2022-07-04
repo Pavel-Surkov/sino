@@ -91,21 +91,25 @@ const marsTheme = {
           dropdown: [
             {
               text: "Air Freight",
-              route: "/services/#air-freight",
+              route: "/services/air-freight",
             },
             {
               isDropdown: true,
+              isDropdownOpened: false,
               text: "Sea Freight",
               dropdown: [
                 {
                   text: "FCL",
-                  route: "/services/#FCL",
+                  route: "/services/sea-freight/#FCL",
                 },
-                { text: "LCL", route: "/services/#LCL" },
-                { text: "Consolidation ", route: "/services/#consolidation" },
+                { text: "LCL", route: "/services/sea-freight/#LCL" },
+                {
+                  text: "Consolidation ",
+                  route: "/services/sea-freight/#consolidation",
+                },
                 {
                   text: "Reefer Logistics ",
-                  route: "/services/#reefer-logistics",
+                  route: "/services/sea-freight/#reefer-logistics",
                 },
               ],
             },
@@ -115,7 +119,22 @@ const marsTheme = {
             },
             {
               text: "Warehousing & Distribution",
-              route: "/services/#warehousing&distribution",
+              route: "/services/warehousing&distribution",
+            },
+            {
+              isDropdown: true,
+              isDropdownOpened: false,
+              text: "Value-Added Services",
+              dropdown: [
+                {
+                  text: "Custom Brokerage",
+                  route: "/services/value-added/#custom-brokerage",
+                },
+                {
+                  text: "Insurance",
+                  route: "/services/value-added/#insurance",
+                },
+              ],
             },
           ],
         },

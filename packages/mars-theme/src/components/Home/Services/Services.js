@@ -63,11 +63,7 @@ const Services = ({ state, actions }) => {
             <Title color="blue" size="m" marginBottom={24}>
               Our Services
             </Title>
-            <Paragraph
-              css={css`
-                max-width: 349px;
-              `}
-            >
+            <Paragraph maxWidth={349}>
               We&nbsp;offer solutions that cover all major modes
               of&nbsp;transportation, and we&nbsp;can arrange any combination
               of&nbsp;shipping and logistics services to&nbsp;meet your needs.
@@ -90,7 +86,7 @@ const Services = ({ state, actions }) => {
 
 const Info = styled.div`
   display: grid;
-  align-items: center;
+  align-content: center;
 `;
 
 const Content = styled.div`

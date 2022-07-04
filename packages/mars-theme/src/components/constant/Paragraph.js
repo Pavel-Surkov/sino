@@ -1,16 +1,21 @@
 import React from "react";
 import { font } from "../base/functions";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 
-const Paragraph = ({ marginBottom, children }) => {
+const Paragraph = ({ maxWidth, marginBottom, children }) => {
   return (
-    <Wrapper mb={marginBottom}>
+    <Wrapper
+      maxWidth={maxWidth}
+      className="paragraph-wrapper"
+      mb={marginBottom}
+    >
       <p>{children}</p>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  ${({ maxWidth }) => (maxWidth ? `max-width: ${maxWidth}px` : "")}
   ${({ mb }) => (mb ? `margin-bottom: ${mb}` : "")};
   & p {
     margin: 0;

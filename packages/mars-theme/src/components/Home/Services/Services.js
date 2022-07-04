@@ -1,13 +1,15 @@
 import React from "react";
-import Title from "../constant/Title";
-import Paragraph from "../constant/Paragraph";
+import Title from "../../constant/Title";
+import Paragraph from "../../constant/Paragraph";
+import Card from "../../constant/Card";
+import Container from "../../constant/Container";
 import { styled, connect, css } from "frontity";
 
-import airFreight from "../../assets/images/air-freight-service.jpg";
-import seaFreight from "../../assets/images/sea-freight-service.jpg";
-import groundFreight from "../../assets/images/ground-freight-service.jpg";
-import warehouse from "../../assets/images/warehousing-service.jpg";
-import valueAdded from "../../assets/images/value-added-service.jpg";
+import airFreight from "../../../assets/images/air-freight-service.jpg";
+import seaFreight from "../../../assets/images/sea-freight-service.jpg";
+import groundFreight from "../../../assets/images/ground-freight-service.jpg";
+import warehouse from "../../../assets/images/warehousing-service.jpg";
+import valueAdded from "../../../assets/images/value-added-service.jpg";
 
 const services = [
   {
@@ -55,25 +57,33 @@ const services = [
 const Services = ({ state, actions }) => {
   return (
     <section className="section">
-      <Content>
-        <Info>
-          <Title color="blue" size="m" marginBottom={24}>
-            Our Services
-          </Title>
-          <Paragraph
-            css={css`
-              max-width: 349px;
-            `}
-          >
-            We&nbsp;offer solutions that cover all major modes
-            of&nbsp;transportation, and we&nbsp;can arrange any combination
-            of&nbsp;shipping and logistics services to&nbsp;meet your needs.
-          </Paragraph>
-        </Info>
-        {services.map((service) => (
-          <Card></Card>
-        ))}
-      </Content>
+      <Container>
+        <Content>
+          <Info>
+            <Title color="blue" size="m" marginBottom={24}>
+              Our Services
+            </Title>
+            <Paragraph
+              css={css`
+                max-width: 349px;
+              `}
+            >
+              We&nbsp;offer solutions that cover all major modes
+              of&nbsp;transportation, and we&nbsp;can arrange any combination
+              of&nbsp;shipping and logistics services to&nbsp;meet your needs.
+            </Paragraph>
+          </Info>
+          {services.map((service) => (
+            <Card
+              image={service.img}
+              title={service.title}
+              text={service.text}
+              link={service.link}
+              key={service.title}
+            />
+          ))}
+        </Content>
+      </Container>
     </section>
   );
 };

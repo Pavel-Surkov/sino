@@ -9,7 +9,7 @@ const CardElement = ({ title, text, image, link }) => {
       <img width="440" height="502" src={image} alt="service image" />
       <BottomPanel>
         <CardTitle>{title}</CardTitle>
-        <LinkArrow></LinkArrow>
+        {/* <LinkArrow></LinkArrow> */}
       </BottomPanel>
       {/* <HoverPanel></HoverPanel> */}
     </Card>

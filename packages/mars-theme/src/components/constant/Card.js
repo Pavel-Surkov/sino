@@ -3,7 +3,7 @@ import Link from "./Link";
 import { styled, connect } from "frontity";
 import { font, flex } from "../base/functions";
 
-const CardElement = ({ title, text, image, link }) => {
+const CardElement = ({ title, image, link }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -43,32 +43,10 @@ const CardElement = ({ title, text, image, link }) => {
           </svg>
         </LinkArrow>
       </BottomPanel>
-      <HoverPanel hovered={hovered}>
-        <List>
-          {text.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </List>
-      </HoverPanel>
+      <HoverPanel hovered={hovered} />
     </Card>
   );
 };
-
-const List = styled.ul`
-  margin: 0;
-  padding: 70px 30px;
-  padding-left: 58px;
-  color: var(--white);
-  & li {
-    position: relative;
-    ${font(24, 32)};
-    letter-spacing: 0.04em;
-    margin-bottom: 24px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-`;
 
 const HoverPanel = styled.div`
   position: absolute;
@@ -79,7 +57,7 @@ const HoverPanel = styled.div`
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.3);
   display: ${({ hovered }) => (hovered ? "block" : "none")};
-  backdrop-filter: ${({ hovered }) => (hovered ? "blur(10px)" : "none")};
+  backdrop-filter: ${({ hovered }) => (hovered ? "blur(5px)" : "none")};
 `;
 
 const LinkArrow = styled.div`
@@ -121,7 +99,7 @@ const BottomPanel = styled.div`
   border-bottom-right-radius: 20px;
   background: ${({ isDark }) =>
     isDark ? "rgba(0, 0, 0, 0.3)" : "transparent"};
-  backdrop-filter: ${({ isDark }) => (isDark ? "blur(10px)" : "none")};
+  backdrop-filter: ${({ isDark }) => (isDark ? "blur(5px)" : "none")};
   max-height: 135px;
   ${flex("row", "center", "space-between")};
   @media screen and (max-width: 768px) {

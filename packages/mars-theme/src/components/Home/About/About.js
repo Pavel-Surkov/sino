@@ -8,12 +8,13 @@ import { connect, styled } from "frontity";
 import aboutImage from "../../../assets/images/about.png";
 import aboutImage2x from "../../../assets/images/about@2x.png";
 
-const About = ({ state, actions }) => {
+const About = ({ state }) => {
   return (
     <ImageSection
       imagePosition="left"
       image={aboutImage}
       image2x={aboutImage2x}
+      hideImageInMobile={true}
     >
       <Title marginBottom={24}>About Us</Title>
       <TextWrapper>
@@ -40,6 +41,12 @@ const TextWrapper = styled.div`
     ${font(18, 30)};
     font-weight: 300;
     margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 24px;
   }
 `;
 

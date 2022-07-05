@@ -3,9 +3,9 @@ import Link from "./Link";
 import { styled } from "frontity";
 import { flex, font } from "../base/functions";
 
-const PrimaryButton = ({ onClick, content, type, link }) => {
+const PrimaryButton = ({ onClick, content, type, link, disabled }) => {
   return type === "link" ? (
-    <PrimaryLink link={link}>
+    <PrimaryLink link={link} disabled={disabled ? true : false}>
       <span>{content}</span>
       <div>
         <svg
@@ -22,7 +22,7 @@ const PrimaryButton = ({ onClick, content, type, link }) => {
           <path
             d="M106 17.5C106 26.6079 98.5777 34 89.4111 34C80.2444 34 72.822 26.6079 72.822 17.5C72.822 8.39208 80.2444 1 89.4111 1C98.5777 1 106 8.39208 106 17.5Z"
             stroke="#FDFDFD"
-            stroke-width="2"
+            strokeWidth="2"
           />
           <line
             x1="8.78676e-08"
@@ -30,13 +30,17 @@ const PrimaryButton = ({ onClick, content, type, link }) => {
             x2="73.2877"
             y2="17.2295"
             stroke="#FDFDFD"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
       </div>
     </PrimaryLink>
   ) : (
-    <Button type={type || "button"} onClick={onClick}>
+    <Button
+      type={type || "button"}
+      onClick={onClick}
+      disabled={disabled ? true : false}
+    >
       <span>{content}</span>
       <div>
         <svg
@@ -53,7 +57,7 @@ const PrimaryButton = ({ onClick, content, type, link }) => {
           <path
             d="M106 17.5C106 26.6079 98.5777 34 89.4111 34C80.2444 34 72.822 26.6079 72.822 17.5C72.822 8.39208 80.2444 1 89.4111 1C98.5777 1 106 8.39208 106 17.5Z"
             stroke="#FDFDFD"
-            stroke-width="2"
+            strokeWidth="2"
           />
           <line
             x1="8.78676e-08"
@@ -61,7 +65,7 @@ const PrimaryButton = ({ onClick, content, type, link }) => {
             x2="73.2877"
             y2="17.2295"
             stroke="#FDFDFD"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
       </div>
@@ -81,6 +85,19 @@ const PrimaryLink = styled(Link)`
   & span {
     ${font(24, 30)};
   }
+  &:hover {
+    background: var(--lightblue-300);
+  }
+  &:active {
+    box-shadow: 0px 0px 20px 0px #0000001a inset;
+  }
+  ${({ disabled }) =>
+    disabled &&
+    `
+		background: var(--lightblue-250);
+    opacity: 0.5;
+		pointer-events: none;
+	`};
 `;
 
 const Button = styled.button`
@@ -94,6 +111,16 @@ const Button = styled.button`
   padding: 17px 24px;
   & span {
     ${font(24, 30)};
+  }
+  &:hover {
+    background: var(--lightblue-300);
+  }
+  &:active {
+    box-shadow: 0px 0px 20px 0px #0000001a inset;
+  }
+  &:disabled {
+    background: var(--lightblue-250);
+    opacity: 0.5;
   }
 `;
 

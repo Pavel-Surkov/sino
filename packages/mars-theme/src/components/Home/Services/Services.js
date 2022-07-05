@@ -18,41 +18,26 @@ const services = [
     title: "Air Freight",
     img: airFreight,
     link: "/services/air-freight",
-    text: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    ],
   },
   {
     title: "Sea Freight",
     img: seaFreight,
     link: "/services/sea-freight",
-    text: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    ],
   },
   {
     title: "Ground Freight",
     img: groundFreight,
     link: "/services/ground-freight",
-    text: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    ],
   },
   {
     title: "Warehousing & Distribution",
     img: warehouse,
     link: "/services/warehousing&distribution",
-    text: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    ],
   },
   {
     title: "Value-Added Services",
     img: valueAdded,
     link: "/services/value-added",
-    text: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    ],
   },
 ];
 
@@ -78,7 +63,6 @@ const Services = ({ state, actions }) => {
               <Card
                 image={service.img}
                 title={service.title}
-                text={service.text}
                 link={service.link}
                 key={service.title}
               />

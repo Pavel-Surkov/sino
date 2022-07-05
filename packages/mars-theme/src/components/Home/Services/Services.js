@@ -3,6 +3,7 @@ import Title from "../../constant/Title";
 import Paragraph from "../../constant/Paragraph";
 import Card from "../../constant/Card";
 import Container from "../../constant/Container";
+import DecorativeLine from "../../constant/DecorativeLine";
 import { styled, connect, css } from "frontity";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
@@ -46,6 +47,13 @@ const Services = ({ state, actions }) => {
 
   return (
     <section className="section">
+      <DecorativeLineWrapper>
+        <DecorativeLine
+          heightInPercent={24.3769}
+          color="blue"
+          rotation="bottom"
+        />
+      </DecorativeLineWrapper>
       <Container>
         <Content>
           <Info>
@@ -96,6 +104,19 @@ const Services = ({ state, actions }) => {
     </section>
   );
 };
+
+const DecorativeLineWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: var(--container-padding-xl);
+  height: 100%;
+  @media screen and (max-width: 1400px) {
+    left: var(--container-padding-lg);
+  }
+  /* @media screen and (max-width: 991px) {
+    left: var(--container-padding-md);
+  } */
+`;
 
 const SwiperWrapper = styled.div``;
 

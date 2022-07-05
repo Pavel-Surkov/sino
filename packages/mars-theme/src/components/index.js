@@ -1,8 +1,10 @@
+import React, { useEffect } from "react";
 import { Global, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Header from "./Header/Header";
 import Loading from "./Loading";
 import PageError from "./PageError";
+import { setSwiperCssBundle } from "./functions/functions";
 import Router from "./Router";
 import { flex } from "./base/functions";
 
@@ -17,19 +19,26 @@ import { globalStyles } from "./base/GlobalStyle";
  * @returns The top-level react component representing the theme.
  */
 
-const Theme = ({ state }) => {
+const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+
+  // TODO: When production, replace delete this useEffect
+  // and uncomment the <link /> element inside <Head> (below)
+  useEffect(() => {
+    setSwiperCssBundle();
+    actions.theme.handleSwiperStylesLoaded();
+  }, []);
 
   return (
     <>
       {/* Add some metatags to the <head> of the HTML. */}
       <Head>
         {/* <meta name="description" content={state.frontity.description} /> */}
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-        />
+        /> */}
         <html lang="en" />
       </Head>
 

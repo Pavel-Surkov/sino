@@ -69,52 +69,56 @@ const heroSlides = [
   },
 ];
 
-const Hero = () => {
+const Hero = ({ state }) => {
+  const { swiperStylesLoading } = state.theme;
+  console.log(swiperStylesLoading);
   return (
     <Wrapper>
-      <Swiper
-        modules={[Pagination]}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-        }}
-        pagination={{ clickable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
-        {heroSlides.map((slide) => {
-          const [img1x, img2x] = slide.images;
+      {!swiperStylesLoading && (
+        <Swiper
+          modules={[Pagination]}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {heroSlides.map((slide) => {
+            const [img1x, img2x] = slide.images;
 
-          return (
-            <SwiperSlide key={slide.id}>
-              <ImageWrapper>
-                <img
-                  src={img1x}
-                  srcSet={img2x ? `${img1x} 1x, ${img2x} 2x` : ""}
-                  alt=""
-                />
-                {slide.id !== 1 && <div className="dark"></div>}
-              </ImageWrapper>
-              <SlideContent>
-                <div
-                  css={css`
-                    max-width: 674px;
-                    @media screen and (max-width: 991px) {
-                      max-width: 464px;
-                    }
-                  `}
-                >
-                  <Title color="white" size="l">
-                    {slide.title}
-                  </Title>
-                  <Subtitle>
-                    <p>{slide.subtitle}</p>
-                  </Subtitle>
-                </div>
-              </SlideContent>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+            return (
+              <SwiperSlide key={slide.id}>
+                <ImageWrapper>
+                  <img
+                    src={img1x}
+                    srcSet={img2x ? `${img1x} 1x, ${img2x} 2x` : ""}
+                    alt=""
+                  />
+                  {slide.id !== 1 && <div className="dark"></div>}
+                </ImageWrapper>
+                <SlideContent>
+                  <div
+                    css={css`
+                      max-width: 674px;
+                      @media screen and (max-width: 991px) {
+                        max-width: 464px;
+                      }
+                    `}
+                  >
+                    <Title color="white" size="l">
+                      {slide.title}
+                    </Title>
+                    <Subtitle>
+                      <p>{slide.subtitle}</p>
+                    </Subtitle>
+                  </div>
+                </SlideContent>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
       <SocialBlock>
         {social.map(({ icon, link }) => {
           return (

@@ -19,6 +19,7 @@ const marsTheme = {
      */
     theme: {
       autoPrefetch: "in-view",
+      swiperStylesLoading: true,
       isMobileMenuOpened: false,
       isMobile: false,
       searchValue: "",
@@ -219,6 +220,8 @@ const marsTheme = {
         (menuItem) => {
           state.theme.selectedMenuItem = Object.assign({}, menuItem);
         },
+      handleSwiperStylesLoaded: ({ state }) =>
+        (state.theme.swiperStylesLoading = false),
     },
   },
   libraries: {

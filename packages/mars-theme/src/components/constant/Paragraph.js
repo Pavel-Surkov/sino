@@ -2,12 +2,13 @@ import React from "react";
 import { font } from "../base/functions";
 import { connect, styled, css } from "frontity";
 
-const Paragraph = ({ maxWidth, marginBottom, children }) => {
+const Paragraph = ({ color, maxWidth, marginBottom, children }) => {
   return (
     <Wrapper
       maxWidth={maxWidth}
       className="paragraph-wrapper"
       mb={marginBottom}
+      color={color}
     >
       <p>{children}</p>
     </Wrapper>
@@ -20,7 +21,8 @@ const Wrapper = styled.div`
   & p {
     margin: 0;
     ${font(18, 30)};
-    color: var(--black);
+    color: ${({ color }) =>
+      color === "white" ? "var(--white)" : "var(--black)"};
     font-weight: 400;
   }
 `;

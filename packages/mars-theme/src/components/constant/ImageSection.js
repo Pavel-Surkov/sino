@@ -36,7 +36,10 @@ const ImageSection = ({
 };
 
 const ChildrenWrapper = styled.div`
-  max-width: 100%;
+  max-width: calc(100% - (((790 / 1372) * 100%) + 64px));
+  @media screen and (max-width: 991px) {
+    max-width: 100%;
+  }
 `;
 
 const ImageWrapper = styled.div`

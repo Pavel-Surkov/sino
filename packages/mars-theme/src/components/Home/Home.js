@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "./Hero/Hero";
 import Services from "./Services/Services";
 import About from "./About/About";
+import Quote from "./Quote/Quote";
 import { connect, css, styled } from "frontity";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <Hero />
       <Services />
       <About />
+      <Quote />
     </HomeWrapper>
   );
 };

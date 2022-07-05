@@ -23,16 +23,24 @@ const ImageSection = ({ image, image2x, imagePosition, children }) => {
 };
 
 const ChildrenWrapper = styled.div`
-  max-width: calc(100% - (((790px / 1372px) * 100%) - 64px));
+  max-width: calc(100% - (((790 / 1372) * 100%) + 64px));
 `;
 
 const ImageWrapper = styled.div`
-  order: ${({ position }) => (position === "left" ? "0" : "1")};
-  max-width: calc((790px / 1372px) * 100%);
+  order: ${({ position }) => (position === "right" ? "1" : "0")};
+  max-width: calc((790 / 1372) * 100%);
+  & img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
 `;
 
 const ContentWrapper = styled.div`
   ${flex("row", "center", "space-between")};
+  @media creen and (max-width: 991px) {
+    flex-direction: column;
+  }
 `;
 
 export default ImageSection;

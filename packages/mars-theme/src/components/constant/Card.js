@@ -135,6 +135,7 @@ const Card = styled(Link)`
   width: 100%;
   max-width: 440px;
   position: relative;
+  overflow: hidden;
   & img {
     width: 100%;
     height: 100%;

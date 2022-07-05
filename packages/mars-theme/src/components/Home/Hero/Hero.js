@@ -2,25 +2,25 @@ import React from "react";
 import { connect, styled, css } from "frontity";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
-import { flex, font } from "../base/functions";
-import Title from "../constant/Title";
-import Container from "../constant/Container";
-import Link from "../constant/Link";
-import DecorativeLine from "../constant/DecorativeLine";
+import { flex, font } from "../../base/functions";
+import Title from "../../constant/Title";
+import Container from "../../constant/Container";
+import Link from "../../constant/Link";
+import DecorativeLine from "../../constant/DecorativeLine";
 import HeroDrop from "./HeroDrop";
 
-import hero1 from "../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
-import hero1_2x from "../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
-import hero3 from "../../assets/images/aerial-view-container-cargo-ship.jpg";
-import hero3_2x from "../../assets/images/aerial-view-container-cargo-ship@2x.jpg";
-import hero2 from "../../assets/images/hero-image-2.jpg";
-import hero2_2x from "../../assets/images/hero-image-2@2x.jpg";
+import hero1 from "../../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
+import hero1_2x from "../../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
+import hero3 from "../../../assets/images/aerial-view-container-cargo-ship.jpg";
+import hero3_2x from "../../../assets/images/aerial-view-container-cargo-ship@2x.jpg";
+import hero2 from "../../../assets/images/hero-image-2.jpg";
+import hero2_2x from "../../../assets/images/hero-image-2@2x.jpg";
 
-import youtube from "../../assets/images/svg/YouTube-white.svg";
-import linkedin from "../../assets/images/svg/LinkedIn-white.svg";
-import instagram from "../../assets/images/svg/Instagram-white.svg";
-import line from "../../assets/images/svg/Line-white.svg";
-import facebook from "../../assets/images/svg/Facebook-white.svg";
+import youtube from "../../../assets/images/svg/YouTube-white.svg";
+import linkedin from "../../../assets/images/svg/LinkedIn-white.svg";
+import instagram from "../../../assets/images/svg/Instagram-white.svg";
+import line from "../../../assets/images/svg/Line-white.svg";
+import facebook from "../../../assets/images/svg/Facebook-white.svg";
 
 const social = [
   {
@@ -227,7 +227,7 @@ const ImageWrapper = styled.div`
 const Wrapper = styled.div`
   position: relative;
   max-width: 100vw;
-  & .swiper-pagination {
+  & div.swiper-pagination {
     bottom: 70px;
     left: calc((100vw - 1372px) / 2);
     ${flex()};
@@ -259,12 +259,12 @@ const Wrapper = styled.div`
     }
   }
   @media screen and (max-width: 1400px) {
-    & .swiper-pagination {
+    & div.swiper-pagination {
       left: calc((100vw - 950px) / 2);
     }
   }
   @media screen and (max-width: 991px) {
-    & .swiper-pagination {
+    & div.swiper-pagination {
       left: 50%;
       transform: translateX(-50%);
       bottom: 58px;

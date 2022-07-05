@@ -38,6 +38,9 @@ const H2 = styled.h2`
   color: ${({ color }) =>
     color === "white" ? "var(--white)" : "var(--blue-600)"};
   ${font(48, 56)};
+  @media screen and (max-width: 991px) {
+    ${font(32, 40)};
+  }
 `;
 
 const H3 = styled.h3`

@@ -30,7 +30,7 @@ const CardElement = ({ title, text, image, link }) => {
             <path
               d="M147 24C147 36.7007 136.684 47 123.954 47C111.224 47 100.908 36.7007 100.908 24C100.908 11.2993 111.224 1 123.954 1C136.684 1 147 11.2993 147 24Z"
               stroke="#FDFDFD"
-              stroke-width="2"
+              strokeWidth="2"
             />
             <line
               x1="8.74228e-08"
@@ -55,6 +55,7 @@ const CardElement = ({ title, text, image, link }) => {
 };
 
 const List = styled.ul`
+  margin: 0;
   padding: 70px 30px;
   padding-left: 58px;
   color: var(--white);
@@ -84,6 +85,16 @@ const HoverPanel = styled.div`
 const LinkArrow = styled.div`
   position: relative;
   z-index: 4;
+  @media screen and (max-width: 1400px) {
+    & svg {
+      max-width: 100px;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    & svg {
+      max-width: 112px;
+    }
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -95,6 +106,9 @@ const CardTitle = styled.h3`
   max-width: 55%;
   position: relative;
   z-index: 4;
+  @media screen and (max-width: 1400px) {
+    ${font(24, 32)};
+  }
 `;
 
 const BottomPanel = styled.div`
@@ -110,6 +124,9 @@ const BottomPanel = styled.div`
   backdrop-filter: ${({ isDark }) => (isDark ? "blur(10px)" : "none")};
   max-height: 135px;
   ${flex("row", "center", "space-between")};
+  @media screen and (max-width: 768px) {
+    padding: 18px 16px;
+  }
 `;
 
 const Card = styled(Link)`
@@ -117,7 +134,6 @@ const Card = styled(Link)`
   border-radius: 20px;
   width: 100%;
   max-width: 440px;
-  min-height: 502px;
   position: relative;
   & img {
     width: 100%;

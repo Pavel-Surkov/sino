@@ -15,7 +15,7 @@ const Paragraph = ({ maxWidth, marginBottom, children }) => {
 };
 
 const Wrapper = styled.div`
-  ${({ maxWidth }) => (maxWidth ? `max-width: ${maxWidth}px` : "")}
+  ${({ maxWidth }) => (maxWidth ? `max-width: ${maxWidth}` : "")}
   ${({ mb }) => (mb ? `margin-bottom: ${mb}` : "")};
   & p {
     margin: 0;

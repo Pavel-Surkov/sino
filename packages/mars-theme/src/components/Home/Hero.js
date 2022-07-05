@@ -71,7 +71,7 @@ const heroSlides = [
 
 const Hero = ({ state }) => {
   const { swiperStylesLoading } = state.theme;
-  console.log(swiperStylesLoading);
+
   return (
     <Wrapper>
       {!swiperStylesLoading && (

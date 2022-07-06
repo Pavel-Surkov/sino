@@ -28,7 +28,8 @@ const Input = styled.input`
   ${font(18, 24)}
   color: var(--black);
   outline: none;
-  min-width: ${({ minWidth }) => `${minWidth}`};
+  width: 100%;
+  max-width: ${({ minWidth }) => `${minWidth}`};
   border-radius: 8px;
   border: 1px solid var(--blue-600);
   padding: 0.444em 0.889em;

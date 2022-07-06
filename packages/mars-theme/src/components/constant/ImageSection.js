@@ -4,6 +4,7 @@ import { styled, connect, useConnect, css } from "frontity";
 import { flex } from "../base/functions";
 
 const ImageSection = ({
+  last,
   hideImageInMobile,
   image,
   image2x,
@@ -15,7 +16,18 @@ const ImageSection = ({
   const { isMobile } = state.theme;
 
   return (
-    <div className="section">
+    <div
+      css={
+        last &&
+        css`
+          padding-bottom: 192px;
+          @media screen and (max-width: 991px) {
+            padding-bottom: 144px;
+          }
+        `
+      }
+      className="section"
+    >
       <div
         css={css`
           position: relative;

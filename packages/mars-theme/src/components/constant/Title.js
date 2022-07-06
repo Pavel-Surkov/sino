@@ -2,17 +2,17 @@ import React from "react";
 import { styled } from "frontity";
 import { font } from "../base/functions";
 
-const Title = ({ size, color, marginBottom, children }) => {
+const Title = ({ size, color, marginBottom, children, style }) => {
   return size === "l" ? (
-    <H1 color={color} marginBottom={marginBottom}>
+    <H1 style={style} color={color} marginBottom={marginBottom}>
       {children}
     </H1>
   ) : size === "m" ? (
-    <H2 color={color} marginBottom={marginBottom}>
+    <H2 style={style} color={color} marginBottom={marginBottom}>
       {children}
     </H2>
   ) : (
-    <H3 color={color} marginBottom={marginBottom}>
+    <H3 style={style} color={color} marginBottom={marginBottom}>
       {children}
     </H3>
   );
@@ -50,6 +50,10 @@ const H3 = styled.h3`
   color: ${({ color }) =>
     color === "white" ? "var(--white)" : "var(--blue-600)"};
   ${font(36, 41)};
+  @media screen and (max-width: 991px) {
+    ${font(32, 40)};
+    letter-spacing: -0.02em;
+  }
 `;
 
 export default Title;

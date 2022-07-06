@@ -3,6 +3,7 @@ import Hero from "./Hero/Hero";
 import Services from "./Services/Services";
 import About from "./About/About";
 import Quote from "./Quote/Quote";
+import Contact from "./Contact/Contact";
 import { connect, css, styled } from "frontity";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       <Services />
       <About />
       <Quote />
+      <Contact />
     </HomeWrapper>
   );
 };

@@ -1,11 +1,16 @@
 import React from "react";
 import Link from "./Link";
-import { styled } from "frontity";
+import { styled, css } from "frontity";
 import { flex, font } from "../base/functions";
 
-const PrimaryButton = ({ onClick, content, type, link, disabled }) => {
+const PrimaryButton = ({ onClick, content, type, link, disabled, style }) => {
   return type === "link" ? (
-    <PrimaryLink link={link} disabled={disabled ? true : false}>
+    <PrimaryLink
+      style={style}
+      link={link}
+      disabled={disabled ? true : false}
+      className="button"
+    >
       <span>{content}</span>
       <div>
         <svg
@@ -37,9 +42,11 @@ const PrimaryButton = ({ onClick, content, type, link, disabled }) => {
     </PrimaryLink>
   ) : (
     <Button
+      style={style}
       type={type || "button"}
       onClick={onClick}
       disabled={disabled ? true : false}
+      className="button"
     >
       <span>{content}</span>
       <div>

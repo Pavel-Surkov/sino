@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "./Container";
-import { styled, connect, useConnect } from "frontity";
+import { styled, connect, useConnect, css } from "frontity";
 import { flex } from "../base/functions";
 
 const ImageSection = ({
@@ -16,21 +16,28 @@ const ImageSection = ({
 
   return (
     <div className="section">
-      <Container>
-        <ContentWrapper>
-          <ImageWrapper
-            position={imagePosition}
-            hideImageInMobile={hideImageInMobile}
-          >
-            <img
-              src={image}
-              srcSet={`${image} 1x, ${image2x ? image2x : image} 2x`}
-              alt=""
-            />
-          </ImageWrapper>
-          <ChildrenWrapper>{children}</ChildrenWrapper>
-        </ContentWrapper>
-      </Container>
+      <div
+        css={css`
+          position: relative;
+        `}
+      >
+        <Container>
+          <ContentWrapper>
+            <ImageWrapper
+              position={imagePosition}
+              hideImageInMobile={hideImageInMobile}
+            >
+              <img
+                src={image}
+                srcSet={`${image} 1x, ${image2x ? image2x : image} 2x`}
+                alt=""
+              />
+            </ImageWrapper>
+            {!isMobile && <ChildrenWrapper>{children}</ChildrenWrapper>}
+            {isMobile && <>{children}</>}
+          </ContentWrapper>
+        </Container>
+      </div>
     </div>
   );
 };
@@ -52,6 +59,7 @@ const ImageWrapper = styled.div`
   }
   @media screen and (max-width: 991px) {
     ${({ hideImageInMobile }) => (hideImageInMobile ? "display: none;" : "")};
+    max-width: 100%;
   }
 `;
 
@@ -59,6 +67,7 @@ const ContentWrapper = styled.div`
   ${flex("row", "center", "space-between")};
   @media screen and (max-width: 991px) {
     flex-direction: column;
+    align-items: flex-start;
   }
 `;
 

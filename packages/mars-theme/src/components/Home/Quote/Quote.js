@@ -1,13 +1,16 @@
 import React from "react";
 import Title from "../../constant/Title";
 import PrimaryButton from "../../constant/PrimaryButton";
+import DecorativeLine from "../../constant/DecorativeLine";
 import { font } from "../../base/functions";
-import { styled, css } from "frontity";
+import { styled, css, connect } from "frontity";
 
 import containers from "../../../assets/images/noel-broda-sigzPF1sT7k-unsplash.jpg";
 import containers2x from "../../../assets/images/noel-broda-sigzPF1sT7k-unsplash@2x.jpg";
 
-const Quote = () => {
+const Quote = ({ state }) => {
+  const { isMobile } = state.theme;
+
   return (
     <div className="section">
       <div
@@ -15,6 +18,16 @@ const Quote = () => {
           position: relative;
         `}
       >
+        <DecorativeLineWrapper>
+          <DecorativeLine
+            heightInPercent={18.45493562}
+            rotation="bottom"
+            color="white"
+          />
+        </DecorativeLineWrapper>
+        <DecorativeLineWrapper>
+          <DecorativeLine heightInPercent={18.16881259} color="white" />
+        </DecorativeLineWrapper>
         <ImageContainer>
           <img
             src={containers}
@@ -23,7 +36,7 @@ const Quote = () => {
           />
         </ImageContainer>
         <Content>
-          <Title size="m" color="white" marginBottom={16}>
+          <Title size="m" color="white" marginBottom={isMobile ? 24 : 16}>
             Get a Quote
           </Title>
           <Subtitle maxWidth={791}>
@@ -52,7 +65,33 @@ const Subtitle = styled.div`
   }
   @media screen and (max-width: 991px) {
     & p {
-      ${font(24, 32)};
+      ${font(18, 30)};
+      font-weight: 300;
+      letter-spacing: 0;
+    }
+  }
+`;
+
+const DecorativeLineWrapper = styled.div`
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  &:first-of-type {
+    top: 0;
+    left: calc(var(--container-padding-xl) + 116px);
+  }
+  &:nth-of-type(2) {
+    bottom: 0;
+    right: calc(var(--container-padding-xl) + 252px);
+    display: grid;
+    align-items: end;
+  }
+  @media screen and (max-width: 1400px) {
+    &:first-of-type {
+      left: var(--container-padding-lg);
+    }
+    &:nth-of-type(2) {
+      right: calc(var(--container-padding-lg) + 92px);
     }
   }
 `;
@@ -62,6 +101,18 @@ const Content = styled.div`
   z-index: 2;
   padding: 230px 0;
   padding-left: calc(var(--container-padding-xl) + 233px);
+  @media screen and (max-width: 1400px) {
+    padding: 230px var(--container-padding-lg);
+  }
+  @media screen and (max-width: 991px) {
+    padding: 99px var(--container-padding-md);
+  }
+  @media screen and (max-width: 768px) {
+    padding: 99px var(--container-padding-xs);
+  }
+  @media screen and (max-width: 576px) {
+    padding: 99px 24px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -75,6 +126,11 @@ const ImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  @media screen and (max-width: 991px) {
+    & img {
+      object-position: -104px 50%;
+    }
+  }
 `;
 
-export default Quote;
+export default connect(Quote);

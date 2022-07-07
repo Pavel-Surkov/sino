@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { Global, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 import Loading from "./Loading";
 import PageError from "./PageError";
 import { setSwiperCssBundle } from "./functions/functions";
 import Router from "./Router";
 import { flex } from "./base/functions";
 
-import { globalStyles } from "./base/GlobalStyle";
+import { globalStyles } from "./base/globalStyle";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -61,11 +62,22 @@ const Theme = ({ state, actions }) => {
           <PageError when={data.isError} />
         </Switch>
       </Main>
+
+      {/* Add the footer of the site */}
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </>
   );
 };
 
 export default connect(Theme);
+
+const FooterContainer = styled.div`
+  position: relative;
+  bottom: 0;
+  left: 0;
+`;
 
 const HeadContainer = styled.div`
   ${flex("column", "center")};

@@ -126,7 +126,7 @@ const BottomElement = styled.div`
   a {
     ${font(14, 30)};
   }
-  & a:first-child {
+  & a:first-of-type {
     margin-right: 8px;
   }
   & a:last-child {
@@ -135,6 +135,16 @@ const BottomElement = styled.div`
   &:last-child {
     margin-right: 0;
   }
+  @media screen and (max-width: 768px) {
+    margin: 0;
+    &:first-of-type {
+      margin-bottom: 0;
+    }
+    &:last-child {
+      margin-bottom: 16px;
+      order: -1;
+    }
+  }
 `;
 
 const BottomContent = styled.div`
@@ -142,6 +152,10 @@ const BottomContent = styled.div`
   padding-top: 16px;
   padding-bottom: 26px;
   ${flex("row", "center", "center")};
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding: 24px 0;
+  }
 `;
 
 const SocialLink = styled(Link)`
@@ -165,22 +179,37 @@ const Social = styled.div`
     margin: 0;
     ${font(18, 30)};
   }
+  @media screen and (max-width: 768px) {
+    margin-top: 24px;
+  }
 `;
 
 const LogoBlock = styled.div`
   justify-self: end;
+  @media screen and (max-width: 768px) {
+    order: -1;
+    justify-self: start;
+    margin-bottom: 56px;
+  }
 `;
 
 const Content = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   padding-bottom: 66px;
+  @media screen and (max-width: 768px) {
+    padding-bottom: 24px;
+    grid-template-columns: 100%;
+  }
 `;
 
 const FooterWrapper = styled.div`
   border-top: 1px solid var(--blue-600);
   padding-top: 56px;
   position: relative;
+  @media screen and (max-width: 768px) {
+    padding-top: 34px;
+  }
 `;
 
 export default Footer;

@@ -78,7 +78,7 @@ const Navigation = ({ state, actions }) => {
                                   <ul
                                     css={css`
                                       padding-left: 40px;
-                                      ${flex("column")};
+                                      ${flex("column")}
                                     `}
                                   >
                                     {item.dropdown &&

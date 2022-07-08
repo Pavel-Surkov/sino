@@ -91,8 +91,7 @@ const HeroDrop = ({ state, actions }) => {
                                   <ul
                                     css={css`
                                       /* TODO: Configure correct padding */
-                                      padding-left: 120px;
-                                      ${flex("column")};
+                                      ${flex("column")}
                                     `}
                                   >
                                     {item.dropdown &&
@@ -199,6 +198,9 @@ const Drop = styled.div`
   backdrop-filter: blur(25px);
   @media screen and (max-width: 991px) {
     display: none;
+  }
+  & ul {
+    padding: 0;
   }
 `;
 

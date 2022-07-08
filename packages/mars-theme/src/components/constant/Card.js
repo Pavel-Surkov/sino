@@ -117,7 +117,7 @@ const Card = styled(Link)`
   position: relative;
   overflow: hidden;
   &:active {
-    & svg path:nth-child(2) {
+    & svg path:nth-of-type(2) {
       fill: white;
       fill-opacity: 0.5;
     }

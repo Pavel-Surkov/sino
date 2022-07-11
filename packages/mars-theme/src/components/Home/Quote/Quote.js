@@ -12,7 +12,7 @@ const Quote = ({ state }) => {
   const { isMobile } = state.theme;
 
   return (
-    <div className="section">
+    <section className="section">
       <div
         css={css`
           position: relative;
@@ -49,7 +49,7 @@ const Quote = ({ state }) => {
           <PrimaryButton content="Request" type="link" link="/get-quote" />
         </Content>
       </div>
-    </div>
+    </section>
   );
 };
 

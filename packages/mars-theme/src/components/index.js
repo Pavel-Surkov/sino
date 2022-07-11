@@ -24,6 +24,9 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
+  const currentRoute = state.router.link;
+  // console.log(currentRoute.includes("/c"));
+
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
   useEffect(() => {

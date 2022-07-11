@@ -26,6 +26,7 @@ const Theme = ({ state, actions }) => {
 
   const currentRoute = state.router.link;
   // console.log(currentRoute.includes("/c"));
+  // console.log(data.isArchive);
 
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
@@ -60,9 +61,10 @@ const Theme = ({ state, actions }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
-          <Router when={data.isArchive} />
+          <Router />
+          {/* <Router when={data.isArchive} /> */}
           {/* <Post when={data.isPostType} /> */}
-          <PageError when={data.isError} />
+          {/* <PageError when={data.isError} /> */}
         </Switch>
       </Main>
 

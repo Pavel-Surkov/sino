@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "./Link";
-import { styled, css } from "frontity";
+import { styled } from "frontity";
 import { flex, font } from "../base/functions";
 
 const PrimaryButton = ({ onClick, content, type, link, disabled, style }) => {
@@ -88,7 +88,7 @@ const PrimaryLink = styled(Link)`
   ${flex("row", "center", "space-between")};
   width: 100%;
   max-width: 325px;
-  padding: 17px 24px;
+  padding: 16px 24px;
   & span {
     ${font(24, 30)};
   }
@@ -115,7 +115,7 @@ const Button = styled.button`
   ${flex("row", "center", "space-between")};
   width: 100%;
   max-width: 325px;
-  padding: 17px 24px;
+  padding: 16px 24px;
   & span {
     ${font(24, 30)};
   }

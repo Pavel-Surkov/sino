@@ -22,6 +22,9 @@ const Navigation = ({ state, actions }) => {
       <List>
         {navLinks &&
           navLinks.map((link) => {
+            const data = state.source.get(state.router.link);
+            const isCurrentPage = data.route === link;
+
             if (link.isDropdown) {
               return (
                 <ListItem key={link.text}>
@@ -35,7 +38,12 @@ const Navigation = ({ state, actions }) => {
 
             return (
               <ListItem key={link.text}>
-                <NavLink link={link.route}>{link.text}</NavLink>
+                <NavLink
+                  link={link.route}
+                  aria-current={isCurrentPage ? "page" : undefined}
+                >
+                  {link.text}
+                </NavLink>
               </ListItem>
             );
           })}

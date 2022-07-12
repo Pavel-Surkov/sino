@@ -1,10 +1,18 @@
-import React from "react";
+import Hero from "../constant/HeroSection";
 import { connect, styled } from "frontity";
 
-const Careers = () => {
+import HeroImage from "../../assets/images/johan-taljaard-csrScXTXdug-unsplash.png";
+
+const Careers = ({ state }) => {
   return (
-    'Careers'
+    <PageWrapper>
+      <Hero image={HeroImage} title="Careers" />
+    </PageWrapper>
   );
 };
+
+const PageWrapper = styled.div`
+  position: relative;
+`;
 
 export default connect(Careers);

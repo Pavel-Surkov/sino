@@ -1,11 +1,11 @@
 import React from "react";
 import { styled, connect, css } from "frontity";
-import DecorativeLine from "../../constant/DecorativeLine";
-import Title from "../../constant/Title";
-import Link from "../../constant/Link";
-import Button from "../../constant/Button";
-import drop from "../../../assets/images/svg/drop-white.svg";
-import { font, flex } from "../../base/functions";
+import DecorativeLine from "./DecorativeLine";
+import Title from "./Title";
+import Link from "./Link";
+import Button from "./Button";
+import drop from "../../assets/images/svg/drop-white.svg";
+import { font, flex } from "../base/functions";
 
 const HeroDrop = ({ state, actions }) => {
   const { selectedMenuItem } = state.theme;
@@ -15,8 +15,8 @@ const HeroDrop = ({ state, actions }) => {
     return null;
   }
 
-  console.log('child_items')
-  console.log(selectedMenuItem.child_items)
+  console.log("child_items");
+  console.log(selectedMenuItem.child_items);
 
   return (
     <Drop>

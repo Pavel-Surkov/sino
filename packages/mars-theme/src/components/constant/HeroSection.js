@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../constant/Container";
 import Title from "../constant/Title";
+import HeroDrop from "../constant/HeroDrop";
 
 import { connect, styled } from "frontity";
 

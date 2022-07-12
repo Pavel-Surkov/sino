@@ -10,17 +10,18 @@ const Router = ({ state }) => {
   const currentRoute = state.router.link;
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
-  console.log('post');
+
+  console.log("post");
   console.log(post);
 
-  switch(currentRoute) {
-    case '/':
+  switch (currentRoute) {
+    case "/":
       return <Home post={post} />;
-    case '/careers/':
+    case "/careers/":
       return <Careers post={post} />;
-    case '/contact/':
+    case "/contact/":
       return <Contact post={post} />;
-    case '/investor/':
+    case "/investor/":
       return <Investor post={post} />;
     default:
       return <PageError />;

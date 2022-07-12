@@ -5,12 +5,19 @@ import PositionsList from "./PositionsList";
 import { styled, connect } from "frontity";
 import { font } from "../../base/functions";
 
-const JoinElement = () => {
+const JoinElement = ({ state }) => {
+  const { isMobile } = state.theme;
+
   return (
     <Join>
       <Container>
         <Text>
-          <Title size="s" color="blue" maxWidth={698} marginBottom={24}>
+          <Title
+            size="xs"
+            color="blue"
+            maxWidth={698}
+            marginBottom={isMobile ? 16 : 24}
+          >
             Do you want to join our industry-leading team at Sino Logistics
             Corporation?
           </Title>
@@ -37,6 +44,11 @@ const Subtitle = styled.div`
     letter-spacing: -0.02em;
     font-weight: 300;
   }
+  @media screen and (max-width: 991px) {
+    & p {
+      ${font(18, 30)};
+    }
+  }
 `;
 
 const Text = styled.div`
@@ -45,6 +57,9 @@ const Text = styled.div`
 
 const Join = styled.div`
   padding-top: 96px;
+  @media screen and (max-width: 991px) {
+    padding-top: 56px;
+  }
 `;
 
 export default connect(JoinElement);

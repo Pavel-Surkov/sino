@@ -3,7 +3,6 @@ import { connect } from "frontity";
 import Home from "./Home/Home";
 import Company from "./Company/Company";
 import Careers from "./Careers/Careers";
-import Company from "./Company/Company";
 import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
 import PageError from "./PageError";

@@ -52,7 +52,7 @@ const H1 = styled.h1`
   ${font(64, 72)};
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "none")};
   @media screen and (max-width: 991px) {
-    ${font(32, 32)};
+    ${font(40, 48)};
   }
 `;
 

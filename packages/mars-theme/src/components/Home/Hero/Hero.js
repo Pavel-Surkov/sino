@@ -9,12 +9,12 @@ import Link from "../../constant/Link";
 import DecorativeLine from "../../constant/DecorativeLine";
 import HeroDrop from "../../constant/HeroDrop";
 
-import hero1 from "../../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
-import hero1_2x from "../../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
-import hero3 from "../../../assets/images/aerial-view-container-cargo-ship.jpg";
-import hero3_2x from "../../../assets/images/aerial-view-container-cargo-ship@2x.jpg";
-import hero2 from "../../../assets/images/hero-image-2.jpg";
-import hero2_2x from "../../../assets/images/hero-image-2@2x.jpg";
+// import hero1 from "../../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
+// import hero1_2x from "../../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";
+// import hero3 from "../../../assets/images/aerial-view-container-cargo-ship.jpg";
+// import hero3_2x from "../../../assets/images/aerial-view-container-cargo-ship@2x.jpg";
+// import hero2 from "../../../assets/images/hero-image-2.jpg";
+// import hero2_2x from "../../../assets/images/hero-image-2@2x.jpg";
 
 import youtube from "../../../assets/images/svg/YouTube-white.svg";
 import linkedin from "../../../assets/images/svg/LinkedIn-white.svg";
@@ -109,9 +109,9 @@ const Hero = ({ state, post }) => {
                       }
                     `}
                   >
-                    <Title color="white" size="l">
+                    <HeroTitle color="white">
                       {slide.home_main_slide_title}
-                    </Title>
+                    </HeroTitle>
                     <Subtitle>
                       <p>{slide.home_main_slide_text}</p>
                     </Subtitle>
@@ -145,6 +145,18 @@ const Hero = ({ state, post }) => {
     </Wrapper>
   );
 };
+
+const HeroTitle = styled.h1`
+  margin: 0;
+  font-weight: 500;
+  color: ${({ color }) =>
+    color === "white" ? "var(--white)" : "var(--blue-600)"};
+  ${font(64, 72)};
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "none")};
+  @media screen and (max-width: 991px) {
+    ${font(32, 32)};
+  }
+`;
 
 const SocialLink = styled(Link)`
   display: flex;

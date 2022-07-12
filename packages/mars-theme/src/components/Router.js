@@ -15,13 +15,13 @@ const Router = ({ state }) => {
 
   switch(currentRoute) {
     case '/':
-      return <Home />;
+      return <Home post={post} />;
     case '/careers/':
-      return <Careers />;
+      return <Careers post={post} />;
     case '/contact/':
-      return <Contact />;
+      return <Contact post={post} />;
     case '/investor/':
-      return <Investor />;
+      return <Investor post={post} />;
     default:
       return <PageError />;
   }

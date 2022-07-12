@@ -42,7 +42,7 @@ const services = [
   },
 ];
 
-const Services = ({ state, actions }) => {
+const Services = ({ state, actions, post }) => {
   const { isMobile } = state.theme;
 
   return (
@@ -58,12 +58,10 @@ const Services = ({ state, actions }) => {
         <Content>
           <Info>
             <Title color="blue" size="m" marginBottom={24}>
-              Our Services
+              {post.acf.home_services_title}
             </Title>
             <Paragraph maxWidth={isMobile ? "none" : "349px"}>
-              We&nbsp;offer solutions that cover all major modes
-              of&nbsp;transportation, and we&nbsp;can arrange any combination
-              of&nbsp;shipping and logistics services to&nbsp;meet your needs.
+              {post.acf.home_services_text}
             </Paragraph>
           </Info>
           {!isMobile &&

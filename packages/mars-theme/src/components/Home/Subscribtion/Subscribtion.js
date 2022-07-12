@@ -10,7 +10,7 @@ import { styled, connect, css } from "frontity";
 import image from "../../../assets/images/subscribtion-image.png";
 import image2x from "../../../assets/images/subscribtion-image@2x.png";
 
-const Subscribtion = ({ state }) => {
+const Subscribtion = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   const formik = useFormik({
@@ -22,14 +22,14 @@ const Subscribtion = ({ state }) => {
   });
 
   return (
-    <ImageSection image={image} image2x={image2x} last={true}>
+    <ImageSection image={post.acf.home_news_image_1x.url} image2x={post.acf.home_news_image_2x.url} last={true}>
       <Title
         style={isMobile ? { order: "-2" } : {}}
         size="s"
         color="blue"
         marginBottom={isMobile ? 24 : 40}
       >
-        Stay Informed with&nbsp;Logistics News and Updates
+        {post.acf.home_news_title}
       </Title>
       <form
         css={
@@ -46,12 +46,12 @@ const Subscribtion = ({ state }) => {
             minWidth={isMobile ? "100%" : "426px"}
             type="email"
             name="email"
-            placeholder="ex. info@ux-mind.pro"
+            placeholder={post.acf.home_news_input_placeholder}
             value={formik.values.email}
             onChange={formik.handleChange}
           />
         </InputWrapper>
-        <PrimaryButton type="submit" content="Continue" />
+        <PrimaryButton type="submit" content={post.acf.home_news_link_text} />
       </form>
     </ImageSection>
   );

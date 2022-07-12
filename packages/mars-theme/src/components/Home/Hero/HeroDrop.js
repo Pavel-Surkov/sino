@@ -15,6 +15,9 @@ const HeroDrop = ({ state, actions }) => {
     return null;
   }
 
+  console.log('child_items')
+  console.log(selectedMenuItem.child_items)
+
   return (
     <Drop>
       <DecorativeLineWrapper>

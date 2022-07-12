@@ -44,7 +44,7 @@ const social = [
     link: "https://www.facebook.com/sinologisticscorporation",
   },
 ];
-
+/*
 const heroSlides = [
   {
     id: 1,
@@ -67,10 +67,12 @@ const heroSlides = [
       "The worldwide logistics network is our number one asset, and our vision for sustainable growth within this network is at the core of our business ethos.",
     images: [hero3, hero3_2x],
   },
-];
+];*/
 
-const Hero = ({ state }) => {
+const Hero = ({ state, post }) => {
   const { swiperStylesLoading } = state.theme;
+
+  const heroSlides = post.acf.home_main_slides;
 
   return (
     <Wrapper>
@@ -84,18 +86,19 @@ const Hero = ({ state }) => {
           pagination={{ clickable: true }}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {heroSlides.map((slide) => {
-            const [img1x, img2x] = slide.images;
+          {heroSlides.map((slide, index) => {
+            const img1x = slide.home_main_slide_background_1x.url;
+            const img2x = slide.home_main_slide_background_2x.url;
 
             return (
-              <SwiperSlide key={slide.id}>
+              <SwiperSlide key={`hero-slide-${index}`}>
                 <ImageWrapper>
                   <img
                     src={img1x}
                     srcSet={img2x ? `${img1x} 1x, ${img2x} 2x` : ""}
                     alt=""
                   />
-                  {slide.id !== 1 && <div className="dark"></div>}
+                  {index !== 0 && <div className="dark"></div>}
                 </ImageWrapper>
                 <SlideContent>
                   <div
@@ -107,10 +110,10 @@ const Hero = ({ state }) => {
                     `}
                   >
                     <Title color="white" size="l">
-                      {slide.title}
+                      {slide.home_main_slide_title}
                     </Title>
                     <Subtitle>
-                      <p>{slide.subtitle}</p>
+                      <p>{slide.home_main_slide_text}</p>
                     </Subtitle>
                   </div>
                 </SlideContent>

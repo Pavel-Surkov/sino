@@ -200,7 +200,8 @@ const marsTheme = {
       handleNavDropdown:
         ({ state }) =>
         (textValue) => {
-          const newMenu = state.theme.menu.concat();
+          const newMenu = state.source.get(`/menu/main-menu/`).items.concat();
+          console.log(newMenu);
 
           // Function thet toggles menu dropdowns
           function setDropdown(menuArr, textValue) {
@@ -215,7 +216,7 @@ const marsTheme = {
 
           setDropdown(newMenu, textValue);
 
-          state.theme.menu = newMenu;
+          //state.theme.menu = newMenu;
         },
       clearMenuItem: ({ state }) => (state.theme.selectedMenuItem = null),
       setMenuItem:

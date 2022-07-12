@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "frontity";
 import Home from "./Home/Home";
+import Company from "./Company/Company";
 import Careers from "./Careers/Careers";
 import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
@@ -23,6 +24,8 @@ const Router = ({ state }) => {
       return <Contact post={post} />;
     case "/investor/":
       return <Investor post={post} />;
+    case "/company/":
+      return <Company post={post} />;
     default:
       return <PageError />;
   }

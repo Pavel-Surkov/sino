@@ -72,7 +72,7 @@ const Content = styled.div`
   }
 `;
 
-const HistoryWrapper = styled.div`
+const HistoryWrapper = styled.section`
   padding-top: 152px;
   @media screen and (max-width: 991px) {
     padding-top: 32px;

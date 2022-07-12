@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "frontity";
 import Home from "./Home/Home";
+import Company from "./Company/Company";
 import Careers from "./Careers/Careers";
 import Company from "./Company/Company";
 import Contact from "./Contact/Contact";

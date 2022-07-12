@@ -47,16 +47,16 @@ const marsTheme = {
           title: "Company",
           text: "Company",
           dropdown: [
-            { text: "Our Company", route: "/company/#our-company" },
-            { text: "History", route: "/company/#history" },
-            { text: "Our Vision & Mission", route: "/company/#vision&mission" },
+            { text: "Our Company", route: "/company#our-company" },
+            { text: "History", route: "/company#history" },
+            { text: "Our Vision & Mission", route: "/company#vision&mission" },
             {
               text: "Board of Directors and Executives",
-              route: "/company/#board-of-directors",
+              route: "/company#board-of-directors",
             },
             {
               text: "Organization & Business Structure",
-              route: "/company/#organization&stricture",
+              route: "/company#organization&stricture",
             },
             {
               isDropdown: true,
@@ -65,23 +65,23 @@ const marsTheme = {
               dropdown: [
                 {
                   text: "Business Ethics",
-                  route: "/company/#buisness-ethics",
+                  route: "/company#buisness-ethics",
                 },
                 {
                   text: "Corporate Governance",
-                  route: "/company/#corporate-governance",
+                  route: "/company#corporate-governance",
                 },
                 {
                   text: "Sustainability",
-                  route: "/company/#sustainability",
+                  route: "/company#sustainability",
                 },
                 {
                   text: "Community Engagement",
-                  route: "/company/#community-engagement",
+                  route: "/company#community-engagement",
                 },
                 {
                   text: "People",
-                  route: "/company/#people",
+                  route: "/company#people",
                 },
               ],
             },
@@ -104,16 +104,16 @@ const marsTheme = {
               dropdown: [
                 {
                   text: "FCL",
-                  route: "/services/sea-freight/#FCL",
+                  route: "/services/sea-freight#FCL",
                 },
-                { text: "LCL", route: "/services/sea-freight/#LCL" },
+                { text: "LCL", route: "/services/sea-freight#LCL" },
                 {
                   text: "Consolidation ",
-                  route: "/services/sea-freight/#consolidation",
+                  route: "/services/sea-freight#consolidation",
                 },
                 {
                   text: "Reefer Logistics ",
-                  route: "/services/sea-freight/#reefer-logistics",
+                  route: "/services/sea-freight#reefer-logistics",
                 },
               ],
             },
@@ -132,11 +132,11 @@ const marsTheme = {
               dropdown: [
                 {
                   text: "Custom Brokerage",
-                  route: "/services/value-added/#custom-brokerage",
+                  route: "/services/value-added#custom-brokerage",
                 },
                 {
                   text: "Insurance",
-                  route: "/services/value-added/#insurance",
+                  route: "/services/value-added#insurance",
                 },
               ],
             },

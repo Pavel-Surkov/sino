@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../constant/Container";
 import Title from "../constant/Title";
+import HeroDrop from "../constant/HeroDrop";
 
 import { connect, styled } from "frontity";
 
@@ -17,6 +18,7 @@ const Hero = ({ image, title }) => {
           </Title>
         </TitleWrapper>
       </HeroContainer>
+      <HeroDrop />
     </HeroSection>
   );
 };
@@ -58,6 +60,7 @@ const HeroContainer = styled(Container)`
 const HeroSection = styled.section`
   height: 100%;
   max-height: 582px;
+  position: relative;
 `;
 
 export default connect(Hero, { injectProps: false });

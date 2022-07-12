@@ -16,7 +16,7 @@ const ImageSection = ({
   const { isMobile } = state.theme;
 
   return (
-    <div
+    <section
       css={
         last &&
         css`
@@ -50,7 +50,7 @@ const ImageSection = ({
           </ContentWrapper>
         </Container>
       </div>
-    </div>
+    </section>
   );
 };
 

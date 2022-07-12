@@ -12,7 +12,7 @@ const Quote = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
-    <div className="section">
+    <section className="section">
       <div
         css={css`
           position: relative;
@@ -31,7 +31,10 @@ const Quote = ({ state, post }) => {
         <ImageContainer>
           <img
             src={post.acf.home_quote_background_1x.url}
-            srcSet={`${post.acf.home_quote_background_1x.url} 1x, ${post.acf.home_quote_background_2x.url || post.acf.home_quote_background_1x.url} 2x`}
+            srcSet={`${post.acf.home_quote_background_1x.url} 1x, ${
+              post.acf.home_quote_background_2x.url ||
+              post.acf.home_quote_background_1x.url
+            } 2x`}
             alt=""
           />
         </ImageContainer>
@@ -40,14 +43,16 @@ const Quote = ({ state, post }) => {
             {post.acf.home_quote_title}
           </Title>
           <Subtitle maxWidth={791}>
-            <p>
-              {post.acf.home_quote_text}
-            </p>
+            <p>{post.acf.home_quote_text}</p>
           </Subtitle>
-          <PrimaryButton content={post.acf.home_quote_link_text} type="link" link={post.acf.home_quote_link_url} />
+          <PrimaryButton
+            content={post.acf.home_quote_link_text}
+            type="link"
+            link={post.acf.home_quote_link_url}
+          />
         </Content>
       </div>
-    </div>
+    </section>
   );
 };
 

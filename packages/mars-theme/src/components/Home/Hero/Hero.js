@@ -7,7 +7,7 @@ import Title from "../../constant/Title";
 import Container from "../../constant/Container";
 import Link from "../../constant/Link";
 import DecorativeLine from "../../constant/DecorativeLine";
-import HeroDrop from "./HeroDrop";
+import HeroDrop from "../../constant/HeroDrop";
 
 import hero1 from "../../../assets/images/aerial-view-container-cargo-ship-sea.jpg";
 import hero1_2x from "../../../assets/images/aerial-view-container-cargo-ship-sea@2x.jpg";

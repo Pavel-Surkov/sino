@@ -26,7 +26,7 @@ const Theme = ({ state, actions }) => {
 
   const currentRoute = state.router.link;
   // console.log(currentRoute.includes("/c"));
-  // console.log(data.isArchive);
+  // console.log(data);
 
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)

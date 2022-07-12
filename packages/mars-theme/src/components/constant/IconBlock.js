@@ -1,10 +1,10 @@
 import React from "react";
-import { font } from "../../base/functions";
+import { font } from "../base/functions";
 import { styled } from "frontity";
 
-const IconBlock = ({ icon, children }) => {
+const IconBlock = ({ icon, marginBottom, children }) => {
   return (
-    <IconWrapper>
+    <IconWrapper marginBottom={marginBottom}>
       <Icon src={icon} alt="" />
       <p>{children}</p>
     </IconWrapper>
@@ -22,8 +22,11 @@ const Icon = styled.img`
 const IconWrapper = styled.div`
   padding-left: 32px;
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: ${({ marginBottom }) =>
+    marginBottom ? `${marginBottom}px` : "16px"};
+  display: inline-block;
   & p {
+    display: inline-block;
     ${font(18, 30)};
     margin: 0;
     color: var(--black);
@@ -32,7 +35,8 @@ const IconWrapper = styled.div`
     margin-bottom: 0;
   }
   @media screen and (max-width: 768px) {
-    margin-bottom: 24px;
+    margin-bottom: ${({ marginBottom }) =>
+      marginBottom ? `${marginBottom}px` : "24px"};
     &:last-child {
       margin-bottom: 0;
     }

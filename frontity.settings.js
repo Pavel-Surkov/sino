@@ -24,7 +24,7 @@ const settings = {
       name: "@frontity/wp-source",
       state: {
         source: {
-          url: "http://sinowp.beget.tech",
+          url: "https://sino.ux-mind.pro",
           homepage: "home-page",
         },
       },

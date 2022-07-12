@@ -12,8 +12,8 @@ const Router = ({ state }) => {
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
 
-  // console.log("post");
-  // console.log(post);
+  console.log("post");
+  console.log(post);
 
   switch (currentRoute) {
     case "/":

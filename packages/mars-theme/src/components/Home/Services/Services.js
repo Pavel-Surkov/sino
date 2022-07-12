@@ -13,6 +13,7 @@ import seaFreight from "../../../assets/images/sea-freight-service.jpg";
 import groundFreight from "../../../assets/images/ground-freight-service.jpg";
 import warehouse from "../../../assets/images/warehousing-service.jpg";
 import valueAdded from "../../../assets/images/value-added-service.jpg";
+import parse from 'html-react-parser';
 
 const services = [
   {
@@ -45,6 +46,10 @@ const services = [
 const Services = ({ state, actions, post }) => {
   const { isMobile } = state.theme;
 
+  const services = state.source.get(`/services/`).items;
+
+  console.log(services);
+
   return (
     <section className="section">
       <DecorativeLineWrapper>
@@ -67,10 +72,10 @@ const Services = ({ state, actions, post }) => {
           {!isMobile &&
             services.map((service) => (
               <Card
-                image={service.img}
-                title={service.title}
+                image={service.fimg_url}
+                title={parse(service.title.rendered)}
                 link={service.link}
-                key={service.title}
+                key={parse(service.title.rendered)}
               />
             ))}
           {isMobile && (
@@ -86,8 +91,8 @@ const Services = ({ state, actions, post }) => {
                   <SwiperSlide key={service.title}>
                     <SwiperWrapper>
                       <Card
-                        image={service.img}
-                        title={service.title}
+                        image={service.fimg_url}
+                        title={parse(service.title.rendered)}
                         text={service.text}
                         link={service.link}
                       />

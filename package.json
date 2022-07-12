@@ -11,6 +11,7 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
+    "start": "frontity serve --port $PORT",
     "dev": "frontity dev",
     "build": "frontity build",
     "serve": "frontity serve"
@@ -24,6 +25,7 @@
     "@frontity/wp-source": "^1.11.7",
     "formik": "^2.2.9",
     "frontity": "^1.17.2",
-    "swiper": "^8.1.4"
+    "swiper": "^8.1.4",
+    "vercel": "^27.0.1"
   }
 }

@@ -38,8 +38,8 @@ const HeaderContainer = styled(Container)`
   z-index: 10;
   background: var(--white);
   position: relative;
-  padding-top: 46px;
-  padding-bottom: 45px;
+  padding-top: 59px;
+  padding-bottom: 32px;
   display: grid;
   grid-template-columns: calc((340 / 1372) * 100%) auto calc(
       (116 / 1372) * 100%

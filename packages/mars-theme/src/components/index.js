@@ -24,10 +24,6 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
-  const currentRoute = state.router.link;
-  // console.log(currentRoute.includes("/c"));
-  // console.log(data);
-
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
   useEffect(() => {
@@ -47,7 +43,7 @@ const Theme = ({ state, actions }) => {
         <html lang="en" />
       </Head>
 
-      {/* Add some global styles for the whole site, like body or a's. 
+      {/* Add some global styles for the whole site, like body or a's.
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
       <Global styles={globalStyles} />
 
@@ -61,10 +57,9 @@ const Theme = ({ state, actions }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
-          <Router />
-          {/* <Router when={data.isArchive} /> */}
+          <Router when={data.isArchive || data.isPostType} />
           {/* <Post when={data.isPostType} /> */}
-          {/* <PageError when={data.isError} /> */}
+          <PageError when={data.isError} />
         </Switch>
       </Main>
 

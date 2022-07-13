@@ -21,7 +21,7 @@ const Arrow = ({ link, content, disabled }) => {
         <path
           d="M58.0011 14C58.0011 21.1597 52.0661 27 44.6998 27C37.3335 27 31.3984 21.1597 31.3984 14C31.3984 6.84027 37.3335 1 44.6998 1C52.0661 1 58.0011 6.84027 58.0011 14Z"
           stroke="#394C62"
-          stroke-width="2"
+          strokeWidth="2"
         />
         <line
           x1="-8.88523e-08"
@@ -29,7 +29,7 @@ const Arrow = ({ link, content, disabled }) => {
           x2="32"
           y2="13.7588"
           stroke="#394C62"
-          stroke-width="2"
+          strokeWidth="2"
         />
       </svg>
     </ArrowLink>

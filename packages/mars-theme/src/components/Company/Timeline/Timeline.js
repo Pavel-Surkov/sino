@@ -1,9 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import SwiperButtons from "../../constant/SwiperButtons";
 import { connect, styled } from "frontity";
-import { flex } from "../../base/functions";
+import { flex, font } from "../../base/functions";
+
+import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
+import { Navigation } from "swiper";
+
+const timelineStages = [
+  {
+    id: 1,
+    date: "May 6, 2010",
+    content: "Established Corporate Head Office at Supalai Grand Tower",
+  },
+  {
+    id: 2,
+    date: "February 1, 2013",
+    content:
+      "Joined forces with WCA World – the world's largest and most powerful network of independent freight forwarders",
+  },
+  {
+    id: 3,
+    date: "February 15, 2013",
+    content: "Established Inter Connections Logistics as a subsidiary company",
+  },
+  {
+    id: 4,
+    date: "December 31, 2015",
+    content: "Achieved US$14.5 million in annual sales",
+  },
+  {
+    id: 5,
+    date: "May 1, 2017",
+    content: "Expanded our office size by 300 sqm",
+  },
+];
 
 const Timeline = ({ state }) => {
   const { isMobile } = state.theme;
@@ -113,16 +145,111 @@ const Timeline = ({ state }) => {
           )}
         </LineWrapper>
         <SwiperNav>
-          <SwiperButtons spaceBetween={24} />
+          <SwiperButtons
+            prevClassName={"prev-timeline-btn"}
+            nextClassName={"next-timeline-btn"}
+            spaceBetween={24}
+          />
         </SwiperNav>
       </TimelineContainer>
-      <SwiperContainer></SwiperContainer>
+      <SwiperContainer>
+        <Swiper
+          modules={[Navigation]}
+          slidesPerView={"auto"}
+          navigation={{
+            prevEl: ".prev-timeline-btn",
+            nextEl: ".next-timeline-btn",
+          }}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+          {timelineStages.map((stage) => {
+            return (
+              <SwiperSlide key={stage.id}>
+                <Date>{stage.date}</Date>
+                <Content>
+                  <p>{stage.content}</p>
+                </Content>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </SwiperContainer>
     </TimelineSection>
   );
 };
 
+const Content = styled.div`
+  & p {
+    margin: 0;
+    ${font(16, 26)};
+  }
+`;
+
+const Date = styled.h5`
+  margin: 0;
+  margin-bottom: 10px;
+  ${font(24, 36)};
+  letter-spacing: 0.04em;
+  font-weight: 500;
+`;
+
 const SwiperContainer = styled.div`
   margin-top: 35px;
+  padding-left: var(--container-padding-xl);
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 88px;
+    height: 100%;
+    right: -24px;
+    top: 0;
+    background: rgba(253, 253, 253, 0.8);
+    filter: blur(13px);
+  }
+  & .swiper {
+    max-width: 100%;
+    &-slide {
+      height: auto;
+      box-sizing: content-box;
+      max-width: 278px;
+      padding-left: 48px;
+      padding-right: 24px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 78px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--blue-600);
+      }
+      &:first-of-type {
+        padding-left: 0;
+        &::before {
+          content: none;
+        }
+      }
+      &:last-of-type {
+        padding-right: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    padding-left: var(--container-padding-lg);
+  }
+  @media screen and (max-width: 991px) {
+    padding-left: var(--container-padding-md);
+  }
+  @media screen and (max-width: 768px) {
+    padding-left: var(--container-padding-xs);
+  }
+  @media screen and (max-width: 576px) {
+    padding-left: 24px;
+  }
 `;
 
 const SwiperNav = styled.div`

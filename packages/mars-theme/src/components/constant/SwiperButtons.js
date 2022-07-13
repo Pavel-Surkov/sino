@@ -1,11 +1,19 @@
 import React from "react";
 import { styled } from "frontity";
 
-const SwiperButtons = ({ spaceBetween }) => {
+const SwiperButtons = ({ prevClassName, nextClassName, spaceBetween }) => {
   return (
     <Wrapper>
-      <SwiperButton margin={spaceBetween} type="left" />
-      <SwiperButton margin={spaceBetween} type="right" />
+      <SwiperButton
+        margin={spaceBetween}
+        className={prevClassName}
+        type="left"
+      />
+      <SwiperButton
+        margin={spaceBetween}
+        className={nextClassName}
+        type="right"
+      />
     </Wrapper>
   );
 };
@@ -14,9 +22,10 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const SwiperButton = ({ type, margin }) => {
+const SwiperButton = ({ type, margin, className }) => {
   return (
     <ArrowButton
+      className={className}
       margin={margin}
       type={type}
       aria-label={type === "left" ? "previous slide" : "next slide"}

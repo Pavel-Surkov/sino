@@ -14,7 +14,7 @@ const IconBlock = ({ icon, marginBottom, children }) => {
 const Icon = styled.img`
   position: absolute;
   left: 0;
-  top: 5px;
+  top: 4px;
   width: 24px;
   height: 24px;
 `;

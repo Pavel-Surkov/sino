@@ -1,6 +1,12 @@
 import React from "react";
-import { connect, styled } from "frontity";
-import { font } from "../../base/functions";
+import IconBlock from "../../constant/IconBlock";
+import ArrowLink from "../../constant/ArrowLink";
+import LoadMore from "../../constant/LoadMore";
+import { connect, styled, css } from "frontity";
+import { font, flex } from "../../base/functions";
+
+import calendar from "../../../assets/images/svg/dark-calendar.svg";
+import marker from "../../../assets/images/svg/dark-map-marker.svg";
 
 const positions = [
   {
@@ -41,27 +47,88 @@ const positions = [
   },
 ];
 
-const PositionsList = () => {
+const PositionsList = ({ state, actions }) => {
+  const { isAllPositionsShown } = state.theme;
+
   return (
     <List>
-      {positions.map((position) => (
-        <Position key={position.id}>
-          <MainInfo>
-            <PositionTitle>{position.position}</PositionTitle>
-            <Company>{position.company}</Company>
-            <Category>{position.category}</Category>
-          </MainInfo>
-          <Description>
-            <Text>
-              <p>{position.description}</p>
-            </Text>
-          </Description>
-          <Additional></Additional>
-        </Position>
-      ))}
+      {positions.map((position, idx) => {
+        if (!isAllPositionsShown && idx >= 3) {
+          return null;
+        }
+
+        return (
+          <Position key={position.id}>
+            <MainInfo>
+              <PositionTitle>{position.position}</PositionTitle>
+              <Company>{position.company}</Company>
+              <Category>{position.category}</Category>
+            </MainInfo>
+            <Description>
+              <Text>
+                <p>{position.description}</p>
+              </Text>
+            </Description>
+            <Additional>
+              <Top>
+                <IconWrapper>
+                  <IconBlock icon={calendar}>{position.date}</IconBlock>
+                </IconWrapper>
+                <IconWrapper>
+                  <IconBlock icon={marker}>{position.location}</IconBlock>
+                </IconWrapper>
+              </Top>
+              <LearnMore>
+                <ArrowLink content="Learn More" link="/" />
+              </LearnMore>
+            </Additional>
+          </Position>
+        );
+      })}
+      {!isAllPositionsShown && (
+        <div
+          css={css`
+            text-align: center;
+            margin-top: 40px;
+          `}
+        >
+          <LoadMore onClick={() => actions.theme.handlePositionsShow()} />
+        </div>
+      )}
     </List>
   );
 };
+
+const IconWrapper = styled.div`
+  text-align: right;
+  @media screen and (max-width: 1400px) {
+    margin-bottom: 8px;
+  }
+  @media screen and (max-width: 576px) {
+    text-align: left;
+    margin-bottom: 16px;
+    &:last-of-type {
+      margin-bottom: 48px;
+    }
+  }
+`;
+
+const Top = styled.div`
+  display: grid;
+  grid-template-columns: 45% 55%;
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: 100%;
+  }
+`;
+
+const LearnMore = styled.div`
+  margin-top: auto;
+  display: grid;
+  justify-items: end;
+  @media screen and (max-width: 576px) {
+    justify-items: start;
+  }
+`;
 
 const Category = styled.p`
   margin: 0;
@@ -97,11 +164,21 @@ const Text = styled.div`
   }
 `;
 
-const Additional = styled.div``;
+const Description = styled.div`
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
+`;
 
-const Description = styled.div``;
+const Additional = styled.div`
+  ${flex("column", "space-between")};
+`;
 
-const MainInfo = styled.div``;
+const MainInfo = styled.div`
+  @media screen and (max-width: 576px) {
+    margin-bottom: 24px;
+  }
+`;
 
 const Position = styled.li`
   color: var(--gray-menu);
@@ -111,6 +188,12 @@ const Position = styled.li`
   grid-template-columns: 25.437% 45% 29.563%;
   &:first-of-type {
     border-top: 1px solid var(--blue-600);
+  }
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 50% 50%;
+  }
+  @media screen and (max-width: 576px) {
+    grid-template-columns: 100%;
   }
 `;
 

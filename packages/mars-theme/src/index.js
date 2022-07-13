@@ -37,6 +37,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      isAllPositionsShown: false,
       selectedMenuItem: null,
       menu: [],
       menuUrl: "main-menu",
@@ -187,6 +188,9 @@ const marsTheme = {
         },
       handleSearchClear: ({ state }) => {
         state.theme.searchValue = "";
+      },
+      handlePositionsShow: ({ state }) => {
+        state.theme.isAllPositionsShown = true;
       },
       handleLanguageChange:
         ({ state }) =>

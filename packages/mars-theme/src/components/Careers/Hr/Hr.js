@@ -35,12 +35,12 @@ const Hr = () => {
           >
             <ContactTitle>Contact HR Department:</ContactTitle>
             <IconBlock icon={message} marginBottom={8}>
-              <TextLink href="mailto:hr@sinologistics.co.th">
+              <TextLink link="mailto:hr@sinologistics.co.th">
                 hr@sinologistics.co.th
               </TextLink>
             </IconBlock>
             <IconBlock icon={phone} marginBottom={8}>
-              <TextLink href="tel:+662-687-0477">+66 2-687-0477</TextLink>
+              <TextLink link="tel:+662-687-0477">+66 2-687-0477</TextLink>
             </IconBlock>
             <Ext>
               <p>Ext.423</p>

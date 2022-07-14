@@ -66,6 +66,7 @@ const H2 = styled.h2`
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "none")};
   @media screen and (max-width: 991px) {
     ${font(32, 40)};
+    letter-spacing: -0.02em;
   }
 `;
 

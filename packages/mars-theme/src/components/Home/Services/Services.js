@@ -13,7 +13,7 @@ import seaFreight from "../../../assets/images/sea-freight-service.jpg";
 import groundFreight from "../../../assets/images/ground-freight-service.jpg";
 import warehouse from "../../../assets/images/warehousing-service.jpg";
 import valueAdded from "../../../assets/images/value-added-service.jpg";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 const services = [
   {
@@ -93,7 +93,6 @@ const Services = ({ state, actions, post }) => {
                       <Card
                         image={service.fimg_url}
                         title={parse(service.title.rendered)}
-                        text={service.text}
                         link={service.link}
                       />
                     </SwiperWrapper>

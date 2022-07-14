@@ -17,7 +17,8 @@ const VisionAndMission = ({ state, post }) => {
     <Section>
       <Background
         css={css`
-          background: url(${post.acf.company_vision_and_mission_background.url}) no-repeat 50% / cover;
+          background: url(${post.acf.company_vision_and_mission_background.url})
+            no-repeat 50% / cover;
         `}
       >
         <VisionContainer>
@@ -41,14 +42,22 @@ const VisionAndMission = ({ state, post }) => {
                 <SwiperSlide>
                   <InfoBlock title={post.acf.company_vision_title}>
                     {post.acf.company_vision_text.map((paragraph, i) => {
-                      return <p key={'company_vision_text_' + i}>{paragraph.company_vision_paragraph}</p>;
+                      return (
+                        <p key={"company_vision_text_" + i}>
+                          {paragraph.company_vision_paragraph}
+                        </p>
+                      );
                     })}
                   </InfoBlock>
                 </SwiperSlide>
                 <SwiperSlide>
                   <InfoBlock title={post.acf.company_mission_title}>
                     {post.acf.company_mission_text.map((paragraph, i) => {
-                      return <p key={'company_mission_text_' + i}>{paragraph.company_mission_paragraph}</p>;
+                      return (
+                        <p key={"company_mission_text_" + i}>
+                          {paragraph.company_mission_paragraph}
+                        </p>
+                      );
                     })}
                   </InfoBlock>
                 </SwiperSlide>
@@ -62,12 +71,20 @@ const VisionAndMission = ({ state, post }) => {
               <Content>
                 <InfoBlock title={post.acf.company_vision_title}>
                   {post.acf.company_vision_text.map((paragraph, i) => {
-                    return <p key={'company_vision_text_' + i}>{paragraph.company_vision_paragraph}</p>;
+                    return (
+                      <p key={"company_vision_text_" + i}>
+                        {paragraph.company_vision_paragraph}
+                      </p>
+                    );
                   })}
                 </InfoBlock>
                 <InfoBlock title={post.acf.company_mission_title}>
                   {post.acf.company_mission_text.map((paragraph, i) => {
-                    return <p key={'company_mission_text_' + i}>{paragraph.company_mission_paragraph}</p>;
+                    return (
+                      <p key={"company_mission_text_" + i}>
+                        {paragraph.company_mission_paragraph}
+                      </p>
+                    );
                   })}
                 </InfoBlock>
               </Content>
@@ -147,6 +164,7 @@ const ContentWrapper = styled.div`
 
 const Background = styled.div`
   position: relative;
+  /* background: url(${bg}) no-repeat 50% / cover; */
   @media screen and (max-width: 576px) {
     background-position: 55% 45%;
   }

@@ -10,7 +10,10 @@ import heroImg from "../../assets/images/company-about-hero.png";
 const Company = ({ state, post }) => {
   return (
     <CompanyWrapper>
-      <Hero title={post.acf.company_top_banner_title} image={post.acf.company_top_banner_image.url} />
+      <Hero
+        title={post.acf.company_top_banner_title}
+        image={post.acf.company_top_banner_image.url}
+      />
       <History post={post} />
       <Timeline post={post} />
       <VisionAndMission post={post} />

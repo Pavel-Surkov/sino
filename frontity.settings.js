@@ -26,6 +26,13 @@ const settings = {
         source: {
           url: "https://sino.ux-mind.pro",
           homepage: "home-page",
+          "postTypes": [
+            {
+              type: "services",
+              endpoint: "services",
+              archive: "/services"
+            }
+          ]
         },
       },
     },

@@ -73,6 +73,8 @@ const Hero = ({ state, post }) => {
 
   const heroSlides = post.acf.home_main_slides;
 
+  const social = post.acf.home_main_social_icons;
+
   return (
     <Wrapper>
       {!swiperStylesLoading && (
@@ -122,15 +124,15 @@ const Hero = ({ state, post }) => {
         </Swiper>
       )}
       <SocialBlock>
-        {social.map(({ icon, link }) => {
+        {social.map(({ home_main_social_icon_image, home_main_social_icon_link }) => {
           return (
             <SocialLink
               target="_blank"
               rel="noopener noreferrer"
-              link={link}
-              key={link}
+              link={home_main_social_icon_link}
+              key={home_main_social_icon_link}
             >
-              <img width="24" height="24" src={icon} alt="social icon" />
+              <img width="24" height="24" src={home_main_social_icon_image.url} alt="social icon" />
             </SocialLink>
           );
         })}

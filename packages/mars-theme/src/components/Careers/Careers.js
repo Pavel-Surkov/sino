@@ -1,5 +1,6 @@
 import Hero from "../constant/HeroSection";
 import Join from "./Join/Join";
+import Hr from "./Hr/Hr";
 import { connect, styled } from "frontity";
 
 import HeroImage from "../../assets/images/johan-taljaard-csrScXTXdug-unsplash.png";
@@ -9,6 +10,7 @@ const Careers = ({ state }) => {
     <PageWrapper>
       <Hero image={HeroImage} title="Careers" />
       <Join />
+      <Hr />
     </PageWrapper>
   );
 };

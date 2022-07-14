@@ -91,6 +91,7 @@ const PrimaryLink = styled(Link)`
   padding: 17px 24px;
   & span {
     ${font(24, 30)};
+    font-family: var(--font);
   }
   &:hover {
     background: var(--lightblue-300);
@@ -118,6 +119,7 @@ const Button = styled.button`
   padding: 17px 24px;
   & span {
     ${font(24, 30)};
+    font-family: var(--font);
   }
   &:hover {
     background: var(--lightblue-300);

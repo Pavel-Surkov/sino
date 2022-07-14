@@ -1,8 +1,8 @@
 import React from "react";
-import Container from "../constant/Container";
-import Title from "../constant/Title";
+import Container from "../../constant/Container";
+import Title from "../../constant/Title";
 import { connect, styled } from "frontity";
-import { font } from "../base/functions";
+import { font } from "../../base/functions";
 
 const History = () => {
   return (

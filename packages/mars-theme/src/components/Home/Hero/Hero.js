@@ -3,7 +3,6 @@ import { connect, styled, css } from "frontity";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { flex, font } from "../../base/functions";
-import Title from "../../constant/Title";
 import Container from "../../constant/Container";
 import Link from "../../constant/Link";
 import DecorativeLine from "../../constant/DecorativeLine";

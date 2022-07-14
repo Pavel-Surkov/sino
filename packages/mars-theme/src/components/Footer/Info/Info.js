@@ -1,8 +1,8 @@
 import React from "react";
-import IconBlock from "./IconBlock";
+import IconBlock from "../../constant/IconBlock";
 import TextLink from "../../constant/TextLink";
 import { styled } from "frontity";
-import { font } from "../../base/functions";
+import { font, flex } from "../../base/functions";
 
 import marker from "../../../assets/images/svg/Map-marker.svg";
 import message from "../../../assets/images/svg/Message_fill.svg";
@@ -41,6 +41,7 @@ const Info = () => {
 };
 
 const InfoWrapper = styled.div`
+  ${flex("column")};
   & h4 {
     margin: 0;
     ${font(18, 30)};

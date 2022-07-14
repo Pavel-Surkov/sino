@@ -1,14 +1,13 @@
 import React from "react";
 import DirectorsMain from "./DirectorsMain/DirectorsMain";
+import DirectorsSliders from "./DirectorsSliders/DirectorsSliders";
 import { connect, styled } from "frontity";
-import { font } from "../../base/functions";
 
-const Directors = ({ state }) => {
-  const { isMobile } = state.theme;
-
+const Directors = () => {
   return (
     <DirectorsElement>
       <DirectorsMain />
+      <DirectorsSliders />
     </DirectorsElement>
   );
 };

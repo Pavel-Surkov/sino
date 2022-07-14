@@ -42,8 +42,6 @@ const Timeline = ({ state }) => {
 
   const [is1400, setIs1400] = useState(false);
 
-  console.log(is1400, isMobile);
-
   useEffect(() => {
     if (window.innerWidth >= 1400) {
       setIs1400(true);

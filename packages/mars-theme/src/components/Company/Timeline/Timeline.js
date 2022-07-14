@@ -42,6 +42,8 @@ const Timeline = ({ state }) => {
 
   const [is1400, setIs1400] = useState(false);
 
+  console.log(is1400, isMobile);
+
   useEffect(() => {
     if (window.innerWidth >= 1400) {
       setIs1400(true);
@@ -191,6 +193,9 @@ const Date = styled.h5`
   ${font(24, 36)};
   letter-spacing: 0.04em;
   font-weight: 500;
+  @media screen and (max-width: 991px) {
+    ${font(18, 36)};
+  }
 `;
 
 const SwiperContainer = styled.div`
@@ -238,17 +243,26 @@ const SwiperContainer = styled.div`
       }
     }
   }
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1400px) {
     padding-left: var(--container-padding-lg);
   }
   @media screen and (max-width: 991px) {
     padding-left: var(--container-padding-md);
+    & .swiper {
+      &-slide {
+        padding-right: 40px;
+        max-width: 221px;
+      }
+    }
   }
   @media screen and (max-width: 768px) {
     padding-left: var(--container-padding-xs);
   }
   @media screen and (max-width: 576px) {
     padding-left: 24px;
+    &::after {
+      content: none;
+    }
   }
 `;
 
@@ -256,6 +270,9 @@ const SwiperNav = styled.div`
   ${flex()};
   margin-left: auto;
   margin-top: 20px;
+  @media screen and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 const LineWrapper = styled.div`
@@ -267,6 +284,21 @@ const LineWrapper = styled.div`
   & svg {
     width: inherit;
   }
+  @media screen and (max-width: 991px) {
+    max-width: none;
+    text-align: left;
+    margin-top: 13px;
+    margin-left: 30px;
+    & svg {
+      width: auto;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    max-width: calc(100% - 124px - 30px);
+    & svg {
+      max-width: 100%;
+    }
+  }
 `;
 
 const TimelineContainer = styled(Container)`
@@ -275,6 +307,7 @@ const TimelineContainer = styled(Container)`
 
 const TimelineSection = styled.section`
   padding-top: 96px;
+  overflow: hidden;
 `;
 
 export default connect(Timeline);

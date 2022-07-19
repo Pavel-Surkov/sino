@@ -10,7 +10,7 @@ import hr2x from "../../../assets/images/alex-starnes-PK_t0Lrh7MM@2x.png";
 import message from "../../../assets/images/svg/Message.svg";
 import phone from "../../../assets/images/svg/Phone.svg";
 
-const Hr = () => {
+const Hr = ({post}) => {
   return (
     <section
       css={css`
@@ -26,24 +26,24 @@ const Hr = () => {
       <Container>
         <Content>
           <ImageWrapper>
-            <img src={hr} srcSet={`${hr} 1x, ${hr2x ? hr2x : hr} 2x`} alt="" />
+            <img src={post.acf.hr_image_1x.url} srcSet={`${post.acf.hr_image_1x.url} 1x, ${post.acf.hr_image_2x.url ? post.acf.hr_image_2x.url : post.acf.hr_image_1x.url} 2x`} alt="" />
           </ImageWrapper>
           <div
             css={css`
               ${flex("column")}
             `}
           >
-            <ContactTitle>Contact HR Department:</ContactTitle>
+            <ContactTitle>{post.acf.hr_title}:</ContactTitle>
             <IconBlock icon={message} marginBottom={8}>
-              <TextLink link="mailto:hr@sinologistics.co.th">
-                hr@sinologistics.co.th
+              <TextLink link={`mailto:${post.acf.hr_mail}`}>
+                {post.acf.hr_mail}
               </TextLink>
             </IconBlock>
             <IconBlock icon={phone} marginBottom={8}>
-              <TextLink link="tel:+662-687-0477">+66 2-687-0477</TextLink>
+              <TextLink link={`tel:${post.acf.hr_phone}`}>{post.acf.hr_phone}</TextLink>
             </IconBlock>
             <Ext>
-              <p>Ext.423</p>
+              <p>{post.acf.hr_ext}</p>
             </Ext>
           </div>
         </Content>

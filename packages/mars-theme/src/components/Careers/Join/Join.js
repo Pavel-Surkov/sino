@@ -5,7 +5,7 @@ import PositionsList from "./PositionsList";
 import { styled, connect } from "frontity";
 import { font } from "../../base/functions";
 
-const JoinElement = ({ state }) => {
+const JoinElement = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
@@ -18,19 +18,15 @@ const JoinElement = ({ state }) => {
             maxWidth={698}
             marginBottom={isMobile ? 16 : 24}
           >
-            Do you want to join our industry-leading team at Sino Logistics
-            Corporation?
+            {post.acf.join_team_title}
           </Title>
           <Subtitle>
             <p>
-              We are always looking for creative and dynamic people to join our
-              team of talented employees. If you think you have what it takes to
-              make a difference in the world of logistics, then we would love to
-              hear from you!
+              {post.acf.join_team_text}
             </p>
           </Subtitle>
         </Text>
-        <PositionsList />
+        <PositionsList post={post} />
       </Container>
     </Join>
   );

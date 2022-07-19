@@ -3,19 +3,23 @@ import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import InfoBlock from "./InfoBlock";
 import DecorativeLine from "../../constant/DecorativeLine";
-import { connect, styled } from "frontity";
+import { css, connect, styled } from "frontity";
 
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 
 import bg from "../../../assets/images/tangchi-lee-C4agU0uKw08-unsplash.jpg";
 
-const VisionAndMission = ({ state }) => {
+const VisionAndMission = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
     <Section>
-      <Background>
+      <Background
+        css={css`
+          background: url(${post.acf.company_vision_and_mission_background.url}) no-repeat 50% / cover;
+        `}
+      >
         <VisionContainer>
           <LineWrapper>
             <DecorativeLine
@@ -27,7 +31,7 @@ const VisionAndMission = ({ state }) => {
           {isMobile ? (
             <ContentWrapper>
               <Title size="m" color="white" marginBottom={24}>
-                Our Vision & Mission
+                {post.acf.company_vision_and_mission_title}
               </Title>
               <Swiper
                 modules={[Pagination]}
@@ -35,35 +39,17 @@ const VisionAndMission = ({ state }) => {
                 pagination={{ clickable: true }}
               >
                 <SwiperSlide>
-                  <InfoBlock title="Our Vision">
-                    <p>
-                      Sustainable growth is at the core of our business ethos,
-                      and we aim to develop Sino Logistics Corporation to help
-                      our customers on both a local and international level.
-                    </p>
-                    <p>
-                      Whether it be supply chain consultancy, cargo
-                      consolidation, or any of our first-class logistics
-                      services, we want to ensure that your logistics needs are
-                      met with satisfaction.
-                    </p>
+                  <InfoBlock title={post.acf.company_vision_title}>
+                    {post.acf.company_vision_text.map((paragraph, i) => {
+                      return <p key={'company_vision_text_' + i}>{paragraph.company_vision_paragraph}</p>;
+                    })}
                   </InfoBlock>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <InfoBlock title="Our Mission">
-                    <p>
-                      At Sino Logistics Corporation, we believe
-                      in professionalism, efficiency, and equality. Our passion
-                      for providing high-quality logistics services for our
-                      customers is paralleled by our willingness to cater to our
-                      staff’s development.
-                    </p>
-                    <p>
-                      Furthermore, by continuously responding to the
-                      ever-evolving market, we aspire to add value for our
-                      investors and bring about positive changes in the
-                      logistics industry.
-                    </p>
+                  <InfoBlock title={post.acf.company_mission_title}>
+                    {post.acf.company_mission_text.map((paragraph, i) => {
+                      return <p key={'company_mission_text_' + i}>{paragraph.company_mission_paragraph}</p>;
+                    })}
                   </InfoBlock>
                 </SwiperSlide>
               </Swiper>
@@ -71,35 +57,18 @@ const VisionAndMission = ({ state }) => {
           ) : (
             <ContentWrapper>
               <Title size="m" color="white" marginBottom={32}>
-                Our Vision & Mission
+                {post.acf.company_vision_and_mission_title}
               </Title>
               <Content>
-                <InfoBlock title="Our Vision">
-                  <p>
-                    Sustainable growth is at the core of our business ethos, and
-                    we aim to develop Sino Logistics Corporation to help our
-                    customers on both a local and international level.
-                  </p>
-                  <p>
-                    Whether it be supply chain consultancy, cargo consolidation,
-                    or any of our first-class logistics services, we want
-                    to ensure that your logistics needs are met with
-                    satisfaction.
-                  </p>
+                <InfoBlock title={post.acf.company_vision_title}>
+                  {post.acf.company_vision_text.map((paragraph, i) => {
+                    return <p key={'company_vision_text_' + i}>{paragraph.company_vision_paragraph}</p>;
+                  })}
                 </InfoBlock>
-                <InfoBlock title="Our Mission">
-                  <p>
-                    At Sino Logistics Corporation, we believe
-                    in professionalism, efficiency, and equality. Our passion
-                    for providing high-quality logistics services for our
-                    customers is paralleled by our willingness to cater to our
-                    staff’s development.
-                  </p>
-                  <p>
-                    Furthermore, by continuously responding to the ever-evolving
-                    market, we aspire to add value for our investors and bring
-                    about positive changes in the logistics industry.
-                  </p>
+                <InfoBlock title={post.acf.company_mission_title}>
+                  {post.acf.company_mission_text.map((paragraph, i) => {
+                    return <p key={'company_mission_text_' + i}>{paragraph.company_mission_paragraph}</p>;
+                  })}
                 </InfoBlock>
               </Content>
             </ContentWrapper>
@@ -178,7 +147,6 @@ const ContentWrapper = styled.div`
 
 const Background = styled.div`
   position: relative;
-  background: url(${bg}) no-repeat 50% / cover;
   @media screen and (max-width: 576px) {
     background-position: 55% 45%;
   }

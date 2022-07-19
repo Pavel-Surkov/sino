@@ -88,7 +88,7 @@ const Services = ({ state, actions, post }) => {
             >
               {services.map((service) => {
                 return (
-                  <SwiperSlide key={service.title}>
+                  <SwiperSlide key={service.title.rendered}>
                     <SwiperWrapper>
                       <Card
                         image={service.fimg_url}

@@ -4,39 +4,23 @@ import Title from "../../constant/Title";
 import { connect, styled } from "frontity";
 import { font } from "../../base/functions";
 
-const History = () => {
+const History = ({post}) => {
   return (
     <HistoryWrapper>
       <Container>
         <Title size="m" color="blue" marginBottom={24}>
-          History
+          {post.acf.company_history_title}
         </Title>
         <Content>
           <TextColumn>
-            <p>
-              The company was established in&nbsp;2010, operating
-              as&nbsp;a&nbsp;sea transportation freight forwarder, primarily
-              on&nbsp;the Thailand-America trading route, by&nbsp;Nanmanus
-              Witthayasakpant, Arachaporn Witthayasakpant, and Kavin Kritcharoen
-              under the name Sino Connections Logistics.
-            </p>
-            <p>
-              However, as&nbsp;the company expanded, it&nbsp;began introducing
-              new personalized services to&nbsp;accommodate the ever-changing
-              needs of&nbsp;its growing customer base. This culminated
-              in&nbsp;a&nbsp;corporate rebranding in&nbsp;2021, and now the
-              company operates as&nbsp;Sino Logistics Corporation (Sino
-              Logistics).
-            </p>
+            {post.acf.company_history_left_text.map((paragraph, i) => {
+              return <p key={'company_history_paragraph_left_' + i}>{paragraph.company_history_left_text_paragraph}</p>;
+            })}
           </TextColumn>
           <TextColumn>
-            <p>
-              By&nbsp;utilizing its comprehensive network and years
-              of&nbsp;accrued knowledge in&nbsp;a&nbsp;niche market, Sino
-              Logistics can provide its customers and vendors with world-class
-              transportation and contract logistics services that maintain
-              a&nbsp;personal touch.
-            </p>
+            {post.acf.company_history_right_text.map((paragraph, i) => {
+              return <p key={'company_history_paragraph_right_' + i}>{paragraph.company_history_right_text_paragraph}</p>;
+            })}
           </TextColumn>
         </Content>
       </Container>

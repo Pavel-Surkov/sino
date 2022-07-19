@@ -37,7 +37,7 @@ const timelineStages = [
   },
 ];
 
-const Timeline = ({ state }) => {
+const Timeline = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   const [is1400, setIs1400] = useState(false);
@@ -72,7 +72,7 @@ const Timeline = ({ state }) => {
     <TimelineSection>
       <TimelineContainer>
         <Title size="m" color="blue">
-          Timeline
+          {post.acf.company_timeline_title}Timeline
         </Title>
         <LineWrapper>
           {is1400 && (
@@ -162,12 +162,12 @@ const Timeline = ({ state }) => {
           }}
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {timelineStages.map((stage) => {
+          {post.acf.company_timeline_items.map((stage, i) => {
             return (
-              <SwiperSlide key={stage.id}>
-                <Date>{stage.date}</Date>
+              <SwiperSlide key={`stage-${i}`}>
+                <Date>{stage.company_timeline_item_date}</Date>
                 <Content>
-                  <p>{stage.content}</p>
+                  <p>{stage.company_timeline_item_text}</p>
                 </Content>
               </SwiperSlide>
             );

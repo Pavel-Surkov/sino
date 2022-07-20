@@ -33,7 +33,7 @@ const Subsidiaries = ({ state }) => {
               color="blue"
             />
           </BottomLineWrapper>
-          <Title size="m" color="white" marginBottom={32}>
+          <Title size="m" color="white" marginBottom={isMobile ? 24 : 32}>
             Subsidiaries
           </Title>
           <ContentBlock>
@@ -47,7 +47,11 @@ const Subsidiaries = ({ state }) => {
               pagination={{ clickable: true }}
             >
               <SwiperSlide>
-                <Title size="xs" color="white" marginBottom={24}>
+                <Title
+                  size="xs"
+                  color="white"
+                  marginBottom={isMobile ? 16 : 24}
+                >
                   Inter Connections Logistics
                 </Title>
                 <Text>
@@ -64,7 +68,11 @@ const Subsidiaries = ({ state }) => {
                 </Text>
               </SwiperSlide>
               <SwiperSlide>
-                <Title size="xs" color="white" marginBottom={24}>
+                <Title
+                  size="xs"
+                  color="white"
+                  marginBottom={isMobile ? 16 : 24}
+                >
                   Inter Connections Logistics
                 </Title>
                 <Text>
@@ -81,7 +89,11 @@ const Subsidiaries = ({ state }) => {
                 </Text>
               </SwiperSlide>
               <SwiperSlide>
-                <Title size="xs" color="white" marginBottom={24}>
+                <Title
+                  size="xs"
+                  color="white"
+                  marginBottom={isMobile ? 16 : 24}
+                >
                   Inter Connections Logistics
                 </Title>
                 <Text>
@@ -149,11 +161,23 @@ const VisitButton = styled.a`
   &:active {
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
+  @media screen and (max-width: 991px) {
+    z-index: 1;
+    margin: 0 auto;
+    width: calc(100% - 32px);
+    text-align: center;
+  }
 `;
 
 const VisitBlock = styled.div`
   margin-top: 32px;
   ${flex("row", "center")};
+  @media screen and (max-width: 991px) {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    width: 100%;
+  }
 `;
 
 const Text = styled.div`
@@ -166,6 +190,12 @@ const Text = styled.div`
       margin-bottom: 0;
     }
   }
+  @media screen and (max-width: 991px) {
+    & p {
+      font-weight: 300;
+      ${font(18, 30)};
+    }
+  }
 `;
 
 const ContentBlock = styled.div`
@@ -174,11 +204,48 @@ const ContentBlock = styled.div`
   background: rgba(169, 169, 169, 0.5);
   padding: 48px;
   max-width: 674px;
-  & .swiper-pagination {
+  position: relative;
+  & div.swiper-pagination {
     display: none;
+    z-index: 1;
+    bottom: 0;
+    & .swiper-pagination-bullet {
+      margin: 0;
+      margin-right: 32px;
+      width: 16px;
+      height: 16px;
+      background: transparent;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      position: relative;
+      opacity: 1;
+      &-active::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 6px;
+        height: 6px;
+        background: var(--white);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
   @media screen and (max-width: 991px) {
-    & .swiper-pagination {
+    padding: 24px 16px;
+    & h4 {
+      font-weight: 400;
+      ${font(24, 32)};
+      letter-spacing: 0.04em;
+    }
+    & .swiper {
+      padding-bottom: 134px;
+    }
+    & div.swiper-pagination {
       display: block;
     }
   }
@@ -188,6 +255,9 @@ const Content = styled.div`
   position: relative;
   padding-top: 195px;
   padding-bottom: 152px;
+  @media screen and (max-width: 991px) {
+    padding: 48px 0;
+  }
 `;
 
 const Section = styled.section`

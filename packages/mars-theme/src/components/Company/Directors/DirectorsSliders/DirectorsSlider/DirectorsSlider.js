@@ -25,7 +25,7 @@ const DirectorsSlider = ({
       {title && (
         <TitleWrapper>
           <h3>{title}</h3>
-          {!isMobile && swiperSlides > 5 && (
+          {!isMobile && swiperSlides > 6 && (
             <SwiperButtons
               prevClassName={btnPrev}
               nextClassName={btnNext}
@@ -47,8 +47,8 @@ const DirectorsSlider = ({
                   x2="47"
                   y2="7"
                   stroke="#4279B8"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                 />
                 <path
                   d="M56.9976 7.01098C56.9981 7.24422 56.9168 7.47026 56.7678 7.64986L51.7703 13.6394C51.6007 13.8432 51.3569 13.9714 51.0926 13.9958C50.8283 14.0201 50.5652 13.9386 50.3611 13.7692C50.157 13.5997 50.0286 13.3562 50.0042 13.0923C49.9799 12.8283 50.0615 12.5655 50.2311 12.3616L54.7088 7.01098L50.391 1.66034C50.308 1.55823 50.246 1.44074 50.2086 1.31463C50.1712 1.18851 50.1591 1.05625 50.173 0.925448C50.187 0.794649 50.2267 0.667888 50.2898 0.552453C50.3529 0.437018 50.4383 0.335185 50.541 0.252807C50.6437 0.161387 50.7643 0.0921497 50.8951 0.0494318C51.0259 0.00671382 51.1641 -0.00856214 51.3011 0.00455755C51.4381 0.0176782 51.5709 0.0589113 51.6912 0.125678C51.8115 0.192444 51.9167 0.283305 52.0002 0.392564L56.8277 6.38208C56.9532 6.56684 57.013 6.78827 56.9976 7.01098Z"
@@ -93,6 +93,10 @@ const DirectorsSlider = ({
     </Wrapper>
   );
 };
+
+const Arrow = styled.div`
+  transform: tranlateY(2px);
+`;
 
 const Name = styled.p`
   font-weight: 300;
@@ -149,8 +153,6 @@ const TitleWrapper = styled.div`
 
 const Wrapper = styled.div`
   margin-bottom: ${({ mb }) => (mb ? `${mb}px` : "0")};
-  & .swiper {
-  }
   & div.swiper-slide {
     max-width: 233px;
     border-radius: 20px;

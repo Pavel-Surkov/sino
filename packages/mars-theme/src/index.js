@@ -40,6 +40,7 @@ const marsTheme = {
       },
       isAllPositionsShown: false,
       selectedMenuItem: null,
+      isAllDirectorsShown: true,
       menu: [],
       menuUrl: "main-menu",
       /*menu: [
@@ -201,6 +202,9 @@ const marsTheme = {
       toggleLanguageDropdown: ({ state }) => {
         state.theme.languageDropdownOpened =
           !state.theme.languageDropdownOpened;
+      },
+      toggleDirectors: ({ state }) => {
+        state.theme.isAllDirectorsShown = !state.theme.isAllDirectorsShown;
       },
       handleNavDropdown:
         ({ state }) =>

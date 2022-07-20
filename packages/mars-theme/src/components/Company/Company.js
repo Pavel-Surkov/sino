@@ -4,9 +4,10 @@ import History from "./History/History";
 import Timeline from "./Timeline/Timeline";
 import VisionAndMission from "./VisionAndMission/VisionAndMission";
 import Directors from "./Directors/Directors";
+import Subsidiaries from "./Subsidiaries/Subsidiaries";
 import { connect, styled } from "frontity";
 
-import heroImg from "../../assets/images/company-about-hero.png";
+// import heroImg from "../../assets/images/company-about-hero.png";
 
 const Company = ({ state, post }) => {
   return (
@@ -19,6 +20,7 @@ const Company = ({ state, post }) => {
       <Timeline post={post} />
       <VisionAndMission post={post} />
       <Directors />
+      <Subsidiaries />
     </CompanyWrapper>
   );
 };

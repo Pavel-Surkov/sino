@@ -40,7 +40,7 @@ const marsTheme = {
       },
       isAllPositionsShown: false,
       selectedMenuItem: null,
-      isAllDirectorsShown: true,
+      isAllDirectorsShown: false,
       menu: [],
       menuUrl: "main-menu",
       /*menu: [

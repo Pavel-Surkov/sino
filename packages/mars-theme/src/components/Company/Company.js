@@ -3,6 +3,7 @@ import Hero from "../constant/HeroSection";
 import History from "./History/History";
 import Timeline from "./Timeline/Timeline";
 import VisionAndMission from "./VisionAndMission/VisionAndMission";
+import Directors from "./Directors/Directors";
 import { connect, styled } from "frontity";
 
 import heroImg from "../../assets/images/company-about-hero.png";

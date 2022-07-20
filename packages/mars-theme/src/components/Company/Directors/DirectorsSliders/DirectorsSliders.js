@@ -5,9 +5,11 @@ import Title from "../../../constant/Title";
 import { styled, connect } from "frontity";
 import { font, flex } from "../../../base/functions";
 
-import { boardSlides } from "./slides";
+import { boardSlides, executiveSlides } from "./slides";
 
-const DirectorsSliders = () => {
+const DirectorsSliders = ({ state }) => {
+  const { isMobile } = state.theme;
+
   return (
     <Wrapper>
       <SlidersContainer>
@@ -16,11 +18,38 @@ const DirectorsSliders = () => {
             <Title size="xs" color="blue">
               Board of Directors
             </Title>
-            <SwiperButtons
-              prevClassName={"directors-prev"}
-              nextClassName={"directores-next"}
-              spaceBetween={24}
-            />
+            {!isMobile && (
+              <SwiperButtons
+                prevClassName={"directors-prev"}
+                nextClassName={"directores-next"}
+                spaceBetween={24}
+              />
+            )}
+            {isMobile && (
+              <Arrow>
+                <svg
+                  width="57"
+                  height="14"
+                  viewBox="0 0 57 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="1"
+                    y1="7"
+                    x2="47"
+                    y2="7"
+                    stroke="#4279B8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M56.9976 7.01098C56.9981 7.24422 56.9168 7.47026 56.7678 7.64986L51.7703 13.6394C51.6007 13.8432 51.3569 13.9714 51.0926 13.9958C50.8283 14.0201 50.5652 13.9386 50.3611 13.7692C50.157 13.5997 50.0286 13.3562 50.0042 13.0923C49.9799 12.8283 50.0615 12.5655 50.2311 12.3616L54.7088 7.01098L50.391 1.66034C50.308 1.55823 50.246 1.44074 50.2086 1.31463C50.1712 1.18851 50.1591 1.05625 50.173 0.925448C50.187 0.794649 50.2267 0.667888 50.2898 0.552453C50.3529 0.437018 50.4383 0.335185 50.541 0.252807C50.6437 0.161387 50.7643 0.0921497 50.8951 0.0494318C51.0259 0.00671382 51.1641 -0.00856214 51.3011 0.00455755C51.4381 0.0176782 51.5709 0.0589113 51.6912 0.125678C51.8115 0.192444 51.9167 0.283305 52.0002 0.392564L56.8277 6.38208C56.9532 6.56684 57.013 6.78827 56.9976 7.01098Z"
+                    fill="#4279B8"
+                  />
+                </svg>
+              </Arrow>
+            )}
           </SliderTop>
           <DirectorsSlider
             slides={boardSlides}
@@ -28,10 +57,87 @@ const DirectorsSliders = () => {
             btnNext={"directores-next"}
           />
         </SliderRow>
+        <SliderRow>
+          <SliderTop>
+            <Title size="xs" color="blue">
+              Sub-Committee
+            </Title>
+            {isMobile && (
+              <Arrow>
+                <svg
+                  width="57"
+                  height="14"
+                  viewBox="0 0 57 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="1"
+                    y1="7"
+                    x2="47"
+                    y2="7"
+                    stroke="#4279B8"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M56.9976 7.01098C56.9981 7.24422 56.9168 7.47026 56.7678 7.64986L51.7703 13.6394C51.6007 13.8432 51.3569 13.9714 51.0926 13.9958C50.8283 14.0201 50.5652 13.9386 50.3611 13.7692C50.157 13.5997 50.0286 13.3562 50.0042 13.0923C49.9799 12.8283 50.0615 12.5655 50.2311 12.3616L54.7088 7.01098L50.391 1.66034C50.308 1.55823 50.246 1.44074 50.2086 1.31463C50.1712 1.18851 50.1591 1.05625 50.173 0.925448C50.187 0.794649 50.2267 0.667888 50.2898 0.552453C50.3529 0.437018 50.4383 0.335185 50.541 0.252807C50.6437 0.161387 50.7643 0.0921497 50.8951 0.0494318C51.0259 0.00671382 51.1641 -0.00856214 51.3011 0.00455755C51.4381 0.0176782 51.5709 0.0589113 51.6912 0.125678C51.8115 0.192444 51.9167 0.283305 52.0002 0.392564L56.8277 6.38208C56.9532 6.56684 57.013 6.78827 56.9976 7.01098Z"
+                    fill="#4279B8"
+                  />
+                </svg>
+              </Arrow>
+            )}
+          </SliderTop>
+          <DirectorsSlider
+            slides={executiveSlides}
+            btnPrev={"executive-prev"}
+            btnNext={"executive-next"}
+            title="Executive Committee"
+          />
+        </SliderRow>
+        <LoadWrapper>
+          <LoadMore onClick={}>
+            <span>Load More</span>
+            <div>
+              <svg
+                width="11"
+                height="6"
+                viewBox="0 0 11 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.49137 5.99797C5.30811 5.99836 5.13051 5.92865 4.98939 5.80093L0.283345 1.51743C0.12317 1.37202 0.022441 1.16306 0.00331894 0.936524C-0.0158031 0.70999 0.0482477 0.484437 0.181381 0.309484C0.314514 0.134532 0.505824 0.0245113 0.713224 0.00362514C0.920625 -0.017261 1.12713 0.0526984 1.2873 0.198113L5.49137 4.03613L9.69544 0.335186C9.77567 0.264023 9.86799 0.210881 9.96708 0.178813C10.0662 0.146745 10.1701 0.136385 10.2729 0.148326C10.3756 0.160268 10.4752 0.194276 10.5659 0.248397C10.6566 0.302518 10.7366 0.375685 10.8014 0.463691C10.8732 0.551778 10.9276 0.655118 10.9612 0.767238C10.9947 0.879357 11.0067 0.997839 10.9964 1.11526C10.9861 1.23268 10.9537 1.34652 10.9013 1.44962C10.8488 1.55273 10.7774 1.6429 10.6916 1.71447L5.98551 5.85233C5.84034 5.95986 5.66636 6.01114 5.49137 5.99797Z"
+                  fill="#4279B8"
+                />
+              </svg>
+            </div>
+          </LoadMore>
+        </LoadWrapper>
       </SlidersContainer>
     </Wrapper>
   );
 };
+
+const LoadMore = styled.button`
+  ${flex("row", "center")};
+  background: transparent;
+  border: none;
+  margin: 0 auto;
+  & span {
+    ${font(24, 32)};
+    color: var(--blue-600);
+  }
+  & div {
+    margin-left: 8px;
+  }
+`;
+
+const LoadWrapper = styled.div``;
+
+const Arrow = styled.div`
+  transform: tranlateY(2px);
+`;
 
 const SliderTop = styled.div`
   ${flex("row", "center", "space-between")};
@@ -51,7 +157,19 @@ const SliderTop = styled.div`
   }
 `;
 
-const SliderRow = styled.div``;
+const SliderRow = styled.div`
+  margin-bottom: 56px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  @media screen and (max-width: 991px) {
+    & h4 {
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      ${font(24, 32)};
+    }
+  }
+`;
 
 const SlidersContainer = styled.div`
   padding-left: var(--container-padding-xl);
@@ -69,6 +187,8 @@ const SlidersContainer = styled.div`
   }
 `;
 
+// const TitleWrapper = styled.div``;
+
 const Wrapper = styled.div`
   padding-top: 128px;
   @media screen and (max-width: 991px) {
@@ -76,4 +196,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default DirectorsSliders;
+export default connect(DirectorsSliders);

@@ -74,7 +74,7 @@ const Timeline = ({ state, post }) => {
     <TimelineSection>
       <TimelineContainer>
         <Title size="m" color="blue">
-          {post.acf.company_timeline_title}Timeline
+          {post.acf.company_timeline_title}
         </Title>
         <LineWrapper>
           {is1400 && (

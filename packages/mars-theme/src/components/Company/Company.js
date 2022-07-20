@@ -18,6 +18,7 @@ const Company = ({ state, post }) => {
       <History post={post} />
       <Timeline post={post} />
       <VisionAndMission post={post} />
+      <Directors />
     </CompanyWrapper>
   );
 };

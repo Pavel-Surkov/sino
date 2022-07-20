@@ -64,3 +64,41 @@ export const boardSlides = [
     position: "Chairman of the Board of Director/ Independence Director",
   },
 ];
+
+export const executiveSlides = [
+  {
+    id: 1,
+    image: Sathaporn,
+    image2x: Sathaporn2x,
+    name: "Dr. Sathaporn Opasanon",
+    position: "Chairman of the Board of Director/ Independence Director",
+  },
+  {
+    id: 2,
+    image: Sathaporn,
+    image2x: Sathaporn2x,
+    name: "Dr. Sathaporn Opasanon",
+    position: "Chairman of the Board of Director/ Independence Director",
+  },
+  {
+    id: 3,
+    image: Sathaporn,
+    image2x: Sathaporn2x,
+    name: "Dr. Sathaporn Opasanon",
+    position: "Chairman of the Board of Director/ Independence Director",
+  },
+  {
+    id: 4,
+    image: Sathaporn,
+    image2x: Sathaporn2x,
+    name: "Dr. Sathaporn Opasanon",
+    position: "Chairman of the Board of Director/ Independence Director",
+  },
+  {
+    id: 5,
+    image: Sathaporn,
+    image2x: Sathaporn2x,
+    name: "Dr. Sathaporn Opasanon",
+    position: "Chairman of the Board of Director/ Independence Director",
+  },
+];

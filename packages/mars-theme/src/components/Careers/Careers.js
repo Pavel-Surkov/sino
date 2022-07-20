@@ -5,12 +5,12 @@ import { connect, styled } from "frontity";
 
 import HeroImage from "../../assets/images/johan-taljaard-csrScXTXdug-unsplash.png";
 
-const Careers = ({ state }) => {
+const Careers = ({ state, post }) => {
   return (
     <PageWrapper>
-      <Hero image={HeroImage} title="Careers" />
-      <Join />
-      <Hr />
+      <Hero image={post.acf.careers_top_banner_background.url/*HeroImage*/} title={post.acf.careers_top_banner_title} />
+      <Join post={post} />
+      <Hr post={post} />
     </PageWrapper>
   );
 };

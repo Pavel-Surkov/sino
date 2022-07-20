@@ -47,39 +47,42 @@ const positions = [
   },
 ];
 
-const PositionsList = ({ state, actions }) => {
+const PositionsList = ({ state, actions, post }) => {
   const { isAllPositionsShown } = state.theme;
+
+  console.log(post.acf.join_team_vacancies);
 
   return (
     <List>
-      {positions.map((position, idx) => {
+      {post.acf.join_team_vacancies.map((position, idx) => {
+        console.log(position);
         if (!isAllPositionsShown && idx >= 3) {
           return null;
         }
 
         return (
-          <Position key={position.id}>
+          <Position key={`position-${idx}`}>
             <MainInfo>
-              <PositionTitle>{position.position}</PositionTitle>
-              <Company>{position.company}</Company>
-              <Category>{position.category}</Category>
+              <PositionTitle>{position.vacancy_name}</PositionTitle>
+              <Company>{position.vacancy_company}</Company>
+              <Category>{position.vacancy_category}</Category>
             </MainInfo>
             <Description>
               <Text>
-                <p>{position.description}</p>
+                <p>{position.vacancy_description}</p>
               </Text>
             </Description>
             <Additional>
               <Top>
                 <IconWrapper>
-                  <IconBlock icon={calendar}>{position.date}</IconBlock>
+                  <IconBlock icon={calendar}>{position.vacancy_date}</IconBlock>
                 </IconWrapper>
                 <IconWrapper>
-                  <IconBlock icon={marker}>{position.location}</IconBlock>
+                  <IconBlock icon={marker}>{position.vacancy_location}</IconBlock>
                 </IconWrapper>
               </Top>
               <LearnMore>
-                <ArrowLink content="Learn More" link="/" />
+                <ArrowLink content="Learn More" link={position.vacancy_link} />
               </LearnMore>
             </Additional>
           </Position>

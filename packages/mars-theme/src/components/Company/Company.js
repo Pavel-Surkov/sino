@@ -8,13 +8,23 @@ import { connect, styled } from "frontity";
 
 import heroImg from "../../assets/images/company-about-hero.png";
 
-const Company = ({ state }) => {
+const Company = ({ state, post }) => {
   return (
     <CompanyWrapper>
+<<<<<<< HEAD
       <Hero title="Our Company" image={heroImg} />
       <History />
       <Timeline />
       <VisionAndMission />
+=======
+      <Hero
+        title={post.acf.company_top_banner_title}
+        image={post.acf.company_top_banner_image.url}
+      />
+      <History post={post} />
+      <Timeline post={post} />
+      <VisionAndMission post={post} />
+>>>>>>> api
       <Directors />
     </CompanyWrapper>
   );

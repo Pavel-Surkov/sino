@@ -231,7 +231,21 @@ const LoadMore = styled.button`
   }
 `;
 
-const LoadWrapper = styled.div``;
+const LoadWrapper = styled.div`
+  padding-right: var(--container-padding-xl);
+  @media screen and (max-width: 1400px) {
+    padding-right: var(--container-padding-lg);
+  }
+  @media screen and (max-width: 991px) {
+    padding-right: var(--container-padding-md);
+  }
+  @media screen and (max-width: 768px) {
+    padding-right: var(--container-padding-xs);
+  }
+  @media screen and (max-width: 576px) {
+    padding-right: 24px;
+  }
+`;
 
 const Arrow = styled.div`
   transform: tranlateY(2px);

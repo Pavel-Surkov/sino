@@ -5,6 +5,7 @@ import Timeline from "./Timeline/Timeline";
 import VisionAndMission from "./VisionAndMission/VisionAndMission";
 import Directors from "./Directors/Directors";
 import Subsidiaries from "./Subsidiaries/Subsidiaries";
+import Responsibility from "./Responsibility/Responsibility";
 import { connect, styled } from "frontity";
 
 // import heroImg from "../../assets/images/company-about-hero.png";
@@ -21,6 +22,7 @@ const Company = ({ state, post }) => {
       <VisionAndMission post={post} />
       <Directors />
       <Subsidiaries />
+      <Responsibility />
     </CompanyWrapper>
   );
 };

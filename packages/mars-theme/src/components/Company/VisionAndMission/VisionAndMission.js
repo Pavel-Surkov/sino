@@ -29,6 +29,13 @@ const VisionAndMission = ({ state, post }) => {
               rotation="bottom"
             />
           </LineWrapper>
+          <BottomLineWrapper>
+            <DecorativeLine
+              heightInPercent={13.98058252}
+              color="blue"
+              rotation="bottom"
+            />
+          </BottomLineWrapper>
           {isMobile ? (
             <ContentWrapper>
               <Title size="m" color="white" marginBottom={24}>
@@ -98,6 +105,13 @@ const VisionAndMission = ({ state, post }) => {
 
 const VisionContainer = styled(Container)`
   position: relative;
+`;
+
+const BottomLineWrapper = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 100%;
 `;
 
 const LineWrapper = styled.div`

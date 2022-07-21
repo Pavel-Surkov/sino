@@ -44,6 +44,7 @@ const Subsidiaries = ({ state }) => {
                 prevEl: ".subsidiaries-prev",
                 nextEl: ".subsidiaries-next",
               }}
+              spaceBetween={24}
               pagination={{ clickable: true }}
             >
               <SwiperSlide>

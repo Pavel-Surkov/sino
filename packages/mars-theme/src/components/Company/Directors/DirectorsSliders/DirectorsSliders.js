@@ -222,6 +222,7 @@ const LoadMore = styled.button`
   background: transparent;
   border: none;
   margin: 0 auto;
+  cursor: pointer;
   & span {
     ${font(24, 32)};
     color: var(--blue-600);

@@ -3,6 +3,7 @@ import Hero from "../constant/HeroSection";
 import History from "./History/History";
 import Timeline from "./Timeline/Timeline";
 import VisionAndMission from "./VisionAndMission/VisionAndMission";
+import Organization from "./Organization/Organization";
 import Directors from "./Directors/Directors";
 import Subsidiaries from "./Subsidiaries/Subsidiaries";
 import Responsibility from "./Responsibility/Responsibility";
@@ -20,6 +21,7 @@ const Company = ({ state, post }) => {
       <History post={post} />
       <Timeline post={post} />
       <VisionAndMission post={post} />
+      <Organization />
       <Directors />
       <Subsidiaries />
       <Responsibility />

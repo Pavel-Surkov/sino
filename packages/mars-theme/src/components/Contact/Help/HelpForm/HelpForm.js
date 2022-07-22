@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../../constant/Input";
+import PrimaryBtn from "../../../constant/PrimaryButton";
+import SubmitModal from "../../../constant/SubmitModal";
 import { styled } from "frontity";
 import { font } from "../../../base/functions";
-import PrimaryBtn from "../../../constant/PrimaryButton";
+
 import { useFormik } from "formik";
 
 const HelpForm = () => {
+  const [modalOpened, setModalOpened] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       contactName: "",
@@ -16,82 +20,135 @@ const HelpForm = () => {
       natureOfEnquiry: "",
       message: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      setModalOpened(true);
+
+      console.log(values);
+    },
   });
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Wrapper>
-        <Label>
-          <span>Contact Name</span>
-          <Input
-            placeholder="ex. Jack Nilson"
-            name="contactName"
-            onChange={formik.handleChange}
-            value={formik.values.contactName}
-          />
-        </Label>
-        <Label>
-          <span>Company Name</span>
-          <Input
-            placeholder="ex. DHL"
-            name="companyName"
-            onChange={formik.handleChange}
-            value={formik.values.companyName}
-          />
-        </Label>
-        <Label>
-          <span>Contact Phone</span>
-          <Input
-            placeholder="ex. +1 562-985-4111"
-            name="contactPhone"
-            onChange={formik.handleChange}
-            value={formik.values.contactPhone}
-          />
-        </Label>
-        <Label>
-          <span>Country</span>
-          <Input
-            placeholder="-Select a Country-"
-            name="country"
-            onChange={formik.handleChange}
-            value={formik.values.country}
-          />
-        </Label>
-        <Label>
-          <span>Contact Email</span>
-          <Input
-            placeholder="ex. info@ux-mind.pro"
-            name="contactEmail"
-            onChange={formik.handleChange}
-            value={formik.values.contactEmail}
-          />
-        </Label>
-        <Label>
-          <span>Nature of Enquiry</span>
-          <Input
-            placeholder="ex. Cost Estimation"
-            name="natureOfEnquiry"
-            onChange={formik.handleChange}
-            value={formik.values.natureOfEnquiry}
-          />
-        </Label>
-        <LargeLabel>
-          <span>Your Message</span>
-          <Textarea
-            placeholder="Please describe how can we help you"
-            name="message"
-            onChange={formik.handleChange}
-            value={formik.values.message}
-          />
-        </LargeLabel>
-        <SubmitWrapper>
-          <PrimaryBtn type="submit" content="Submit" />
-        </SubmitWrapper>
-      </Wrapper>
-    </Form>
+    <>
+      <SubmitModal modalOpened={modalOpened} setModalOpened={setModalOpened}>
+        <ModalText>
+          <p>Your request has been sent. We will contact you soon.</p>
+        </ModalText>
+        <CloseButtonWrapper>
+          <CloseButton onClick={() => setModalOpened(false)}>Great</CloseButton>
+        </CloseButtonWrapper>
+      </SubmitModal>
+      <Form onSubmit={formik.handleSubmit}>
+        <Wrapper>
+          <Label>
+            <span>Contact Name</span>
+            <Input
+              placeholder="ex. Jack Nilson"
+              name="contactName"
+              onChange={formik.handleChange}
+              value={formik.values.contactName}
+            />
+          </Label>
+          <Label>
+            <span>Company Name</span>
+            <Input
+              placeholder="ex. DHL"
+              name="companyName"
+              onChange={formik.handleChange}
+              value={formik.values.companyName}
+            />
+          </Label>
+          <Label>
+            <span>Contact Phone</span>
+            <Input
+              placeholder="ex. +1 562-985-4111"
+              name="contactPhone"
+              onChange={formik.handleChange}
+              value={formik.values.contactPhone}
+            />
+          </Label>
+          <Label>
+            <span>Country</span>
+            <Input
+              placeholder="-Select a Country-"
+              name="country"
+              onChange={formik.handleChange}
+              value={formik.values.country}
+            />
+          </Label>
+          <Label>
+            <span>Contact Email</span>
+            <Input
+              placeholder="ex. info@ux-mind.pro"
+              name="contactEmail"
+              onChange={formik.handleChange}
+              value={formik.values.contactEmail}
+            />
+          </Label>
+          <Label>
+            <span>Nature of Enquiry</span>
+            <Input
+              placeholder="ex. Cost Estimation"
+              name="natureOfEnquiry"
+              onChange={formik.handleChange}
+              value={formik.values.natureOfEnquiry}
+            />
+          </Label>
+          <LargeLabel>
+            <span>Your Message</span>
+            <Textarea
+              placeholder="Please describe how can we help you"
+              name="message"
+              onChange={formik.handleChange}
+              value={formik.values.message}
+            />
+          </LargeLabel>
+          <SubmitWrapper>
+            <PrimaryBtn type="submit" content="Submit" />
+          </SubmitWrapper>
+        </Wrapper>
+      </Form>
+    </>
   );
 };
+
+const CloseButton = styled.button`
+  border: none;
+  margin-left: auto;
+  ${font(24, 30)};
+  color: var(--white);
+  padding: 0.83333em 1.25em;
+  background: var(--lightblue-250);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 325px;
+  cursor: pointer;
+  &:hover {
+    background: var(--lightblue-300);
+  }
+  &:active {
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  @media screen and (max-width: 991px) {
+    z-index: 1;
+    margin: 0 auto;
+    width: calc(100% - 32px);
+    text-align: center;
+  }
+`;
+
+const ModalText = styled.div`
+  margin-bottom: 40px;
+  text-align: center;
+  & p {
+    ${font(24, 30)};
+    margin: 0 auto;
+    max-width: 308px;
+  }
+`;
+
+const CloseButtonWrapper = styled.div`
+  text-align: center;
+`;
 
 const Textarea = styled.textarea`
   width: auto;
@@ -116,6 +173,16 @@ const Textarea = styled.textarea`
 
 const SubmitWrapper = styled.div`
   margin-top: 32px;
+  grid-column: 1 / 3;
+  & button {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 991px) {
+    margin-top: 16px;
+  }
+  @media screen and (max-width: 768px) {
+    grid-column: 1 / 2;
+  }
 `;
 
 const Label = styled.label`
@@ -129,6 +196,9 @@ const Label = styled.label`
 
 const LargeLabel = styled(Label)`
   grid-column: 1 / 3;
+  @media screen and (max-width: 768px) {
+    grid-column: 1 / 2;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -136,10 +206,16 @@ const Wrapper = styled.div`
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
   grid-row-gap: 16px;
   grid-column-gap: 24px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const Form = styled.form`
   margin-bottom: 91px;
+  @media screen and (max-width: 991px) {
+    margin-bottom: 64px;
+  }
 `;
 
 export default HelpForm;

@@ -56,6 +56,11 @@ const Quote = styled.div`
     ${font(18, 30)};
     margin-bottom: 16px;
   }
+  @media screen and (max-width: 991px) {
+    & p {
+      margin-bottom: 24px;
+    }
+  }
 `;
 
 const Note = styled.div`
@@ -63,6 +68,9 @@ const Note = styled.div`
   & p {
     ${font(18, 30)};
     margin: 0;
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 32px;
   }
 `;
 
@@ -74,6 +82,11 @@ const ImageBlock = styled.div`
     border-radius: 20px;
     max-width: 558px;
   }
+  @media screen and (max-width: 1440px) {
+    & img {
+      max-width: 100%;
+    }
+  }
   @media screen and (max-width: 991px) {
     display: none;
   }
@@ -84,6 +97,9 @@ const Wrapper = styled.div`
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
   grid-gap: 24px;
   align-items: center;
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const Section = styled.section`

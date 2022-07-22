@@ -8,7 +8,7 @@ const PrimaryInput = ({
   value,
   onChange,
   name,
-  minWidth,
+  maxWidth,
 }) => {
   return (
     <Input
@@ -17,7 +17,7 @@ const PrimaryInput = ({
       name={name}
       value={value}
       onChange={onChange}
-      minWidth={minWidth}
+      maxWidth={maxWidth}
     />
   );
 };
@@ -29,10 +29,10 @@ const Input = styled.input`
   color: var(--black);
   outline: none;
   width: 100%;
-  max-width: ${({ minWidth }) => `${minWidth}`};
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}` : "auto")};
   border-radius: 8px;
   border: 1px solid var(--blue-600);
-  padding: 0.444em 0.889em;
+  padding: 0.38889em 0.83333em;
   background: var(--white);
   position: relative;
   &::placeholder {

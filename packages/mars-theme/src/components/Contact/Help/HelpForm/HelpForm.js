@@ -3,40 +3,86 @@ import Input from "../../../constant/Input";
 import { styled } from "frontity";
 import { font } from "../../../base/functions";
 import PrimaryBtn from "../../../constant/PrimaryButton";
+import { useFormik } from "formik";
 
 const HelpForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      contactName: "",
+      companyName: "",
+      contactPhone: "",
+      country: "",
+      contactEmail: "",
+      natureOfEnquiry: "",
+      message: "",
+    },
+    onSubmit: (values) => console.log(values),
+  });
+
   return (
-    <Form>
+    <Form onSubmit={formik.handleSubmit}>
       <Wrapper>
         <Label>
           <span>Contact Name</span>
-          <Input placeholder="ex. Jack Nilson" name="contactName" />
+          <Input
+            placeholder="ex. Jack Nilson"
+            name="contactName"
+            onChange={formik.handleChange}
+            value={formik.values.contactName}
+          />
         </Label>
         <Label>
           <span>Company Name</span>
-          <Input placeholder="ex. DHL" name="companyName" />
+          <Input
+            placeholder="ex. DHL"
+            name="companyName"
+            onChange={formik.handleChange}
+            value={formik.values.companyName}
+          />
         </Label>
         <Label>
           <span>Contact Phone</span>
-          <Input placeholder="ex. +1 562-985-4111" name="contactPhone" />
+          <Input
+            placeholder="ex. +1 562-985-4111"
+            name="contactPhone"
+            onChange={formik.handleChange}
+            value={formik.values.contactPhone}
+          />
         </Label>
         <Label>
           <span>Country</span>
-          <Input placeholder="-Select a Country-" name="country" />
+          <Input
+            placeholder="-Select a Country-"
+            name="country"
+            onChange={formik.handleChange}
+            value={formik.values.country}
+          />
         </Label>
         <Label>
           <span>Contact Email</span>
-          <Input placeholder="ex. info@ux-mind.pro" name="contactEmail" />
+          <Input
+            placeholder="ex. info@ux-mind.pro"
+            name="contactEmail"
+            onChange={formik.handleChange}
+            value={formik.values.contactEmail}
+          />
         </Label>
         <Label>
           <span>Nature of Enquiry</span>
-          <Input placeholder="ex. Cost Estimation" name="natureOfEnquiry" />
+          <Input
+            placeholder="ex. Cost Estimation"
+            name="natureOfEnquiry"
+            onChange={formik.handleChange}
+            value={formik.values.natureOfEnquiry}
+          />
         </Label>
         <LargeLabel>
           <span>Your Message</span>
           <Textarea
             placeholder="Please describe how can we help you"
             name="message"
+            onChange={formik.handleChange}
+            value={formik.values.message}
           />
         </LargeLabel>
         <SubmitWrapper>

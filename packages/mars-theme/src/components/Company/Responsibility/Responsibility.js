@@ -4,11 +4,12 @@ import Title from "../../constant/Title";
 import ImageSection from "../../constant/ImageSection";
 import { connect, styled } from "frontity";
 import { font } from "../../base/functions";
+import parse from "html-react-parser";
 
 import buisnessEthics from "../../../assets/images/business-ethics-02.jpg";
 import buisnessEthics2x from "../../../assets/images/business-ethics-02@2x.jpg";
 
-const responsibilityList = [
+/*const responsibilityList = [
   {
     id: 1,
     image: buisnessEthics,
@@ -59,33 +60,36 @@ const responsibilityList = [
       "Accordingly, we strive for equity and inclusion for all our staff and regularly review our business, employment, and human rights practices and policies to eliminate inequities and biases.",
     ],
   },
-];
+];*/
 
-const Responsibility = ({ state }) => {
+const Responsibility = ({ state, post }) => {
+  const responsibilityList = post.acf.company_responsibility_items;
   return (
     <Section>
       <Container>
         <TitleWrapper>
           <Title size="m" color="blue">
-            Corporate Responsibility
+            {parse(post.acf.company_responsibility_title)}
           </Title>
         </TitleWrapper>
         <Wrapper>
           {responsibilityList.map((item, idx) => (
             <ImageSection
-              title={item.title}
-              image={item.image}
-              image2x={item.image2x}
+              title={item.company_responsibility_item_title}
+              image={item.company_responsibility_item_image_1x.url}
+              image2x={item.company_responsibility_item_image_2x.url}
               imagePosition={idx % 2 ? "right" : "left"}
               isCorporate={true}
-              key={item.id}
+              key={`responsibility-${idx}`}
             >
               <Title size="xs" color="blue" marginBottom={24}>
-                {item.title}
+                {item.company_responsibility_item_title}
               </Title>
               <Content>
-                {item.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {item.company_responsibility_item_text.map((paragraph) => (
+                  <p key={paragraph.company_responsibility_item_paragraph}>
+                    {parse(paragraph.company_responsibility_item_paragraph)}
+                  </p>
                 ))}
               </Content>
             </ImageSection>

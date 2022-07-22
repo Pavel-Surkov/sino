@@ -3,11 +3,11 @@ import DirectorsMain from "./DirectorsMain/DirectorsMain";
 import DirectorsSliders from "./DirectorsSliders/DirectorsSliders";
 import { connect, styled } from "frontity";
 
-const Directors = () => {
+const Directors = ({post}) => {
   return (
     <DirectorsElement>
-      <DirectorsMain />
-      <DirectorsSliders />
+      <DirectorsMain post={post} />
+      <DirectorsSliders post={post} />
     </DirectorsElement>
   );
 };

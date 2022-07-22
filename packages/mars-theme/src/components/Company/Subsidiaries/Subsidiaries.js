@@ -3,8 +3,9 @@ import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import SwiperButtons from "../../constant/SwiperButtons";
 import DecorativeLine from "../../constant/DecorativeLine";
-import { connect, styled } from "frontity";
+import { css, connect, styled } from "frontity";
 import { font, flex } from "../../base/functions";
+import parse from "html-react-parser";
 
 // import bg from "../../../assets/images/subsidaries-img.png";
 import bg2x from "../../../assets/images/subsidaries-img@2x.png";
@@ -12,11 +13,16 @@ import bg2x from "../../../assets/images/subsidaries-img@2x.png";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { Navigation, Pagination } from "swiper";
 
-const Subsidiaries = ({ state }) => {
+const Subsidiaries = ({ state, post }) => {
   const { isMobile } = state.theme;
+  const slides = post.acf.company_subsidiaries_slides;
 
   return (
-    <Section>
+    <Section
+      css={css`
+        background: url(${post.acf.company_subsidiaries_background.url}) no-repeat 50% / cover;
+      `}
+    >
       <Container>
         <Content>
           <TopLineWrapper>
@@ -34,7 +40,7 @@ const Subsidiaries = ({ state }) => {
             />
           </BottomLineWrapper>
           <Title size="m" color="white" marginBottom={isMobile ? 24 : 32}>
-            Subsidiaries
+            {parse(post.acf.company_subsidiaries_title)}
           </Title>
           <ContentBlock>
             <Swiper
@@ -47,69 +53,24 @@ const Subsidiaries = ({ state }) => {
               spaceBetween={24}
               pagination={{ clickable: true }}
             >
-              <SwiperSlide>
-                <Title
-                  size="xs"
-                  color="white"
-                  marginBottom={isMobile ? 16 : 24}
-                >
-                  Inter Connections Logistics
-                </Title>
-                <Text>
-                  <p>
-                    Inter Connections Logistics Co., Ltd was established
-                    in 2015 as a subsidiary of Sino Logistics Corporation. The
-                    company provides a full range of professional logistics
-                    services, such as ocean and air freight forwarding, trucking
-                    and land transportation, cross-border and customs
-                    formalities services, warehouse management, and consultancy
-                    for local SME customers who would like to export their goods
-                    or import goods from overseas to sell in Thailand.
-                  </p>
-                </Text>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Title
-                  size="xs"
-                  color="white"
-                  marginBottom={isMobile ? 16 : 24}
-                >
-                  Inter Connections Logistics
-                </Title>
-                <Text>
-                  <p>
-                    Inter Connections Logistics Co., Ltd was established
-                    in 2015 as a subsidiary of Sino Logistics Corporation. The
-                    company provides a full range of professional logistics
-                    services, such as ocean and air freight forwarding, trucking
-                    and land transportation, cross-border and customs
-                    formalities services, warehouse management, and consultancy
-                    for local SME customers who would like to export their goods
-                    or import goods from overseas to sell in Thailand.
-                  </p>
-                </Text>
-              </SwiperSlide>
-              <SwiperSlide>
-                <Title
-                  size="xs"
-                  color="white"
-                  marginBottom={isMobile ? 16 : 24}
-                >
-                  Inter Connections Logistics
-                </Title>
-                <Text>
-                  <p>
-                    Inter Connections Logistics Co., Ltd was established
-                    in 2015 as a subsidiary of Sino Logistics Corporation. The
-                    company provides a full range of professional logistics
-                    services, such as ocean and air freight forwarding, trucking
-                    and land transportation, cross-border and customs
-                    formalities services, warehouse management, and consultancy
-                    for local SME customers who would like to export their goods
-                    or import goods from overseas to sell in Thailand.
-                  </p>
-                </Text>
-              </SwiperSlide>
+              {slides.map((slide, index) => {
+                return (
+                  <SwiperSlide key={`subsidiaries-${index}`}>
+                    <Title
+                      size="xs"
+                      color="white"
+                      marginBottom={isMobile ? 16 : 24}
+                    >
+                      {parse(slide.company_subsidiaries_slide_title)}
+                    </Title>
+                    <Text>
+                      <p>
+                        {parse(slide.company_subsidiaries_slide_text)}
+                      </p>
+                    </Text>
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
             <VisitBlock>
               {!isMobile && (
@@ -121,11 +82,11 @@ const Subsidiaries = ({ state }) => {
                 />
               )}
               <VisitButton
-                href="https://github.com/"
+                href={post.acf.company_subsidiaries_button_link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit their website
+                {parse(post.acf.company_subsidiaries_button_text)}
               </VisitButton>
             </VisitBlock>
           </ContentBlock>
@@ -263,7 +224,6 @@ const Content = styled.div`
 
 const Section = styled.section`
   margin-top: 192px;
-  background: url(${bg2x}) no-repeat 50% / cover;
 `;
 
 export default connect(Subsidiaries);

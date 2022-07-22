@@ -3,33 +3,34 @@ import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import { styled, connect } from "frontity";
 import { font } from "../../base/functions";
+import parse from "html-react-parser";
 
 import buisness from "../../../assets/images/buisness-scheme.svg";
 import organization from "../../../assets/images/organization-scheme.svg";
 
-const Organization = ({ state }) => {
+const Organization = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
     <Section>
       <Container>
         <Title size="m" color="blue" marginBottom={isMobile ? 24 : 64}>
-          Organization & Business Structure
+          {parse(post.acf.company_organization_and_business_structure_title)}
         </Title>
         <Block>
           <Title size="xs" color="blue" marginBottom={32}>
-            Organization Structure
+            {parse(post.acf.company_organization_title)}
           </Title>
           <Scheme>
-            <img src={organization} alt="organization structure" />
+            <img src={post.acf.company_organization_image.url} alt="organization structure" />
           </Scheme>
         </Block>
         <Block>
           <Title size="xs" color="blue" marginBottom={32}>
-            Business Structure
+            {parse(post.acf.company_business_title)}
           </Title>
           <Scheme>
-            <img src={buisness} alt="buisness structure" />
+            <img src={post.acf.company_business_image.url} alt="buisness structure" />
           </Scheme>
         </Block>
       </Container>

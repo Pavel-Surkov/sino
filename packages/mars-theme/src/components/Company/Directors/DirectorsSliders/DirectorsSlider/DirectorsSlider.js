@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SwiperButtons from "../../../../constant/SwiperButtons";
 import { styled, useConnect, connect } from "frontity";
 import { font, flex } from "../../../../base/functions";
+import parse from "html-react-parser";
 
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { Navigation } from "swiper";
@@ -13,6 +14,7 @@ const DirectorsSlider = ({
   btnPrev,
   btnNext,
   isArrow,
+  prefix
 }) => {
   const { state } = useConnect();
 
@@ -70,21 +72,21 @@ const DirectorsSlider = ({
             : false
         }
       >
-        {slides.map((slide) => {
+        {slides.map((slide, index) => {
           return (
-            <SwiperSlide key={slide.id}>
+            <SwiperSlide key={`slide-${prefix}-${index}`}>
               <img
-                src={slide.image}
-                srcSet={`${slide.image} 1x, ${
-                  slide.image2x ? slide.image2x : slide.image
+                src={slide[`${prefix}_photo`].url}
+                srcSet={`${slide[`${prefix}_photo`].url} 1x, ${
+                  slide[`${prefix}_photo`].url ? slide[`${prefix}_photo`].url : slide[`${prefix}_photo`].url
                 } 2x`}
                 width="233"
                 height="274"
                 alt=""
               />
               <Info>
-                <Name>{slide.name}</Name>
-                <Position>{slide.position}</Position>
+                <Name>{slide[`${prefix}_name`]}</Name>
+                <Position>{slide[`${prefix}_post`]}</Position>
               </Info>
             </SwiperSlide>
           );

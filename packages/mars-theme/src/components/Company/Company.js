@@ -21,10 +21,10 @@ const Company = ({ state, post }) => {
       <History post={post} />
       <Timeline post={post} />
       <VisionAndMission post={post} />
-      <Organization />
-      <Directors />
-      <Subsidiaries />
-      <Responsibility />
+      <Organization post={post} />
+      <Directors post={post} />
+      <Subsidiaries post={post} />
+      <Responsibility post={post} />
     </CompanyWrapper>
   );
 };

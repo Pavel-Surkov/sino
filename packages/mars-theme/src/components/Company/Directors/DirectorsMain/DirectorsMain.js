@@ -3,38 +3,39 @@ import Title from "../../../constant/Title";
 import ImageSection from "../../../constant/ImageSection";
 import { styled, connect } from "frontity";
 import { font } from "../../../base/functions";
+import parse from "html-react-parser";
 
 import directors from "../../../../assets/images/directors/directors.png";
 import directors2x from "../../../../assets/images/directors/directors@2x.png";
 
-const DirectorsMain = ({ state }) => {
+const DirectorsMain = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
-    <ImageSection image={directors} image2x={directors2x} imagePosition="right">
+    <ImageSection
+      image={post.acf.company_directors_top_image_1x.url}
+      image2x={post.acf.company_directors_top_image_2x.url}
+      imagePosition="right"
+    >
       {isMobile ? (
         <>
           <Title size="m" color="blue" marginBottom={24}>
-            Board of Directors & Executives
+            {parse(post.acf.company_directors_top_title)}
           </Title>
           <Text>
             <p>
-              Our management team has a collective wealth of experience in the
-              logistics industry, allowing Sino Logistics to offer best-in-class
-              services that match our customers’ ever-changing needs.
+              {parse(post.acf.company_directors_top_text)}
             </p>
           </Text>
         </>
       ) : (
         <ContentWrapper>
           <Title size="m" color="blue" marginBottom={24}>
-            Board of Directors & Executives
+            {parse(post.acf.company_directors_top_title)}
           </Title>
           <Text>
             <p>
-              Our management team has a collective wealth of experience in the
-              logistics industry, allowing Sino Logistics to offer best-in-class
-              services that match our customers’ ever-changing needs.
+              {parse(post.acf.company_directors_top_text)}
             </p>
           </Text>
         </ContentWrapper>

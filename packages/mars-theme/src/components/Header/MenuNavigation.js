@@ -18,7 +18,7 @@ const Navigation = ({ state, actions }) => {
       <List>
         {navLinks &&
           navLinks.map((link) => {
-            console.log(link);
+            //console.log(link);
             if (link.child_items) {
               return (
                 <ListItem key={link.title}>

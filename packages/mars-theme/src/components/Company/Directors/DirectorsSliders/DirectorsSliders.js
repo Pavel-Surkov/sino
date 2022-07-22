@@ -4,11 +4,18 @@ import DirectorsSlider from "./DirectorsSlider/DirectorsSlider";
 import Title from "../../../constant/Title";
 import { styled, connect, css } from "frontity";
 import { font, flex } from "../../../base/functions";
+import parse from "html-react-parser";
 
 import { boardSlides, executiveSlides, auditSlides } from "./slides";
 
-const DirectorsSliders = ({ state, actions }) => {
+const DirectorsSliders = ({ state, actions, post }) => {
   const { isMobile, isAllDirectorsShown } = state.theme;
+  const boardSlides = post.acf.company_board_of_directors_content;
+  const executiveSlides = post.acf.company_executive_committee_content;
+  const auditSlides = post.acf.company_audit_committee_content;
+  const riskSlides = post.acf.company_risk_management_committee_content;
+  const nominationSlides = post.acf.company_nomination_and_remuneration_committee_content;
+  const executivesAndManagementSlides = post.acf.company_executives_and_management_team_content;
 
   return (
     <Wrapper>
@@ -16,7 +23,7 @@ const DirectorsSliders = ({ state, actions }) => {
         <SliderRow>
           <SliderTop>
             <Title size="xs" color="blue">
-              Board of Directors
+              {parse(post.acf.company_board_of_directors_title_1)}
             </Title>
             {!isMobile && (
               <SwiperButtons
@@ -55,12 +62,13 @@ const DirectorsSliders = ({ state, actions }) => {
             slides={boardSlides}
             btnPrev={"directors-prev"}
             btnNext={"directores-next"}
+            prefix={'board_of_directors'}
           />
         </SliderRow>
         <SliderRow>
           <SliderTop>
             <Title size="xs" color="blue">
-              Sub-Committee
+              {parse(post.acf.company_sub_committee_title)}
             </Title>
             {isMobile && (
               <Arrow>
@@ -103,7 +111,8 @@ const DirectorsSliders = ({ state, actions }) => {
               slides={executiveSlides}
               btnPrev={"executive-prev"}
               btnNext={"executive-next"}
-              title="Executive Committee"
+              prefix={'executive_committee'}
+              title={parse(post.acf.company_executive_committee_title)}
             />
           </div>
         </SliderRow>
@@ -140,32 +149,35 @@ const DirectorsSliders = ({ state, actions }) => {
                 slides={auditSlides}
                 btnPrev={"audit-prev"}
                 btnNext={"audit-next"}
-                title="Audit Committee"
+                prefix={'audit_committee'}
+                title={parse(post.acf.company_audit_committee_title)}
                 isArrow={true}
               />
             </SliderRow>
             <SliderRow data-row="low-margin">
               <DirectorsSlider
-                slides={auditSlides}
+                slides={riskSlides}
                 btnPrev={"risk-management-prev"}
                 btnNext={"risk-management-next"}
-                title="Risk Management Committee"
+                prefix={'risk_management_committee'}
+                title={parse(post.acf.company_risk_management_committee_title)}
                 isArrow={true}
               />
             </SliderRow>
             <SliderRow>
               <DirectorsSlider
-                slides={auditSlides}
+                slides={nominationSlides}
                 btnPrev={"nomination-remuneration-prev"}
                 btnNext={"nomination-remuneration-next"}
-                title="Nomination and Remuneration Committee"
+                prefix={'nomination_and_remuneration_committee'}
+                title={parse(post.acf.company_nomination_and_remuneration_committee_title)}
                 isArrow={true}
               />
             </SliderRow>
             <SliderRow>
               <SliderTop>
                 <Title size="xs" color="blue">
-                  Executives and Management Team
+                  {parse(post.acf.company_executives_and_management_team_title)}
                 </Title>
                 {!isMobile && (
                   <SwiperButtons
@@ -201,9 +213,10 @@ const DirectorsSliders = ({ state, actions }) => {
                 )}
               </SliderTop>
               <DirectorsSlider
-                slides={boardSlides}
+                slides={executivesAndManagementSlides}
                 btnPrev={"executives-management-prev"}
                 btnNext={"executives-management-next"}
+                prefix={'executives_and_management_team'}
               />
             </SliderRow>
           </HiddenSlides>

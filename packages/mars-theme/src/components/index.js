@@ -79,8 +79,7 @@ const FooterContainer = styled.div`
   left: 0;
 `;
 
-const HeadContainer = styled.div`
-  ${flex("column", "center")};
+const HeadContainer = styled.header`
   background: var(--white);
 `;
 

@@ -129,10 +129,20 @@ const CloseButton = styled.button`
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
   }
   @media screen and (max-width: 991px) {
-    z-index: 1;
-    margin: 0 auto;
-    width: calc(100% - 32px);
-    text-align: center;
+    color: var(--gray-menu);
+    background: var(--white);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    &:hover {
+      color: var(--gray-menu);
+      background: var(--white);
+      filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.15));
+    }
+    &:active {
+      color: var(--gray-menu);
+      background: var(--white);
+      box-shadow: 0px 0px 10px 0px #0000001a inset;
+      filter: none;
+    }
   }
 `;
 
@@ -143,6 +153,13 @@ const ModalText = styled.div`
     ${font(24, 30)};
     margin: 0 auto;
     max-width: 308px;
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 24px;
+    & p {
+      ${font(16, 30)};
+      max-width: 220px;
+    }
   }
 `;
 

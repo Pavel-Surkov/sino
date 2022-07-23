@@ -12,7 +12,7 @@ const MobileMenu = ({ state, actions }) => {
       <MenuContainer>
         <Input
           placeholder="Search Here"
-          minWidth="100%"
+          maxWidth="100%"
           value={searchValue}
           onChange={(evt) => actions.theme.handleSearchChange(evt.target.value)}
         />

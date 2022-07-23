@@ -5,9 +5,11 @@ import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Loading from "./Loading";
 import PageError from "./PageError";
-import { setSwiperCssBundle } from "./functions/functions";
+import {
+  setSwiperCssBundle,
+  setFancyAppCssBundle,
+} from "./functions/functions";
 import Router from "./Router";
-import { flex } from "./base/functions";
 
 import { globalStyles } from "./base/globalStyle";
 
@@ -24,10 +26,14 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
+  console.log(data.isArchive || data.isPostType ? "Yos!" : "Sad");
+
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
   useEffect(() => {
     setSwiperCssBundle();
+    setFancyAppCssBundle();
+
     actions.theme.handleSwiperStylesLoaded();
   }, []);
 
@@ -36,10 +42,16 @@ const Theme = ({ state, actions }) => {
       {/* Add some metatags to the <head> of the HTML. */}
       <Head>
         {/* <meta name="description" content={state.frontity.description} /> */}
-        {/* <link
+        {/* Swiper CDN */}
+        <link
           rel="stylesheet"
           href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-        /> */}
+        />
+        {/* FancyApp CDN */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/panzoom.css"
+        />
         <html lang="en" />
       </Head>
 
@@ -73,14 +85,13 @@ const Theme = ({ state, actions }) => {
 
 export default connect(Theme);
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   position: relative;
   bottom: 0;
   left: 0;
 `;
 
-const HeadContainer = styled.div`
-  ${flex("column", "center")};
+const HeadContainer = styled.header`
   background: var(--white);
 `;
 

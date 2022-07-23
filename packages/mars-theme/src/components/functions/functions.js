@@ -12,6 +12,21 @@ export function setSwiperCssBundle() {
   }
 }
 
+export function setFancyAppCssBundle() {
+  if (document) {
+    const link = document.createElement("link");
+
+    link.rel = "stylesheet";
+    link.href =
+      "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/panzoom.css";
+    link.async = true;
+
+    const head = document.querySelector("head");
+
+    head.append(link);
+  }
+}
+
 export function validateEmail(values) {
   const errors = {};
 

@@ -5,6 +5,7 @@ import Company from "./Company/Company";
 import Careers from "./Careers/Careers";
 import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
+import AirFreight from "./Services/AirFreight/AirFreight";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -26,6 +27,8 @@ const Router = ({ state }) => {
       return <Investor post={post} />;
     case "/company/":
       return <Company post={post} />;
+    case "/services/air-freight":
+      return <AirFreight post={post} />;
     default:
       return <PageError />;
   }

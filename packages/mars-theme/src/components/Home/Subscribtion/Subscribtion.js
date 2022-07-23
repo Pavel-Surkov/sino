@@ -22,7 +22,11 @@ const Subscribtion = ({ state, post }) => {
   });
 
   return (
-    <ImageSection image={post.acf.home_news_image_1x.url} image2x={post.acf.home_news_image_2x.url} last={true}>
+    <ImageSection
+      image={post.acf.home_news_image_1x.url}
+      image2x={post.acf.home_news_image_2x.url}
+      last={true}
+    >
       <Title
         style={isMobile ? { order: "-2" } : {}}
         size="s"
@@ -43,7 +47,7 @@ const Subscribtion = ({ state, post }) => {
       >
         <InputWrapper>
           <Input
-            minWidth={isMobile ? "100%" : "426px"}
+            maxWidth={isMobile ? "100%" : "426px"}
             type="email"
             name="email"
             placeholder={post.acf.home_news_input_placeholder}

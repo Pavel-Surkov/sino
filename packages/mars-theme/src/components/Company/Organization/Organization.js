@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import { styled, connect } from "frontity";
 import { font } from "../../base/functions";
+import { Panzoom as NativePanzoom } from "@fancyapps/ui/dist/panzoom.esm";
+import { Controls } from "@fancyapps/ui/dist/panzoom.controls.esm";
 
 import buisness from "../../../assets/images/buisness-scheme.svg";
 import organization from "../../../assets/images/organization-scheme.svg";
 
 const Organization = ({ state }) => {
   const { isMobile } = state.theme;
+
+  const organizationPanzoom = useRef(null);
+  const businessPanzoom = useRef(null);
+
+  useEffect(() => {
+    const organizationInstance = new NativePanzoom(
+      organizationPanzoom.current,
+      {
+        panOnlyZoomed: true,
+      }
+    );
+
+    const businessInstance = new NativePanzoom(businessPanzoom.current, {
+      panOnlyZoomed: true,
+    });
+
+    return () => {
+      organizationInstance.destroy();
+      businessInstance.destroy();
+    };
+  }, []);
 
   return (
     <Section>
@@ -20,16 +43,27 @@ const Organization = ({ state }) => {
           <Title size="xs" color="blue" marginBottom={32}>
             Organization Structure
           </Title>
-          <Scheme>
-            <img src={organization} alt="organization structure" />
+          <Scheme
+            ref={organizationPanzoom}
+            className="panzoom organization-panzoom"
+          >
+            <img
+              className="panzoom__content"
+              src={organization}
+              alt="organization structure"
+            />
           </Scheme>
         </Block>
         <Block>
           <Title size="xs" color="blue" marginBottom={32}>
             Business Structure
           </Title>
-          <Scheme>
-            <img src={buisness} alt="buisness structure" />
+          <Scheme ref={businessPanzoom} className="panzoom business-panzoom">
+            <img
+              className="panzoom__content"
+              src={buisness}
+              alt="buisness structure"
+            />
           </Scheme>
         </Block>
       </Container>
@@ -38,6 +72,11 @@ const Organization = ({ state }) => {
 };
 
 const Scheme = styled.div`
+  &.business-panzoom {
+    & .panzoom__viewport {
+      margin-left: 0;
+    }
+  }
   & img {
     max-width: 100%;
   }

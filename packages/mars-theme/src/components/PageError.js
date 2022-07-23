@@ -24,6 +24,8 @@ const Page404 = ({ state }) => {
   const title = "Oops! Something went wrong";
   const title404 = "Oops! 404";
 
+  console.log(data);
+
   return (
     <Container>
       <Title>{data.is404 ? title404 : title}</Title>

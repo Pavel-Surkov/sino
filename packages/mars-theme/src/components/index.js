@@ -26,6 +26,8 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
+  console.log(data.isArchive || data.isPostType ? "Yos!" : "Sad");
+
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
   useEffect(() => {
@@ -83,7 +85,7 @@ const Theme = ({ state, actions }) => {
 
 export default connect(Theme);
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   position: relative;
   bottom: 0;
   left: 0;

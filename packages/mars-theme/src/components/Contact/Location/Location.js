@@ -3,6 +3,7 @@ import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import IconBlock from "../../constant/IconBlock";
 import TextLink from "../../constant/TextLink";
+import Link from "../../constant/Link";
 import { connect, styled } from "frontity";
 import { flex, font } from "../../base/functions";
 
@@ -54,15 +55,21 @@ const Location = () => {
               </TextLink>
             </IconBlock>
           </LocationContent>
-          <Map>
-            <img
-              width="558"
-              height="340"
-              src={headOffice}
-              srcSet={`${headOffice} 1x, ${headOffice2x} 2x`}
-              alt=""
-            />
-          </Map>
+          <MapWrapper>
+            <Map
+              target="_blank"
+              rel="noopener noreferrer"
+              link="https://www.google.ru/maps/place/Sino+Logistics+Corporation+PLC./@13.6830774,100.5463951,19z/data=!4m9!1m2!2m1!1s1011+Supalai+Grand+Tower,+7th+Floor,+Unit+No.+05,+Rama+3+Road,+Chongnonsee,+Yannawa,+Bangkok,+10120,+Thailand!3m5!1s0x30e2a203b42ea30d:0xdecfdad1623f259c!8m2!3d13.6830778!4d100.5473342!15sCm0xMDExIFN1cGFsYWkgR3JhbmQgVG93ZXIsIDd0aCBGbG9vciwgVW5pdCBOby4gMDUsIFJhbWEgMyBSb2FkLCBDaG9uZ25vbnNlZSwgWWFubmF3YSwgQmFuZ2tvaywgMTAxMjAsIFRoYWlsYW5kIgOIAQGSARFsb2dpc3RpY3Nfc2VydmljZQ"
+            >
+              <img
+                width="558"
+                height="340"
+                src={headOffice}
+                srcSet={`${headOffice} 1x, ${headOffice2x} 2x`}
+                alt=""
+              />
+            </Map>
+          </MapWrapper>
         </LocationBlock>
         <LocationBlock>
           <LocationContent>
@@ -94,15 +101,21 @@ const Location = () => {
               </TextLink>
             </IconBlock>
           </LocationContent>
-          <Map>
-            <img
-              width="558"
-              height="340"
-              src={laemOffice}
-              srcSet={`${laemOffice} 1x, ${laemOffice2x} 2x`}
-              alt=""
-            />
-          </Map>
+          <MapWrapper>
+            <Map
+              target="_blank"
+              rel="noopener noreferrer"
+              link="https://www.google.ru/maps/place/SINO+Logistics+Corporation+PLC.+(Laem+Chabang+Branch)/@13.0870548,100.8774911,13z/data=!4m9!1m2!2m1!1ssino!3m5!1s0x3102b9d60807c5b7:0x94d15546f0664539!8m2!3d13.0870548!4d100.9294331!15sCgRzaW5vkgEQY29ycG9yYXRlX29mZmljZQ"
+            >
+              <img
+                width="558"
+                height="340"
+                src={laemOffice}
+                srcSet={`${laemOffice} 1x, ${laemOffice2x} 2x`}
+                alt=""
+              />
+            </Map>
+          </MapWrapper>
         </LocationBlock>
       </Container>
     </Section>
@@ -130,7 +143,10 @@ const LocationContent = styled.div`
   ${flex("column")};
 `;
 
-const Map = styled.div`
+const MapWrapper = styled.div``;
+
+const Map = styled(Link)`
+  display: inline-block;
   & img {
     max-width: 100%;
     height: auto;
@@ -142,7 +158,6 @@ const LocationBlock = styled.div`
   grid-template-columns: 432px 1fr;
   grid-gap: 24px;
   margin-bottom: 96px;
-  align-items: center;
   &:last-of-type {
     margin-bottom: 0;
   }

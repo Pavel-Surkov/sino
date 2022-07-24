@@ -27,7 +27,7 @@ const Router = ({ state }) => {
       return <Investor post={post} />;
     case "/company/":
       return <Company post={post} />;
-    case "/services/air-freight":
+    case "/services/air-freight/":
       return <AirFreight post={post} />;
     default:
       return <PageError />;

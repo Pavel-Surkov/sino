@@ -31,13 +31,15 @@ const benefitsInfo = {
   image2x: benefitsImg2x,
 };
 
-const Advantages = () => {
+const Advantages = ({ state }) => {
+  const { isMobile } = state.theme;
+
   return (
     <Section>
       <Container>
         <ContentBlock>
           <TitleWrapper className="title-wrapper">
-            <Title size="xs" color="blue" marginBottom={24}>
+            <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
               {offerInfo.title}
             </Title>
           </TitleWrapper>
@@ -56,7 +58,7 @@ const Advantages = () => {
         </ContentBlock>
         <ContentBlock data-image="left">
           <TitleWrapper className="title-wrapper">
-            <Title size="xs" color="blue" marginBottom={24}>
+            <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
               {benefitsInfo.title}
             </Title>
           </TitleWrapper>
@@ -83,6 +85,12 @@ const ImageWrapper = styled.div`
     border-radius: 20px;
     max-width: 100%;
   }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 24px;
+    & img {
+      width: 100%;
+    }
+  }
 `;
 
 const Text = styled.div`
@@ -96,10 +104,17 @@ const Text = styled.div`
       margin-bottom: 0;
     }
   }
+  @media screen and (max-width: 991px) {
+    order: 1;
+    max-width: none;
+  }
 `;
 
 const TitleWrapper = styled.div`
   grid-column: 1 / 3;
+  @media screen and (max-width: 991px) {
+    grid-column: 1 / 2;
+  }
 `;
 
 const ContentBlock = styled.div`
@@ -118,10 +133,25 @@ const ContentBlock = styled.div`
       grid-column: 2 / 3;
     }
   }
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 100%;
+    margin-bottom: 96px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    &[data-image="left"] {
+      & .title-wrapper {
+        grid-column: 1 / 2;
+      }
+    }
+  }
 `;
 
 const Section = styled.section`
   padding-top: 152px;
+  @media screen and (max-width: 991px) {
+    padding-top: 56px;
+  }
 `;
 
 export default connect(Advantages);

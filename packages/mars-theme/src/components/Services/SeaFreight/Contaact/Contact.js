@@ -6,7 +6,7 @@ import DecorativeLine from "../../../constant/DecorativeLine";
 import { flex } from "../../../base/functions";
 import { styled, connect } from "frontity";
 
-import bg from "../../../../assets/images/linkedin-sales-solutions-QgYvORVDdd8-unsplash.jpg";
+import bg from "../../../../assets/images/sea-freight-contact-bg.jpg";
 
 const Contact = ({ state }) => {
   const { isMobile } = state.theme;
@@ -26,9 +26,11 @@ const Contact = ({ state }) => {
           />
         </LineWrapper>
         <Content>
-          <Title size="xs" color="white" marginBottom={isMobile ? 32 : 48}>
-            Speak to Our Air Freight Expert
-          </Title>
+          <TitleWrapper>
+            <Title size="xs" color="white" marginBottom={isMobile ? 32 : 48}>
+              Speak to Our Sea Freight Expert
+            </Title>
+          </TitleWrapper>
           <ButtonsWrapper>
             <PrimaryBtn
               type="link"
@@ -48,6 +50,12 @@ const Contact = ({ state }) => {
     </Section>
   );
 };
+
+const TitleWrapper = styled.div`
+  @media screen and (max-width: 576px) {
+    max-width: 208px;
+  }
+`;
 
 const LineWrapper = styled.div`
   position: absolute;
@@ -72,7 +80,9 @@ const BgImage = styled.img`
     object-position: 75% 50%;
   }
   @media screen and (max-width: 576px) {
-    object-position: 63% 50%;
+    height: 110%;
+    object-position: 70% 0%;
+    transform: translateY(-55px);
   }
 `;
 

@@ -16,9 +16,9 @@ import { Pagination } from "swiper";
 
 const services = [
   {
-    title: "Sea Freight",
-    img: seaFreight,
-    link: "/services/sea-freight",
+    title: "Air Freight",
+    img: airFreight,
+    link: "/services/air-freight",
   },
   {
     title: "Ground Freight",

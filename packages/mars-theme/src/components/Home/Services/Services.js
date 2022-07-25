@@ -13,6 +13,7 @@ import seaFreight from "../../../assets/images/sea-freight-service.jpg";
 import groundFreight from "../../../assets/images/ground-freight-service.jpg";
 import warehouse from "../../../assets/images/warehousing-service.jpg";
 import valueAdded from "../../../assets/images/value-added-service.jpg";
+
 import parse from "html-react-parser";
 
 const services = [
@@ -140,30 +141,30 @@ const Content = styled.div`
     }
     & .swiper-pagination {
       bottom: 0;
-    }
-    & .swiper-pagination-bullet {
-      margin: 0;
-      margin-right: 32px;
-      width: 16px;
-      height: 16px;
-      background: transparent;
-      border: 2px solid var(--blue-600);
-      border-radius: 50%;
-      position: relative;
-      opacity: 1;
-      &-active::before {
-        content: "";
-        position: absolute;
+      & .swiper-pagination-bullet {
+        margin: 0;
+        margin-right: 24px;
+        width: 16px;
+        height: 16px;
+        background: transparent;
+        border: 2px solid var(--blue-600);
         border-radius: 50%;
-        width: 6px;
-        height: 6px;
-        background: var(--blue-600);
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-      &:last-child {
-        margin-right: 0;
+        position: relative;
+        opacity: 1;
+        &-active::before {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          width: 6px;
+          height: 6px;
+          background: var(--blue-600);
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
     & a {

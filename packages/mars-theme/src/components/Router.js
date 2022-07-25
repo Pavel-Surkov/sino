@@ -7,6 +7,7 @@ import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
 import AirFreight from "./Services/AirFreight/AirFreight";
 import SeaFreight from "./Services/SeaFreight/SeaFreight";
+import GroundFreight from "./Services/GroundFreight/GroundFreight";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -32,6 +33,8 @@ const Router = ({ state }) => {
       return <AirFreight post={post} />;
     case "/services/sea-freight/":
       return <SeaFreight post={post} />;
+    case "/services/ground-freight/":
+      return <GroundFreight post={post} />;
     default:
       return <PageError />;
   }

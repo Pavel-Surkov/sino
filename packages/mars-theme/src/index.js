@@ -38,6 +38,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      isAllNewsShown: false,
       isAllPositionsShown: false,
       selectedMenuItem: null,
       isAllDirectorsShown: false,
@@ -190,6 +191,12 @@ const marsTheme = {
         },
       handleSearchClear: ({ state }) => {
         state.theme.searchValue = "";
+      },
+      handleNewsShow: ({ state }) => {
+        state.theme.isAllNewsShown = true;
+      },
+      handleNewsToggle: ({ state }) => {
+        state.theme.isAllNewsShown = !state.theme.isAllNewsShown;
       },
       handlePositionsShow: ({ state }) => {
         state.theme.isAllPositionsShown = true;

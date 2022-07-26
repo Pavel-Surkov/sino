@@ -20,6 +20,11 @@ const newsList = [
     link: "/news-single/",
     image: lcl,
     image2x: lcl2x,
+    text: [
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
+      "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
+    ],
   },
   {
     id: 2,
@@ -29,6 +34,11 @@ const newsList = [
     link: "/news-single/",
     image: corporation,
     image2x: corporation2x,
+    text: [
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
+      "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
+    ],
   },
   {
     id: 3,
@@ -38,6 +48,11 @@ const newsList = [
     link: "/news-single/",
     image: corporation,
     image2x: corporation2x,
+    text: [
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
+      "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
+    ],
   },
   {
     id: 4,
@@ -47,6 +62,11 @@ const newsList = [
     link: "/news-single/",
     image: corporation,
     image2x: corporation2x,
+    text: [
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
+      "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
+    ],
   },
 ];
 

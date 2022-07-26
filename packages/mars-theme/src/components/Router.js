@@ -9,6 +9,7 @@ import AirFreight from "./Services/AirFreight/AirFreight";
 import SeaFreight from "./Services/SeaFreight/SeaFreight";
 import GroundFreight from "./Services/GroundFreight/GroundFreight";
 import News from "./News/News";
+import NewsSingle from "./News/NewsSingle/NewsSingle";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -38,6 +39,8 @@ const Router = ({ state }) => {
       return <GroundFreight post={post} />;
     case "/news/":
       return <News post={post} />;
+    case "/news-single/":
+      return <NewsSingle post={post} />;
     default:
       return <PageError />;
   }

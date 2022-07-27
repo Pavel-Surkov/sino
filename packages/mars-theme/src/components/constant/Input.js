@@ -23,7 +23,6 @@ const PrimaryInput = ({
 };
 
 const Input = styled.input`
-  width: auto;
   box-sizing: border-box;
   ${font(18, 24)}
   color: var(--black);

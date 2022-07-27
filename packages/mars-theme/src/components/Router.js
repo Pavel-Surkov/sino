@@ -9,6 +9,7 @@ import News from "./News/News";
 import NewsSingle from "./News/NewsSingle/NewsSingle";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./TermsOfUse/TermsOfUse";
+import RequestQuote from "./RequestQuote/RequestQuote";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -38,6 +39,8 @@ const Router = ({ state }) => {
       return <PrivacyPolicy post={post} />;
     case "/terms-of-use/":
       return <TermsOfUse post={post} />;
+    case "/request-a-quote/":
+      return <RequestQuote post={post} />;
     default:
       return <PageError />;
   }

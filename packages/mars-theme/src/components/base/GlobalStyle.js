@@ -88,6 +88,7 @@ export const globalStyles = css`
     font-size: 10px;
   }
   body {
+    overflow: overlay;
     margin: 0;
     font-family: var(--font);
     background: var(--white);

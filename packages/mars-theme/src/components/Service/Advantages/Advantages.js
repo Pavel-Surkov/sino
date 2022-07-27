@@ -12,17 +12,39 @@ const Advantages = ({ state, post }) => {
     <Section>
       <Container>
         <ContentBlock>
-          <TitleWrapper className="title-wrapper">
-            <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
-              {parse(post.acf.service_advantages_offer_title)}
-            </Title>
-          </TitleWrapper>
-          <Text className="text">
-            {post.acf.service_advantages_offer_text.map((p, i) => (
-              <p key={`offer-paragraph-${i}`}>{parse(p.service_advantages_paragraph)}</p>
-            ))}
-          </Text>
-          <ImageWrapper>
+          {!isMobile && (
+            <Content>
+              <TitleWrapper className="title-wrapper">
+                <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
+                  {parse(post.acf.service_advantages_offer_title)}
+                </Title>
+              </TitleWrapper>
+              <Text className="text">
+                {post.acf.service_advantages_offer_text.map((p, i) => (
+                  <p key={`offer-paragraph-${i}`}>
+                    {parse(p.service_advantages_paragraph)}
+                  </p>
+                ))}
+              </Text>
+            </Content>
+          )}
+          {isMobile && (
+            <>
+              <TitleWrapper className="title-wrapper">
+                <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
+                  {parse(post.acf.service_advantages_offer_title)}
+                </Title>
+              </TitleWrapper>
+              <Text className="text">
+                {post.acf.service_advantages_offer_text.map((p, i) => (
+                  <p key={`offer-paragraph-${i}`}>
+                    {parse(p.service_advantages_paragraph)}
+                  </p>
+                ))}
+              </Text>
+            </>
+          )}
+          <ImageWrapper className="img-wrapper">
             <img
               src={post.acf.service_advantages_offer_image_1x.url}
               srcSet={`${post.acf.service_advantages_offer_image_1x.url} 1x, ${post.acf.service_advantages_offer_image_2x.url} 2x`}
@@ -30,86 +52,121 @@ const Advantages = ({ state, post }) => {
             />
           </ImageWrapper>
         </ContentBlock>
-        {post.acf.service_advantages_has_info_block === true ?
-        <ContentBlock data-image="left">
-          <TitleWrapper className="title-wrapper">
-            <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 24}>
-              {parse(post.acf.service_advantages_info_title)}
+        {post.acf.service_advantages_has_info_block && (
+          <ContentBlock data-image="left">
+            {!isMobile && (
+              <Content>
+                <TitleWrapper className="title-wrapper">
+                  <Title
+                    size="xs"
+                    color="blue"
+                    marginBottom={isMobile ? 16 : 24}
+                  >
+                    {parse(post.acf.service_advantages_info_title)}
+                  </Title>
+                </TitleWrapper>
+                <Text className="text">
+                  {post.acf.service_advantages_info_text.map((p, i) => (
+                    <p key={`services-info-${i}`}>
+                      {parse(p.service_advantages_info_paragraph)}
+                    </p>
+                  ))}
+                </Text>
+              </Content>
+            )}
+            {isMobile && (
+              <>
+                <TitleWrapper className="title-wrapper">
+                  <Title
+                    size="xs"
+                    color="blue"
+                    marginBottom={isMobile ? 16 : 24}
+                  >
+                    {parse(post.acf.service_advantages_info_title)}
+                  </Title>
+                </TitleWrapper>
+                <Text className="text">
+                  {post.acf.service_advantages_info_text.map((p, i) => (
+                    <p key={`services-info-${i}`}>
+                      {parse(p.service_advantages_info_paragraph)}
+                    </p>
+                  ))}
+                </Text>
+              </>
+            )}
+            <ImageWrapper className="img-wrapper">
+              <img
+                src={post.acf.service_advantages_info_image_1x.url}
+                srcSet={`${post.acf.service_advantages_info_image_1x.url} 1x, ${post.acf.service_advantages_info_image_2x.url} 2x`}
+                alt=""
+              />
+            </ImageWrapper>
+          </ContentBlock>
+        )}
+        {post.acf.service_advantages_has_options_block && (
+          <OptionsBlock>
+            <Title size="xs" color="blue" marginBottom={isMobile ? 32 : 64}>
+              {parse(post.acf.service_advantages_options_title)}
             </Title>
-          </TitleWrapper>
-          <Text className="text">
-            {post.acf.service_advantages_info_text.map((p, i) => (
-              <p key={`services-info-${i}`}>{parse(p.service_advantages_info_paragraph)}</p>
-            ))}
-          </Text>
-          <ImageWrapper>
-            <img
-              src={post.acf.service_advantages_info_image_1x.url}
-              srcSet={`${post.acf.service_advantages_info_image_1x.url} 1x, ${post.acf.service_advantages_info_image_2x.url} 2x`}
-              alt=""
-            />
-          </ImageWrapper>
-        </ContentBlock>
-        : ''}
-        {post.acf.service_advantages_has_options_block === true ?
-        <OptionsBlock>
-          <Title size="xs" color="blue" marginBottom={isMobile ? 32 : 64}>
-            {parse(post.acf.service_advantages_options_title)}
-          </Title>
-          {post.acf.service_advantages_options_items.map((option, idx) => {
-            return (
-              <ContentBlock
-                content="options"
-                key={`service-option-${idx}`}
-                data-image={idx % 2 ? "left" : "right"}
-              >
-                {!isMobile && (
-                  <Content>
-                    <TitleWrapper className="title-wrapper">
-                      <Title
-                        size="xs"
-                        color="blue"
-                        marginBottom={isMobile ? 16 : 24}
-                      >
-                        {parse(option.service_advantages_option_title)}
-                      </Title>
-                    </TitleWrapper>
-                    <Text className="text">
-                      {option.service_advantages_option_text.map((p, i) => (
-                        <p key={`service-option-text-${idx}-${i}`}>{parse(p.service_advantages_option_paragraph)}</p>
-                      ))}
-                    </Text>
-                  </Content>
-                )}
-                {isMobile && (
-                  <>
-                    <TitleWrapper className="title-wrapper">
-                      <Title
-                        size="xs"
-                        color="blue"
-                        marginBottom={isMobile ? 16 : 24}
-                      >
-                        {parse(option.service_advantages_option_title)}
-                      </Title>
-                    </TitleWrapper>
-                    <Text className="text">
-                      {option.service_advantages_option_text.map((p, i) => (
-                        <p key={`service-option-text-${idx}-${i}`}>{parse(p.service_advantages_option_paragraph)}</p>
-                      ))}
-                    </Text>
-                  </>
-                )}
-                <ImageWrapper className="img-wrapper">
-                  <img
-                    src={option.service_advantages_option_image_1x.url}
-                    srcSet={`${option.service_advantages_option_image_1x.url} 1x, ${option.service_advantages_option_image_2x.url} 2x`}
-                    alt=""
-                  />
-                </ImageWrapper>
-              </ContentBlock>
-            );
-          })}
-        </OptionsBlock> : ''}
+            {post.acf.service_advantages_options_items.map((option, idx) => {
+              return (
+                <ContentBlock
+                  content="options"
+                  key={`service-option-${idx}`}
+                  data-image={idx % 2 ? "left" : "right"}
+                >
+                  {!isMobile && (
+                    <Content>
+                      <TitleWrapper className="title-wrapper">
+                        <Title
+                          size="xs"
+                          color="blue"
+                          marginBottom={isMobile ? 16 : 24}
+                        >
+                          {parse(option.service_advantages_option_title)}
+                        </Title>
+                      </TitleWrapper>
+                      <Text className="text">
+                        {option.service_advantages_option_text.map((p, i) => (
+                          <p key={`service-option-text-${idx}-${i}`}>
+                            {parse(p.service_advantages_option_paragraph)}
+                          </p>
+                        ))}
+                      </Text>
+                    </Content>
+                  )}
+                  {isMobile && (
+                    <>
+                      <TitleWrapper className="title-wrapper">
+                        <Title
+                          size="xs"
+                          color="blue"
+                          marginBottom={isMobile ? 16 : 24}
+                        >
+                          {parse(option.service_advantages_option_title)}
+                        </Title>
+                      </TitleWrapper>
+                      <Text className="text">
+                        {option.service_advantages_option_text.map((p, i) => (
+                          <p key={`service-option-text-${idx}-${i}`}>
+                            {parse(p.service_advantages_option_paragraph)}
+                          </p>
+                        ))}
+                      </Text>
+                    </>
+                  )}
+                  <ImageWrapper className="img-wrapper">
+                    <img
+                      src={option.service_advantages_option_image_1x.url}
+                      srcSet={`${option.service_advantages_option_image_1x.url} 1x, ${option.service_advantages_option_image_2x.url} 2x`}
+                      alt=""
+                    />
+                  </ImageWrapper>
+                </ContentBlock>
+              );
+            })}
+          </OptionsBlock>
+        )}
       </Container>
     </Section>
   );

@@ -7,14 +7,18 @@ import { flex } from "../../../base/functions";
 import { styled, connect } from "frontity";
 
 import bg from "../../../../assets/images/sea-freight-contact-bg.jpg";
+import bgMobile from "../../../../assets/images/sea-freight-contact-bg-mobile.jpg";
 
-const Contact = ({ state }) => {
+const Contact = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
     <Section>
       <BgWrapper>
-        <BgImage src={bg} alt="" />
+        <BgImage src={bg} alt="">
+          <source srcSet={bg} media="(min-width: 576px)" />
+          <img src={bgMobile} alt="" />
+        </BgImage>
         <DarkLayer />
       </BgWrapper>
       <ContactContainer>
@@ -72,17 +76,18 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const BgImage = styled.img`
+const BgImage = styled.picture`
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  @media screen and (max-width: 991px) {
-    object-position: 75% 50%;
+  & img {
+    object-fit: cover;
+    width: inherit;
+    height: inherit;
   }
-  @media screen and (max-width: 576px) {
-    height: 110%;
-    object-position: 70% 0%;
-    transform: translateY(-55px);
+  @media screen and (max-width: 991px) {
+    & img {
+      object-position: 75% 50%;
+    }
   }
 `;
 

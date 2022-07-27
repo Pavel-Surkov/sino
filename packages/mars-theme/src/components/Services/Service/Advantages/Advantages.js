@@ -70,7 +70,7 @@ const optionsList = [
   },
 ];
 
-const Advantages = ({ state }) => {
+const Advantages = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (

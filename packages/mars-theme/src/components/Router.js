@@ -8,6 +8,7 @@ import Investor from "./Investor/Investor";
 import News from "./News/News";
 import NewsSingle from "./News/NewsSingle/NewsSingle";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
+import TermsOfUse from "./TermsOfUse/TermsOfUse";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -35,6 +36,8 @@ const Router = ({ state }) => {
       return <NewsSingle post={post} />;
     case "/privacy-policy/":
       return <PrivacyPolicy post={post} />;
+    case "/terms-of-use/":
+      return <TermsOfUse post={post} />;
     default:
       return <PageError />;
   }

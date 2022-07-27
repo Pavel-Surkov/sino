@@ -17,7 +17,7 @@ const Content = styled.div`
     ${font(18, 30)};
     color: var(--black);
     margin: 0;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     &:last-child {
       margin-bottom: 0;
     }

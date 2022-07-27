@@ -7,6 +7,7 @@ import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
 import News from "./News/News";
 import NewsSingle from "./News/NewsSingle/NewsSingle";
+import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -32,6 +33,8 @@ const Router = ({ state }) => {
       return <News post={post} />;
     case "/news-single/":
       return <NewsSingle post={post} />;
+    case "/privacy-policy/":
+      return <PrivacyPolicy post={post} />;
     default:
       return <PageError />;
   }

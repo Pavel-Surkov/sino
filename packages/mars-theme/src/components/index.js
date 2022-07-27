@@ -10,6 +10,7 @@ import {
   setFancyAppCssBundle,
 } from "./functions/functions";
 import Router from "./Router";
+import Service from "./Service/Service";
 
 import { globalStyles } from "./base/globalStyle";
 
@@ -25,6 +26,9 @@ import { globalStyles } from "./base/globalStyle";
 const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+
+  console.log('data');
+  console.log(data);
 
   console.log(data.isArchive || data.isPostType ? "Yos!" : "Sad");
 
@@ -69,8 +73,8 @@ const Theme = ({ state, actions }) => {
       <Main>
         <Switch>
           <Loading when={data.isFetching} />
-          <Router when={data.isArchive || data.isPostType} />
-          {/* <Post when={data.isPostType} /> */}
+          <Router when={data.isPage} />
+          <Service when={data.isPostType && data.isServices} />
           <PageError when={data.isError} />
         </Switch>
       </Main>

@@ -5,9 +5,6 @@ import Company from "./Company/Company";
 import Careers from "./Careers/Careers";
 import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
-import AirFreight from "./Services/AirFreight/AirFreight";
-import SeaFreight from "./Services/SeaFreight/SeaFreight";
-import GroundFreight from "./Services/GroundFreight/GroundFreight";
 import News from "./News/News";
 import NewsSingle from "./News/NewsSingle/NewsSingle";
 import PageError from "./PageError";
@@ -31,12 +28,6 @@ const Router = ({ state }) => {
       return <Investor post={post} />;
     case "/company/":
       return <Company post={post} />;
-    case "/services/air-freight/":
-      return <AirFreight post={post} />;
-    case "/services/sea-freight/":
-      return <SeaFreight post={post} />;
-    case "/services/ground-freight/":
-      return <GroundFreight post={post} />;
     case "/news/":
       return <News post={post} />;
     case "/news-single/":

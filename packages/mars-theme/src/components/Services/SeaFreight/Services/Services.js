@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../../constant/Container";
 import Title from "../../../constant/Title";
 import Card from "../../../constant/Card";
@@ -40,6 +40,8 @@ const services = [
 const Services = ({ state }) => {
   const { isMobile } = state.theme;
 
+  const [swiper, setSwiper] = useState(null);
+
   return (
     <Section>
       <Container>
@@ -60,16 +62,19 @@ const Services = ({ state }) => {
             modules={[Pagination]}
             slidesPerView={1}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSwiper={(swiper) => setSwiper(swiper)}
             breakpoints={{
               1400: {
                 slidesPerView: 4,
+                // swiper && swiper.slides.length < 4 ? swiper.slides.length : 4,
               },
               991: {
                 slidesPerView: 3,
+                // swiper && swiper.slides.length < 3 ? swiper.slides.length : 3,
               },
               768: {
                 slidesPerView: 2,
+                // swiper && swiper.slides.length < 2 ? swiper.slides.length : 2,
               },
             }}
           >
@@ -107,7 +112,7 @@ const Content = styled.div`
     max-width: 110px;
   }
   & .swiper {
-    max-width: 100%;
+    width: 100%;
     padding-bottom: 56px;
     position: relative;
     border-radius: 20px;

@@ -38,6 +38,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      shareModalOpened: false,
       isAllNewsShown: false,
       isAllPositionsShown: false,
       selectedMenuItem: null,
@@ -192,6 +193,21 @@ const marsTheme = {
       handleSearchClear: ({ state }) => {
         state.theme.searchValue = "";
       },
+      handleShareModalOpen: ({ state }) => {
+        state.theme.shareModalOpened = true;
+      },
+      handleShareModalClose:
+        ({ state }) =>
+        (target) => {
+          const isShareModalClicked =
+            target.closest(".share-modal") || target.closest(".share-btn");
+
+          if (isShareModalClicked) {
+            return;
+          }
+
+          state.theme.shareModalOpened = false;
+        },
       handleNewsShow: ({ state }) => {
         state.theme.isAllNewsShown = true;
       },

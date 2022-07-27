@@ -1,13 +1,11 @@
 import React from "react";
-import Container from "../../../constant/Container";
-import Title from "../../../constant/Title";
-import PrimaryBtn from "../../../constant/PrimaryButton";
-import DecorativeLine from "../../../constant/DecorativeLine";
-import { flex } from "../../../base/functions";
+import Container from "../../constant/Container";
+import Title from "../../constant/Title";
+import PrimaryBtn from "../../constant/PrimaryButton";
+import DecorativeLine from "../../constant/DecorativeLine";
+import { flex } from "../../base/functions";
 import { styled, connect } from "frontity";
-
-import bg from "../../../../assets/images/sea-freight-contact-bg.jpg";
-import bgMobile from "../../../../assets/images/sea-freight-contact-bg-mobile.jpg";
+import parse from "html-react-parser";
 
 const Contact = ({ state, post }) => {
   const { isMobile } = state.theme;
@@ -15,9 +13,9 @@ const Contact = ({ state, post }) => {
   return (
     <Section>
       <BgWrapper>
-        <BgImage src={bg} alt="">
-          <source srcSet={bg} media="(min-width: 576px)" />
-          <img src={bgMobile} alt="" />
+        <BgImage src={post.acf.service_contact_background.url} alt="">
+          <source srcSet={post.acf.service_contact_background.url} media="(min-width: 576px)" />
+          <img src={post.acf.service_contact_background_mobile.url} alt="" />
         </BgImage>
         <DarkLayer />
       </BgWrapper>
@@ -32,21 +30,21 @@ const Contact = ({ state, post }) => {
         <Content>
           <TitleWrapper>
             <Title size="xs" color="white" marginBottom={isMobile ? 32 : 48}>
-              Speak to Our Sea Freight Expert
+              {parse(post.acf.service_contact_title)}
             </Title>
           </TitleWrapper>
           <ButtonsWrapper>
             <PrimaryBtn
               type="link"
-              link="/quote/"
+              link={post.acf.service_contact_button_1_link}
               maxWidth={"325px"}
-              content="Get a Quote"
+              content={parse(post.acf.service_contact_button_1_text)}
             />
             <PrimaryBtn
               type="link"
-              link="/contact/"
+              link={post.acf.service_contact_button_2_link}
               maxWidth={"325px"}
-              content="Contact Us"
+              content={parse(post.acf.service_contact_button_2_text)}
             />
           </ButtonsWrapper>
         </Content>

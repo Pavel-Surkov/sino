@@ -10,7 +10,7 @@ import {
   setFancyAppCssBundle,
 } from "./functions/functions";
 import Router from "./Router";
-import Service from "./Services/Service/Service";
+import Service from "./Service/Service";
 
 import { globalStyles } from "./base/globalStyle";
 

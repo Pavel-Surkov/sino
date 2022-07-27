@@ -1,56 +1,37 @@
-import React from "react";
-import Container from "../../../constant/Container";
-import Title from "../../../constant/Title";
-import Card from "../../../constant/Card";
+import React, { useState } from "react";
+import Container from "../../constant/Container";
+import Title from "../../constant/Title";
+import Card from "../../constant/Card";
 import { connect, styled } from "frontity";
-import { font } from "../../../base/functions";
-
-import airFreight from "../../../../assets/images/air-freight-service.jpg";
-import seaFreight from "../../../../assets/images/sea-freight-service.jpg";
-import groundFreight from "../../../../assets/images/ground-freight-service.jpg";
-import warehouse from "../../../../assets/images/warehousing-service.jpg";
-import valueAdded from "../../../../assets/images/value-added-service.jpg";
+import { font } from "../../base/functions";
+import parse from "html-react-parser";
 
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { Pagination } from "swiper";
 
-const services = [
-  {
-    title: "Air Freight",
-    img: airFreight,
-    link: "/services/air-freight",
-  },
-  {
-    title: "Ground Freight",
-    img: groundFreight,
-    link: "/services/ground-freight",
-  },
-  {
-    title: "Warehousing & Distribution",
-    img: warehouse,
-    link: "/services/warehousing&distribution",
-  },
-  {
-    title: "Value-Added Services",
-    img: valueAdded,
-    link: "/services/value-added",
-  },
-];
-
-const Services = ({ state }) => {
+const Services = ({ state, post }) => {
   const { isMobile } = state.theme;
+
+  const [swiper, setSwiper] = useState(null);
+  const _services = state.source.get(`/services/`).items;
+  const currentServices = [];
+  post.acf.other_services_items.map((item) => {
+    const currentService = _services.find((obj) => {
+      return item.other_services_item === obj.id;
+    });
+    currentServices.push(currentService);
+  });
 
   return (
     <Section>
       <Container>
         <TitleWrapper>
           <Title size="xs" color="blue" marginBottom={16}>
-            Discover our services
+            {parse(post.acf.other_services_title)}
           </Title>
           <Subtitle>
             <p>
-              We offer solutions that cover all major modes of transportation as
-              well as contract logistics services.
+              {parse(post.acf.other_services_subtitle)}
             </p>
           </Subtitle>
         </TitleWrapper>
@@ -60,27 +41,30 @@ const Services = ({ state }) => {
             modules={[Pagination]}
             slidesPerView={1}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSwiper={(swiper) => setSwiper(swiper)}
             breakpoints={{
               1400: {
                 slidesPerView: 4,
+                // swiper && swiper.slides.length < 4 ? swiper.slides.length : 4,
               },
               991: {
                 slidesPerView: 3,
+                // swiper && swiper.slides.length < 3 ? swiper.slides.length : 3,
               },
               768: {
                 slidesPerView: 2,
+                // swiper && swiper.slides.length < 2 ? swiper.slides.length : 2,
               },
             }}
           >
-            {services.map((service) => {
+            {currentServices.map((service, i) => {
               return (
-                <SwiperSlide key={service.title}>
+                <SwiperSlide key={`service-${i}`}>
                   <SwiperWrapper>
                     <Card
                       size="m"
-                      image={service.img}
-                      title={service.title}
+                      image={service.fimg_url}
+                      title={parse(service.title.rendered)}
                       link={service.link}
                     />
                   </SwiperWrapper>
@@ -107,7 +91,7 @@ const Content = styled.div`
     max-width: 110px;
   }
   & .swiper {
-    max-width: 100%;
+    width: 100%;
     padding-bottom: 56px;
     position: relative;
     border-radius: 20px;

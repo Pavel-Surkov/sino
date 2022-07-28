@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import AirDatepicker from "air-datepicker";
+import localeEn from "air-datepicker/locale/en";
 import Container from "../constant/Container";
 import Hero from "../constant/HeroSection";
 import PrimaryBtn from "../constant/PrimaryButton";
@@ -6,6 +8,7 @@ import Input from "../constant/Input";
 import Select from "../constant/Select";
 import { styled, connect } from "frontity";
 import { font } from "../base/functions";
+import { processDate } from "../functions/functions";
 
 import { useFormik } from "formik";
 
@@ -43,6 +46,22 @@ const RequestQuote = () => {
     },
     onSubmit: (values) => console.log(values),
   });
+
+  useEffect(() => {
+    new AirDatepicker("#products-datepicker", {
+      locale: localeEn,
+      dateFormat(date) {
+        const dateString = processDate(date);
+
+        return dateString;
+      },
+      onSelect({ date }) {
+        const value = processDate(date);
+
+        formik.setFieldValue("productsReadyToExport", value);
+      },
+    });
+  }, []);
 
   return (
     <PageWrapper>
@@ -124,6 +143,16 @@ const RequestQuote = () => {
                 name="contactPhone"
                 onChange={formik.handleChange}
                 value={formik.values.contactPhone}
+              />
+            </Label>
+            <Label>
+              <span>When will the products be ready to be exported</span>
+              <Input
+                id="products-datepicker"
+                placeholder="2022-01-01"
+                name="productsReadyToExport"
+                value={formik.values.productsReadyToExport}
+                onChange={formik.handleChange}
               />
             </Label>
             <Label>

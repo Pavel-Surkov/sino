@@ -11,9 +11,13 @@ const PrimaryInput = ({
   name,
   maxWidth,
   disabled,
+  className,
+  id,
 }) => {
   return (
     <Input
+      id={id || ""}
+      className={className || ""}
       type={type ? type : "text"}
       placeholder={placeholder}
       name={name}
@@ -32,7 +36,7 @@ const Input = styled.input`
   color: var(--black);
   outline: none;
   width: 100%;
-  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}` : "auto")};
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}` : "none")};
   border-radius: 8px;
   border: 1px solid var(--blue-600);
   padding: 0.38889em 0.83333em;

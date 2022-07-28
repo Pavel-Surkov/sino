@@ -24,6 +24,7 @@
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.4.4",
     "@frontity/wp-source": "^1.11.7",
+    "air-datepicker": "^3.2.0",
     "formik": "^2.2.9",
     "frontity": "^1.17.2",
     "html-react-parser": "^3.0.1",

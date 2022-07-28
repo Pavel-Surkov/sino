@@ -9,6 +9,7 @@ import {
   setSwiperCssBundle,
   setFancyAppCssBundle,
   setSimplebarBundle,
+  setDatepickerBundle,
 } from "./functions/functions";
 import Router from "./Router";
 import Service from "./Service/Service";
@@ -37,6 +38,7 @@ const Theme = ({ state, actions }) => {
     setSwiperCssBundle();
     setFancyAppCssBundle();
     setSimplebarBundle();
+    setDatepickerBundle();
 
     actions.theme.handleSwiperStylesLoaded();
   }, []);
@@ -46,6 +48,11 @@ const Theme = ({ state, actions }) => {
       {/* Add some metatags to the <head> of the HTML. */}
       <Head>
         {/* <meta name="description" content={state.frontity.description} /> */}
+        {/* Air Datepicker */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/air-datepicker@3.2.0/air-datepicker.css"
+        />
         {/* Scrollbar CDN */}
         <link
           rel="stylesheet"

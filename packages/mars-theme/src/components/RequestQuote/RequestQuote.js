@@ -12,24 +12,33 @@ import { useFormik } from "formik";
 import poster from "../../assets/images/quote-poster.png";
 
 const modeValues = [
-  "mode 1",
-  "mode 2",
-  "mode 3",
-  "mode 4",
-  "mode 5",
-  "mode 6",
-  "mode 7",
-  "mode 8",
-  "mode 9",
-  "mode 10",
+  "value 1",
+  "value 2",
+  "value 3",
+  "value 4",
+  "value 5",
+  "value 6",
+  "value 7",
+  "value 8",
+  "value 9",
+  "value 10",
 ];
 
 const RequestQuote = () => {
-  const [isModeDropOpened, setIsModeDropOpened] = useState(true);
+  const [isModeDropOpened, setIsModeDropOpened] = useState(false);
+  const [isOriginDropOpened, setIsOriginDropOpened] = useState(false);
+  const [isDestinationDropOpened, setIsDestinationDropOpened] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       mode: "",
+      companyName: "",
+      origin: "",
+      contactName: "",
+      destination: "",
+      contactPhone: "",
+      productsReadyToExport: "",
+      contactEmail: "",
       message: "",
     },
     onSubmit: (values) => console.log(values),
@@ -39,7 +48,7 @@ const RequestQuote = () => {
     <PageWrapper>
       <Hero image={poster} title="Request a Quote" />
       <Section>
-        <Container>
+        <RequestContainer>
           <Note>
             <p>
               Fill in the form below and one of our freights forwarding experts
@@ -61,6 +70,72 @@ const RequestQuote = () => {
                 }}
               />
             </Label>
+            <Label>
+              <span>Company Name</span>
+              <Input
+                placeholder="ex. DHL"
+                name="companyName"
+                onChange={formik.handleChange}
+                value={formik.values.companyName}
+              />
+            </Label>
+            <Label>
+              <span>Origin</span>
+              <Select
+                isOpened={isOriginDropOpened}
+                setIsOpened={setIsOriginDropOpened}
+                name="origin"
+                value={formik.values.origin}
+                placeholder="-Select an Origin-"
+                options={modeValues}
+                changeHandler={(value) => {
+                  formik.setFieldValue("origin", value);
+                }}
+              />
+            </Label>
+            <Label>
+              <span>Contact Name</span>
+              <Input
+                placeholder="ex. Jack Nilson"
+                name="contactName"
+                onChange={formik.handleChange}
+                value={formik.values.contactName}
+              />
+            </Label>
+            <Label>
+              <span>Destination</span>
+              <Select
+                isOpened={isDestinationDropOpened}
+                setIsOpened={setIsDestinationDropOpened}
+                name="destination"
+                value={formik.values.destination}
+                placeholder="-Select a Destination-"
+                options={modeValues}
+                changeHandler={(value) => {
+                  formik.setFieldValue("destination", value);
+                }}
+              />
+            </Label>
+            <Label>
+              <span>Contact Phone</span>
+              <Input
+                placeholder="ex. +1 562-985-4111"
+                type="tel"
+                name="contactPhone"
+                onChange={formik.handleChange}
+                value={formik.values.contactPhone}
+              />
+            </Label>
+            <Label>
+              <span>Contact Email</span>
+              <Input
+                placeholder="ex. info@ux-mind.pro"
+                type="email"
+                name="contact"
+                onChange={formik.handleChange}
+                value={formik.values.contactName}
+              />
+            </Label>
             <LargeLabel>
               <span>Your Message</span>
               <Textarea
@@ -74,7 +149,7 @@ const RequestQuote = () => {
               <PrimaryBtn type="submit" content="Submit" />
             </SubmitWrapper>
           </Form>
-        </Container>
+        </RequestContainer>
       </Section>
     </PageWrapper>
   );
@@ -148,6 +223,10 @@ const Note = styled.div`
   }
 `;
 
+const RequestContainer = styled(Container)`
+  max-width: 1140px;
+`;
+
 const Section = styled.section`
   padding-top: 96px;
   padding-bottom: 192px;
@@ -157,6 +236,10 @@ const Section = styled.section`
   }
 `;
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled.div`
+  & .hero-container {
+    max-width: 1140px;
+  }
+`;
 
 export default connect(RequestQuote);

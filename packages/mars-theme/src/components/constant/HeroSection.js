@@ -12,7 +12,7 @@ const Hero = ({ image, title }) => {
       <ImageContainer>
         <img src={image} alt="" />
       </ImageContainer>
-      <HeroContainer>
+      <HeroContainer className="hero-container">
         <TitleWrapper>
           <Title size="l" color="white">
             {parse(title)}

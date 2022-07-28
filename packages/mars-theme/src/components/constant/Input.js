@@ -6,9 +6,11 @@ const PrimaryInput = ({
   type,
   placeholder,
   value,
+  defaultValue,
   onChange,
   name,
   maxWidth,
+  disabled,
 }) => {
   return (
     <Input
@@ -16,8 +18,10 @@ const PrimaryInput = ({
       placeholder={placeholder}
       name={name}
       value={value}
+      defaultValue={defaultValue}
       onChange={onChange}
       maxWidth={maxWidth}
+      disabled={disabled}
     />
   );
 };

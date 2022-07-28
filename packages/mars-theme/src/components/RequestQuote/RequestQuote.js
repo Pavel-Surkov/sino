@@ -3,13 +3,25 @@ import Container from "../constant/Container";
 import Hero from "../constant/HeroSection";
 import PrimaryBtn from "../constant/PrimaryButton";
 import Input from "../constant/Input";
+import Select from "../constant/Select";
 import { styled, connect } from "frontity";
 import { font } from "../base/functions";
 
 import { useFormik } from "formik";
 
 import poster from "../../assets/images/quote-poster.png";
-import drop from "../../assets/images/svg/drop-blue.svg";
+
+const modeValues = [
+  "mode 1",
+  "mode 2",
+  "mode 3",
+  "mode 4",
+  "mode 5",
+  "mode 6",
+  "mode 7",
+  "mode 8",
+  "mode 9",
+];
 
 const RequestQuote = () => {
   const [isModeDropOpened, setIsModeDropOpened] = useState(true);
@@ -38,28 +50,15 @@ const RequestQuote = () => {
               <span>Mode</span>
               <Select
                 isOpened={isModeDropOpened}
-                onClick={() => setIsModeDropOpened(true)}
-              >
-                <Input
-                  name="mode"
-                  value={formik.values.mode}
-                  placeholder="-Select a Mode-"
-                />
-                {isModeDropOpened && (
-                  <Dropdown>
-                    <DropdownItem>Mode 1</DropdownItem>
-                    <DropdownItem>Mode 2</DropdownItem>
-                    <DropdownItem>Mode 3</DropdownItem>
-                    <DropdownItem>Mode 4</DropdownItem>
-                    <DropdownItem>Mode 5</DropdownItem>
-                    <DropdownItem>Mode 6</DropdownItem>
-                    <DropdownItem>Mode 7</DropdownItem>
-                    <DropdownItem>Mode 8</DropdownItem>
-                    <DropdownItem>Mode 9</DropdownItem>
-                    <DropdownItem>Mode 10</DropdownItem>
-                  </Dropdown>
-                )}
-              </Select>
+                setIsOpened={setIsModeDropOpened}
+                name="mode"
+                value={formik.values.mode}
+                placeholder="-Select a Mode-"
+                options={modeValues}
+                changeHandler={(value) => {
+                  formik.setFieldValue("mode", value);
+                }}
+              />
             </Label>
             <LargeLabel>
               <span>Your Message</span>
@@ -79,64 +78,6 @@ const RequestQuote = () => {
     </PageWrapper>
   );
 };
-
-const DropdownItem = styled.li`
-  padding: 0;
-  width: 100%;
-  padding: 4px 8px;
-  border-radius: 8px;
-  ${font(18, 24)};
-  color: var(--black);
-  background: var(--white);
-  &:hover {
-    color: var(--white);
-    background: var(--blue-600);
-  }
-  &:active {
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const Dropdown = styled.ul`
-  list-style: none;
-  position: absolute;
-  z-index: 1;
-  top: calc(100% + 4px);
-  left: 0;
-  width: 100%;
-  max-height: 287px;
-  overflow-y: auto;
-  background: var(--white);
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  padding: 8px;
-  background: var(--white);
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray-900);
-    border-radius: 4px;
-  }
-`;
-
-const Select = styled.div`
-  position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    width: 12px;
-    height: 6px;
-    background: url(${drop}) no-repeat 50% / cover;
-    transform: ${({ isOpened }) =>
-      isOpened ? "translateY(-50%)" : "translateY(-50%) rotate(180deg)"};
-  }
-`;
 
 const SubmitWrapper = styled.div`
   margin-top: 32px;

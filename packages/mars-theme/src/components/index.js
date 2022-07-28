@@ -27,10 +27,8 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
-  console.log('data');
+  console.log("data");
   console.log(data);
-
-  console.log(data.isArchive || data.isPostType ? "Yos!" : "Sad");
 
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)

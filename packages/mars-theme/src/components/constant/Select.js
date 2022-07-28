@@ -3,6 +3,8 @@ import Input from "./Input";
 import { styled } from "frontity";
 import { font } from "../base/functions";
 
+import SimpleBarReact from "simplebar-react";
+
 import drop from "../../assets/images/svg/drop-blue.svg";
 
 const SelectElement = ({
@@ -24,11 +26,17 @@ const SelectElement = ({
       />
       {isOpened && (
         <Dropdown>
-          {options.map((option) => (
-            <DropdownItem key={option} onClick={() => changeHandler(option)}>
-              {option}
-            </DropdownItem>
-          ))}
+          <SimpleBarReact
+            forceVisible="y"
+            autoHide={false}
+            style={{ maxHeight: 287 }}
+          >
+            {options.map((option) => (
+              <DropdownItem key={option} onClick={() => changeHandler(option)}>
+                {option}
+              </DropdownItem>
+            ))}
+          </SimpleBarReact>
         </Dropdown>
       )}
     </Select>
@@ -55,26 +63,38 @@ const DropdownItem = styled.li`
 const Dropdown = styled.ul`
   list-style: none;
   position: absolute;
+  margin: 0;
   z-index: 1;
   top: calc(100% + 4px);
   left: 0;
   width: 100%;
-  max-height: 287px;
-  overflow-y: auto;
   background: var(--white);
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   padding: 8px;
   background: var(--white);
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray-900);
-    border-radius: 4px;
+  & .simplebar {
+    &-scrollbar {
+      &::before {
+        width: 4px;
+        border-radius: 4px;
+        background: var(--gray-900);
+        opacity: 0.5;
+      }
+      &:hover {
+        &::before {
+          opacity: 0.7;
+        }
+      }
+      &:active {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+    &-vertical {
+      right: -8px;
+    }
   }
 `;
 

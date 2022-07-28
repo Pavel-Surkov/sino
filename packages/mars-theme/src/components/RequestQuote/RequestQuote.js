@@ -21,6 +21,7 @@ const modeValues = [
   "mode 7",
   "mode 8",
   "mode 9",
+  "mode 10",
 ];
 
 const RequestQuote = () => {

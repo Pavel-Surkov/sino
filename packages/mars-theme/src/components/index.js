@@ -8,6 +8,7 @@ import PageError from "./PageError";
 import {
   setSwiperCssBundle,
   setFancyAppCssBundle,
+  setSimplebarBundle,
 } from "./functions/functions";
 import Router from "./Router";
 import Service from "./Service/Service";
@@ -35,6 +36,7 @@ const Theme = ({ state, actions }) => {
   useEffect(() => {
     setSwiperCssBundle();
     setFancyAppCssBundle();
+    setSimplebarBundle();
 
     actions.theme.handleSwiperStylesLoaded();
   }, []);
@@ -44,6 +46,11 @@ const Theme = ({ state, actions }) => {
       {/* Add some metatags to the <head> of the HTML. */}
       <Head>
         {/* <meta name="description" content={state.frontity.description} /> */}
+        {/* Scrollbar CDN */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+        />
         {/* Swiper CDN */}
         <link
           rel="stylesheet"

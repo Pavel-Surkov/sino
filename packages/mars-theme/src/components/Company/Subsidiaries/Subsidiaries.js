@@ -8,7 +8,7 @@ import { font, flex } from "../../base/functions";
 import parse from "html-react-parser";
 
 // import bg from "../../../assets/images/subsidaries-img.png";
-import bg2x from "../../../assets/images/subsidaries-img@2x.png";
+// import bg2x from "../../../assets/images/subsidaries-img@2x.png";
 
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { Navigation, Pagination } from "swiper";
@@ -20,7 +20,8 @@ const Subsidiaries = ({ state, post }) => {
   return (
     <Section
       css={css`
-        background: url(${post.acf.company_subsidiaries_background.url}) no-repeat 50% / cover;
+        background: url(${post.acf.company_subsidiaries_background.url})
+          no-repeat 50% / cover;
       `}
     >
       <Container>
@@ -64,9 +65,7 @@ const Subsidiaries = ({ state, post }) => {
                       {parse(slide.company_subsidiaries_slide_title)}
                     </Title>
                     <Text>
-                      <p>
-                        {parse(slide.company_subsidiaries_slide_text)}
-                      </p>
+                      <p>{parse(slide.company_subsidiaries_slide_text)}</p>
                     </Text>
                   </SwiperSlide>
                 );

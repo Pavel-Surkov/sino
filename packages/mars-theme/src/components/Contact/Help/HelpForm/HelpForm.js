@@ -8,7 +8,7 @@ import { font } from "../../../base/functions";
 import { useFormik } from "formik";
 
 const HelpForm = () => {
-  const [modalOpened, setModalOpened] = useState(false);
+  const [modalOpened, setModalOpened] = useState(true);
 
   const formik = useFormik({
     initialValues: {
@@ -60,6 +60,7 @@ const HelpForm = () => {
           <Label>
             <span>Contact Phone</span>
             <Input
+              type="tel"
               placeholder="ex. +1 562-985-4111"
               name="contactPhone"
               onChange={formik.handleChange}
@@ -78,6 +79,7 @@ const HelpForm = () => {
           <Label>
             <span>Contact Email</span>
             <Input
+              type="email"
               placeholder="ex. info@ux-mind.pro"
               name="contactEmail"
               onChange={formik.handleChange}

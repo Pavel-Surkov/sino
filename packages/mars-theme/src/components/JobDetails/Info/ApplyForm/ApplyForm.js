@@ -3,6 +3,7 @@ import SubmitModal from "../../../constant/SubmitModal";
 import Title from "../../../constant/Title";
 import Input from "../../../constant/Input";
 import PrimaryBtn from "../../../constant/PrimaryButton";
+import Logo from "../../../constant/Logo";
 import { font, flex } from "../../../base/functions";
 import { styled, connect, useConnect } from "frontity";
 
@@ -22,65 +23,126 @@ const ApplyForm = ({ modalOpened, setModalOpened }) => {
   });
 
   return (
-    <SubmitModal
-      maxWidth={1140}
-      modalOpened={modalOpened}
-      setModalOpened={setModalOpened}
-    >
-      <Title size="m" color="blue" marginBottom={48}>
-        Submit Your Resume
-      </Title>
-      <Form onSubmit={formik.handleSubmit}>
-        <Label>
-          <span>Contact Name</span>
-          <Input
-            placeholder="ex. Jack Nilson"
-            name="contactName"
-            onChange={formik.handleChange}
-            value={formik.values.contactName}
-          />
-        </Label>
-        <Label>
-          <span>Contact Email</span>
-          <Input
-            placeholder="ex. info@ux-mind.pro"
-            name="contactEmail"
-            onChange={formik.handleChange}
-            value={formik.values.contactEmail}
-          />
-        </Label>
-        <Label>
-          <span>Contact Phone</span>
-          <Input
-            placeholder="ex. +1 562-985-4111"
-            name="contactPhone"
-            onChange={formik.handleChange}
-            value={formik.values.contactPhone}
-          />
-        </Label>
-        <LargeBlock>
-          <FileWrapper>
-            <FileLabel htmlFor="upload-photo">Upload your resume</FileLabel>
-            <span>Accepted file types: PDF</span>
-          </FileWrapper>
-          <FileInput type="file" name="photo" id="upload-photo" />
-        </LargeBlock>
-        <LargeLabel>
-          <span>Your Message</span>
-          <Textarea
-            placeholder="Type here"
-            name="message"
-            onChange={formik.handleChange}
-            value={formik.values.message}
-          />
-        </LargeLabel>
-        <SubmitWrapper>
-          <PrimaryBtn type="submit" content="Submit" />
-        </SubmitWrapper>
-      </Form>
-    </SubmitModal>
+    <>
+      {state.theme.isMobile && modalOpened && (
+        <MobileHeader>
+          <Logo />
+          <CloseMobile aria-label="close" onClick={() => setModalOpened(false)}>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M30 10L10 30"
+                stroke="#4279B8"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M10 10L30 30"
+                stroke="#4279B8"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </CloseMobile>
+        </MobileHeader>
+      )}
+      <SubmitModal
+        maxWidth={1140}
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+      >
+        <Title size="m" color="blue" marginBottom={48}>
+          Submit Your Resume
+        </Title>
+        <Form onSubmit={formik.handleSubmit}>
+          <Label>
+            <span>Contact Name</span>
+            <Input
+              placeholder="ex. Jack Nilson"
+              name="contactName"
+              onChange={formik.handleChange}
+              value={formik.values.contactName}
+            />
+          </Label>
+          <Label>
+            <span>Contact Email</span>
+            <Input
+              type="email"
+              placeholder="ex. info@ux-mind.pro"
+              name="contactEmail"
+              onChange={formik.handleChange}
+              value={formik.values.contactEmail}
+            />
+          </Label>
+          <Label>
+            <span>Contact Phone</span>
+            <Input
+              type="tel"
+              placeholder="ex. +1 562-985-4111"
+              name="contactPhone"
+              onChange={formik.handleChange}
+              value={formik.values.contactPhone}
+            />
+          </Label>
+          <LargeBlock>
+            <FileWrapper>
+              <FileLabel htmlFor="upload-photo">Upload your resume</FileLabel>
+              <span>Accepted file types: PDF</span>
+            </FileWrapper>
+            <FileInput
+              type="file"
+              name="photo"
+              id="upload-photo"
+              accept="application/pdf"
+            />
+          </LargeBlock>
+          <LargeLabel>
+            <span>Your Message</span>
+            <Textarea
+              placeholder="Type here"
+              name="message"
+              onChange={formik.handleChange}
+              value={formik.values.message}
+            />
+          </LargeLabel>
+          <SubmitWrapper>
+            <PrimaryBtn type="submit" content="Submit" />
+          </SubmitWrapper>
+        </Form>
+      </SubmitModal>
+    </>
   );
 };
+
+const CloseMobile = styled.button`
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+`;
+
+const MobileHeader = styled.div`
+  position: fixed;
+  z-index: 35;
+  height: 72px;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: var(--white);
+  padding: 16px 24px;
+  ${flex("row", "center", "space-between")};
+`;
 
 const FileInput = styled.input`
   display: none;
@@ -93,6 +155,7 @@ const FileLabel = styled.label`
   color: var(--black);
   ${font(16, 24)};
   cursor: pointer;
+  /* TODO: Change gray to black */
   &::before {
     content: "";
     position: absolute;
@@ -178,6 +241,8 @@ const LargeBlock = styled.div`
   grid-column: 1 / 3;
   @media screen and (max-width: 768px) {
     grid-column: 1 / 2;
+    order: 1;
+    margin-bottom: 40px;
   }
 `;
 
@@ -194,10 +259,11 @@ const LargeLabel = styled(Label)`
 const Form = styled.form`
   display: grid;
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
-  grid-gap: 24px;
   @media screen and (max-width: 768px) {
     grid-template-columns: 100%;
     grid-gap: 16px;
+    padding-bottom: 104px;
+    border-bottom: 1px solid var(--blue-600);
   }
 `;
 

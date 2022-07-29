@@ -94,6 +94,25 @@ const ApplyWrapper = styled.div`
     @media screen and (max-width: 991px) {
       text-align: left;
       ${font(24, 32)};
+      margin-bottom: 32px;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    & .submit-modal {
+      max-height: calc(100vh - 72px);
+      border-radius: 0;
+      width: 100vw;
+      max-width: 100vw;
+      transform: none;
+      left: 0;
+      bottom: 0;
+      top: auto;
+      &__wrapper {
+        padding: 40px 24px;
+      }
+    }
+    & button[data-close="mobile"] {
+      display: none;
     }
   }
 `;

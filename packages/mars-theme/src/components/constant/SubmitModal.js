@@ -15,7 +15,11 @@ const SubmitModal = ({ modalOpened, setModalOpened, maxWidth, children }) => {
       >
         <Wrapper className="submit-modal__wrapper">
           {!isMobile && (
-            <Close aria-label="close" onClick={() => setModalOpened(false)}>
+            <Close
+              aria-label="close"
+              data-close="desktop"
+              onClick={() => setModalOpened(false)}
+            >
               <svg
                 width="28"
                 height="28"
@@ -35,6 +39,7 @@ const SubmitModal = ({ modalOpened, setModalOpened, maxWidth, children }) => {
           {isMobile && (
             <CloseMobile
               aria-label="close"
+              data-close="mobile"
               onClick={() => setModalOpened(false)}
             >
               <svg
@@ -71,7 +76,7 @@ const SubmitModal = ({ modalOpened, setModalOpened, maxWidth, children }) => {
 
 const Blocker = styled.div`
   position: fixed;
-  z-index: 5;
+  z-index: 30;
   background: #1313134d;
   width: 100vw;
   height: 100vh;
@@ -129,13 +134,15 @@ const Wrapper = styled.div`
 
 const Modal = styled.div`
   position: fixed;
-  z-index: 10;
+  z-index: 35;
   left: 50%;
   top: 50%;
   border-radius: 20px;
   background: var(--white);
-  transform: translate(-50%, calc(-50% - 38px));
+  transform: translate(-50%, -50%);
   width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   transition: opacity 0.2s;
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "674px")};
   ${({ isOpened }) => !isOpened && `opacity: 0; pointer-events: none;`};

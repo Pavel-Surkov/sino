@@ -34,7 +34,11 @@ const Help = ({ state }) => {
                 If you need us to provide you with estimation, please request a
                 quote
               </p>
-              <PrimaryBtn type="link" link="/quote" content="Get a Quote" />
+              <PrimaryBtn
+                type="link"
+                link="/request-a-quote/"
+                content="Get a Quote"
+              />
             </Quote>
           </Content>
           <ImageBlock>

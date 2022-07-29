@@ -8,6 +8,8 @@ import PageError from "./PageError";
 import {
   setSwiperCssBundle,
   setFancyAppCssBundle,
+  setSimplebarBundle,
+  setDatepickerBundle,
 } from "./functions/functions";
 import Router from "./Router";
 import Service from "./Service/Service";
@@ -27,16 +29,16 @@ const Theme = ({ state, actions }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
-  console.log('data');
+  console.log("data");
   console.log(data);
-
-  console.log(data.isArchive || data.isPostType ? "Yos!" : "Sad");
 
   // TODO: When production, replace delete this useEffect
   // and uncomment the <link /> element inside <Head> (below)
   useEffect(() => {
     setSwiperCssBundle();
     setFancyAppCssBundle();
+    setSimplebarBundle();
+    setDatepickerBundle();
 
     actions.theme.handleSwiperStylesLoaded();
   }, []);
@@ -46,6 +48,16 @@ const Theme = ({ state, actions }) => {
       {/* Add some metatags to the <head> of the HTML. */}
       <Head>
         {/* <meta name="description" content={state.frontity.description} /> */}
+        {/* Air Datepicker */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/air-datepicker@3.2.0/air-datepicker.css"
+        />
+        {/* Scrollbar CDN */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/simplebar@latest/dist/simplebar.css"
+        />
         {/* Swiper CDN */}
         <link
           rel="stylesheet"

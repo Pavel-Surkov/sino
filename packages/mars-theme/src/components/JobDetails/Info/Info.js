@@ -1,110 +1,46 @@
 import React from "react";
 import Container from "../../constant/Container";
-import IconBlock from "../../constant/IconBlock";
-import { font, flex } from "../../base/functions";
+import Position from "./Position/Position";
 import { styled } from "frontity";
 
-import calendar from "../../../assets/images/svg/dark-calendar.svg";
-import marker from "../../../assets/images/svg/dark-map-marker.svg";
+import company from "../../../assets/images/company-image.jpg";
+import company2x from "../../../assets/images/company-image@2x.jpg";
 
 const Info = () => {
   return (
     <Section>
       <Container>
-        <Position>
-          <MainInfo>
-            <PositionTitle>EDI Officer</PositionTitle>
-            <Company>Sino Logistics</Company>
-            <Category>Customer Service</Category>
-          </MainInfo>
-          <Additional>
-            <IconWrapper mobileOrder={1}>
-              <IconBlock icon={marker}>Laem Chabang, Thailand</IconBlock>
-            </IconWrapper>
-            <IconWrapper>
-              <IconBlock icon={calendar}>4 March 2022</IconBlock>
-            </IconWrapper>
-          </Additional>
-        </Position>
+        <Position />
+        <InfoBlock>
+          <Content></Content>
+          <ImageWrapper>
+            <img
+              src={company}
+              srcSet={`${company} 1x, ${company2x} 2x`}
+              alt="company"
+            />
+          </ImageWrapper>
+        </InfoBlock>
       </Container>
     </Section>
   );
 };
 
-const IconWrapper = styled.div`
-  text-align: left;
-  margin-bottom: 20px;
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-  @media screen and (max-width: 1400px) {
-    margin-bottom: 8px;
-  }
-  @media screen and (max-width: 991px) {
-    text-align: right;
-  }
-  @media screen and (max-width: 576px) {
-    text-align: left;
-    margin-bottom: 18px;
-    ${({ mobileOrder }) => (mobileOrder ? `order: ${mobileOrder}` : "")};
-    &:last-of-type {
-      margin-bottom: 18px;
-    }
-    &:first-of-type {
-      margin-bottom: 0;
-    }
-  }
-`;
+const Content = styled.div``;
 
-const Category = styled.p`
-  margin: 0;
-  font-style: italic;
-  font-weight: 300;
-  ${font(16, 30)};
-`;
+const ImageWrapper = styled.div``;
 
-const Company = styled.p`
-  margin: 0;
-  margin-bottom: 8px;
-  ${font(18, 30)};
-  font-weight: 500;
-  color: var(--gray-menu);
-`;
-
-const PositionTitle = styled.h3`
-  color: var(--gray-menu);
-  margin: 0;
-  margin-bottom: 24px;
-  ${font(24, 32)};
-  font-weight: 500;
-  letter-spacing: -0.02em;
-`;
-
-const Additional = styled.div`
-  ${flex("column", "space-between")};
-`;
-
-const MainInfo = styled.div`
-  @media screen and (max-width: 576px) {
-    margin-bottom: 24px;
-  }
-`;
-
-const Position = styled.li`
-  color: var(--gray-menu);
+const InfoBlock = styled.div`
+  padding-top: 96px;
+  padding-bottom: 31px;
   border-bottom: 1px solid var(--blue-600);
-  padding: 30px 0;
   display: grid;
-  grid-template-columns: 1fr 325px;
-  &:first-of-type {
-    border-top: 1px solid var(--blue-600);
-  }
+  grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+  grid-gap: 24px;
   @media screen and (max-width: 991px) {
-    grid-template-columns: 50% 50%;
-  }
-  @media screen and (max-width: 576px) {
-    grid-template-columns: 100%;
-    padding: 40px 0;
+    padding-top: 56px;
+    padding-bottom: 0;
+    border: none;
   }
 `;
 

@@ -93,9 +93,9 @@ const Note = styled.div`
 const Section = styled.section`
   padding-top: 80px;
   padding-bottom: 192px;
-  border-top: 1px solid var(--blue-600);
+  /* border-top: 1px solid var(--blue-600); */
   @media screen and (max-width: 991px) {
-    border: none;
+    /* border: none; */
     padding-top: 128px;
     padding-bottom: 144px;
   }

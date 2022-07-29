@@ -2,10 +2,10 @@ import React from "react";
 import { styled } from "frontity";
 import { font } from "../../base/functions";
 
-const TextBlock = ({ title, children }) => {
+const TextBlock = ({ title, marginBottom, children }) => {
   return (
-    <Wrapper>
-      <Title>{title}</Title>
+    <Wrapper data-element="wrapper">
+      <Title marginBottom={marginBottom}>{title}</Title>
       <Content>{children}</Content>
     </Wrapper>
   );
@@ -26,7 +26,8 @@ const Content = styled.div`
 
 const Title = styled.h5`
   margin: 0;
-  margin-bottom: 16px;
+  margin-bottom: ${({ marginBottom }) =>
+    marginBottom ? `${marginBottom}px` : "16px"};
   ${font(24, 32)};
   letter-spacing: 0.04em;
   font-weight: 400;
@@ -34,6 +35,7 @@ const Title = styled.h5`
   @media screen and (max-width: 991px) {
     font-weight: 500;
     letter-spacing: 0;
+    margin-bottom: 16px;
   }
 `;
 

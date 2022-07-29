@@ -12,6 +12,7 @@ import { processDate } from "../functions/functions";
 
 import { useFormik } from "formik";
 
+import calendar from "../../assets/images/svg/Calendar.svg";
 import poster from "../../assets/images/quote-poster.png";
 
 const modeValues = [
@@ -50,6 +51,9 @@ const RequestQuote = () => {
   useEffect(() => {
     new AirDatepicker("#products-datepicker", {
       locale: localeEn,
+      firstDay: 1,
+      daysShort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      daysMin: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
       dateFormat(date) {
         const dateString = processDate(date);
 
@@ -147,13 +151,18 @@ const RequestQuote = () => {
             </Label>
             <Label>
               <span>When will the products be ready to be exported</span>
-              <Input
-                id="products-datepicker"
-                placeholder="2022-01-01"
-                name="productsReadyToExport"
-                value={formik.values.productsReadyToExport}
-                onChange={formik.handleChange}
-              />
+              <DatepickerWrapper>
+                <Input
+                  id="products-datepicker"
+                  placeholder="2022-01-01"
+                  name="productsReadyToExport"
+                  value={formik.values.productsReadyToExport}
+                  onChange={formik.handleChange}
+                />
+                <Calendar>
+                  <img width="24" height="24" src={calendar} alt="calendar" />
+                </Calendar>
+              </DatepickerWrapper>
             </Label>
             <Label>
               <span>Contact Email</span>
@@ -184,10 +193,23 @@ const RequestQuote = () => {
   );
 };
 
+const Calendar = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(calc(-50% + 1px));
+`;
+
+const DatepickerWrapper = styled.div`
+  position: relative;
+`;
+
 const SubmitWrapper = styled.div`
   margin-top: 32px;
   grid-column: 1 / 3;
+  text-align: center;
   & button {
+    margin: 0 auto;
     cursor: pointer;
   }
   @media screen and (max-width: 991px) {

@@ -1,4 +1,5 @@
 import { css } from "frontity";
+import { font } from "../base/functions";
 
 import Ubuntu_Light_woff2 from "../../assets/fonts/Ubuntu-Light.woff2";
 import Ubuntu_Light_woff from "../../assets/fonts/Ubuntu-Light.woff";
@@ -96,5 +97,72 @@ export const globalStyles = css`
   a {
     text-decoration: none;
     color: var(--black);
+  }
+
+  /* Datepicker styles */
+  div.air-datepicker {
+    background: var(--white);
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    max-width: 325px;
+    max-height: 320px;
+    box-sizing: border-box;
+    padding: 12px 28px;
+    box-shadow: 0px 0px 8px rgba(49, 49, 49, 0.05);
+    border-radius: 8px;
+    border: none;
+    .air-datepicker-nav {
+      padding: 4px 0 10px;
+    }
+    & .air-datepicker--pointer {
+      display: none;
+    }
+    &-nav--title,
+    &-nav--title i {
+      ${font(14, 16)};
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--black);
+    }
+    &-nav--action[data-action="prev"] {
+      transform: translateX(-6px);
+    }
+    &-nav--action[data-action="next"] {
+      transform: translateX(6px);
+    }
+    &--content {
+      padding: 0;
+      padding-top: 20px;
+    }
+    &-body--day-names {
+      margin: 0;
+      margin-bottom: 20px;
+      grid-template-columns: repeat(7, 32px);
+      grid-column-gap: 8px;
+    }
+    &-body--day-name {
+      color: var(--gray-900);
+      ${font(10, 11)};
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    &-body--cells {
+      grid-row-gap: 16px;
+      grid-column-gap: 18px;
+      grid-template-rows: repeat(5, 24px);
+      grid-template-columns: repeat(7, 24px);
+    }
+    &-cell,
+    &-cell.-current- {
+      color: var(--black);
+      font-weight: 500;
+      ${font(14, 16)};
+    }
+    &-cell.-selected-,
+    &-cell.-selected-.-focus- {
+      border-radius: 50%;
+      background: var(--blue-600);
+    }
   }
 `;

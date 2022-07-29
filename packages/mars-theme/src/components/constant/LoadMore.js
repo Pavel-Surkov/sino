@@ -2,10 +2,10 @@ import React from "react";
 import { font } from "../base/functions";
 import { styled } from "frontity";
 
-const LoadMore = ({ disabled, onClick }) => {
+const LoadMore = ({ disabled, onClick, text }) => {
   return (
     <Load disabled={disabled} onClick={onClick}>
-      Load More
+      {text}
     </Load>
   );
 };

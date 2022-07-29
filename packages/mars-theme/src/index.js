@@ -4,6 +4,7 @@ import iframe from "@frontity/html2react/processors/iframe";
 import link from "@frontity/html2react/processors/link";
 import menuHandler from "./components/handlers/menu-handler";
 import servicesHandler from "./components/handlers/services-handler";
+import newsHandler from "./components/handlers/news-handler";
 
 const marsTheme = {
   name: "@frontity/mars-theme",
@@ -262,6 +263,7 @@ const marsTheme = {
       beforeSSR: async ({ state, actions }) => {
         await actions.source.fetch(`/menu/${state.theme.menuUrl}/`);
         await actions.source.fetch(`/services/`);
+        await actions.source.fetch(`/company-news/`);
       },
     },
   },
@@ -275,7 +277,7 @@ const marsTheme = {
       processors: [image, iframe, link],
     },
     source: {
-      handlers: [menuHandler, servicesHandler],
+      handlers: [menuHandler, servicesHandler, newsHandler],
     },
   },
 };

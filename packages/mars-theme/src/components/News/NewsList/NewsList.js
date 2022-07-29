@@ -6,13 +6,14 @@ import PrimaryBtn from "../../constant/PrimaryButton";
 import LoadMore from "../../constant/LoadMore";
 import { styled, connect, css } from "frontity";
 import { font, flex } from "../../base/functions";
+import parse from "html-react-parser";
 
 import lcl from "../../../assets/images/LCL-02.jpg";
 import lcl2x from "../../../assets/images/LCL-02@2x.jpg";
 import corporation from "../../../assets/images/corporation-thanks.jpg";
 import corporation2x from "../../../assets/images/corporation-thanks@2x.jpg";
 
-const newsList = [
+/*const newsList = [
   {
     id: 1,
     title: "Digitization: bringing logistics to a top notch level",
@@ -21,7 +22,7 @@ const newsList = [
     image: lcl,
     image2x: lcl2x,
     text: [
-      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’ at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
       "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
       "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
     ],
@@ -35,7 +36,7 @@ const newsList = [
     image: corporation,
     image2x: corporation2x,
     text: [
-      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’ at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
       "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
       "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
     ],
@@ -49,7 +50,7 @@ const newsList = [
     image: corporation,
     image2x: corporation2x,
     text: [
-      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’ at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
       "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
       "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
     ],
@@ -63,22 +64,44 @@ const newsList = [
     image: corporation,
     image2x: corporation2x,
     text: [
-      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’  at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
+      `Sino Logistics Corporation Public Company Limited organized an exclusive golf competition, ‘Sino Golf Invitational 2021’ at Amata Spring Country Club Golf Course in Chonburi on December 7th, 2021. The company hosted the event to express its gratitude toward its customers and partners for their support throughout 2021. This is the second year in a row the company has held this event.`,
       "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
       "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
     ],
   },
-];
+];*/
 
-const NewsList = ({ state, actions }) => {
+const NewsList = ({ state, actions, post }) => {
   const { isAllNewsShown, isMobile } = state.theme;
+
+  const news = state.source.get(`/company-news/`).items;
+
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug'
+  ]
+
+  const dateHandler = (date) => {
+    const year = date.split('-')[0];
+    const month = Number(date.split('-')[1]);
+    const day = date.split('-')[2].substr(0, 2);
+    return day + ' ' + months[month-1] + ' ' + year;
+  }
+  console.log('news');
+  console.log(news);
 
   return (
     <Section>
       <Container>
-        <ListTitle>Latest news</ListTitle>
+        <ListTitle>{post.acf.latest_news_title ? parse(post.acf.latest_news_title) : ''}</ListTitle>
         <List>
-          {newsList.map((newsItem, idx) => {
+          {news && news.map((newsItem, idx) => {
             if (!isAllNewsShown && idx > 2) {
               return null;
             }
@@ -87,15 +110,15 @@ const NewsList = ({ state, actions }) => {
               <Item key={newsItem.id}>
                 <ImageSection
                   imagePosition={idx % 2 ? "left" : "right"}
-                  image={newsItem.image}
-                  image2x={newsItem.image2x}
+                  image={newsItem.acf.news_item_thumbnail_1x.url}
+                  image2x={newsItem.acf.news_item_thumbnail_2x.url}
                   isCorporate={true}
                 >
                   <Content>
                     <Title size="xs" color="black" marginBottom={8}>
-                      {newsItem.title}
+                      {parse(newsItem.title.rendered)}
                     </Title>
-                    <Date>{newsItem.date}</Date>
+                    <Date>{dateHandler(newsItem.date)}</Date>
                     <BtnWrapper>
                       <PrimaryBtn
                         type="link"
@@ -111,14 +134,18 @@ const NewsList = ({ state, actions }) => {
           {!isMobile && !isAllNewsShown && (
             <LoadMoreWrapper>
               {!isMobile && (
-                <LoadMore onClick={() => actions.theme.handleNewsShow()} />
+                <LoadMore text={post.acf.latest_news_load_more_button_text ?
+                  parse(post.acf.latest_news_load_more_button_text) : ''} onClick={() => actions.theme.handleNewsShow()} />
               )}
             </LoadMoreWrapper>
           )}
           {isMobile && (
             <LoadMoreWrapper>
               <LoadMoreCustom onClick={() => actions.theme.handleNewsToggle()}>
-                <span>Load More</span>
+                <span>
+                  {post.acf.latest_news_load_more_button_text ?
+                    parse(post.acf.latest_news_load_more_button_text) : ''}
+                </span>
                 <div
                   css={
                     isAllNewsShown &&
@@ -167,6 +194,9 @@ const LoadMoreCustom = styled.button`
 const LoadMoreWrapper = styled.div`
   text-align: center;
   margin-top: 96px;
+  & button {
+    cursor: pointer;
+  }
   @media screen and (max-width: 991px) {
     margin-top: 80px;
     & button {

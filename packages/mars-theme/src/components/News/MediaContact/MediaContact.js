@@ -4,35 +4,44 @@ import TextLink from "../../constant/TextLink";
 import IconBlock from "../../constant/IconBlock";
 import { styled } from "frontity";
 import { font } from "../../base/functions";
+import parse from "html-react-parser";
 
 import contact from "../../../assets/images/media-contact.png";
 import contact2x from "../../../assets/images/media-contact@2x.png";
 import message from "../../../assets/images/svg/Message.svg";
 
-const MediaContact = () => {
+const MediaContact = ({post}) => {
   return (
     <Section>
       <Container>
-        <MediaTitle>Media Contact</MediaTitle>
+        <MediaTitle>
+        {post.acf.news_media_title ?
+          parse(post.acf.news_media_title) : ''}
+        </MediaTitle>
         <Note>
-          <p>For more information, please contact:</p>
+          <p>
+          {post.acf.news_media_text ?
+            parse(post.acf.news_media_text) : ''}
+          </p>
         </Note>
         <Content>
           <ImageWrapper>
             <img
-              src={contact}
-              srcSet={`${contact} 1x, ${contact2x} 2x`}
+              src={post.acf.news_media_image_1x.url}
+              srcSet={`${post.acf.news_media_image_1x.url} 1x, ${post.acf.news_media_image_2x.url} 2x`}
               width="128"
               height="128"
               alt="media contact"
             />
           </ImageWrapper>
           <Info>
-            <Name>Rojanin Patrick Asawa</Name>
-            <Position>Media Manager</Position>
+            <Name>{post.acf.news_media_name ?
+              parse(post.acf.news_media_name) : ''}</Name>
+            <Position>{post.acf.news_media_post ?
+              parse(post.acf.news_media_post) : ''}</Position>
             <IconBlock icon={message}>
-              <TextLink link="mailto:rojanin.a@sinologistics.co.th">
-                rojanin.a@sinologistics.co.th
+              <TextLink link={`mailto:${post.acf.news_media_mail}`}>
+                {post.acf.news_media_mail}
               </TextLink>
             </IconBlock>
           </Info>

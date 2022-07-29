@@ -6,12 +6,12 @@ import { styled, connect } from "frontity";
 
 import news from "../../assets/images/news-poster.png";
 
-const News = () => {
+const News = ({ state, post }) => {
   return (
     <NewsWrapper>
-      <Hero image={news} title="Media" />
-      <NewsList />
-      <MediaContact />
+      <Hero image={post.acf.news_top_banner_image.url} title={post.acf.news_top_banner_title} />
+      <NewsList post={post} />
+      <MediaContact post={post} />
     </NewsWrapper>
   );
 };

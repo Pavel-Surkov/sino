@@ -164,5 +164,10 @@ export const globalStyles = css`
       border-radius: 50%;
       background: var(--blue-600);
     }
+    @media screen and (max-width: 373px) {
+      div.air-datepicker {
+        max-width: calc(100vw - 48px);
+      }
+    }
   }
 `;

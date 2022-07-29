@@ -6,6 +6,7 @@ import Hero from "../constant/HeroSection";
 import PrimaryBtn from "../constant/PrimaryButton";
 import Input from "../constant/Input";
 import Select from "../constant/Select";
+import SubmitModal from "../constant/SubmitModal";
 import { styled, connect } from "frontity";
 import { font } from "../base/functions";
 import { processDate } from "../functions/functions";
@@ -28,10 +29,14 @@ const modeValues = [
   "value 10",
 ];
 
-const RequestQuote = () => {
+const RequestQuote = ({ state }) => {
+  const { isMobile } = state.theme;
+
   const [isModeDropOpened, setIsModeDropOpened] = useState(false);
   const [isOriginDropOpened, setIsOriginDropOpened] = useState(false);
   const [isDestinationDropOpened, setIsDestinationDropOpened] = useState(false);
+
+  const [isQuoteModalOpened, setIsQuoteModalOpened] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -45,7 +50,11 @@ const RequestQuote = () => {
       contactEmail: "",
       message: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      console.log(values);
+
+      setIsQuoteModalOpened(true);
+    },
   });
 
   useEffect(() => {
@@ -93,7 +102,7 @@ const RequestQuote = () => {
                 }}
               />
             </Label>
-            <Label>
+            <Label mobileOrder={4}>
               <span>Company Name</span>
               <Input
                 placeholder="ex. DHL"
@@ -102,7 +111,7 @@ const RequestQuote = () => {
                 value={formik.values.companyName}
               />
             </Label>
-            <Label>
+            <Label mobileOrder={1}>
               <span>Origin</span>
               <Select
                 isOpened={isOriginDropOpened}
@@ -116,7 +125,7 @@ const RequestQuote = () => {
                 }}
               />
             </Label>
-            <Label>
+            <Label mobileOrder={5}>
               <span>Contact Name</span>
               <Input
                 placeholder="ex. Jack Nilson"
@@ -125,7 +134,7 @@ const RequestQuote = () => {
                 value={formik.values.contactName}
               />
             </Label>
-            <Label>
+            <Label mobileOrder={2}>
               <span>Destination</span>
               <Select
                 isOpened={isDestinationDropOpened}
@@ -139,7 +148,7 @@ const RequestQuote = () => {
                 }}
               />
             </Label>
-            <Label>
+            <Label mobileOrder={6}>
               <span>Contact Phone</span>
               <Input
                 placeholder="ex. +1 562-985-4111"
@@ -149,8 +158,10 @@ const RequestQuote = () => {
                 value={formik.values.contactPhone}
               />
             </Label>
-            <Label>
-              <span>When will the products be ready to be exported</span>
+            <Label mobileOrder={3}>
+              <span>
+                When will the products be ready to&nbsp;be&nbsp;exported
+              </span>
               <DatepickerWrapper>
                 <Input
                   id="products-datepicker"
@@ -164,7 +175,7 @@ const RequestQuote = () => {
                 </Calendar>
               </DatepickerWrapper>
             </Label>
-            <Label>
+            <Label mobileOrder={7}>
               <span>Contact Email</span>
               <Input
                 placeholder="ex. info@ux-mind.pro"
@@ -174,10 +185,12 @@ const RequestQuote = () => {
                 value={formik.values.contactName}
               />
             </Label>
-            <LargeLabel>
+            <LargeLabel mobileOrder={8}>
               <span>Your Message</span>
               <Textarea
-                placeholder="Please describe how can we help you"
+                placeholder={
+                  isMobile ? `Type here` : `Please describe how can we help you`
+                }
                 name="message"
                 onChange={formik.handleChange}
                 value={formik.values.message}
@@ -189,9 +202,80 @@ const RequestQuote = () => {
           </Form>
         </RequestContainer>
       </Section>
+      <SubmitModal
+        modalOpened={isQuoteModalOpened}
+        setModalOpened={setIsQuoteModalOpened}
+      >
+        <ModalText>
+          <p>Your request has been sent. We will contact you soon.</p>
+        </ModalText>
+        <CloseButtonWrapper>
+          <CloseButton onClick={() => setIsQuoteModalOpened(false)}>
+            Great
+          </CloseButton>
+        </CloseButtonWrapper>
+      </SubmitModal>
     </PageWrapper>
   );
 };
+
+const ModalText = styled.div`
+  margin-bottom: 40px;
+  text-align: center;
+  & p {
+    ${font(24, 30)};
+    margin: 0 auto;
+    max-width: 308px;
+    color: #000;
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 24px;
+    & p {
+      ${font(16, 30)};
+      max-width: 220px;
+      color: var(--gray-menu);
+    }
+  }
+`;
+
+const CloseButton = styled.button`
+  border: none;
+  margin-left: auto;
+  ${font(24, 30)};
+  color: var(--white);
+  padding: 0.83333em 1.25em;
+  background: var(--lightblue-250);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 325px;
+  cursor: pointer;
+  &:hover {
+    background: var(--lightblue-300);
+  }
+  &:active {
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  @media screen and (max-width: 991px) {
+    color: var(--gray-menu);
+    background: var(--white);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    &:hover {
+      color: var(--gray-menu);
+      background: var(--white);
+      filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.15));
+    }
+    &:active {
+      color: var(--gray-menu);
+      background: var(--white);
+      box-shadow: 0px 0px 10px 0px #0000001a inset;
+      filter: none;
+    }
+  }
+`;
+
+const CloseButtonWrapper = styled.div`
+  text-align: center;
+`;
 
 const Calendar = styled.div`
   position: absolute;
@@ -208,6 +292,7 @@ const SubmitWrapper = styled.div`
   margin-top: 32px;
   grid-column: 1 / 3;
   text-align: center;
+  order: 20;
   & button {
     margin: 0 auto;
     cursor: pointer;
@@ -248,6 +333,9 @@ const Label = styled.label`
     ${font(16, 24)};
     margin-bottom: 8px;
   }
+  @media screen and (max-width: 768px) {
+    order: ${({ mobileOrder }) => (mobileOrder ? mobileOrder : "0")};
+  }
 `;
 
 const LargeLabel = styled(Label)`
@@ -255,12 +343,19 @@ const LargeLabel = styled(Label)`
   @media screen and (max-width: 768px) {
     grid-column: 1 / 2;
   }
+  @media screen and (max-width: 768px) {
+    order: ${({ mobileOrder }) => (mobileOrder ? mobileOrder : "0")};
+  }
 `;
 
 const Form = styled.form`
   display: grid;
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
   grid-gap: 24px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+    grid-gap: 16px;
+  }
 `;
 
 const Note = styled.div`
@@ -270,7 +365,14 @@ const Note = styled.div`
     color: var(--black);
     margin: 0;
     ${font(24, 40)};
+    font-weight: 400;
     letter-spacing: 0.04em;
+  }
+  @media screen and (max-width: 991px) {
+    & p {
+      ${font(18, 30)};
+      letter-spacing: 0;
+    }
   }
 `;
 

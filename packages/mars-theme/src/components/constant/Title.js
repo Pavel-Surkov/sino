@@ -2,15 +2,7 @@ import React from "react";
 import { styled } from "frontity";
 import { font } from "../base/functions";
 
-const Title = ({
-  size,
-  color,
-  marginBottom,
-  children,
-  style,
-  maxWidth,
-  html,
-}) => {
+const Title = ({ size, color, marginBottom, children, style, maxWidth }) => {
   return size === "l" ? (
     <H1
       style={style}

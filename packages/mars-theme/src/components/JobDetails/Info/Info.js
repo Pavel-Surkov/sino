@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../constant/Container";
 import Position from "./Position/Position";
 import TextBlock from "../../PrivacyPolicy/TextBlock/TextBlock";
 import PrimaryBtn from "../../constant/PrimaryButton";
+import ApplyForm from "./ApplyForm/ApplyForm";
 import { font } from "../../base/functions";
 import { styled } from "frontity";
 
@@ -31,6 +32,8 @@ const requirements = [
 ];
 
 const Info = () => {
+  const [applyFormOpened, setApplyFormOpened] = useState(false);
+
   return (
     <Section>
       <Container>
@@ -59,7 +62,10 @@ const Info = () => {
                 </p>
               </Text>
               <ButtonWrapper>
-                <PrimaryBtn content="Apply Now" />
+                <PrimaryBtn
+                  content="Apply Now"
+                  onClick={() => setApplyFormOpened(true)}
+                />
               </ButtonWrapper>
             </TextBlock>
           </Content>
@@ -72,9 +78,25 @@ const Info = () => {
           </ImageWrapper>
         </InfoBlock>
       </Container>
+      <ApplyWrapper>
+        <ApplyForm
+          modalOpened={applyFormOpened}
+          setModalOpened={setApplyFormOpened}
+        />
+      </ApplyWrapper>
     </Section>
   );
 };
+
+const ApplyWrapper = styled.div`
+  & h2 {
+    text-align: center;
+    @media screen and (max-width: 991px) {
+      text-align: left;
+      ${font(24, 32)};
+    }
+  }
+`;
 
 const ButtonWrapper = styled.div`
   padding-top: 16px;

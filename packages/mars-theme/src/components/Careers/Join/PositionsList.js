@@ -78,7 +78,9 @@ const PositionsList = ({ state, actions, post }) => {
                   <IconBlock icon={calendar}>{position.vacancy_date}</IconBlock>
                 </IconWrapper>
                 <IconWrapper>
-                  <IconBlock icon={marker}>{position.vacancy_location}</IconBlock>
+                  <IconBlock icon={marker}>
+                    {position.vacancy_location}
+                  </IconBlock>
                 </IconWrapper>
               </Top>
               <LearnMore>
@@ -110,6 +112,7 @@ const IconWrapper = styled.div`
   @media screen and (max-width: 576px) {
     text-align: left;
     margin-bottom: 16px;
+
     &:last-of-type {
       margin-bottom: 48px;
     }
@@ -197,6 +200,7 @@ const Position = styled.li`
   }
   @media screen and (max-width: 576px) {
     grid-template-columns: 100%;
+    padding: 40px 0;
   }
 `;
 

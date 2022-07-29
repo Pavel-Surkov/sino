@@ -9,7 +9,7 @@ import { styled, connect, useConnect } from "frontity";
 
 import { useFormik } from "formik";
 
-const ApplyForm = ({ modalOpened, setModalOpened }) => {
+const ApplyForm = ({ modalOpened, setModalOpened, setSubmitModalOpened }) => {
   const { state } = useConnect();
 
   const formik = useFormik({
@@ -19,7 +19,11 @@ const ApplyForm = ({ modalOpened, setModalOpened }) => {
       contactEmail: "",
       message: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      console.log(values);
+      setModalOpened(false);
+      setSubmitModalOpened(true);
+    },
   });
 
   return (
@@ -259,6 +263,7 @@ const LargeLabel = styled(Label)`
 const Form = styled.form`
   display: grid;
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
+  grid-gap: 24px;
   @media screen and (max-width: 768px) {
     grid-template-columns: 100%;
     grid-gap: 16px;

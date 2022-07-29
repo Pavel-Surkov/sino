@@ -4,6 +4,7 @@ import Position from "./Position/Position";
 import TextBlock from "../../PrivacyPolicy/TextBlock/TextBlock";
 import PrimaryBtn from "../../constant/PrimaryButton";
 import ApplyForm from "./ApplyForm/ApplyForm";
+import SubmitModal from "../../constant/SubmitModal";
 import { font } from "../../base/functions";
 import { styled } from "frontity";
 
@@ -33,6 +34,7 @@ const requirements = [
 
 const Info = () => {
   const [applyFormOpened, setApplyFormOpened] = useState(false);
+  const [submitModalOpened, setSubmitModalOpened] = useState(false);
 
   return (
     <Section>
@@ -50,7 +52,7 @@ const Info = () => {
             <TextBlock marginBottom={28} title="We are looking for">
               <List>
                 {requirements.map((item) => (
-                  <ListItem key={item.slice(0, 11)}>{item}</ListItem>
+                  <ListItem key={item}>{item}</ListItem>
                 ))}
               </List>
             </TextBlock>
@@ -82,11 +84,83 @@ const Info = () => {
         <ApplyForm
           modalOpened={applyFormOpened}
           setModalOpened={setApplyFormOpened}
+          setSubmitModalOpened={setSubmitModalOpened}
         />
       </ApplyWrapper>
+      <SubmitModal
+        modalOpened={submitModalOpened}
+        setModalOpened={setSubmitModalOpened}
+      >
+        <ModalText>
+          <p>You have successfully submitted your resume</p>
+        </ModalText>
+        <CloseButtonWrapper>
+          <CloseButton onClick={() => setSubmitModalOpened(false)}>
+            Great
+          </CloseButton>
+        </CloseButtonWrapper>
+      </SubmitModal>
     </Section>
   );
 };
+
+const CloseButton = styled.button`
+  border: none;
+  margin-left: auto;
+  ${font(24, 30)};
+  color: var(--white);
+  padding: 0.83333em 1.25em;
+  background: var(--lightblue-250);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 325px;
+  cursor: pointer;
+  &:hover {
+    background: var(--lightblue-300);
+  }
+  &:active {
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  @media screen and (max-width: 991px) {
+    color: var(--gray-menu);
+    background: var(--white);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    &:hover {
+      color: var(--gray-menu);
+      background: var(--white);
+      filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.15));
+    }
+    &:active {
+      color: var(--gray-menu);
+      background: var(--white);
+      box-shadow: 0px 0px 10px 0px #0000001a inset;
+      filter: none;
+    }
+  }
+`;
+
+const ModalText = styled.div`
+  margin-bottom: 40px;
+  text-align: center;
+  & p {
+    ${font(24, 30)};
+    margin: 0 auto;
+    max-width: 308px;
+    color: #000;
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 24px;
+    & p {
+      ${font(16, 30)};
+      max-width: 220px;
+      color: var(--gray-menu);
+    }
+  }
+`;
+
+const CloseButtonWrapper = styled.div`
+  text-align: center;
+`;
 
 const ApplyWrapper = styled.div`
   & h2 {

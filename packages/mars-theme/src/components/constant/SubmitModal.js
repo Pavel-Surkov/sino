@@ -52,16 +52,16 @@ const SubmitModal = ({ modalOpened, setModalOpened, maxWidth, children }) => {
                 <path
                   d="M30 10L10 30"
                   stroke="#4279B8"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M10 10L30 30"
                   stroke="#4279B8"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </CloseMobile>

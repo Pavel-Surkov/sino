@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "../../../constant/Container";
-import Link from "../../../constant/Link";
-import { font, flex } from "../../../base/functions";
+import Container from "../../constant/Container";
+import Link from "../../constant/Link";
+import { font, flex } from "../../base/functions";
 import { styled, connect } from "frontity";
 
 const otherNews = [

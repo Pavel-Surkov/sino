@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
-import Title from "../../../constant/Title";
-import Container from "../../../constant/Container";
-import Link from "../../../constant/Link";
+import Title from "../../constant/Title";
+import Container from "../../constant/Container";
+import Link from "../../constant/Link";
 import { styled, connect } from "frontity";
-import { font, flex } from "../../../base/functions";
+import { font, flex } from "../../base/functions";
 
-import corporation from "../../../../assets/images/corporation-thanks.jpg";
-import corporation2x from "../../../../assets/images/corporation-thanks@2x.jpg";
+import corporation from "../../../assets/images/corporation-thanks.jpg";
+import corporation2x from "../../../assets/images/corporation-thanks@2x.jpg";
 
-import share from "../../../../assets/images/svg/bi_share.svg";
+import share from "../../../assets/images/svg/bi_share.svg";
 
-import facebook from "../../../../assets/images/svg/Facebook.svg";
-import linkedin from "../../../../assets/images/svg/LinkedIn.svg";
-import message from "../../../../assets/images/svg/Message.svg";
-import twitter from "../../../../assets/images/svg/Twitter.svg";
+import facebook from "../../../assets/images/svg/Facebook.svg";
+import linkedin from "../../../assets/images/svg/LinkedIn.svg";
+import message from "../../../assets/images/svg/Message.svg";
+import twitter from "../../../assets/images/svg/Twitter.svg";
 
 const post = {
   id: 2,

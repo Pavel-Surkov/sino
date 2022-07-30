@@ -6,7 +6,7 @@ import Careers from "./Careers/Careers";
 import Contact from "./Contact/Contact";
 import Investor from "./Investor/Investor";
 import News from "./News/News";
-import NewsSingle from "./News/NewsSingle/NewsSingle";
+import NewsSingle from "./NewsSingle/NewsSingle";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./TermsOfUse/TermsOfUse";
 import RequestQuote from "./RequestQuote/RequestQuote";

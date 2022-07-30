@@ -5,6 +5,7 @@ import link from "@frontity/html2react/processors/link";
 import menuHandler from "./components/handlers/menu-handler";
 import servicesHandler from "./components/handlers/services-handler";
 import newsHandler from "./components/handlers/news-handler";
+import acfOptionsHandler from "./components/handlers/options-page-handler";
 
 const marsTheme = {
   name: "@frontity/mars-theme",
@@ -264,6 +265,7 @@ const marsTheme = {
         await actions.source.fetch(`/menu/${state.theme.menuUrl}/`);
         await actions.source.fetch(`/services/`);
         await actions.source.fetch(`/company-news/`);
+        await actions.source.fetch(`acf-settings`);
       },
     },
   },
@@ -277,7 +279,7 @@ const marsTheme = {
       processors: [image, iframe, link],
     },
     source: {
-      handlers: [menuHandler, servicesHandler, newsHandler],
+      handlers: [menuHandler, servicesHandler, newsHandler, acfOptionsHandler],
     },
   },
 };

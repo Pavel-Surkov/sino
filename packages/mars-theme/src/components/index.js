@@ -13,6 +13,7 @@ import {
 } from "./functions/functions";
 import Router from "./Router";
 import Service from "./Service/Service";
+import NewsSingle from "./NewsSingle/NewsSingle";
 
 import { globalStyles } from "./base/globalStyle";
 
@@ -87,6 +88,7 @@ const Theme = ({ state, actions }) => {
           <Loading when={data.isFetching} />
           <Router when={data.isPage} />
           <Service when={data.isPostType && data.isServices} />
+          <NewsSingle when={data.isPostType && data.isNews} />
           <PageError when={data.isError} />
         </Switch>
       </Main>

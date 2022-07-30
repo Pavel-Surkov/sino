@@ -7,11 +7,14 @@ import { styled, connect } from "frontity";
 import news from "../../assets/images/news-poster.png";
 
 const News = ({ state, post }) => {
+  const options = state.source.get("acf-settings");
+  console.log('options page');
+  console.log(options);
   return (
     <NewsWrapper>
-      <Hero image={post.acf.news_top_banner_image.url} title={post.acf.news_top_banner_title} />
+      <Hero title={options.acf.news_top_banner_title} image={options.acf.news_top_banner_image.url} />
       <NewsList post={post} />
-      <MediaContact post={post} />
+      <MediaContact post={options} />
     </NewsWrapper>
   );
 };

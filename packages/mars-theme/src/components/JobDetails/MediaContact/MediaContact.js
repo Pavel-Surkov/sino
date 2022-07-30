@@ -5,15 +5,14 @@ import IconBlock from "../../constant/IconBlock";
 import { styled } from "frontity";
 import { font } from "../../base/functions";
 
-import contact from "../../../assets/images/media-contact.png";
-import contact2x from "../../../assets/images/media-contact@2x.png";
-import message from "../../../assets/images/svg/Message.svg";
+import contact from "../../../assets/images/alex-starnes-PK_t0Lrh7MM.png";
+import contact2x from "../../../assets/images/alex-starnes-PK_t0Lrh7MM@2x.png";
+import phone from "../../../assets/images/svg/Phone.svg";
 
 const MediaContact = () => {
   return (
     <Section>
       <Container>
-        <MediaTitle>Media Contact</MediaTitle>
         <Note>
           <p>For more information, please contact:</p>
         </Note>
@@ -28,12 +27,13 @@ const MediaContact = () => {
             />
           </ImageWrapper>
           <Info>
-            <Name>Rojanin Patrick Asawa</Name>
-            <Position>Media Manager</Position>
-            <IconBlock icon={message}>
-              <TextLink link="mailto:rojanin.a@sinologistics.co.th">
-                rojanin.a@sinologistics.co.th
-              </TextLink>
+            <Name>Ms. Sudang C.</Name>
+            <Position>HR Manager</Position>
+            <IconBlock icon={phone}>
+              <MediaTextLink link="tel:+66 2-687-0477">
+                +66 2-687-0477
+              </MediaTextLink>
+              <Ext>Ext. 423</Ext>
             </IconBlock>
           </Info>
         </Content>
@@ -41,6 +41,15 @@ const MediaContact = () => {
     </Section>
   );
 };
+
+const Ext = styled.p`
+  margin: 0;
+  ${font(18, 30)};
+`;
+
+const MediaTextLink = styled(TextLink)`
+  display: block;
+`;
 
 const Position = styled.p`
   ${font(16, 24)}
@@ -81,22 +90,12 @@ const Note = styled.div`
   }
 `;
 
-const MediaTitle = styled.h5`
-  margin: 0;
-  margin-bottom: 48px;
-  color: var(--blue-600);
-  font-weight: 400;
-  ${font(32, 40)};
-  letter-spacing: -0.02em;
-  @media screen and (max-width: 991px) {
-    margin-bottom: 32px;
-  }
-`;
-
 const Section = styled.section`
-  padding-top: 144px;
+  padding-top: 80px;
   padding-bottom: 192px;
+  /* border-top: 1px solid var(--blue-600); */
   @media screen and (max-width: 991px) {
+    /* border: none; */
     padding-top: 128px;
     padding-bottom: 144px;
   }

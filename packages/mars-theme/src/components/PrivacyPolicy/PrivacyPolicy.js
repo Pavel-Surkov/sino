@@ -4,71 +4,45 @@ import Title from "../constant/Title";
 import TextBlock from "./TextBlock/TextBlock";
 import { styled } from "frontity";
 import { font } from "../base/functions";
+import parse from "html-react-parser";
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy = ({post}) => {
   return (
     <PageWrapper>
       <Section>
         <Container>
           <Title size="xs" color="blue">
-            Privacy Policy
+            {parse(post.acf.privacy_policy_title)}
           </Title>
           <Content>
-            <TextBlock title="Information we collect">
-              <p>
-                The personal information that you are asked to provide, and the
-                reasons why you are asked to provide it, will be made clear
-                to you at the point we ask you to provide your personal
-                information.
-              </p>
-              <p>
-                If you contact us directly, we may receive additional
-                information about you such as your name, email address, phone
-                number, the contents of the message and/or attachments you may
-                send us, and any other information you may choose to provide.
-              </p>
-              <p>
-                When you register for an Account, we may ask for your contact
-                information, including items such as name, company name,
-                address, email address, IP address and telephone number.
-              </p>
+            <TextBlock title={parse(post.acf.privacy_policy_block_1_title)}>
+              {post.acf.privacy_policy_block_1_text.map((p) => (
+                <p key={p.privacy_policy_block_1_paragraph.slice(0, 11)}>{parse(p.privacy_policy_block_1_paragraph)}</p>
+              ))}
             </TextBlock>
-            <TextBlock title="How we use your information">
-              <p>
-                We use the information we collect in various ways, including to:
-              </p>
+            <TextBlock title={parse(post.acf.privacy_policy_block_2_title)}>
+              {post.acf.privacy_policy_block_2_text.map((p) => (
+                <p key={p.privacy_policy_block_2_paragraph.slice(0, 11)}>{parse(p.privacy_policy_block_2_paragraph)}</p>
+              ))}
+              {post.acf.privacy_policy_block_2_list ?
               <List>
-                <ListItem>Provide, operate, and maintain our website</ListItem>
-                <ListItem>
-                  Improve, personalize, and expand our website
-                </ListItem>
-                <ListItem>
-                  Understand and analyse how you use our website
-                </ListItem>
-                <ListItem>
-                  Develop new products, services, features, and functionality
-                </ListItem>
+                {post.acf.privacy_policy_block_2_list.map((p) => (
+                  <ListItem key={p.privacy_policy_block_2_list_item.slice(0, 11)}>
+                    {parse(p.privacy_policy_block_2_list_item)}
+                  </ListItem>
+                ))}
               </List>
+              : ''}
             </TextBlock>
-            <TextBlock title="Third-Party Privacy Policies">
-              <p>
-                Sino Logistics will not disclose your personal information that
-                has been recorded or other information that can be identified as
-                yours to a third party unless Sino Logistics has your
-                consent.Providing such information is to help you perform the
-                transaction you wish.Disclosure of such information is legal or
-                come from government agency’s requestSino Logistics will not
-                disclose your personal information to third parties for their
-                marketing purpose such as telesales or postal sales etc.
-              </p>
+            <TextBlock title={parse(post.acf.privacy_policy_block_3_title)}>
+              {post.acf.privacy_policy_block_3_text.map((p) => (
+                <p key={p.privacy_policy_block_3_paragraph.slice(0, 11)}>{parse(p.privacy_policy_block_3_paragraph)}</p>
+              ))}
             </TextBlock>
-            <TextBlock title="Third-Party Privacy Policies">
-              <p>
-                Sino Logistics has implemented encryption and physical security
-                methods to prevent unauthorized access or alteration of
-                information without permission, including checking who had
-                accessed to information.
-              </p>
+            <TextBlock title={parse(post.acf.privacy_policy_block_4_title)}>
+              {post.acf.privacy_policy_block_4_text.map((p) => (
+                <p key={p.privacy_policy_block_4_paragraph.slice(0, 11)}>{parse(p.privacy_policy_block_4_paragraph)}</p>
+              ))}
             </TextBlock>
           </Content>
         </Container>

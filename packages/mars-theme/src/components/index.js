@@ -88,7 +88,7 @@ const Theme = ({ state, actions }) => {
           <Loading when={data.isFetching} />
           <Router when={data.isPage} />
           <Service when={data.isPostType && data.isServices} />
-          <NewsSingle when={data.isPostType && data.isNews} />
+          <NewsSingle when={data.isPostType && data.isCompanyNews} />
           <PageError when={data.isError} />
         </Switch>
       </Main>

@@ -31,6 +31,11 @@ const settings = {
               type: "services",
               endpoint: "services",
               archive: "/services"
+            },
+            {
+              type: "company-news",
+              endpoint: "company-news",
+              archive: "/company-news"
             }
           ]
         },

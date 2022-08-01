@@ -4,37 +4,25 @@ import Container from "../constant/Container";
 import Title from "../constant/Title";
 import { connect, styled } from "frontity";
 import { font } from "../base/functions";
+import parse from "html-react-parser";
 
 import investor from "../../assets/images/johan-taljaard-investor-unsplash.png";
 
-const Investor = ({ state }) => {
+const Investor = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
     <InvestorWrapper>
-      <Hero title={"Investor"} image={investor} />
+      <Hero title={post.acf.investor_top_banner_title} image={post.acf.investor_top_banner_background.url} />
       <Content>
         <Container>
           <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 40}>
-            Watch this space for updates
+            {post.acf.investor_content_title ? parse(post.acf.investor_content_title) : ''}
           </Title>
           <Text>
-            <p>
-              Sino Logistics is preparing to list on The Stock Exchange
-              of Thailand (SET) in the near future. SET is ASEAN’s 2nd largest
-              stock exchange and the world’s 23rd by market capitalization
-              at US$564 billion as of May 2022.
-            </p>
-            <p>
-              Potential investors will be able to find all relevant information
-              relating to investment opportunities in Sino Logistics on this
-              page of our website.
-            </p>
-            <p>
-              If you are interested in following our investor updates, please
-              bookmark this page and check back regularly. More information will
-              be added to soon.
-            </p>
+            {post.acf.investor_content_text.map((p) => (
+              <p key={p.investor_content_paragraph.slice(0, 11)}>{parse(p.investor_content_paragraph)}</p>
+            ))}
           </Text>
         </Container>
       </Content>

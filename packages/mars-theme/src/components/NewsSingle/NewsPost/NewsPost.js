@@ -4,6 +4,7 @@ import Container from "../../constant/Container";
 import Link from "../../constant/Link";
 import { styled, connect } from "frontity";
 import { font, flex } from "../../base/functions";
+import parse from "html-react-parser";
 
 import corporation from "../../../assets/images/corporation-thanks.jpg";
 import corporation2x from "../../../assets/images/corporation-thanks@2x.jpg";
@@ -15,7 +16,7 @@ import linkedin from "../../../assets/images/svg/LinkedIn.svg";
 import message from "../../../assets/images/svg/Message.svg";
 import twitter from "../../../assets/images/svg/Twitter.svg";
 
-const post = {
+/*const post = {
   id: 2,
   title:
     "Sino Logistics Corporation Thanks Customers & Partners with ‘Sino Golf Invitational 2021’",
@@ -28,9 +29,9 @@ const post = {
     "To liven up the occasion, Thailand’s famous Pro-Golfers, Pro-Air – Ms. Saruttaya Ngam-Usawan, and Pro-Jack – Mr. Vorapol Mauthorn joined for the ‘Meet the Pro’ activity, which included a mini competition to raise funds for further development of Wat Tatuthumporn Temple in Nakhon Ratchasima province.",
     "Sino Logistics Corporation and R. K. INTERNATIONAL FREIGHT even awarded THB 100,000 for a Hole-in-One winner. Still, overall, the event was fun and joyful for all the 150 participants from customer and partner organizations, including shipping lines, airlines, trucking companies, and terminals, who spent quality time together.",
   ],
-};
+};*/
 
-const NewsPost = ({ state, actions }) => {
+const NewsPost = ({ state, actions, post }) => {
   const { isMobile, shareModalOpened } = state.theme;
 
   useEffect(() => {
@@ -43,6 +44,24 @@ const NewsPost = ({ state, actions }) => {
     );
   }, []);
 
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug'
+  ]
+
+  const dateHandler = (date) => {
+    const year = date.split('-')[0];
+    const month = Number(date.split('-')[1]);
+    const day = date.split('-')[2].substr(0, 2);
+    return day + ' ' + months[month-1] + ' ' + year;
+  }
+
   // TODO: Add "Done" modal after sharing
 
   return (
@@ -50,10 +69,11 @@ const NewsPost = ({ state, actions }) => {
       <Container>
         <PostContainer>
           <Title size="m" color="black" marginBottom={isMobile ? 16 : 54}>
-            {post.title}
+            {post.title.rendered ?
+              parse(post.title.rendered) : ''}
           </Title>
           <AdditionalBlock>
-            <Date>{post.date}</Date>
+            <Date>{dateHandler(post.date)}</Date>
             <ShareWrapper>
               <ShareModal
                 className={`share-modal ${
@@ -99,16 +119,16 @@ const NewsPost = ({ state, actions }) => {
           </AdditionalBlock>
           <ImageWrapper>
             <img
-              src={post.image}
-              srcSet={`${post.image} 1x, ${
-                post.image2x ? post.image2x : post.image
+              src={post.acf.news_item_image_1x.url}
+              srcSet={`${post.acf.news_item_image_1x.url} 1x, ${
+                post.acf.news_item_image_2x.url ? post.acf.news_item_image_2x.url : post.acf.news_item_image_1x.url
               } 2x`}
               alt=""
             />
           </ImageWrapper>
           <Article>
-            {post.text.map((p) => (
-              <p key={p.slice(0, 11)}>{p}</p>
+            {post.acf.news_item_text.map((p) => (
+              <p key={p.news_item_paragraph.slice(0, 11)}>{parse(p.news_item_paragraph)}</p>
             ))}
           </Article>
         </PostContainer>

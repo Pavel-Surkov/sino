@@ -5,7 +5,7 @@ import TextBlock from "../PrivacyPolicy/TextBlock/TextBlock";
 import { styled } from "frontity";
 import { font } from "../base/functions";
 
-const TermsOfUse = () => {
+const TermsOfUse = ({post}) => {
   return (
     <PageWrapper>
       <Section>

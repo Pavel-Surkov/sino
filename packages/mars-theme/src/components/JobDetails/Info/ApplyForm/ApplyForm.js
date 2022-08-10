@@ -8,9 +8,12 @@ import { font, flex } from "../../../base/functions";
 import { styled, connect, useConnect } from "frontity";
 
 import { useFormik } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ApplyForm = ({ modalOpened, setModalOpened, setSubmitModalOpened }) => {
   const { state } = useConnect();
+
+  const [isFormVerified, setIsFormVerified] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -25,6 +28,11 @@ const ApplyForm = ({ modalOpened, setModalOpened, setSubmitModalOpened }) => {
       setSubmitModalOpened(true);
     },
   });
+
+  const onCaptchaChange = (val) => {
+    console.log("Captcha value: " + val);
+    setIsFormVerified(true);
+  };
 
   return (
     <>
@@ -116,14 +124,26 @@ const ApplyForm = ({ modalOpened, setModalOpened, setSubmitModalOpened }) => {
               value={formik.values.message}
             />
           </LargeLabel>
+          <RecaptchaWrapper>
+            <ReCAPTCHA
+              sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+              onChange={onCaptchaChange}
+            />
+          </RecaptchaWrapper>
           <SubmitWrapper>
-            <PrimaryBtn type="submit" content="Submit" />
+            <PrimaryBtn
+              disabled={!isFormVerified}
+              type="submit"
+              content="Submit"
+            />
           </SubmitWrapper>
         </Form>
       </SubmitModal>
     </>
   );
 };
+
+const RecaptchaWrapper = styled.div``;
 
 const CloseMobile = styled.button`
   width: 40px;

@@ -12,6 +12,7 @@ import { font } from "../base/functions";
 import { processDate } from "../functions/functions";
 
 import { useFormik } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import calendar from "../../assets/images/svg/Calendar.svg";
 import poster from "../../assets/images/quote-poster.png";
@@ -37,6 +38,7 @@ const RequestQuote = ({ state }) => {
   const [isDestinationDropOpened, setIsDestinationDropOpened] = useState(false);
 
   const [isQuoteModalOpened, setIsQuoteModalOpened] = useState(false);
+  const [isFormVerified, setIsFormVerified] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -75,6 +77,11 @@ const RequestQuote = ({ state }) => {
       },
     });
   }, []);
+
+  const onCaptchaChange = (val) => {
+    console.log("Captcha value: " + val);
+    setIsFormVerified(true);
+  };
 
   return (
     <PageWrapper>
@@ -196,8 +203,18 @@ const RequestQuote = ({ state }) => {
                 value={formik.values.message}
               />
             </LargeLabel>
+            <RecaptchaWrapper>
+              <ReCAPTCHA
+                sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+                onChange={onCaptchaChange}
+              />
+            </RecaptchaWrapper>
             <SubmitWrapper>
-              <PrimaryBtn type="submit" content="Submit" />
+              <PrimaryBtn
+                disabled={!isFormVerified}
+                type="submit"
+                content="Submit"
+              />
             </SubmitWrapper>
           </Form>
         </RequestContainer>
@@ -218,6 +235,12 @@ const RequestQuote = ({ state }) => {
     </PageWrapper>
   );
 };
+
+const RecaptchaWrapper = styled.div`
+  @media screen and (max-width: 991px) {
+    order: 8;
+  } ;
+`;
 
 const ModalText = styled.div`
   margin-bottom: 40px;

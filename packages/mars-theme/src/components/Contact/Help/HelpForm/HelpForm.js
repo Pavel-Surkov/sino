@@ -6,9 +6,11 @@ import { styled } from "frontity";
 import { font } from "../../../base/functions";
 
 import { useFormik } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const HelpForm = () => {
-  const [modalOpened, setModalOpened] = useState(true);
+  const [modalOpened, setModalOpened] = useState(false);
+  const [isFormVerified, setIsFormVerified] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -26,6 +28,11 @@ const HelpForm = () => {
       console.log(values);
     },
   });
+
+  const onCaptchaChange = (val) => {
+    console.log("Captcha value: " + val);
+    setIsFormVerified(true);
+  };
 
   return (
     <>
@@ -104,14 +111,26 @@ const HelpForm = () => {
               value={formik.values.message}
             />
           </LargeLabel>
+          <RecaptchaWrapper>
+            <ReCAPTCHA
+              sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+              onChange={onCaptchaChange}
+            />
+          </RecaptchaWrapper>
           <SubmitWrapper>
-            <PrimaryBtn type="submit" content="Submit" />
+            <PrimaryBtn
+              disabled={!isFormVerified}
+              type="submit"
+              content="Submit"
+            />
           </SubmitWrapper>
         </Wrapper>
       </Form>
     </>
   );
 };
+
+const RecaptchaWrapper = styled.div``;
 
 const CloseButton = styled.button`
   border: none;

@@ -28,6 +28,7 @@
     "formik": "^2.2.9",
     "frontity": "^1.17.2",
     "html-react-parser": "^3.0.1",
+    "react-google-recaptcha": "^2.1.0",
     "simplebar-react": "^2.4.1",
     "swiper": "^8.1.4",
     "vercel": "^27.0.1"

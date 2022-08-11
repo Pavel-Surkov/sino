@@ -6,9 +6,20 @@ import { flex } from "../base/functions";
 const MenuIcon = ({ state, actions }) => {
   const mobileMenuOpened = state.theme.isMobileMenuOpened;
 
+  function toggleScroll() {
+    const htmlElement = document.documentElement;
+
+    htmlElement.classList.toggle("scroll-hidden");
+  }
+
   return mobileMenuOpened ? (
     <BtnWrapper>
-      <CloseButton onClick={() => actions.theme.toggleMobileMenu()}>
+      <CloseButton
+        onClick={() => {
+          actions.theme.toggleMobileMenu();
+          toggleScroll();
+        }}
+      >
         <img src={close} alt="close" />
       </CloseButton>
     </BtnWrapper>
@@ -16,7 +27,10 @@ const MenuIcon = ({ state, actions }) => {
     <BtnWrapper>
       <Hamburger
         label="Open menu"
-        onClick={() => actions.theme.toggleMobileMenu()}
+        onClick={() => {
+          actions.theme.toggleMobileMenu();
+          toggleScroll();
+        }}
       >
         <span></span>
         <span></span>

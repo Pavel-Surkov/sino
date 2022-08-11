@@ -32,9 +32,6 @@ const marsTheme = {
       languages: [
         ["English", "EN"],
         ["Thai", "TH"],
-        ["Deutsch", "DE"],
-        ["Español", "ES"],
-        ["Português", "PT"],
       ],
       featured: {
         showOnList: false,

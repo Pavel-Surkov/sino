@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, styled, css } from "frontity";
-import { Pagination } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { flex, font } from "../../base/functions";
 import Container from "../../constant/Container";
@@ -79,7 +79,7 @@ const Hero = ({ state, post }) => {
     <Wrapper>
       {!swiperStylesLoading && (
         <Swiper
-          modules={[Pagination]}
+          modules={[Pagination, Autoplay]}
           loop={true}
           autoplay={{
             delay: 3000,
@@ -124,18 +124,25 @@ const Hero = ({ state, post }) => {
         </Swiper>
       )}
       <SocialBlock>
-        {social.map(({ home_main_social_icon_image, home_main_social_icon_link }) => {
-          return (
-            <SocialLink
-              target="_blank"
-              rel="noopener noreferrer"
-              link={home_main_social_icon_link}
-              key={home_main_social_icon_link}
-            >
-              <img width="24" height="24" src={home_main_social_icon_image.url} alt="social icon" />
-            </SocialLink>
-          );
-        })}
+        {social.map(
+          ({ home_main_social_icon_image, home_main_social_icon_link }) => {
+            return (
+              <SocialLink
+                target="_blank"
+                rel="noopener noreferrer"
+                link={home_main_social_icon_link}
+                key={home_main_social_icon_link}
+              >
+                <img
+                  width="24"
+                  height="24"
+                  src={home_main_social_icon_image.url}
+                  alt="social icon"
+                />
+              </SocialLink>
+            );
+          }
+        )}
         <DecorativeLine
           heightInPercent={56.185567}
           color="white"

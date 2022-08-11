@@ -87,6 +87,9 @@ export const globalStyles = css`
   }
   html {
     font-size: 10px;
+    &.scroll-hidden body {
+      overflow: hidden;
+    }
   }
   body {
     overflow: overlay;

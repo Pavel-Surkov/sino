@@ -55,6 +55,7 @@ const HeroDrop = ({ state, actions }) => {
                   <Dropdown isOpened={link.isDropdownOpened}>
                     <ul
                       css={css`
+                        padding-left: 100px;
                         ${flex("column")};
                       `}
                     >
@@ -200,9 +201,6 @@ const Drop = styled.div`
   backdrop-filter: blur(25px);
   @media screen and (max-width: 991px) {
     display: none;
-  }
-  & ul {
-    padding: 0;
   }
 `;
 

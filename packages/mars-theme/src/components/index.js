@@ -14,6 +14,7 @@ import {
 import Router from "./Router";
 import Service from "./Service/Service";
 import NewsSingle from "./NewsSingle/NewsSingle";
+import JobDetails from "./JobDetails/JobDetails";
 
 import { globalStyles } from "./base/globalStyle";
 
@@ -27,6 +28,9 @@ import { globalStyles } from "./base/globalStyle";
  */
 
 const Theme = ({ state, actions }) => {
+  useEffect(() => {
+    actions.theme.setMenuItem(null);
+  }, [state.router.link]);
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
 
@@ -89,6 +93,7 @@ const Theme = ({ state, actions }) => {
           <Router when={data.isPage} />
           <Service when={data.isPostType && data.isServices} />
           <NewsSingle when={data.isPostType && data.isCompanyNews} />
+          <JobDetails when={data.isPostType && data.isJobs} />
           <PageError when={data.isError} />
         </Switch>
       </Main>

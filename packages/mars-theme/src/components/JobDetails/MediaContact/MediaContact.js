@@ -4,17 +4,19 @@ import TextLink from "../../constant/TextLink";
 import IconBlock from "../../constant/IconBlock";
 import { styled } from "frontity";
 import { font } from "../../base/functions";
+import parse from "html-react-parser";
 
 import contact from "../../../assets/images/alex-starnes-PK_t0Lrh7MM.png";
 import contact2x from "../../../assets/images/alex-starnes-PK_t0Lrh7MM@2x.png";
 import phone from "../../../assets/images/svg/Phone.svg";
 
-const MediaContact = () => {
+const MediaContact = ({ options }) => {
   return (
     <Section>
       <Container>
         <Note>
-          <p>For more information, please contact:</p>
+          {options.acf.jobs_hr_title ?
+            <p>{parse(options.acf.jobs_hr_title)}</p> : ''}
         </Note>
         <Content>
           <ImageWrapper>
@@ -27,13 +29,15 @@ const MediaContact = () => {
             />
           </ImageWrapper>
           <Info>
-            <Name>Ms. Sudang C.</Name>
-            <Position>HR Manager</Position>
+            <Name>{options.acf.jobs_hr_name ?
+              parse(options.acf.jobs_hr_name) : ''}</Name>
+            <Position>{options.acf.jobs_hr_post ?
+              parse(options.acf.jobs_hr_post) : ''}</Position>
             <IconBlock icon={phone}>
-              <MediaTextLink link="tel:+66 2-687-0477">
-                +66 2-687-0477
-              </MediaTextLink>
-              <Ext>Ext. 423</Ext>
+              <MediaTextLink link={`tel:${options.acf.jobs_hr_phone}`}>{options.acf.jobs_hr_phone ?
+                <p>{parse(options.acf.jobs_hr_phone)}</p> : ''}</MediaTextLink>
+              <Ext>{options.acf.jobs_hr_ext ?
+                parse(options.acf.jobs_hr_ext) : ''}</Ext>
             </IconBlock>
           </Info>
         </Content>

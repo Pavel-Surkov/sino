@@ -16,7 +16,7 @@ import valueAdded from "../../../assets/images/value-added-service.jpg";
 
 import parse from "html-react-parser";
 
-const services = [
+/*const services = [
   {
     title: "Air Freight",
     img: airFreight,
@@ -42,7 +42,7 @@ const services = [
     img: valueAdded,
     link: "/services/value-added",
   },
-];
+];*/
 
 const Services = ({ state, actions, post }) => {
   const { isMobile } = state.theme;
@@ -74,9 +74,9 @@ const Services = ({ state, actions, post }) => {
             services.map((service) => (
               <Card
                 image={service.fimg_url}
-                title={parse(service.title.rendered)}
+                title={service.title.rendered ? parse(service.title.rendered) : ''}
                 link={service.link}
-                key={parse(service.title.rendered)}
+                key={service.title.rendered ? parse(service.title.rendered) : ''}
               />
             ))}
           {isMobile && (
@@ -89,11 +89,11 @@ const Services = ({ state, actions, post }) => {
             >
               {services.map((service) => {
                 return (
-                  <SwiperSlide key={service.title.rendered}>
+                  <SwiperSlide key={service.title.rendered ? service.title.rendered : ''}>
                     <SwiperWrapper>
                       <Card
                         image={service.fimg_url}
-                        title={parse(service.title.rendered)}
+                        title={service.title.rendered ? parse(service.title.rendered) : ''}
                         link={service.link}
                       />
                     </SwiperWrapper>

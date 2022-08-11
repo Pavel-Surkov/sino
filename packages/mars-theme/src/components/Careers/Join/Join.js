@@ -5,7 +5,7 @@ import PositionsList from "./PositionsList";
 import { styled, connect } from "frontity";
 import { font } from "../../base/functions";
 
-const JoinElement = ({ state, post }) => {
+const JoinElement = ({ state, post, jobs }) => {
   const { isMobile } = state.theme;
 
   return (
@@ -26,7 +26,7 @@ const JoinElement = ({ state, post }) => {
             </p>
           </Subtitle>
         </Text>
-        <PositionsList post={post} />
+        <PositionsList jobs={jobs} post={post} />
       </Container>
     </Join>
   );

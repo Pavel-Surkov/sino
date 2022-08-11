@@ -100,7 +100,7 @@ const NewsList = ({ state, actions, post }) => {
     <Section>
       <Container>
         <ListTitle>{post.acf.latest_news_title ? parse(post.acf.latest_news_title) : ''}</ListTitle>
-        <List>
+        <List id="press-release">
           {news && news.map((newsItem, idx) => {
             if (!isAllNewsShown && idx > 2) {
               return null;

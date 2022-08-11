@@ -7,8 +7,8 @@ import { font } from "../../../base/functions";
 
 import { useFormik } from "formik";
 
-const HelpForm = () => {
-  const [modalOpened, setModalOpened] = useState(true);
+const HelpForm = ({post}) => {
+  const [modalOpened, setModalOpened] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -40,72 +40,72 @@ const HelpForm = () => {
       <Form onSubmit={formik.handleSubmit}>
         <Wrapper>
           <Label>
-            <span>Contact Name</span>
+            <span>{post.acf.contact_help_label_name}</span>
             <Input
-              placeholder="ex. Jack Nilson"
+              placeholder={post.acf.contact_help_placeholder_name}
               name="contactName"
               onChange={formik.handleChange}
               value={formik.values.contactName}
             />
           </Label>
           <Label>
-            <span>Company Name</span>
+            <span>{post.acf.contact_help_label_company_name}</span>
             <Input
-              placeholder="ex. DHL"
+              placeholder={post.acf.contact_help_placeholder_company_name}
               name="companyName"
               onChange={formik.handleChange}
               value={formik.values.companyName}
             />
           </Label>
           <Label>
-            <span>Contact Phone</span>
+            <span>{post.acf.contact_help_label_phone}</span>
             <Input
               type="tel"
-              placeholder="ex. +1 562-985-4111"
+              placeholder={post.acf.contact_help_placeholder_phone}
               name="contactPhone"
               onChange={formik.handleChange}
               value={formik.values.contactPhone}
             />
           </Label>
           <Label>
-            <span>Country</span>
+            <span>{post.acf.contact_help_label_country}</span>
             <Input
-              placeholder="-Select a Country-"
+              placeholder={post.acf.contact_help_placeholder_country}
               name="country"
               onChange={formik.handleChange}
               value={formik.values.country}
             />
           </Label>
           <Label>
-            <span>Contact Email</span>
+            <span>{post.acf.contact_help_label_email}</span>
             <Input
               type="email"
-              placeholder="ex. info@ux-mind.pro"
+              placeholder={post.acf.contact_help_placeholder_email}
               name="contactEmail"
               onChange={formik.handleChange}
               value={formik.values.contactEmail}
             />
           </Label>
           <Label>
-            <span>Nature of Enquiry</span>
+            <span>{post.acf.contact_help_label_nature}</span>
             <Input
-              placeholder="ex. Cost Estimation"
+              placeholder={post.acf.contact_help_placeholder_nature}
               name="natureOfEnquiry"
               onChange={formik.handleChange}
               value={formik.values.natureOfEnquiry}
             />
           </Label>
           <LargeLabel>
-            <span>Your Message</span>
+            <span>{post.acf.contact_help_label_message}</span>
             <Textarea
-              placeholder="Please describe how can we help you"
+              placeholder={post.acf.contact_help_placeholder_message}
               name="message"
               onChange={formik.handleChange}
               value={formik.values.message}
             />
           </LargeLabel>
           <SubmitWrapper>
-            <PrimaryBtn type="submit" content="Submit" />
+            <PrimaryBtn type="submit" content={post.acf.contact_help_button_text} />
           </SubmitWrapper>
         </Wrapper>
       </Form>

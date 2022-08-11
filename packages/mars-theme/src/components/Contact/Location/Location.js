@@ -15,43 +15,40 @@ import laemOffice2x from "../../../assets/images/laem-chabang-office-map@2x.png"
 import mark from "../../../assets/images/svg/Map-marker.svg";
 import message from "../../../assets/images/svg/Message.svg";
 import phone from "../../../assets/images/svg/Phone.svg";
+import parse from "html-react-parser";
 
-const Location = () => {
+const Location = ({post}) => {
   return (
     <Section>
       <Container>
         <Title size="xs" color="blue" marginBottom={32}>
-          Thailand
+          {post.acf.contact_location_title ? parse(post.acf.contact_location_title) : ''}
         </Title>
         <LocationBlock>
           <LocationContent>
-            <Office>Corporate Head Office</Office>
+            <Office>{post.acf.contact_location_1_name ? parse(post.acf.contact_location_1_name) : ''}</Office>
             <Corporation>
-              <p>Sino Logistics Corporation</p>
+              <p>{post.acf.contact_location_1_text ? parse(post.acf.contact_location_1_text) : ''}</p>
             </Corporation>
             <IconBlock icon={mark} marginBottom={16}>
-              1011 Supalai Grand Tower, <br />
-              7th Floor, Unit No. 05, <br />
-              Rama 3 Road, <br />
-              Chongnonsee, Yannawa, <br />
-              Bangkok, 10120, Thailand
+              {post.acf.contact_location_1_locations ? parse(post.acf.contact_location_1_locations) : ''}
             </IconBlock>
             <IconBlock icon={message} marginBottom={16}>
               <TextLink
                 target="_blank"
                 rel="noopener noreferrer"
-                link={"mailto:info@sinologistics.co.th"}
+                link={`mailto:${post.acf.contact_location_1_mail}`}
               >
-                info@sinologistics.co.th
+                {post.acf.contact_location_1_mail}
               </TextLink>
             </IconBlock>
             <IconBlock icon={phone} marginBottom={16}>
               <TextLink
                 target="_blank"
                 rel="noopener noreferrer"
-                link={"tel:+6626870477"}
+                link={`tel:${post.acf.contact_location_1_phone}`}
               >
-                +6626870477
+                {post.acf.contact_location_1_phone}
               </TextLink>
             </IconBlock>
           </LocationContent>
@@ -64,8 +61,8 @@ const Location = () => {
               <img
                 width="558"
                 height="340"
-                src={headOffice}
-                srcSet={`${headOffice} 1x, ${headOffice2x} 2x`}
+                src={post.acf.contact_location_1_map_1x.url}
+                srcSet={`${post.acf.contact_location_1_map_1x.url} 1x, ${post.acf.contact_location_1_map_2x.url} 2x`}
                 alt=""
               />
             </Map>
@@ -73,31 +70,29 @@ const Location = () => {
         </LocationBlock>
         <LocationBlock>
           <LocationContent>
-            <Office>Laem Chabang Office and Warehouse</Office>
+            <Office>{post.acf.contact_location_2_name ? parse(post.acf.contact_location_2_name) : ''}</Office>
             <Corporation>
-              <p>Sino Logistics Corporation</p>
+              <p>{post.acf.contact_location_2_text ? parse(post.acf.contact_location_2_text) : ''}</p>
             </Corporation>
             <IconBlock icon={mark} marginBottom={16}>
-              6/2 Moo.10 <br />
-              Thungsukla, Sriracha, <br />
-              Chonburi, 20230, Thailand
+              {post.acf.contact_location_2_locations ? parse(post.acf.contact_location_2_locations) : ''}
             </IconBlock>
             <IconBlock icon={message} marginBottom={16}>
               <TextLink
                 target="_blank"
                 rel="noopener noreferrer"
-                link={"mailto:warehouse@sinologistics.co.th"}
+                link={`mailto:${post.acf.contact_location_2_mail}`}
               >
-                warehouse@sinologistics.co.th
+                {post.acf.contact_location_2_mail}
               </TextLink>
             </IconBlock>
             <IconBlock icon={phone} marginBottom={16}>
               <TextLink
                 target="_blank"
                 rel="noopener noreferrer"
-                link={"tel:+6633004465"}
+                link={`tel:${post.acf.contact_location_2_phone}`}
               >
-                +6633004465
+                {post.acf.contact_location_2_phone}
               </TextLink>
             </IconBlock>
           </LocationContent>
@@ -110,8 +105,8 @@ const Location = () => {
               <img
                 width="558"
                 height="340"
-                src={laemOffice}
-                srcSet={`${laemOffice} 1x, ${laemOffice2x} 2x`}
+                src={post.acf.contact_location_2_map_1x.url}
+                srcSet={`${post.acf.contact_location_2_map_1x.url} 1x, ${post.acf.contact_location_2_map_2x.url} 2x`}
                 alt=""
               />
             </Map>

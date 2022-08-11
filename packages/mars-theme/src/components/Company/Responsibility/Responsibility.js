@@ -81,6 +81,7 @@ const Responsibility = ({ state, post }) => {
               imagePosition={idx % 2 ? "right" : "left"}
               isCorporate={true}
               key={`responsibility-${idx}`}
+              id={item.company_responsibility_item_slug}
             >
               <Title size="xs" color="blue" marginBottom={24}>
                 {item.company_responsibility_item_title}

@@ -36,6 +36,11 @@ const settings = {
               type: "company-news",
               endpoint: "company-news",
               archive: "/company-news"
+            },
+            {
+              type: "jobs",
+              endpoint: "jobs",
+              archive: "/jobs"
             }
           ]
         },

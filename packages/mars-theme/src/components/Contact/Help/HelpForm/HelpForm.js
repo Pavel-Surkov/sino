@@ -8,7 +8,7 @@ import { font } from "../../../base/functions";
 import { useFormik } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const HelpForm = () => {
+const HelpForm = ({post}) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [isFormVerified, setIsFormVerified] = useState(false);
 

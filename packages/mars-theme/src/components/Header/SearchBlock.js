@@ -9,6 +9,12 @@ const SearchBlock = ({ state, actions }) => {
   const [searchOpened, setSearchOpened] = useState(false);
   const [langOpened, setLangOpened] = useState(false);
 
+  const jobsItems = state.source.get("/jobs/").items;
+  const companyNews = state.source.get("/company-news/").items;
+  const services = state.source.get("/services/").items;
+
+  const searchItems = [...jobsItems, ...companyNews, ...services];
+
   const { languages } = state.theme;
 
   // For closing modals
@@ -78,6 +84,16 @@ const SearchBlock = ({ state, actions }) => {
                   actions.theme.handleSearchChange(evt.target.value)
                 }
               />
+              {searchItems && (
+                <SearchDrop>
+                  {searchItems.map((item) => {
+                    // TODO: Finish the search;
+                    console.log(item);
+
+                    return <SearchItem key={item.id}>aaa</SearchItem>;
+                  })}
+                </SearchDrop>
+              )}
             </SearchModalWrapper>
           </SearchModal>
         )}
@@ -147,6 +163,20 @@ const SearchBlock = ({ state, actions }) => {
     </Wrapper>
   );
 };
+
+const SearchItem = styled.li``;
+
+const SearchDrop = styled.ul`
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  top: calc(100% - 4px);
+  background: var(--white);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px 16px 8px;
+`;
 
 const LangButton = styled(Button)`
   &.active path {

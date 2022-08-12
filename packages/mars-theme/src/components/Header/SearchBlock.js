@@ -2,20 +2,30 @@ import React, { useState, useEffect } from "react";
 import { connect, styled, css } from "frontity";
 import { flex, font } from "../base/functions";
 import Button from "../constant/Button";
+import Link from "../constant/Link";
 import ModalInput from "../constant/ModalInput";
 import RadioButton from "../constant/RadioButton";
 
 const SearchBlock = ({ state, actions }) => {
   const [searchOpened, setSearchOpened] = useState(false);
   const [langOpened, setLangOpened] = useState(false);
+  const [searchData, setSearchData] = useState([]);
 
   const jobsItems = state.source.get("/jobs/").items;
   const companyNews = state.source.get("/company-news/").items;
   const services = state.source.get("/services/").items;
 
-  const searchItems = [...jobsItems, ...companyNews, ...services];
-
   const { languages } = state.theme;
+
+  // console.log("data");
+  // console.log(searchData);
+
+  // Set search items to state
+  useEffect(() => {
+    const searchData = [...jobsItems, ...companyNews, ...services];
+
+    setSearchData(searchData);
+  }, [jobsItems, companyNews, services]);
 
   // For closing modals
   useEffect(() => {
@@ -84,13 +94,25 @@ const SearchBlock = ({ state, actions }) => {
                   actions.theme.handleSearchChange(evt.target.value)
                 }
               />
-              {searchItems && (
+              {searchData[0] && (
                 <SearchDrop>
-                  {searchItems.map((item) => {
-                    // TODO: Finish the search;
-                    console.log(item);
+                  {searchData.map((item) => {
+                    const currentValue = state.theme.searchValue.toLowerCase();
+                    const title = item.title.rendered;
 
-                    return <SearchItem key={item.id}>aaa</SearchItem>;
+                    const isMatches = title
+                      .toLowerCase()
+                      .includes(currentValue);
+
+                    if (isMatches) {
+                      return (
+                        <SearchItem key={item.id}>
+                          <SearchLink link={item.link}>{title}</SearchLink>
+                        </SearchItem>
+                      );
+                    }
+
+                    return null;
                   })}
                 </SearchDrop>
               )}
@@ -164,18 +186,29 @@ const SearchBlock = ({ state, actions }) => {
   );
 };
 
-const SearchItem = styled.li``;
+const SearchLink = styled(Link)`
+  display: block;
+  padding: 6px 16px;
+  width: 100%;
+`;
+
+const SearchItem = styled.li`
+  ${font(16, 24)};
+  letter-spacing: -0.02em;
+`;
 
 const SearchDrop = styled.ul`
   margin: 0;
   list-style: none;
   position: absolute;
   width: 100%;
-  top: calc(100% - 4px);
+  top: calc(100% - 6px);
   background: var(--white);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  padding: 10px 16px 8px;
+  padding: 10px 0 8px;
+  overflow-y: auto;
+  max-height: 300px;
 `;
 
 const LangButton = styled(Button)`

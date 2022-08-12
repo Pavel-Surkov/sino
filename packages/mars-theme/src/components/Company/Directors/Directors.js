@@ -5,7 +5,7 @@ import { connect, styled } from "frontity";
 
 const Directors = ({post}) => {
   return (
-    <DirectorsElement>
+    <DirectorsElement id="directors">
       <DirectorsMain post={post} />
       <DirectorsSliders post={post} />
     </DirectorsElement>

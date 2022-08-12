@@ -34,7 +34,7 @@ const Organization = ({ state, post }) => {
   }, []);
 
   return (
-    <Section>
+    <Section id="business">
       <Container>
         <Title size="m" color="blue" marginBottom={isMobile ? 24 : 64}>
           {parse(post.acf.company_organization_and_business_structure_title)}

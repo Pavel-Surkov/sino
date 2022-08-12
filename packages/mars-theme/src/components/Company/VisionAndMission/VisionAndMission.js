@@ -21,7 +21,7 @@ const VisionAndMission = ({ state, post }) => {
             no-repeat 50% / cover;
         `}
       >
-        <VisionContainer>
+        <VisionContainer id="vision-and-mission">
           <LineWrapper>
             <DecorativeLine
               heightInPercent={10.29126}

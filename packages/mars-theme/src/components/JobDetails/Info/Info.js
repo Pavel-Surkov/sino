@@ -7,6 +7,7 @@ import ApplyForm from "./ApplyForm/ApplyForm";
 import SubmitModal from "../../constant/SubmitModal";
 import { font } from "../../base/functions";
 import { styled } from "frontity";
+import parse from "html-react-parser";
 
 import company from "../../../assets/images/company-image.jpg";
 import company2x from "../../../assets/images/company-image@2x.jpg";
@@ -32,40 +33,45 @@ const requirements = [
   "Required experience and qualifications: Minimum 1-year experience in Customs data entry/Customs Clearance/Certificate of origin/License/Permit is an advantage.",
 ];
 
-const Info = () => {
+const Info = ({ post }) => {
   const [applyFormOpened, setApplyFormOpened] = useState(false);
   const [submitModalOpened, setSubmitModalOpened] = useState(false);
+  const responsibilities = post.acf.job_responsibilities_items;
+  const requirements = post.acf.job_looking_for_items;
 
   return (
     <Section>
       <Container>
-        <Position />
+        <Position post={post} />
         <InfoBlock>
           <Content>
-            <TextBlock marginBottom={28} title="Key responsibilities">
+            <TextBlock marginBottom={28} title={post.acf.job_responsibilities_title ? parse(post.acf.job_responsibilities_title) : ''}>
               <List>
                 {responsibilities.map((item) => (
-                  <ListItem key={item.slice(0, 11)}>{item}</ListItem>
+                  <ListItem key={item.job_responsibilities_item.slice(0, 11)}>
+                    {item.job_responsibilities_item ? parse(item.job_responsibilities_item) : ''}
+                  </ListItem>
                 ))}
               </List>
             </TextBlock>
-            <TextBlock marginBottom={28} title="We are looking for">
+            <TextBlock marginBottom={28} title={post.acf.job_looking_for_title ? parse(post.acf.job_looking_for_title) : ''}>
               <List>
                 {requirements.map((item) => (
-                  <ListItem key={item}>{item}</ListItem>
+                  <ListItem key={item.job_looking_for_item.slice(0, 11)}>
+                    {item.job_looking_for_item ? parse(item.job_looking_for_item) : ''}
+                  </ListItem>
                 ))}
               </List>
             </TextBlock>
-            <TextBlock marginBottom={28} title="To apply">
+            <TextBlock marginBottom={28} title={post.acf.job_apply_title ? parse(post.acf.job_apply_title) : ''}>
               <Text>
                 <p>
-                  Please send your resume indicating experience and expected
-                  salary using the button below.
+                  {post.acf.job_apply_text ? parse(post.acf.job_apply_text) : ''}
                 </p>
               </Text>
               <ButtonWrapper>
                 <PrimaryBtn
-                  content="Apply Now"
+                  content={post.acf.job_apply_button_text ? parse(post.acf.job_apply_button_text) : ''}
                   onClick={() => setApplyFormOpened(true)}
                 />
               </ButtonWrapper>
@@ -73,8 +79,8 @@ const Info = () => {
           </Content>
           <ImageWrapper>
             <img
-              src={company}
-              srcSet={`${company} 1x, ${company2x} 2x`}
+              src={post.acf.job_image_1x.url}
+              srcSet={`${post.acf.job_image_1x.url} 1x, ${post.acf.job_image_2x.url} 2x`}
               alt="company"
             />
           </ImageWrapper>

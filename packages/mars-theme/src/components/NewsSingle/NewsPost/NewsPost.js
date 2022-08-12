@@ -117,7 +117,9 @@ const NewsPost = ({ state, actions, post }) => {
               </ShareBtn>
             </ShareWrapper>
           </AdditionalBlock>
-          <ImageWrapper>
+          {post.content.rendered ?
+            parse(post.content.rendered) : ''}
+          {/*<ImageWrapper>
             <img
               src={post.acf.news_item_image_1x.url}
               srcSet={`${post.acf.news_item_image_1x.url} 1x, ${
@@ -130,7 +132,7 @@ const NewsPost = ({ state, actions, post }) => {
             {post.acf.news_item_text.map((p) => (
               <p key={p.news_item_paragraph.slice(0, 11)}>{parse(p.news_item_paragraph)}</p>
             ))}
-          </Article>
+          </Article>*/}
         </PostContainer>
       </Container>
     </Section>
@@ -255,9 +257,50 @@ const AdditionalBlock = styled.div`
 
 const PostContainer = styled.div`
   max-width: 1023px;
+  p {
+    font-size: 1.8rem;
+    line-height: calc(30/18);
+    margin: 0;
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+  .aligncenter {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+  }
+  .alignright {
+    float: right;
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  .alignleft {
+    float: left;
+    margin-right: 1.5em;
+    margin-bottom: 1.5em;
+  }
   @media screen and (max-width: 991px) {
     & h2 {
       ${font(24, 32)};
+    }
+    .alignright {
+      float: none;
+      margin-left: 0;
+      margin-bottom: 0;
+    }
+    .alignleft {
+      float: none;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+    img {
+      display: block;
     }
   }
 `;

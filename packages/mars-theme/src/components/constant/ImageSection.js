@@ -11,6 +11,7 @@ const ImageSection = ({
   imagePosition,
   children,
   isCorporate,
+  id
 }) => {
   const { state } = useConnect();
 
@@ -28,6 +29,7 @@ const ImageSection = ({
         `
       }
       className="section"
+      id={id}
     >
       <div
         css={css`

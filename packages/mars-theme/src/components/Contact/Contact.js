@@ -3,15 +3,16 @@ import Hero from "../constant/HeroSection";
 import Help from "./Help/Help";
 import Location from "./Location/Location";
 import { connect, styled } from "frontity";
+import parse from "html-react-parser";
 
 import contact from "../../assets/images/johan-taljaard-contact-unsplash.png";
 
-const Contact = () => {
+const Contact = ({post}) => {
   return (
     <ContactWrapper>
-      <Hero title="Contact Us" image={contact} />
-      <Help />
-      <Location />
+      <Hero title={post.acf.contact_top_banner_title ? parse(post.acf.contact_top_banner_title) : ''} image={post.acf.contact_top_banner_background.url} />
+      <Help post={post} />
+      <Location post={post} />
     </ContactWrapper>
   );
 };

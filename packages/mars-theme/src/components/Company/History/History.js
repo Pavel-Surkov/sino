@@ -6,7 +6,7 @@ import { font } from "../../base/functions";
 
 const History = ({post}) => {
   return (
-    <HistoryWrapper>
+    <HistoryWrapper id="company-history">
       <Container>
         <Title size="m" color="blue" marginBottom={24}>
           {post.acf.company_history_title}

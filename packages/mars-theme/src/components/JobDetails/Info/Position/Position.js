@@ -2,24 +2,39 @@ import React from "react";
 import IconBlock from "../../../constant/IconBlock";
 import { font, flex } from "../../../base/functions";
 import { styled } from "frontity";
+import parse from "html-react-parser";
 
 import calendar from "../../../../assets/images/svg/dark-calendar.svg";
 import marker from "../../../../assets/images/svg/dark-map-marker.svg";
 
-const PositionElement = () => {
+const PositionElement = ({ post }) => {
+  const months = ["January","February","March","April","May","June","July",
+            "August","September","October","November","December"];
+
+  const dateHandler = (date) => {
+    const year = date.split('-')[0];
+    const month = Number(date.split('-')[1]);
+    const day = date.split('-')[2].substr(0, 2);
+    return day + ' ' + months[month-1] + ' ' + year;
+  }
+
   return (
     <Position>
       <MainInfo>
-        <PositionTitle>EDI Officer</PositionTitle>
-        <Company>Sino Logistics</Company>
-        <Category>Customer Service</Category>
+        <PositionTitle>{post.acf.job_name ?
+          parse(post.acf.job_name) : ''}</PositionTitle>
+        <Company>{post.acf.job_company ?
+          parse(post.acf.job_company) : ''}</Company>
+        <Category>{post.acf.job_category ?
+          parse(post.acf.job_category) : ''}</Category>
       </MainInfo>
       <Additional>
         <IconWrapper mobileOrder={1}>
-          <IconBlock icon={marker}>Laem Chabang, Thailand</IconBlock>
+          <IconBlock icon={marker}>{post.acf.job_location ?
+            parse(post.acf.job_location) : ''}</IconBlock>
         </IconWrapper>
         <IconWrapper>
-          <IconBlock icon={calendar}>4 March 2022</IconBlock>
+          <IconBlock icon={calendar}>{dateHandler(post.date)}</IconBlock>
         </IconWrapper>
       </Additional>
     </Position>

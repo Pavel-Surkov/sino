@@ -114,6 +114,7 @@ const Advantages = ({ state, post }) => {
                   content="options"
                   key={`service-option-${idx}`}
                   data-image={idx % 2 ? "left" : "right"}
+                  id={option.service_advantages_option_slug}
                 >
                   {!isMobile && (
                     <Content>

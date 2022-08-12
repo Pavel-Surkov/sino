@@ -10,6 +10,7 @@ import SubmitModal from "../constant/SubmitModal";
 import { styled, connect } from "frontity";
 import { font } from "../base/functions";
 import { processDate } from "../functions/functions";
+import parse from "html-react-parser";
 
 import { useFormik } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -30,7 +31,7 @@ const modeValues = [
   "value 10",
 ];
 
-const RequestQuote = ({ state }) => {
+const RequestQuote = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   const [isModeDropOpened, setIsModeDropOpened] = useState(false);
@@ -85,24 +86,23 @@ const RequestQuote = ({ state }) => {
 
   return (
     <PageWrapper>
-      <Hero image={poster} title="Request a Quote" />
+      <Hero image={post.acf.request_top_banner_image.url} title={post.acf.request_top_banner_title} />
       <Section>
         <RequestContainer>
           <Note>
             <p>
-              Fill in the form below and one of our freights forwarding experts
-              will contact you as soon as possible
+              {post.acf.request_form_top_text ? parse(post.acf.request_form_top_text) : ''}
             </p>
           </Note>
           <Form onSubmit={formik.handleSubmit}>
             <Label>
-              <span>Mode</span>
+              <span>{post.acf.request_form_mode_label}</span>
               <Select
                 isOpened={isModeDropOpened}
                 setIsOpened={setIsModeDropOpened}
                 name="mode"
                 value={formik.values.mode}
-                placeholder="-Select a Mode-"
+                placeholder={post.acf.request_form_mode_placeholder}
                 options={modeValues}
                 changeHandler={(value) => {
                   formik.setFieldValue("mode", value);
@@ -110,22 +110,22 @@ const RequestQuote = ({ state }) => {
               />
             </Label>
             <Label mobileOrder={4}>
-              <span>Company Name</span>
+              <span>{post.acf.request_form_company_label}</span>
               <Input
-                placeholder="ex. DHL"
+                placeholder={post.acf.request_form_company_placeholder}
                 name="companyName"
                 onChange={formik.handleChange}
                 value={formik.values.companyName}
               />
             </Label>
             <Label mobileOrder={1}>
-              <span>Origin</span>
+              <span>{post.acf.request_form_origin_label}</span>
               <Select
                 isOpened={isOriginDropOpened}
                 setIsOpened={setIsOriginDropOpened}
                 name="origin"
                 value={formik.values.origin}
-                placeholder="-Select an Origin-"
+                placeholder={post.acf.request_form_origin_placeholder}
                 options={modeValues}
                 changeHandler={(value) => {
                   formik.setFieldValue("origin", value);
@@ -133,22 +133,22 @@ const RequestQuote = ({ state }) => {
               />
             </Label>
             <Label mobileOrder={5}>
-              <span>Contact Name</span>
+              <span>{post.acf.request_form_name_label}</span>
               <Input
-                placeholder="ex. Jack Nilson"
+                placeholder={post.acf.request_form_name_placeholder}
                 name="contactName"
                 onChange={formik.handleChange}
                 value={formik.values.contactName}
               />
             </Label>
             <Label mobileOrder={2}>
-              <span>Destination</span>
+              <span>{post.acf.request_form_destination_label}</span>
               <Select
                 isOpened={isDestinationDropOpened}
                 setIsOpened={setIsDestinationDropOpened}
                 name="destination"
                 value={formik.values.destination}
-                placeholder="-Select a Destination-"
+                placeholder={post.acf.request_form_destination_placeholder}
                 options={modeValues}
                 changeHandler={(value) => {
                   formik.setFieldValue("destination", value);
@@ -156,9 +156,9 @@ const RequestQuote = ({ state }) => {
               />
             </Label>
             <Label mobileOrder={6}>
-              <span>Contact Phone</span>
+              <span>{post.acf.request_form_phone_label}</span>
               <Input
-                placeholder="ex. +1 562-985-4111"
+                placeholder={post.acf.request_form_phone_placeholder}
                 type="tel"
                 name="contactPhone"
                 onChange={formik.handleChange}
@@ -167,12 +167,12 @@ const RequestQuote = ({ state }) => {
             </Label>
             <Label mobileOrder={3}>
               <span>
-                When will the products be ready to&nbsp;be&nbsp;exported
+                {post.acf.request_form_date_label}
               </span>
               <DatepickerWrapper>
                 <Input
                   id="products-datepicker"
-                  placeholder="2022-01-01"
+                  placeholder={post.acf.request_form_date_placeholder}
                   name="productsReadyToExport"
                   value={formik.values.productsReadyToExport}
                   onChange={formik.handleChange}
@@ -183,9 +183,9 @@ const RequestQuote = ({ state }) => {
               </DatepickerWrapper>
             </Label>
             <Label mobileOrder={7}>
-              <span>Contact Email</span>
+              <span>{post.acf.request_form_email_label}</span>
               <Input
-                placeholder="ex. info@ux-mind.pro"
+                placeholder={post.acf.request_form_email_placeholder}
                 type="email"
                 name="contact"
                 onChange={formik.handleChange}
@@ -193,10 +193,10 @@ const RequestQuote = ({ state }) => {
               />
             </Label>
             <LargeLabel mobileOrder={8}>
-              <span>Your Message</span>
+              <span>{post.acf.request_form_message_label}</span>
               <Textarea
                 placeholder={
-                  isMobile ? `Type here` : `Please describe how can we help you`
+                  isMobile ? post.acf.request_form_message_placeholder_mobile : post.acf.request_form_message_placeholder
                 }
                 name="message"
                 onChange={formik.handleChange}

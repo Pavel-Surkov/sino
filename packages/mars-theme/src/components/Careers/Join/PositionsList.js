@@ -4,10 +4,11 @@ import ArrowLink from "../../constant/ArrowLink";
 import LoadMore from "../../constant/LoadMore";
 import { connect, styled, css } from "frontity";
 import { font, flex } from "../../base/functions";
+import parse from "html-react-parser";
 
 import calendar from "../../../assets/images/svg/dark-calendar.svg";
 import marker from "../../../assets/images/svg/dark-map-marker.svg";
-
+/*
 const positions = [
   {
     id: 1,
@@ -45,16 +46,32 @@ const positions = [
     date: "01 Jan 2022",
     location: "Rayong",
   },
-];
+];*/
 
-const PositionsList = ({ state, actions, post }) => {
+const PositionsList = ({ state, actions, post, jobs }) => {
   const { isAllPositionsShown } = state.theme;
 
-  console.log(post.acf.join_team_vacancies);
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug'
+  ];
+
+  const dateHandler = (date) => {
+    const year = date.split('-')[0];
+    const month = Number(date.split('-')[1]);
+    const day = date.split('-')[2].substr(0, 2);
+    return day + ' ' + months[month-1] + ' ' + year;
+  }
 
   return (
     <List>
-      {post.acf.join_team_vacancies.map((position, idx) => {
+      {jobs.map((position, idx) => {
         console.log(position);
         if (!isAllPositionsShown && idx >= 3) {
           return null;
@@ -63,28 +80,28 @@ const PositionsList = ({ state, actions, post }) => {
         return (
           <Position key={`position-${idx}`}>
             <MainInfo>
-              <PositionTitle>{position.vacancy_name}</PositionTitle>
-              <Company>{position.vacancy_company}</Company>
-              <Category>{position.vacancy_category}</Category>
+              <PositionTitle>{position.acf.job_name}</PositionTitle>
+              <Company>{position.acf.job_company}</Company>
+              <Category>{position.acf.job_category}</Category>
             </MainInfo>
             <Description>
               <Text>
-                <p>{position.vacancy_description}</p>
+                <p>{position.acf.job_description ? parse(position.acf.job_description) : ''}</p>
               </Text>
             </Description>
             <Additional>
               <Top>
                 <IconWrapper>
-                  <IconBlock icon={calendar}>{position.vacancy_date}</IconBlock>
+                  <IconBlock icon={calendar}>{dateHandler(position.date)}</IconBlock>
                 </IconWrapper>
                 <IconWrapper>
                   <IconBlock icon={marker}>
-                    {position.vacancy_location}
+                    {position.acf.job_location}
                   </IconBlock>
                 </IconWrapper>
               </Top>
               <LearnMore>
-                <ArrowLink content="Learn More" link={position.vacancy_link} />
+                <ArrowLink content="Learn More" link={position.link} />
               </LearnMore>
             </Additional>
           </Position>
@@ -97,7 +114,7 @@ const PositionsList = ({ state, actions, post }) => {
             margin-top: 40px;
           `}
         >
-          <LoadMore onClick={() => actions.theme.handlePositionsShow()} />
+          <LoadMore text={post.acf.join_team_load_more_text} onClick={() => actions.theme.handlePositionsShow()} />
         </div>
       )}
     </List>

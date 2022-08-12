@@ -12,6 +12,7 @@ const LoadMore = ({ disabled, onClick, text }) => {
 
 const Load = styled.button`
   ${font(24, 30)};
+  cursor: pointer;
   padding: 0.833em 1em;
   border-radius: 8px;
   border: none;

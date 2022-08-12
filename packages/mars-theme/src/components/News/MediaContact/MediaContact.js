@@ -12,7 +12,7 @@ import message from "../../../assets/images/svg/Message.svg";
 
 const MediaContact = ({post}) => {
   return (
-    <Section>
+    <Section id="news-media">
       <Container>
         <MediaTitle>
         {post.acf.news_media_title ?

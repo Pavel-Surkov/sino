@@ -5,11 +5,12 @@ import HelpForm from "./HelpForm/HelpForm";
 import PrimaryBtn from "../../constant/PrimaryButton";
 import { font } from "../../base/functions";
 import { styled, connect } from "frontity";
+import parse from "html-react-parser";
 
 import contact from "../../../assets/images/Contact-us-02.png";
 import contact2x from "../../../assets/images/Contact-us-02@2x.png";
 
-const Help = ({ state }) => {
+const Help = ({ state, post }) => {
   const { isMobile } = state.theme;
 
   return (
@@ -18,33 +19,29 @@ const Help = ({ state }) => {
         <Wrapper>
           <Content>
             <Title size="xs" color="blue" marginBottom={isMobile ? 16 : 32}>
-              How can we help you?
+              {post.acf.contact_help_title ? parse(post.acf.contact_help_title) : ''}
             </Title>
             <Note>
               <p>
-                If you have a question or need to get in touch with us for any
-                reason, please complete our contact form, and we will aim to
-                respond within two working days. For a faster response time,
-                please give us a call.
+                {post.acf.contact_help_text ? parse(post.acf.contact_help_text) : ''}
               </p>
             </Note>
-            <HelpForm />
+            <HelpForm post={post} />
             <Quote>
               <p>
-                If you need us to provide you with estimation, please request a
-                quote
+                {post.acf.contact_quote_text ? parse(post.acf.contact_quote_text) : ''}
               </p>
               <PrimaryBtn
                 type="link"
-                link="/request-a-quote/"
-                content="Get a Quote"
+                link={post.acf.contact_quote_button_link}
+                content={post.acf.contact_quote_button_text ? parse(post.acf.contact_quote_button_text) : ''}
               />
             </Quote>
           </Content>
           <ImageBlock>
             <img
-              src={contact}
-              srcSet={`${contact} 1x, ${contact2x ? contact2x : contact} 2x`}
+              src={post.acf.contact_help_image_1x.url}
+              srcSet={`${post.acf.contact_help_image_1x.url} 1x, ${post.acf.contact_help_image_2x.url ? post.acf.contact_help_image_2x.url : post.acf.contact_help_image_1x.url} 2x`}
               alt=""
             />
           </ImageBlock>

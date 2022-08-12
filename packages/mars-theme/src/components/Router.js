@@ -32,7 +32,29 @@ const Router = ({ state }) => {
       return <Investor post={post} />;
     case "/company/":
       return <Company post={post} />;
+    case "/company/#company-history":
+      return <Company post={post} />;
+    case "/company/#vision-and-mission":
+      return <Company post={post} />;
+    case "/company/#directors":
+      return <Company post={post} />;
+    case "/company/#business":
+      return <Company post={post} />;
+    case "/company/#business-ethics":
+      return <Company post={post} />;
+    case "/company/#corporate-governance":
+      return <Company post={post} />;
+    case "/company/#sustainability":
+      return <Company post={post} />;
+    case "/company/#community":
+      return <Company post={post} />;
+    case "/company/#people":
+      return <Company post={post} />;
     case "/news/":
+      return <News post={post} />;
+    case "/news/#news-media":
+      return <News post={post} />;
+    case "/news/#press-release":
       return <News post={post} />;
     case "/news-single/":
       return <NewsSingle post={post} />;

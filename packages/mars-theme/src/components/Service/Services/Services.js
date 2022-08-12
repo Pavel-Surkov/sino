@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import Card from "../../constant/Card";
@@ -10,6 +10,29 @@ import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 import { Pagination } from "swiper";
 
 const Services = ({ state, post }) => {
+  useEffect(() => {
+    const currentPath = state.router.link;
+    if (currentPath.includes("#fcl")) {
+      executeScroll("fcl");
+    }
+    if (currentPath.includes("#lcl")) {
+      executeScroll("lcl");
+    }
+    if (currentPath.includes("#iso")) {
+      executeScroll("iso");
+    }
+    if (currentPath.includes("#logistics")) {
+      executeScroll("logistics");
+    }
+    if (currentPath.includes("#brokerage")) {
+      executeScroll("brokerage");
+    }
+    if (currentPath.includes("#insurance")) {
+      executeScroll("insurance");
+    }
+  }, [state.router.link]);
+  const executeScroll = (slug) => document.getElementById(slug).scrollIntoView();
+
   const { isMobile } = state.theme;
 
   const [swiper, setSwiper] = useState(null);

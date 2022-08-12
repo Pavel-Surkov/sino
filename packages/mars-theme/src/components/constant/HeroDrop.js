@@ -10,165 +10,314 @@ import { font, flex } from "../base/functions";
 import SimpleBar from "simplebar-react";
 
 const HeroDrop = ({ state, actions }) => {
-  const { selectedMenuItem } = state.theme;
+  const { selectedMenuItem, hoveredMenuItem } = state.theme;
 
   const handleLinkClick = () => {
     actions.theme.clearMenuItem();
   };
 
-  if (!selectedMenuItem || !selectedMenuItem.title) {
-    return null;
-  }
+  // console.log("child_items");
+  // console.log(selectedMenuItem.child_items);
 
-  console.log("child_items");
-  console.log(selectedMenuItem.child_items);
-
-  return (
-    <Drop>
-      <DecorativeLineWrapper>
-        <DecorativeLine
-          heightInPercent={88.9175}
-          color="white"
-          rotation="bottom"
-        />
-      </DecorativeLineWrapper>
-      <SimpleBar style={{ maxHeight: "100%" }}>
-        <DropWrapper>
-          <Title size="s" color="white" marginBottom={32}>
-            {selectedMenuItem.title}
-          </Title>
-          <List>
-            {selectedMenuItem.child_items.map((link) => {
-              if (link.child_items) {
-                return (
-                  <ListItem key={link.title}>
-                    <NavButton
-                      onClick={() =>
-                        actions.theme.handleNavDropdown(link.title)
-                      }
-                    >
-                      <span>{link.title}</span>
-                      <img
-                        style={
-                          link.isDropdownOpened
-                            ? { transform: "rotate(180deg)" }
-                            : { transform: "none" }
+  if (selectedMenuItem && selectedMenuItem.title) {
+    return (
+      <Drop>
+        <DecorativeLineWrapper>
+          <DecorativeLine
+            heightInPercent={88.9175}
+            color="white"
+            rotation="bottom"
+          />
+        </DecorativeLineWrapper>
+        <SimpleBar style={{ maxHeight: "100%" }}>
+          <DropWrapper>
+            <Title size="s" color="white" marginBottom={32}>
+              {selectedMenuItem.title}
+            </Title>
+            <List>
+              {selectedMenuItem.child_items.map((link) => {
+                if (link.child_items) {
+                  return (
+                    <ListItem key={link.title}>
+                      <NavButton
+                        onClick={() =>
+                          actions.theme.handleNavDropdown(link.title)
                         }
-                        width="14"
-                        height="14"
-                        src={drop}
-                        alt="drop"
-                      />
-                    </NavButton>
-                    <Dropdown isOpened={link.isDropdownOpened}>
-                      <ul
-                        css={css`
-                          padding-left: 100px;
-                          ${flex("column")};
-                        `}
                       >
-                        {link.child_items &&
-                          link.child_items.map((item) => {
-                            if (item.child_items) {
-                              return (
-                                <ListItem
-                                  css={css`
-                                    ${font(18, 30)}
-                                  `}
-                                  key={item.title}
-                                >
-                                  <NavButton
+                        <span>{link.title}</span>
+                        <img
+                          style={
+                            link.isDropdownOpened
+                              ? { transform: "rotate(180deg)" }
+                              : { transform: "none" }
+                          }
+                          width="14"
+                          height="14"
+                          src={drop}
+                          alt="drop"
+                        />
+                      </NavButton>
+                      <Dropdown isOpened={link.isDropdownOpened}>
+                        <ul
+                          css={css`
+                            padding-left: 100px;
+                            ${flex("column")};
+                          `}
+                        >
+                          {link.child_items &&
+                            link.child_items.map((item) => {
+                              if (item.child_items) {
+                                return (
+                                  <ListItem
                                     css={css`
                                       ${font(18, 30)}
                                     `}
-                                    onClick={() =>
-                                      actions.theme.handleNavDropdown(
-                                        item.title
-                                      )
-                                    }
+                                    key={item.title}
                                   >
-                                    <span>{item.title}</span>
-                                    <img
-                                      style={
-                                        item.isDropdownOpened
-                                          ? { transform: "rotate(180deg)" }
-                                          : { transform: "none" }
-                                      }
-                                      width="14"
-                                      height="14"
-                                      src={drop}
-                                      alt="drop"
-                                    />
-                                  </NavButton>
-                                  <Dropdown isOpened={item.isDropdownOpened}>
-                                    <ul
+                                    <NavButton
                                       css={css`
-                                        /* TODO: Configure correct padding */
-                                        ${flex("column")}
+                                        ${font(18, 30)}
                                       `}
+                                      onClick={() =>
+                                        actions.theme.handleNavDropdown(
+                                          item.title
+                                        )
+                                      }
                                     >
-                                      {item.child_items &&
-                                        item.child_items.map((link) => {
-                                          return (
-                                            <ListItem
-                                              key={link.title}
-                                              css={css`
-                                                margin-bottom: 4px;
-                                                &:last-child {
-                                                  margin-bottom: 0;
-                                                }
-                                              `}
-                                            >
-                                              <NavLink
+                                      <span>{item.title}</span>
+                                      <img
+                                        style={
+                                          item.isDropdownOpened
+                                            ? { transform: "rotate(180deg)" }
+                                            : { transform: "none" }
+                                        }
+                                        width="14"
+                                        height="14"
+                                        src={drop}
+                                        alt="drop"
+                                      />
+                                    </NavButton>
+                                    <Dropdown isOpened={item.isDropdownOpened}>
+                                      <ul
+                                        css={css`
+                                          /* TODO: Configure correct padding */
+                                          ${flex("column")}
+                                        `}
+                                      >
+                                        {item.child_items &&
+                                          item.child_items.map((link) => {
+                                            return (
+                                              <ListItem
+                                                key={link.title}
                                                 css={css`
-                                                  ${font(16, 40)};
-                                                  font-weight: 300;
-                                                  letter-spacing: 0.04em;
+                                                  margin-bottom: 4px;
+                                                  &:last-child {
+                                                    margin-bottom: 0;
+                                                  }
                                                 `}
-                                                link={link.url}
-                                                onClick={handleLinkClick}
                                               >
-                                                {link.title}
-                                              </NavLink>
-                                            </ListItem>
-                                          );
-                                        })}
-                                    </ul>
-                                  </Dropdown>
+                                                <NavLink
+                                                  css={css`
+                                                    ${font(16, 40)};
+                                                    font-weight: 300;
+                                                    letter-spacing: 0.04em;
+                                                  `}
+                                                  link={link.url}
+                                                  onClick={handleLinkClick}
+                                                >
+                                                  {link.title}
+                                                </NavLink>
+                                              </ListItem>
+                                            );
+                                          })}
+                                      </ul>
+                                    </Dropdown>
+                                  </ListItem>
+                                );
+                              }
+
+                              return (
+                                <ListItem key={item.title}>
+                                  <NavLink
+                                    css={css`
+                                      ${font(18, 30)}
+                                    `}
+                                    link={item.url}
+                                  >
+                                    {item.title}
+                                  </NavLink>
                                 </ListItem>
                               );
-                            }
+                            })}
+                        </ul>
+                      </Dropdown>
+                    </ListItem>
+                  );
+                }
 
-                            return (
-                              <ListItem key={item.title}>
-                                <NavLink
-                                  css={css`
-                                    ${font(18, 30)}
-                                  `}
-                                  link={item.url}
-                                >
-                                  {item.title}
-                                </NavLink>
-                              </ListItem>
-                            );
-                          })}
-                      </ul>
-                    </Dropdown>
+                return (
+                  <ListItem key={link.title}>
+                    <NavLink link={link.url}>{link.title}</NavLink>
                   </ListItem>
                 );
-              }
+              })}
+            </List>
+          </DropWrapper>
+        </SimpleBar>
+      </Drop>
+    );
+  }
 
-              return (
-                <ListItem key={link.title}>
-                  <NavLink link={link.url}>{link.title}</NavLink>
-                </ListItem>
-              );
-            })}
-          </List>
-        </DropWrapper>
-      </SimpleBar>
-    </Drop>
-  );
+  if (hoveredMenuItem && hoveredMenuItem.title) {
+    return (
+      <Drop>
+        <DecorativeLineWrapper>
+          <DecorativeLine
+            heightInPercent={88.9175}
+            color="white"
+            rotation="bottom"
+          />
+        </DecorativeLineWrapper>
+        <SimpleBar style={{ maxHeight: "100%" }}>
+          <DropWrapper>
+            <Title size="s" color="white" marginBottom={32}>
+              {hoveredMenuItem.title}
+            </Title>
+            <List>
+              {hoveredMenuItem.child_items.map((link) => {
+                if (link.child_items) {
+                  return (
+                    <ListItem key={link.title}>
+                      <NavButton
+                        onClick={() =>
+                          actions.theme.handleNavDropdown(link.title)
+                        }
+                      >
+                        <span>{link.title}</span>
+                        <img
+                          style={
+                            link.isDropdownOpened
+                              ? { transform: "rotate(180deg)" }
+                              : { transform: "none" }
+                          }
+                          width="14"
+                          height="14"
+                          src={drop}
+                          alt="drop"
+                        />
+                      </NavButton>
+                      <Dropdown isOpened={link.isDropdownOpened}>
+                        <ul
+                          css={css`
+                            padding-left: 100px;
+                            ${flex("column")};
+                          `}
+                        >
+                          {link.child_items &&
+                            link.child_items.map((item) => {
+                              if (item.child_items) {
+                                return (
+                                  <ListItem
+                                    css={css`
+                                      ${font(18, 30)}
+                                    `}
+                                    key={item.title}
+                                  >
+                                    <NavButton
+                                      css={css`
+                                        ${font(18, 30)}
+                                      `}
+                                      onClick={() =>
+                                        actions.theme.handleNavDropdown(
+                                          item.title
+                                        )
+                                      }
+                                    >
+                                      <span>{item.title}</span>
+                                      <img
+                                        style={
+                                          item.isDropdownOpened
+                                            ? { transform: "rotate(180deg)" }
+                                            : { transform: "none" }
+                                        }
+                                        width="14"
+                                        height="14"
+                                        src={drop}
+                                        alt="drop"
+                                      />
+                                    </NavButton>
+                                    <Dropdown isOpened={item.isDropdownOpened}>
+                                      <ul
+                                        css={css`
+                                          /* TODO: Configure correct padding */
+                                          ${flex("column")}
+                                        `}
+                                      >
+                                        {item.child_items &&
+                                          item.child_items.map((link) => {
+                                            return (
+                                              <ListItem
+                                                key={link.title}
+                                                css={css`
+                                                  margin-bottom: 4px;
+                                                  &:last-child {
+                                                    margin-bottom: 0;
+                                                  }
+                                                `}
+                                              >
+                                                <NavLink
+                                                  css={css`
+                                                    ${font(16, 40)};
+                                                    font-weight: 300;
+                                                    letter-spacing: 0.04em;
+                                                  `}
+                                                  link={link.url}
+                                                  onClick={handleLinkClick}
+                                                >
+                                                  {link.title}
+                                                </NavLink>
+                                              </ListItem>
+                                            );
+                                          })}
+                                      </ul>
+                                    </Dropdown>
+                                  </ListItem>
+                                );
+                              }
+
+                              return (
+                                <ListItem key={item.title}>
+                                  <NavLink
+                                    css={css`
+                                      ${font(18, 30)}
+                                    `}
+                                    link={item.url}
+                                  >
+                                    {item.title}
+                                  </NavLink>
+                                </ListItem>
+                              );
+                            })}
+                        </ul>
+                      </Dropdown>
+                    </ListItem>
+                  );
+                }
+
+                return (
+                  <ListItem key={link.title}>
+                    <NavLink link={link.url}>{link.title}</NavLink>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </DropWrapper>
+        </SimpleBar>
+      </Drop>
+    );
+  }
+
+  return null;
 };
 
 const DecorativeLineWrapper = styled.div`

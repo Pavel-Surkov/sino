@@ -1,20 +1,32 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import { flex, font } from "../base/functions";
-import Button from "../constant/Button";
 import drop from "../../assets/images/svg/drop.svg";
 import Link from "../constant/Link";
 
 const Navigation = ({ state, actions }) => {
-  const navLinks = state.source.get(`/menu/main-menu/`).items;//state.theme.menu;
-  const { selectedMenuItem } = state.theme;
+  const navLinks = state.source.get(`/menu/main-menu/`).items; //state.theme.menu;
+  const { selectedMenuItem, hoveredMenuItem } = state.theme;
+
+  console.log(navLinks);
 
   const handleDropdownClick = (menuItem) => {
     if (!selectedMenuItem || selectedMenuItem.title !== menuItem.title) {
       actions.theme.setMenuItem(menuItem);
     } else {
       actions.theme.setMenuItem(null);
+      actions.theme.setHoveredItem(menuItem);
     }
+  };
+
+  const handleDropdownHover = (menuItem) => {
+    if (!hoveredMenuItem || hoveredMenuItem.title !== menuItem.title) {
+      actions.theme.setHoveredItem(menuItem);
+    }
+  };
+
+  const handleDropdownLeave = () => {
+    actions.theme.setHoveredItem(null);
   };
 
   return (
@@ -25,10 +37,16 @@ const Navigation = ({ state, actions }) => {
             if (link.child_items) {
               return (
                 <ListItem key={link.title}>
-                  <NavButton onClick={() => handleDropdownClick(link)}>
+                  <NavLink link={link.url}>
                     <span>{link.title}</span>
-                    <img width="14" height="14" src={drop} alt="drop" />
-                  </NavButton>
+                    <Drop
+                      onMouseLeave={() => handleDropdownLeave()}
+                      onMouseEnter={() => handleDropdownHover(link)}
+                      onClick={() => handleDropdownClick(link)}
+                    >
+                      <img width="14" height="14" src={drop} alt="drop" />
+                    </Drop>
+                  </NavLink>
                 </ListItem>
               );
             }
@@ -44,6 +62,12 @@ const Navigation = ({ state, actions }) => {
   );
 };
 
+const Drop = styled.div`
+  display: grid;
+  place-items: center;
+  padding: 2px 4px;
+`;
+
 const Nav = styled.nav`
   height: 100%;
   ${flex("row", "center")};
@@ -55,16 +79,11 @@ const Nav = styled.nav`
 
 const NavLink = styled(Link)`
   ${font(18, 30)};
-  font-weight: 400;
-`;
-
-const NavButton = styled(Button)`
   ${flex("row", "center")};
-  ${font(18, 30)};
   font-weight: 400;
   & span {
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 4px;
   }
 `;
 

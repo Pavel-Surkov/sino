@@ -40,6 +40,7 @@ const marsTheme = {
       shareModalOpened: false,
       isAllNewsShown: false,
       isAllPositionsShown: false,
+      hoveredMenuItem: null,
       selectedMenuItem: null,
       isAllDirectorsShown: false,
       menu: [],
@@ -248,6 +249,13 @@ const marsTheme = {
           setDropdown(newMenu, textValue);
 
           //state.theme.menu = newMenu;
+        },
+      clearHoveredItem: ({ state }) => (state.theme.hoveredMenuItem = null),
+      setHoveredItem:
+        ({ state }) =>
+        (menuItem) => {
+          state.theme.hoveredMenuItem = Object.assign({}, menuItem);
+          console.log(state.theme.hoveredMenuItem);
         },
       clearMenuItem: ({ state }) => (state.theme.selectedMenuItem = null),
       setMenuItem:

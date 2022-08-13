@@ -17,9 +17,6 @@ const SearchBlock = ({ state, actions }) => {
 
   const { languages } = state.theme;
 
-  // console.log("data");
-  // console.log(searchData);
-
   // Set search items to state
   useEffect(() => {
     const searchData = [...jobsItems, ...companyNews, ...services];

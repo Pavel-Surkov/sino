@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../../constant/Container";
 import Title from "../../constant/Title";
 import SwiperButtons from "../../constant/SwiperButtons";
 import DecorativeLine from "../../constant/DecorativeLine";
-import { css, connect, styled } from "frontity";
+import { connect, styled } from "frontity";
 import { font, flex } from "../../base/functions";
 import parse from "html-react-parser";
 
@@ -11,19 +11,46 @@ import parse from "html-react-parser";
 // import bg2x from "../../../assets/images/subsidaries-img@2x.png";
 
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Controller } from "swiper";
 
 const Subsidiaries = ({ state, post }) => {
   const { isMobile } = state.theme;
   const slides = post.acf.company_subsidiaries_slides;
 
+  const [swiper, updateSwiper] = useState(null);
+  const [swiperThumbs, updateSwiperThumbs] = useState(null);
+
+  // Bind swiper and swiper thumbs
+  useEffect(() => {
+    if (swiper && swiperThumbs) {
+      swiper.controller.control = swiperThumbs;
+      swiperThumbs.controller.control = swiper;
+    }
+  }, [swiper, swiperThumbs]);
+
   return (
-    <Section
-      css={css`
-        background: url(${post.acf.company_subsidiaries_background.url})
-          no-repeat 50% / cover;
-      `}
-    >
+    <Section>
+      <Swiper
+        className="bg-swiper"
+        loop={true}
+        modules={[Pagination, Navigation, Controller]}
+        onSwiper={(swiper) => updateSwiper(swiper)}
+      >
+        {slides.map((slide, index) => {
+          return (
+            <SwiperSlide key={`subsidiaries-bg-${index}`}>
+              <SlideBgWrapper>
+                <img
+                  // TODO:
+                  // src={slide.companyImg}
+                  src={post.acf.company_subsidiaries_background.url}
+                  alt={`slide-${index}`}
+                />
+              </SlideBgWrapper>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
       <Container>
         <Content>
           <TopLineWrapper>
@@ -46,13 +73,14 @@ const Subsidiaries = ({ state, post }) => {
           <ContentBlock>
             <Swiper
               loop={true}
-              modules={[Pagination, Navigation]}
+              modules={[Pagination, Navigation, Controller]}
               navigation={{
                 prevEl: ".subsidiaries-prev",
                 nextEl: ".subsidiaries-next",
               }}
               spaceBetween={24}
               pagination={{ clickable: true }}
+              onSwiper={(swiper) => updateSwiperThumbs(swiper)}
             >
               {slides.map((slide, index) => {
                 return (
@@ -81,6 +109,7 @@ const Subsidiaries = ({ state, post }) => {
                 />
               )}
               <VisitButton
+                // href={slide.link}
                 href={post.acf.company_subsidiaries_button_link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -94,6 +123,16 @@ const Subsidiaries = ({ state, post }) => {
     </Section>
   );
 };
+
+const SlideBgWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  & img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+  }
+`;
 
 const TopLineWrapper = styled.div`
   position: absolute;
@@ -214,6 +253,7 @@ const ContentBlock = styled.div`
 
 const Content = styled.div`
   position: relative;
+  z-index: 1;
   padding-top: 195px;
   padding-bottom: 152px;
   @media screen and (max-width: 991px) {
@@ -223,6 +263,14 @@ const Content = styled.div`
 
 const Section = styled.section`
   margin-top: 192px;
+  position: relative;
+  & .bg-swiper {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
 `;
 
 export default connect(Subsidiaries);

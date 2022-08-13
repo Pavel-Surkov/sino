@@ -42,7 +42,10 @@ const Company = ({ state, post }) => {
       executeScroll("people");
     }
   }, [state.router.link]);
-  const executeScroll = (slug) => document.getElementById(slug).scrollIntoView();
+
+  const executeScroll = (slug) =>
+    document.getElementById(slug).scrollIntoView();
+
   return (
     <CompanyWrapper>
       <Hero

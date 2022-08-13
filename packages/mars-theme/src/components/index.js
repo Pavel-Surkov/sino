@@ -19,7 +19,6 @@ import JobDetails from "./JobDetails/JobDetails";
 import { globalStyles } from "./base/globalStyle";
 
 import ScrollToTop from "react-scroll-to-top";
-import scroll from "../assets/images/svg/scroll-to-top.svg";
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -163,7 +162,7 @@ const ScrollWrapper = styled.div`
       right: var(--container-padding-xs);
     }
     @media screen and (max-width: 576px) {
-      padding-right: 24px;
+      right: 24px;
     }
   }
 `;

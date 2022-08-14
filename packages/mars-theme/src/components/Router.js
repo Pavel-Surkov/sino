@@ -11,6 +11,7 @@ import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "./TermsOfUse/TermsOfUse";
 import RequestQuote from "./RequestQuote/RequestQuote";
 import JobDetails from "./JobDetails/JobDetails";
+import Whistleblowing from "./Whistleblowing/Whistleblowing";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
@@ -66,6 +67,8 @@ const Router = ({ state }) => {
       return <RequestQuote post={post} />;
     case "/job-details/":
       return <JobDetails post={post} />;
+    case "/whistleblowing-form/":
+      return <Whistleblowing post={post} />;
     default:
       return <PageError />;
   }

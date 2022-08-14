@@ -13,6 +13,7 @@ const PrimaryInput = ({
   disabled,
   className,
   id,
+  ...props
 }) => {
   return (
     <Input
@@ -26,6 +27,7 @@ const PrimaryInput = ({
       onChange={onChange}
       maxWidth={maxWidth}
       disabled={disabled}
+      {...props}
     />
   );
 };

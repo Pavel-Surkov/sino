@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "./Link";
-import { styled, css } from "frontity";
+import { styled } from "frontity";
 import { flex, font } from "../base/functions";
 
 const PrimaryButton = ({ onClick, content, type, link, disabled, style }) => {

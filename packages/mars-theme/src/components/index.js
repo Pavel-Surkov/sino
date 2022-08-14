@@ -111,7 +111,7 @@ const Theme = ({ state, actions }) => {
                 r="15"
                 transform="rotate(-90 16 16)"
                 stroke="#4279B8"
-                stroke-width="2"
+                strokeWidth="2"
               />
             </svg>
           }

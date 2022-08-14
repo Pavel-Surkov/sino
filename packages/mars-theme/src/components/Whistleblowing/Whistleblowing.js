@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Hero from "../constant/HeroSection";
 import Container from "../constant/Container";
 import P from "../constant/Paragraph";
@@ -13,12 +13,39 @@ import { useFormik } from "formik";
 import poster from "../../assets/images/whistleblowing-poster.png";
 
 const Whistleblowing = () => {
+  const fileInput = useRef(null);
+
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const formik = useFormik({
     initialValues: { name: "", email: "", message: "", files: [] },
     onSubmit: (values) => console.log(values),
   });
+
+  const handleFileChange = (evt) => {
+    const files = formik.values.files;
+    const newFile = evt.target.files[0];
+
+    if (newFile) {
+      const NewFileURL = URL.createObjectURL(newFile);
+
+      const newFileExt = newFile.name.split(".").reverse()[0];
+
+      const newFileType =
+        newFileExt === "pdf" || newFileExt === "doc" || newFileExt === "docx"
+          ? "document"
+          : "image";
+
+      files.push({
+        file: newFile,
+        url: NewFileURL,
+        fileType: newFileType,
+      });
+
+      formik.setFieldValue("files", files);
+      console.log(formik.values.files);
+    }
+  };
 
   return (
     <PageWrapper>
@@ -91,19 +118,12 @@ const Whistleblowing = () => {
                 />
               </Label>
               <Label>
-                <Input
+                <FileInput
                   className="file-input"
                   type="file"
                   name="files"
-                  accept="image/*"
-                  onChange={(evt) => {
-                    const files = formik.values.files;
-
-                    files.push(evt.target.value);
-
-                    formik.setFieldValue("files", files);
-                    console.log(formik.values.files);
-                  }}
+                  accept="image/*, .doc, .docx, .pdf"
+                  onChange={(evt) => handleFileChange(evt)}
                 />
                 <Attach>
                   <Plus />
@@ -118,6 +138,32 @@ const Whistleblowing = () => {
                   </AttachText>
                 </Attach>
               </Label>
+              {formik.values.files[0] && (
+                <Uploaded>
+                  <Images>
+                    {formik.values.files.map((file) => {
+                      if (file.fileType !== "image") {
+                        return null;
+                      }
+
+                      return <img src={file.url} key={file.url} alt="" />;
+                    })}
+                  </Images>
+                  <Documents>
+                    {formik.values.files.map((file) => {
+                      if (file.fileType !== "document") {
+                        return null;
+                      }
+
+                      return (
+                        <DocumentItem key={file.url}>
+                          {file.file.name}
+                        </DocumentItem>
+                      );
+                    })}
+                  </Documents>
+                </Uploaded>
+              )}
               <CheckboxLabel>
                 <CheckboxItem
                   checked={privacyAccepted}
@@ -136,6 +182,42 @@ const Whistleblowing = () => {
     </PageWrapper>
   );
 };
+
+const DocumentItem = styled.div`
+  box-sizing: border-box;
+  min-width: 209px;
+  padding: 5px 8px;
+  ${font(18, 30)};
+  font-weight: 300;
+  outline: 1px solid var(--success);
+  border-radius: 8px;
+`;
+
+const Images = styled.div`
+  ${flex()};
+  flex-wrap: wrap;
+  gap: 8px;
+  & img {
+    height: 100px;
+    width: auto;
+    outline: 1px solid var(--success);
+    border-radius: 8px;
+  }
+`;
+
+const Documents = styled.div`
+  ${flex()};
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const Uploaded = styled.div`
+  padding-top: 16px;
+  display: grid;
+  grid-gap: 24px;
+`;
+
+const FileInput = styled.input``;
 
 const CheckboxLabel = styled.div``;
 

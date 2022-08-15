@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Hero from "../constant/HeroSection";
 import Container from "../constant/Container";
 import P from "../constant/Paragraph";
@@ -6,15 +6,13 @@ import PrimaryBtn from "../constant/PrimaryButton";
 import Input from "../constant/Input";
 import CheckboxItem from "../constant/CheckboxItem";
 import { font, flex } from "../base/functions";
-import { styled } from "frontity";
+import { styled, connect } from "frontity";
 
 import { useFormik } from "formik";
 
 import poster from "../../assets/images/whistleblowing-poster.png";
 
-const Whistleblowing = () => {
-  const fileInput = useRef(null);
-
+const Whistleblowing = ({ state }) => {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const formik = useFormik({
@@ -49,7 +47,9 @@ const Whistleblowing = () => {
 
   return (
     <PageWrapper>
-      <Hero image={poster} title="Sino Logistics Whistleblowing Form" />
+      <HeroWrapper>
+        <Hero image={poster} title="Sino Logistics Whistleblowing Form" />
+      </HeroWrapper>
       <ContentWrapper>
         <Container>
           <Content>
@@ -129,7 +129,8 @@ const Whistleblowing = () => {
                   <Plus />
                   <AttachText>
                     <AttachTitle>
-                      Attach your additional information here
+                      Attach your additional information{" "}
+                      {state.theme.isMobile ? null : "here"}
                     </AttachTitle>
                     <AttachInfo>
                       Attach file (Maximum file: 5MB. The .doc, .docx and .pdf
@@ -182,6 +183,15 @@ const Whistleblowing = () => {
     </PageWrapper>
   );
 };
+
+const HeroWrapper = styled.div`
+  @media screen and (max-width: 991px) {
+    & h1 {
+      ${font(32, 40)};
+      letter-spacing: -0.02em;
+    }
+  }
+`;
 
 const DocumentItem = styled.div`
   box-sizing: border-box;
@@ -245,6 +255,10 @@ const Plus = styled.div`
   &::after {
     transform: translate(-50%, -50%) rotate(90deg);
   }
+  @media screen and (max-width: 991px) {
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
 `;
 
 const Label = styled.label`
@@ -256,7 +270,7 @@ const Label = styled.label`
   }
 `;
 
-const AttachInfo = styled(Label)`
+const AttachInfo = styled.span`
   padding-top: 8px;
 `;
 
@@ -271,6 +285,16 @@ const AttachText = styled.div`
   & span {
     ${font(12, 20)};
     color: var(--gray-900);
+    margin: 0;
+    padding: 0;
+  }
+  @media screen and (max-width: 991px) {
+    & p {
+      text-align: center;
+    }
+    & span {
+      text-align: center;
+    }
   }
 `;
 
@@ -281,6 +305,11 @@ const Attach = styled.div`
   padding: 38px 88px;
   ${flex("row", "center")};
   cursor: pointer;
+  @media screen and (max-width: 991px) {
+    display: grid;
+    padding: 24px 16px 32px;
+    justify-content: center;
+  }
 `;
 
 const SubmitWrapper = styled.div`
@@ -315,6 +344,9 @@ const Form = styled.form`
   & .file-input {
     display: none;
   }
+  @media screen and (max-width: 991px) {
+    grid-row-gap: 16px;
+  }
 `;
 
 const Subtext = styled.div`
@@ -325,19 +357,25 @@ const Subtext = styled.div`
 const Text = styled.div`
   max-width: 1024px;
   margin-bottom: 24px;
-  & p {
+  && p {
     color: var(--black);
     ${font(18, 30)};
     font-weight: 300;
+  }
+  @media screen and (max-width: 991px) {
+    margin-bottom: 32px;
   }
 `;
 
 const Content = styled.section`
   padding: 96px 0 192px;
+  @media screen and (max-width: 991px) {
+    padding: 56px 0 145px;
+  }
 `;
 
 const ContentWrapper = styled.section``;
 
 const PageWrapper = styled.div``;
 
-export default Whistleblowing;
+export default connect(Whistleblowing);

@@ -1,5 +1,5 @@
 import { css } from "frontity";
-import { font } from "../base/functions";
+import { font } from "./functions";
 
 import Ubuntu_Light_woff2 from "../../assets/fonts/Ubuntu-Light.woff2";
 import Ubuntu_Light_woff from "../../assets/fonts/Ubuntu-Light.woff";

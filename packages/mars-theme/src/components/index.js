@@ -16,7 +16,7 @@ import Service from "./Service/Service";
 import NewsSingle from "./NewsSingle/NewsSingle";
 import JobDetails from "./JobDetails/JobDetails";
 
-import { globalStyles } from "./base/globalstyle";
+import { globalstyles } from "./base/globalstyle";
 
 import ScrollToTop from "react-scroll-to-top";
 
@@ -80,7 +80,7 @@ const Theme = ({ state, actions }) => {
 
       {/* Add some global styles for the whole site, like body or a's.
       Not classes here because we use CSS-in-JS. Only global HTML tags. */}
-      <Global styles={globalStyles} />
+      <Global styles={globalstyles} />
 
       {/* Add the header of the site. */}
       <HeadContainer>

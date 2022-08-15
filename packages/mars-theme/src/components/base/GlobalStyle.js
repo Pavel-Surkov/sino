@@ -12,7 +12,7 @@ import Ubuntu_Bold_woff from "../../assets/fonts/Ubuntu-Bold.woff";
 import Barlow_woff2 from "../../assets/fonts/Barlow-Medium.woff2";
 import Barlow_woff from "../../assets/fonts/Barlow-Medium.woff";
 
-export const globalStyles = css`
+export const globalstyles = css`
   :root {
     /* Vars */
     --font: "Ubuntu", Arial, sans-serif;

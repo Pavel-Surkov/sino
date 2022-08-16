@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import Input from "../../../constant/Input";
 import PrimaryBtn from "../../../constant/PrimaryButton";
 import SubmitModal from "../../../constant/SubmitModal";
-import { styled } from "frontity";
+import { styled, connect, useConnect } from "frontity";
 import { font } from "../../../base/functions";
 
 import { useFormik } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const HelpForm = ({post}) => {
+const HelpForm = ({ post }) => {
   const [modalOpened, setModalOpened] = useState(false);
   const [isFormVerified, setIsFormVerified] = useState(false);
+
+  const { state } = useConnect();
 
   const formik = useFormik({
     initialValues: {
@@ -113,7 +115,7 @@ const HelpForm = ({post}) => {
           </LargeLabel>
           <RecaptchaWrapper>
             <ReCAPTCHA
-              sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+              sitekey={state.theme.recaptchaKey}
               onChange={onCaptchaChange}
             />
           </RecaptchaWrapper>
@@ -256,4 +258,4 @@ const Form = styled.form`
   }
 `;
 
-export default HelpForm;
+export default connect(HelpForm);

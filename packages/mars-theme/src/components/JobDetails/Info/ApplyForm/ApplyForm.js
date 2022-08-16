@@ -126,7 +126,7 @@ const ApplyForm = ({ modalOpened, setModalOpened, setSubmitModalOpened }) => {
           </LargeLabel>
           <RecaptchaWrapper>
             <ReCAPTCHA
-              sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+              sitekey={state.theme.recaptchaKey}
               onChange={onCaptchaChange}
             />
           </RecaptchaWrapper>

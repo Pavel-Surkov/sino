@@ -44,6 +44,7 @@ const marsTheme = {
       hoveredMenuItem: null,
       selectedMenuItem: null,
       isAllDirectorsShown: false,
+      recaptchaKey: "6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO",
       menu: [],
       menuUrl: "main-menu",
       /*menu: [
@@ -286,7 +287,13 @@ const marsTheme = {
       processors: [image, iframe, link],
     },
     source: {
-      handlers: [menuHandler, servicesHandler, jobsHandler, newsHandler, acfOptionsHandler],
+      handlers: [
+        menuHandler,
+        servicesHandler,
+        jobsHandler,
+        newsHandler,
+        acfOptionsHandler,
+      ],
     },
   },
 };

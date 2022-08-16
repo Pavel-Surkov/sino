@@ -86,12 +86,17 @@ const RequestQuote = ({ state, post }) => {
 
   return (
     <PageWrapper>
-      <Hero image={post.acf.request_top_banner_image.url} title={post.acf.request_top_banner_title} />
+      <Hero
+        image={post.acf.request_top_banner_image.url}
+        title={post.acf.request_top_banner_title}
+      />
       <Section>
         <RequestContainer>
           <Note>
             <p>
-              {post.acf.request_form_top_text ? parse(post.acf.request_form_top_text) : ''}
+              {post.acf.request_form_top_text
+                ? parse(post.acf.request_form_top_text)
+                : ""}
             </p>
           </Note>
           <Form onSubmit={formik.handleSubmit}>
@@ -166,9 +171,7 @@ const RequestQuote = ({ state, post }) => {
               />
             </Label>
             <Label mobileOrder={3}>
-              <span>
-                {post.acf.request_form_date_label}
-              </span>
+              <span>{post.acf.request_form_date_label}</span>
               <DatepickerWrapper>
                 <Input
                   id="products-datepicker"
@@ -196,7 +199,9 @@ const RequestQuote = ({ state, post }) => {
               <span>{post.acf.request_form_message_label}</span>
               <Textarea
                 placeholder={
-                  isMobile ? post.acf.request_form_message_placeholder_mobile : post.acf.request_form_message_placeholder
+                  isMobile
+                    ? post.acf.request_form_message_placeholder_mobile
+                    : post.acf.request_form_message_placeholder
                 }
                 name="message"
                 onChange={formik.handleChange}
@@ -205,7 +210,7 @@ const RequestQuote = ({ state, post }) => {
             </LargeLabel>
             <RecaptchaWrapper>
               <ReCAPTCHA
-                sitekey="6Ldv0GIhAAAAAGkriXBu_jpG_XTl0n_IPwhQDjiO"
+                sitekey={state.theme.recaptchaKey}
                 onChange={onCaptchaChange}
               />
             </RecaptchaWrapper>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { styled, connect, css } from "frontity";
 import DecorativeLine from "./DecorativeLine";
 import Title from "./Title";
@@ -16,12 +16,32 @@ const HeroDrop = ({ state, actions }) => {
     actions.theme.clearMenuItem();
   };
 
+  useEffect(() => {
+    document.addEventListener("click", (evt) => {
+      if (evt.target.closest(".drop")) {
+        return null;
+      }
+
+      actions.theme.clearMenuItem();
+    });
+
+    return () => {
+      document.removeEventListener("click", (evt) => {
+        if (evt.target.closest(".drop")) {
+          return null;
+        }
+
+        actions.theme.clearMenuItem();
+      });
+    };
+  }, []);
+
   // console.log("child_items");
   // console.log(selectedMenuItem.child_items);
 
   if (selectedMenuItem && selectedMenuItem.title) {
     return (
-      <Drop>
+      <Drop className="drop">
         <DecorativeLineWrapper>
           <DecorativeLine
             heightInPercent={88.9175}

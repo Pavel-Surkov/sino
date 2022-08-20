@@ -6,27 +6,20 @@ import Link from "../constant/Link";
 
 const Navigation = ({ state, actions }) => {
   const navLinks = state.source.get(`/menu/main-menu/`).items; //state.theme.menu;
-  const { selectedMenuItem, hoveredMenuItem } = state.theme;
-
-  console.log(navLinks);
+  const { selectedMenuItem } = state.theme;
 
   const handleDropdownClick = (menuItem) => {
     if (!selectedMenuItem || selectedMenuItem.title !== menuItem.title) {
       actions.theme.setMenuItem(menuItem);
     } else {
       actions.theme.setMenuItem(null);
-      actions.theme.setHoveredItem(menuItem);
     }
   };
 
   const handleDropdownHover = (menuItem) => {
-    if (!hoveredMenuItem || hoveredMenuItem.title !== menuItem.title) {
-      actions.theme.setHoveredItem(menuItem);
+    if (!selectedMenuItem || selectedMenuItem.title !== menuItem.title) {
+      actions.theme.setMenuItem(menuItem);
     }
-  };
-
-  const handleDropdownLeave = () => {
-    actions.theme.setHoveredItem(null);
   };
 
   return (
@@ -36,17 +29,16 @@ const Navigation = ({ state, actions }) => {
           navLinks.map((link) => {
             if (link.child_items) {
               return (
-                <ListItem key={link.title}>
+                <ListItem
+                  key={link.title}
+                  onMouseEnter={() => handleDropdownHover(link)}
+                >
                   <NavLink link={link.url}>
                     <span>{link.title}</span>
-                    <Drop
-                      onMouseLeave={() => handleDropdownLeave()}
-                      onMouseEnter={() => handleDropdownHover(link)}
-                      onClick={() => handleDropdownClick(link)}
-                    >
-                      <img width="14" height="14" src={drop} alt="drop" />
-                    </Drop>
                   </NavLink>
+                  <Drop onClick={(evt) => handleDropdownClick(evt, link)}>
+                    <img width="14" height="14" src={drop} alt="drop" />
+                  </Drop>
                 </ListItem>
               );
             }
@@ -66,6 +58,7 @@ const Drop = styled.div`
   display: grid;
   place-items: center;
   padding: 2px 4px;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -79,7 +72,6 @@ const Nav = styled.nav`
 
 const NavLink = styled(Link)`
   ${font(18, 30)};
-  ${flex("row", "center")};
   font-weight: 400;
   & span {
     display: inline-block;
@@ -90,6 +82,7 @@ const NavLink = styled(Link)`
 const ListItem = styled.li`
   list-style: none;
   margin-right: 44px;
+  ${flex("row", "center")};
   &:last-child {
     margin-right: 0;
   }

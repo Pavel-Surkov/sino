@@ -28,7 +28,7 @@ const marsTheme = {
       isMobileMenuOpened: false,
       isMobile: false,
       searchValue: "",
-      language: "EN",
+      language: "TH",
       languageDropdownOpened: false,
       languages: [
         ["English", "EN"],

@@ -110,8 +110,8 @@ const NewsList = ({ state, actions, post }) => {
               <Item key={newsItem.id}>
                 <ImageSection
                   imagePosition={idx % 2 ? "left" : "right"}
-                  image={newsItem.acf.news_item_thumbnail_1x.url}
-                  image2x={newsItem.acf.news_item_thumbnail_2x.url}
+                  image={newsItem.acf.news_item_thumbnail_1x ? newsItem.acf.news_item_thumbnail_1x.url : ''}
+                  image2x={newsItem.acf.news_item_thumbnail_2x ? newsItem.acf.news_item_thumbnail_2x.url : ''}
                   isCorporate={true}
                 >
                   <Content>

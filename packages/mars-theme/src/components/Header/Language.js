@@ -65,9 +65,9 @@ const Language = ({ state, actions }) => {
             name="language"
             text={`${lang} - ${value}`}
             value={value}
-            onChange={(evt) =>
-              actions.theme.handleLanguageChange(evt.target.value)
-            }
+            onChange={() => {
+              actions.theme.handleLanguageChange(value);
+            }}
           />
         ))}
       </Dropdown>

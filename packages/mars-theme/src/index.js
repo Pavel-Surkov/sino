@@ -28,8 +28,8 @@ const marsTheme = {
       isMobileMenuOpened: false,
       isMobile: false,
       searchValue: "",
-      language: "EN",
       languageDropdownOpened: false,
+      language: "EN",
       languages: [
         ["English", "EN"],
         ["Thai", "TH"],
@@ -187,29 +187,25 @@ const marsTheme = {
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpened = false;
       },
-      handleSearchChange:
-        ({ state }) =>
-        (value) => {
-          state.theme.searchValue = value;
-        },
+      handleSearchChange: ({ state }) => (value) => {
+        state.theme.searchValue = value;
+      },
       handleSearchClear: ({ state }) => {
         state.theme.searchValue = "";
       },
       handleShareModalOpen: ({ state }) => {
         state.theme.shareModalOpened = true;
       },
-      handleShareModalClose:
-        ({ state }) =>
-        (target) => {
-          const isShareModalClicked =
-            target.closest(".share-modal") || target.closest(".share-btn");
+      handleShareModalClose: ({ state }) => (target) => {
+        const isShareModalClicked =
+          target.closest(".share-modal") || target.closest(".share-btn");
 
-          if (isShareModalClicked) {
-            return;
-          }
+        if (isShareModalClicked) {
+          return;
+        }
 
-          state.theme.shareModalOpened = false;
-        },
+        state.theme.shareModalOpened = false;
+      },
       handleNewsShow: ({ state }) => {
         state.theme.isAllNewsShown = true;
       },
@@ -219,53 +215,45 @@ const marsTheme = {
       handlePositionsShow: ({ state }) => {
         state.theme.isAllPositionsShown = true;
       },
-      handleLanguageChange:
-        ({ state }) =>
-        (value) => {
-          state.theme.language = value;
-        },
+      handleLanguageChange: ({ state }) => (value) => {
+        state.theme.language = value;
+      },
       toggleLanguageDropdown: ({ state }) => {
-        state.theme.languageDropdownOpened =
-          !state.theme.languageDropdownOpened;
+        state.theme.languageDropdownOpened = !state.theme
+          .languageDropdownOpened;
       },
       toggleDirectors: ({ state }) => {
         state.theme.isAllDirectorsShown = !state.theme.isAllDirectorsShown;
       },
-      handleNavDropdown:
-        ({ state }) =>
-        (textValue) => {
-          const newMenu = state.source.get(`/menu/main-menu/`).items.concat();
-          console.log(newMenu);
+      handleNavDropdown: ({ state }) => (textValue) => {
+        const newMenu = state.source.get(`/menu/main-menu/`).items.concat();
+        console.log(newMenu);
 
-          // Function thet toggles menu dropdowns
-          function setDropdown(menuArr, textValue) {
-            menuArr.forEach((menuItem) => {
-              if (menuItem.title === textValue && menuItem.child_items) {
-                menuItem.isDropdownOpened = !menuItem.isDropdownOpened;
-              } else if (menuItem.child_items) {
-                setDropdown(menuItem.child_items, textValue);
-              }
-            });
-          }
+        // Function thet toggles menu dropdowns
+        function setDropdown(menuArr, textValue) {
+          menuArr.forEach((menuItem) => {
+            if (menuItem.title === textValue && menuItem.child_items) {
+              menuItem.isDropdownOpened = !menuItem.isDropdownOpened;
+            } else if (menuItem.child_items) {
+              setDropdown(menuItem.child_items, textValue);
+            }
+          });
+        }
 
-          setDropdown(newMenu, textValue);
+        setDropdown(newMenu, textValue);
 
-          //state.theme.menu = newMenu;
-        },
+        //state.theme.menu = newMenu;
+      },
       clearHoveredItem: ({ state }) => (state.theme.hoveredMenuItem = null),
-      setHoveredItem:
-        ({ state }) =>
-        (menuItem) => {
-          state.theme.hoveredMenuItem = Object.assign({}, menuItem);
-          console.log(state.theme.hoveredMenuItem);
-        },
+      setHoveredItem: ({ state }) => (menuItem) => {
+        state.theme.hoveredMenuItem = Object.assign({}, menuItem);
+        console.log(state.theme.hoveredMenuItem);
+      },
       clearMenuItem: ({ state }) => (state.theme.selectedMenuItem = null),
-      setMenuItem:
-        ({ state }) =>
-        (menuItem) => {
-          state.theme.selectedMenuItem = Object.assign({}, menuItem);
-          console.log(state.theme.selectedMenuItem);
-        },
+      setMenuItem: ({ state }) => (menuItem) => {
+        state.theme.selectedMenuItem = Object.assign({}, menuItem);
+        console.log(state.theme.selectedMenuItem);
+      },
       handleSwiperStylesLoaded: ({ state }) =>
         (state.theme.swiperStylesLoading = false),
       beforeSSR: async ({ state, actions }) => {

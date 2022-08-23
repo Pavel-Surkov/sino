@@ -3,7 +3,9 @@ import { styled, useConnect, connect } from "frontity";
 import { flex, font } from "../base/functions";
 
 const RadioButton = ({ name, text, value, onChange, className }) => {
-  const { state } = useConnect();
+  const { state, actions } = useConnect();
+
+  console.log(state.theme.language);
 
   return (
     <Label className={className}>
@@ -12,7 +14,7 @@ const RadioButton = ({ name, text, value, onChange, className }) => {
         name={name}
         value={value}
         onChange={onChange}
-        checked={state.theme.language === value}
+        defaultChecked={state.theme.language === value}
       />
       <BtnWrapper>
         <svg

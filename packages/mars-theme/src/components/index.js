@@ -33,8 +33,14 @@ const Theme = ({ state, actions }) => {
   useEffect(() => {
     actions.theme.setMenuItem(null);
   }, [state.router.link]);
+
+  let link = state.router.link;
+  if (link.substring(0,3) === '/th') {
+    link = link.substring(1);
+    link = link.substring(link.indexOf("/"));
+  }
   // Get information about the current URL.
-  const data = state.source.get(state.router.link);
+  const data = state.source.get(link);
 
   console.log("data");
   console.log(data);
@@ -84,7 +90,7 @@ const Theme = ({ state, actions }) => {
 
       {/* Add the header of the site. */}
       <HeadContainer>
-        <Header />
+        <Header/>
       </HeadContainer>
 
       <ScrollWrapper>
@@ -133,7 +139,7 @@ const Theme = ({ state, actions }) => {
 
       {/* Add the footer of the site */}
       <FooterContainer>
-        <Footer />
+        <Footer state={state} />
       </FooterContainer>
     </>
   );

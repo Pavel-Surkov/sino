@@ -15,8 +15,14 @@ import Whistleblowing from "./Whistleblowing/Whistleblowing";
 import PageError from "./PageError";
 
 const Router = ({ state }) => {
-  const currentRoute = state.router.link;
-  const data = state.source.get(state.router.link);
+  let currentRoute = state.router.link;
+  if (currentRoute.substring(0,3) === '/th') {
+    currentRoute = currentRoute.substring(1);
+    currentRoute = currentRoute.substring(currentRoute.indexOf("/"));
+  }
+  console.log('currentRoute');
+  console.log(currentRoute);
+  const data = state.source.get(currentRoute);
   const post = state.source[data.type][data.id];
 
   console.log("post");

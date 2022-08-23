@@ -28,6 +28,10 @@ const marsTheme = {
       isMobileMenuOpened: false,
       isMobile: false,
       searchValue: "",
+<<<<<<< HEAD
+=======
+      language: "TH",
+>>>>>>> 1f3dcf9686c9d04b5ade2212b014c2114e4e31d4
       languageDropdownOpened: false,
       language: "EN",
       languages: [

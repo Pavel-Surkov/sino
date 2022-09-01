@@ -190,9 +190,9 @@ const RequestQuote = ({ state, post }) => {
               <Input
                 placeholder={post.acf.request_form_email_placeholder}
                 type="email"
-                name="contact"
+                name="contactEmail"
                 onChange={formik.handleChange}
-                value={formik.values.contactName}
+                value={formik.values.contactEmail}
               />
             </Label>
             <LargeLabel mobileOrder={8}>

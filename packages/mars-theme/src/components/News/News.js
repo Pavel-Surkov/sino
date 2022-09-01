@@ -7,6 +7,7 @@ import { styled, connect } from "frontity";
 import news from "../../assets/images/news-poster.png";
 
 const News = ({ state, actions, post }) => {
+  console.log('news!!!!!')
   useEffect(() => {
     const currentPath = state.router.link;
     if (currentPath.includes("#news-media")) {

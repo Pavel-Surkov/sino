@@ -5,7 +5,17 @@ import drop from "../../assets/images/svg/drop.svg";
 import Link from "../constant/Link";
 
 const Navigation = ({ state, actions }) => {
-  const navLinks = state.source.get(`/menu/main-menu/`).items; //state.theme.menu;
+
+  let isThai = false;
+  if (state.source.url === 'https://sino.ux-mind.pro/th') {
+    isThai = true;
+  }
+  let navLinks = [];
+  if (isThai) {
+    navLinks = state.source.get(`/menu/thai-menu`).items;
+  } else {
+    navLinks = state.source.get(`/menu/main-menu`).items;
+  }
   const { selectedMenuItem } = state.theme;
 
   const handleDropdownClick = (menuItem) => {

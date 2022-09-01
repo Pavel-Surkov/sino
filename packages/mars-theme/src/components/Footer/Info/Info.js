@@ -12,7 +12,7 @@ import phone from "../../../assets/images/svg/Phone_fill.svg";
 const Info = ({ options }) => {
   return (
     <InfoWrapper>
-      <h4>{options.acf.footer_title}Corporate Head Office</h4>
+      <h4>{options.acf.footer_title}</h4>
       <IconBlock icon={options.acf.footer_locations_icon.url}>
         {options.acf.footer_locations ? parse(options.acf.footer_locations) : ''}
       </IconBlock>

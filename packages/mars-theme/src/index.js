@@ -31,8 +31,8 @@ const marsTheme = {
       language: "TH",
       languageDropdownOpened: false,
       languages: [
-        ["English", "EN"],
-        ["Thai", "TH"],
+        ["English", "EN", "/"],
+        ["Thai", "TH", "/th/"],
       ],
       featured: {
         showOnList: false,
@@ -234,7 +234,16 @@ const marsTheme = {
       handleNavDropdown:
         ({ state }) =>
         (textValue) => {
-          const newMenu = state.source.get(`/menu/main-menu/`).items.concat();
+          let isThai = false;
+          if (state.source.url === 'https://sino.ux-mind.pro/th') {
+            isThai = true;
+          }
+          let newMenu = [];
+          if (isThai) {
+            newMenu = state.source.get(`/menu/thai-menu/`).items.concat();
+          } else {
+            newMenu = state.source.get(`/menu/main-menu/`).items.concat();            
+          }
           console.log(newMenu);
 
           // Function thet toggles menu dropdowns
@@ -269,7 +278,8 @@ const marsTheme = {
       handleSwiperStylesLoaded: ({ state }) =>
         (state.theme.swiperStylesLoading = false),
       beforeSSR: async ({ state, actions }) => {
-        await actions.source.fetch(`/menu/${state.theme.menuUrl}/`);
+        await actions.source.fetch(`/menu/thai-menu/`);
+        await actions.source.fetch(`/menu/main-menu/`);
         await actions.source.fetch(`/services/`);
         await actions.source.fetch(`/company-news/`);
         await actions.source.fetch(`/jobs/`);

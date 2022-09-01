@@ -9,6 +9,8 @@ const Service = ({ state }) => {
   const currentRoute = state.router.link;
   const data = state.source.get(state.router.link);
   const post = state.source[data.type][data.id];
+  console.log('service post');
+  console.log(post);
 
   return (
     <ServiceWrapper>

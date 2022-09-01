@@ -80,15 +80,15 @@ const Services = ({ state, post }) => {
               },
             }}
           >
-            {currentServices.map((service, i) => {
+            {currentServices && currentServices.map((service, i) => {
               return (
                 <SwiperSlide key={`service-${i}`}>
                   <SwiperWrapper>
                     <Card
                       size="m"
-                      image={service.fimg_url}
-                      title={parse(service.title.rendered)}
-                      link={service.link}
+                      image={service.fimg_url ? service.fimg_url : ''}
+                      title={service.title.rendered ? parse(service.title.rendered) : ''}
+                      link={service.link ? service.link : ''}
                     />
                   </SwiperWrapper>
                 </SwiperSlide>

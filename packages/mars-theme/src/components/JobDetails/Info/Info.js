@@ -47,7 +47,7 @@ const Info = ({ post }) => {
           <Content>
             <TextBlock marginBottom={28} title={post.acf.job_responsibilities_title ? parse(post.acf.job_responsibilities_title) : ''}>
               <List>
-                {responsibilities.map((item) => (
+                {responsibilities && responsibilities.map((item) => (
                   <ListItem key={item.job_responsibilities_item.slice(0, 11)}>
                     {item.job_responsibilities_item ? parse(item.job_responsibilities_item) : ''}
                   </ListItem>
@@ -56,7 +56,7 @@ const Info = ({ post }) => {
             </TextBlock>
             <TextBlock marginBottom={28} title={post.acf.job_looking_for_title ? parse(post.acf.job_looking_for_title) : ''}>
               <List>
-                {requirements.map((item) => (
+                {requirements && requirements.map((item) => (
                   <ListItem key={item.job_looking_for_item.slice(0, 11)}>
                     {item.job_looking_for_item ? parse(item.job_looking_for_item) : ''}
                   </ListItem>

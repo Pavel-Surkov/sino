@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { connect, styled, css } from "frontity";
 import Button from "../constant/Button";
 import close from "../../assets/images/svg/Close.svg";
@@ -8,7 +9,7 @@ const MenuIcon = ({ state, actions }) => {
 
   function toggleScroll() {
     const htmlElement = document.documentElement;
-
+    //htmlElement.classList.add("scroll-hidden");
     htmlElement.classList.toggle("scroll-hidden");
   }
 

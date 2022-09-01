@@ -75,6 +75,54 @@ const Router = ({ state }) => {
       return <JobDetails post={post} />;
     case "/whistleblowing-form/":
       return <Whistleblowing post={post} />;
+    case "/th/":
+      return <Home post={post} />;
+    case "/th/careers/":
+      return <Careers post={post} />;
+    case "/th/contact/":
+      return <Contact post={post} />;
+    case "/th/investor/":
+      return <Investor post={post} />;
+    case "/th/company/":
+      return <Company post={post} />;
+    case "/th/company/#company-history":
+      return <Company post={post} />;
+    case "/th/company/#vision-and-mission":
+      return <Company post={post} />;
+    case "/th/company/#directors":
+      return <Company post={post} />;
+    case "/th/company/#business":
+      return <Company post={post} />;
+    case "/th/company/#business-ethics":
+      return <Company post={post} />;
+    case "/th/company/#corporate-governance":
+      return <Company post={post} />;
+    case "/th/company/#sustainability":
+      return <Company post={post} />;
+    case "/th/company/#community":
+      return <Company post={post} />;
+    case "/th/company/#people":
+      return <Company post={post} />;
+    case "/th/media-news/":
+      return <News post={post} />;
+    case "/th/media-news/":
+      return <News post={post} />;
+    case "/th/news/#news-media":
+      return <News post={post} />;
+    case "/th/news/#press-release":
+      return <News post={post} />;
+    case "/th/news-single/":
+      return <NewsSingle post={post} />;
+    case "/th/privacy-policy/":
+      return <PrivacyPolicy post={post} />;
+    case "/th/terms-of-use/":
+      return <TermsOfUse post={post} />;
+    case "/th/request-a-quote/":
+      return <RequestQuote post={post} />;
+    case "/th/job-details/":
+      return <JobDetails post={post} />;
+    case "/th/whistleblowing-form/":
+      return <Whistleblowing post={post} />;
     default:
       return <PageError />;
   }

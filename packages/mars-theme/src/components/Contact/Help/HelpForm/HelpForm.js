@@ -123,7 +123,7 @@ const HelpForm = ({ post }) => {
             <PrimaryBtn
               disabled={!isFormVerified}
               type="submit"
-              content="Submit"
+              content={post.acf.contact_help_button_text}
             />
           </SubmitWrapper>
         </Wrapper>

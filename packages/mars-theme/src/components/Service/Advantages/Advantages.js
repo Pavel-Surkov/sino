@@ -20,7 +20,7 @@ const Advantages = ({ state, post }) => {
                 </Title>
               </TitleWrapper>
               <Text className="text">
-                {post.acf.service_advantages_offer_text.map((p, i) => (
+                {post.acf.service_advantages_offer_text && post.acf.service_advantages_offer_text.map((p, i) => (
                   <p key={`offer-paragraph-${i}`}>
                     {parse(p.service_advantages_paragraph)}
                   </p>
@@ -36,7 +36,7 @@ const Advantages = ({ state, post }) => {
                 </Title>
               </TitleWrapper>
               <Text className="text">
-                {post.acf.service_advantages_offer_text.map((p, i) => (
+                {post.acf.service_advantages_offer_text && post.acf.service_advantages_offer_text.map((p, i) => (
                   <p key={`offer-paragraph-${i}`}>
                     {parse(p.service_advantages_paragraph)}
                   </p>
@@ -66,7 +66,7 @@ const Advantages = ({ state, post }) => {
                   </Title>
                 </TitleWrapper>
                 <Text className="text">
-                  {post.acf.service_advantages_info_text.map((p, i) => (
+                  {post.acf.service_advantages_info_text && post.acf.service_advantages_info_text.map((p, i) => (
                     <p key={`services-info-${i}`}>
                       {parse(p.service_advantages_info_paragraph)}
                     </p>
@@ -86,7 +86,7 @@ const Advantages = ({ state, post }) => {
                   </Title>
                 </TitleWrapper>
                 <Text className="text">
-                  {post.acf.service_advantages_info_text.map((p, i) => (
+                  {post.acf.service_advantages_info_text && post.acf.service_advantages_info_text.map((p, i) => (
                     <p key={`services-info-${i}`}>
                       {parse(p.service_advantages_info_paragraph)}
                     </p>
@@ -108,7 +108,7 @@ const Advantages = ({ state, post }) => {
             <Title size="xs" color="blue" marginBottom={isMobile ? 32 : 64}>
               {parse(post.acf.service_advantages_options_title)}
             </Title>
-            {post.acf.service_advantages_options_items.map((option, idx) => {
+            {post.acf.service_advantages_options_items && post.acf.service_advantages_options_items.map((option, idx) => {
               return (
                 <ContentBlock
                   content="options"
@@ -128,7 +128,7 @@ const Advantages = ({ state, post }) => {
                         </Title>
                       </TitleWrapper>
                       <Text className="text">
-                        {option.service_advantages_option_text.map((p, i) => (
+                        {option.service_advantages_option_text && option.service_advantages_option_text.map((p, i) => (
                           <p key={`service-option-text-${idx}-${i}`}>
                             {parse(p.service_advantages_option_paragraph)}
                           </p>
@@ -148,7 +148,7 @@ const Advantages = ({ state, post }) => {
                         </Title>
                       </TitleWrapper>
                       <Text className="text">
-                        {option.service_advantages_option_text.map((p, i) => (
+                        {option.service_advantages_option_text && option.service_advantages_option_text.map((p, i) => (
                           <p key={`service-option-text-${idx}-${i}`}>
                             {parse(p.service_advantages_option_paragraph)}
                           </p>

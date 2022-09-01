@@ -56,7 +56,7 @@ const Location = ({post}) => {
             <Map
               target="_blank"
               rel="noopener noreferrer"
-              link="https://www.google.ru/maps/place/Sino+Logistics+Corporation+PLC./@13.6830774,100.5463951,19z/data=!4m9!1m2!2m1!1s1011+Supalai+Grand+Tower,+7th+Floor,+Unit+No.+05,+Rama+3+Road,+Chongnonsee,+Yannawa,+Bangkok,+10120,+Thailand!3m5!1s0x30e2a203b42ea30d:0xdecfdad1623f259c!8m2!3d13.6830778!4d100.5473342!15sCm0xMDExIFN1cGFsYWkgR3JhbmQgVG93ZXIsIDd0aCBGbG9vciwgVW5pdCBOby4gMDUsIFJhbWEgMyBSb2FkLCBDaG9uZ25vbnNlZSwgWWFubmF3YSwgQmFuZ2tvaywgMTAxMjAsIFRoYWlsYW5kIgOIAQGSARFsb2dpc3RpY3Nfc2VydmljZQ"
+              link={post.acf.contact_location_1_map_link}
             >
               <img
                 width="558"
@@ -100,7 +100,7 @@ const Location = ({post}) => {
             <Map
               target="_blank"
               rel="noopener noreferrer"
-              link="https://www.google.ru/maps/place/SINO+Logistics+Corporation+PLC.+(Laem+Chabang+Branch)/@13.0870548,100.8774911,13z/data=!4m9!1m2!2m1!1ssino!3m5!1s0x3102b9d60807c5b7:0x94d15546f0664539!8m2!3d13.0870548!4d100.9294331!15sCgRzaW5vkgEQY29ycG9yYXRlX29mZmljZQ"
+              link={post.acf.contact_location_2_map_link}
             >
               <img
                 width="558"

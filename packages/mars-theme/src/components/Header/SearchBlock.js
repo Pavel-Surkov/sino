@@ -163,15 +163,13 @@ const SearchBlock = ({ state, actions }) => {
                 Change language
               </h3>
               <div>
-                {languages.map(([lang, value]) => (
+                {languages.map(([lang, value, url]) => (
                   <RadioButton
                     key={value}
                     name="language"
                     text={`${lang} - ${value}`}
                     value={value}
-                    onChange={(evt) =>
-                      actions.theme.handleLanguageChange(evt.target.value)
-                    }
+                    url={url}
                   />
                 ))}
               </div>

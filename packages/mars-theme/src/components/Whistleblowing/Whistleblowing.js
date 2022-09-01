@@ -7,12 +7,13 @@ import Input from "../constant/Input";
 import CheckboxItem from "../constant/CheckboxItem";
 import { font, flex } from "../base/functions";
 import { styled, connect } from "frontity";
+import parse from "html-react-parser";
 
 import { useFormik } from "formik";
 
 import poster from "../../assets/images/whistleblowing-poster.png";
 
-const Whistleblowing = ({ state }) => {
+const Whistleblowing = ({ state, post }) => {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const formik = useFormik({
@@ -48,70 +49,48 @@ const Whistleblowing = ({ state }) => {
   return (
     <PageWrapper>
       <HeroWrapper>
-        <Hero image={poster} title="Sino Logistics Whistleblowing Form" />
+        <Hero image={post.acf.whistleblowing_top_banner_image.url} title={post.acf.whistleblowing_top_banner_text}/>
       </HeroWrapper>
       <ContentWrapper>
         <Container>
           <Content>
             <Text>
-              <P>
-                Sino Logistics has a zero-tolerance policy against business
-                malpractice. Accordingly, you can raise a concern at any time
-                about an incident that happened in the past, is happening now,
-                or you believe will happen in the near future. However, please
-                be aware that the wrongdoing you disclose must be detrimental
-                to the public. Hence, personal grievances (for example,
-                bullying, harassment, discrimination) are not considered
-                whistleblowing unless your particular case is in the public
-                interest.
-              </P>
-              <P>
-                Incidents of business malpractice may relate to corruption,
-                unethical business practices, accounting or auditing fraud,
-                internal matters, law violations, unethical conduct towards
-                business partners, or any other activity that goes against Sino
-                Logistics’ code of ethics.
-              </P>
-              <P>
-                We take all manner of corruption very seriously, so if you have
-                something to report, you may contact us immediately using our
-                confidential form below to communicate your concerns to our
-                Chairman of the Audit Committee. Rest assured, we will
-                effectively safeguard your information and proceed with the
-                utmost confidentiality and vigilance in handling your report.
-              </P>
+              {post.acf.whistleblowing_content_text && post.acf.whistleblowing_content_text.map((p) => (
+                <P key={p.whistleblowing_content_paragraph.slice(0, 11)}>
+                  {parse(p.whistleblowing_content_paragraph)}
+                </P>
+              ))}
             </Text>
             <Subtext>
               <P>
-                Please direct any comments/suggestions or report misconducts by
-                completing the form below
+                {post.acf.whistleblowing_form_title}
               </P>
             </Subtext>
             <Form onSubmit={formik.handleSubmit}>
               <Label>
-                <span>Your Name</span>
+                <span>{post.acf.whistleblowing_form_name_label}</span>
                 <Input
                   name="name"
-                  placeholder="ex. Jack Nilson"
+                  placeholder={post.acf.whistleblowing_form_name_placeholder}
                   onChange={formik.handleChange}
                   value={formik.values.name}
                 />
               </Label>
               <Label>
-                <span>Your Email</span>
+                <span>{post.acf.whistleblowing_form_email_label}</span>
                 <Input
                   type="email"
                   name="email"
-                  placeholder="ex. info@ux-mind.pro"
+                  placeholder={post.acf.whistleblowing_form_email_placeholder}
                   onChange={formik.handleChange}
                   value={formik.values.email}
                 />
               </Label>
               <Label>
-                <span>Your Message</span>
+                <span>{post.acf.whistleblowing_form_message_label}</span>
                 <Textarea
                   name="message"
-                  placeholder="Please describe how can we help you"
+                  placeholder={post.acf.whistleblowing_form_message_label}
                   onChange={formik.handleChange}
                   value={formik.values.message}
                   rows={4}
@@ -129,12 +108,10 @@ const Whistleblowing = ({ state }) => {
                   <Plus />
                   <AttachText>
                     <AttachTitle>
-                      Attach your additional information{" "}
-                      {state.theme.isMobile ? null : "here"}
+                      {post.acf.whistleblowing_form_file_upload_title}
                     </AttachTitle>
                     <AttachInfo>
-                      Attach file (Maximum file: 5MB. The .doc, .docx and .pdf
-                      are allowed.)
+                      {post.acf.whistleblowing_form_file_upload_subtitle}
                     </AttachInfo>
                   </AttachText>
                 </Attach>
@@ -170,11 +147,11 @@ const Whistleblowing = ({ state }) => {
                   checked={privacyAccepted}
                   setChecked={() => setPrivacyAccepted((prev) => !prev)}
                 >
-                  I have read and accepted The Privacy Statement
+                  {post.acf.whistleblowing_form_privacy_statement}
                 </CheckboxItem>
               </CheckboxLabel>
               <SubmitWrapper>
-                <PrimaryBtn disabled={!privacyAccepted} content="Send" />
+                <PrimaryBtn disabled={!privacyAccepted} content={post.acf.whistleblowing_form_button_text} />
               </SubmitWrapper>
             </Form>
           </Content>

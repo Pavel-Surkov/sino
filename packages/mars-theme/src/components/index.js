@@ -52,7 +52,6 @@ const Theme = ({ state, actions }) => {
     setFancyAppCssBundle();
     setSimplebarBundle();
     setDatepickerBundle();
-
     actions.theme.handleSwiperStylesLoaded();
   }, []);
 

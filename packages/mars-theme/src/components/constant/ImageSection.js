@@ -80,6 +80,7 @@ const ImageWrapper = styled.div`
   max-width: calc((790 / 1372) * 100%);
   & img {
     width: 100%;
+    max-width: 674px;
     height: auto;
     border-radius: 20px;
   }

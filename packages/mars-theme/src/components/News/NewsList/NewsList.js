@@ -99,7 +99,7 @@ const NewsList = ({ state, actions, post }) => {
   return (
     <Section>
       <Container>
-        <ListTitle>{post.acf.latest_news_title ? parse(post.acf.latest_news_title) : ''}</ListTitle>
+        <ListTitle>{post.acf.media_news_title ? parse(post.acf.media_news_title) : ''}</ListTitle>
         <List id="press-release">
           {news && news.map((newsItem, idx) => {
             if (!isAllNewsShown && idx > 2) {
@@ -123,7 +123,7 @@ const NewsList = ({ state, actions, post }) => {
                       <PrimaryBtn
                         type="link"
                         link={newsItem.link}
-                        content="Read Now"
+                        content={post.acf.latest_news_link_text}
                       />
                     </BtnWrapper>
                   </Content>
